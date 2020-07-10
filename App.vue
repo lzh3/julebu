@@ -13,6 +13,12 @@ export default {
 </script>
 
 <style>
+	@import "colorui/main.css";
+	@import "colorui/icon.css";
+	.bg-main{
+		background-color: #f36523;
+		color:#fff;
+	}
 	.container{
 		width:100%;
 		height:100vh;

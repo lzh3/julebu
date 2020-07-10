@@ -165,7 +165,31 @@ __webpack_require__.r(__webpack_exports__);
 var _default =
 {
   data: function data() {
-    return {};
+    return {
+      list: [{
+        url: '../../static/image/icon/personal/1.png',
+        title: '我的收藏' },
+
+      {
+        url: '../../static/image/icon/personal/2.png',
+        title: '我的活动' },
+
+      {
+        url: '../../static/image/icon/personal/3.png',
+        title: '我的收藏' },
+
+      {
+        url: '../../static/image/icon/personal/4.png',
+        title: '我的活动' },
+
+      {
+        url: '../../static/image/icon/personal/5.png',
+        title: '我的收藏' },
+
+      {
+        url: '../../static/image/icon/personal/6.png',
+        title: '我的活动' }] };
+
 
 
   },

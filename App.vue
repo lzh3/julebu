@@ -15,6 +15,9 @@ export default {
 <style>
 	@import "colorui/main.css";
 	@import "colorui/icon.css";
+	.main-color{
+		color:#f36523;
+	}
 	.wrap{
 		width:100%;
 		height:100vh;

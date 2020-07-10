@@ -114,25 +114,31 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
 var _default =
 {
   data: function data() {
     return {
-      list: [
-      {
-        detail: 'CPU销售' },
+      list: [{
+        detail: 'CPU销售',
+        url: './jifenrule/jifenrule' },
 
       {
-        detail: 'CPU销售' },
+        detail: 'CPU销售',
+        url: './jifenrule/jifenrule' },
 
       {
-        detail: 'CPU销售' },
+        detail: 'CPU销售',
+        url: './jifenrule/jifenrule' },
 
       {
-        detail: 'CPU销售' },
+        detail: 'CPU销售',
+        url: './jifenrule/jifenrule' },
 
       {
-        detail: 'CPU销售' },
+        detail: 'CPU销售',
+        url: './jifenrule/jifenrule' },
 
       {
         detail: '积分规则',

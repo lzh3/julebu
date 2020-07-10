@@ -145,6 +145,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
 var _default =
 {
   data: function data() {
@@ -162,11 +164,13 @@ var _default =
 
       {
         a: '主板',
-        b: '积分规则' },
+        b: '积分规则',
+        url: './RuleDetail' },
 
       {
         a: 'CPU',
-        b: '积分规则' }] };
+        b: '积分规则',
+        url: './RuleDetail' }] };
 
 
 

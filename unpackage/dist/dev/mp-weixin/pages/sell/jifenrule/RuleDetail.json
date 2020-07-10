@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "积分规则",
+  "usingComponents": {
+    "t-table": "/pages/table/t-table",
+    "t-th": "/pages/table/t-th",
+    "t-tr": "/pages/table/t-tr",
+    "t-td": "/pages/table/t-td"
+  }
+}

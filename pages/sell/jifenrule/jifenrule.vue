@@ -2,8 +2,10 @@
 	<view>
 		<view class="list">
 			<view v-for="item in list" class="item">
-				<view>{{item.a}}</view>
-				<view>{{item.b}}</view>
+				<navigator class="content" :url='item.url'>
+					<view>{{item.a}}</view>
+					<view>{{item.b}}</view>
+				</navigator>
 			</view>
 		</view>
 	
@@ -30,11 +32,13 @@
 					},
 					{
 						a:'主板',
-						b:'积分规则'
+						b:'积分规则',
+						url:'./RuleDetail'
 					},
 					{
 						a:'CPU',
-						b:'积分规则'
+						b:'积分规则',
+						url:'./RuleDetail'
 					}
 				]
 			}
@@ -55,11 +59,16 @@
 		.item{
 			width:160rpx;
 			height:160rpx;
-			padding-top:50rpx;
 			margin:20rpx 30rpx;
 			text-align: center;
 			color:#f36523;
 			border: solid 1px #f36523;
+			.content{
+				display: block;
+				width:100%;
+				height:100%;
+				padding-top:50rpx;
+			}
 		}
 	}
 	.ps{

@@ -7,7 +7,7 @@
 				</view>
 				<view class="status">
 					<view class="name">
-						name  ID:-
+						name ID:-
 					</view>
 					<view class="jifen">
 						积分：0
@@ -18,15 +18,15 @@
 		</view>
 		<view class="list">
 			<view class="list-card bg-white">
-				<view class="item"></view>
-				<view class="item"></view>
-				<view class="item"></view>
-				<view class="item"></view>
-				<view class="item"></view>
-				<view class="item"></view>
+				<view class="item" v-for="item in list">
+					<view class="img">
+						<image :src="item.url" mode=""></image>
+					</view>
+					<view class="txt">{{item.title}}</view>
+				</view>
 			</view>
 		</view>
-		
+
 	</view>
 </template>
 
@@ -34,13 +34,37 @@
 	export default {
 		data() {
 			return {
-				
+				list: [{
+						url: '../../static/image/icon/personal/1.png',
+						title: '我的收藏'
+					},
+					{
+						url: '../../static/image/icon/personal/2.png',
+						title: '我的活动'
+					},
+					{
+						url: '../../static/image/icon/personal/3.png',
+						title: '我的收藏'
+					},
+					{
+						url: '../../static/image/icon/personal/4.png',
+						title: '我的活动'
+					},
+					{
+						url: '../../static/image/icon/personal/5.png',
+						title: '我的收藏'
+					},
+					{
+						url: '../../static/image/icon/personal/6.png',
+						title: '我的活动'
+					},
+				]
 			}
 		},
 		methods: {
-			loginFn(){
+			loginFn() {
 				uni.navigateTo({
-					url:'../login/login'
+					url: '../login/login'
 				})
 			}
 		}
@@ -48,61 +72,77 @@
 </script>
 
 <style lang="scss" scoped>
-	.list{
-		width:100%;
-		height:342rpx;
-		position:relative;
-		border:1px solid blue;
-		.list-card{
+	.list {
+		width: 100%;
+		height: 342rpx;
+		position: relative;
+		border: 1px solid blue;
+
+		.list-card {
 			display: flex;
 			display: -webkit-flex;
-			position:absolute;
-			align-content: flex-start;
+			position: absolute;
+			align-content: center;
 			flex-wrap: wrap;
 			flex-direction: row;
-			width:690rpx;
-			height:342rpx;
-			top:-60rpx;
-			left:30rpx;
-			.item{
-				width:152.5rpx;
-				height:72rpx;
-				margin:10rpx 10rpx;
+			width: 690rpx;
+			height: 342rpx;
+			top: -60rpx;
+			left: 30rpx;
+
+			.item {
+				width: 152.5rpx;
+				height: 72rpx;
+				margin:10rpx;
 				box-sizing: border-box;
-				border:1px solid black;
+				text-align: center;
+				.img{
+					width:40rpx;
+					height:40rpx;
+					margin :0 auto;
+					image{
+						width:100%;
+						height:100%;
+					}
+				}
 			}
 		}
 	}
-	.info-card{
+
+	.info-card {
 		position: relative;
-		width:100%;
-		height:274rpx;
-		padding:15rpx 30rpx;
+		width: 100%;
+		height: 274rpx;
+		padding: 15rpx 30rpx;
 		box-sizing: border-box;
-		border:1px solid blue;
+		border: 1px solid blue;
 		font-size: 24rpx;
-		.touxiang{
-			width:98rpx;
+
+		.touxiang {
+			width: 98rpx;
 			height: 98rpx;
-			float:left;
-			border:1px solid red;
+			float: left;
+			border: 1px solid red;
 		}
-		.status{
-			float:left;
-			margin:10rpx;
-			.jifen{
-				margin-top:3px;
+
+		.status {
+			float: left;
+			margin: 10rpx;
+
+			.jifen {
+				margin-top: 3px;
 			}
 		}
-		.login{
-			position:absolute;
-			width:145rpx;
-			height:48rpx;
+
+		.login {
+			position: absolute;
+			width: 145rpx;
+			height: 48rpx;
 			line-height: 48rpx;
 			text-align: center;
-			right:30rpx;
-			top:15rpx;
-			color:#fff;
+			right: 30rpx;
+			top: 15rpx;
+			color: #fff;
 			font-size: 28rpx;
 			border-radius: 10rpx;
 			background-color: #f39d23;

@@ -1,6 +1,6 @@
 <template>
-	<view class="container">
-		home
+	<view class="index-container">
+		<Swiper />
 	</view>
 </template>
 
@@ -17,9 +17,9 @@
 	}
 </script>
 
-<style>
-	.container {
-		padding: 20px;
+<style scoped>
+	.index-container {
+		/* padding: 20px; */
 		font-size: 14px;
 		line-height: 24px;
 	}

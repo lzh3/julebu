@@ -15,6 +15,11 @@ export default {
 <style>
 	@import "colorui/main.css";
 	@import "colorui/icon.css";
+	.wrap{
+		width:100%;
+		height:100vh;
+		background-color: #fff;
+	}
 	.bg-main{
 		background-color: #f36523;
 		color:#fff;

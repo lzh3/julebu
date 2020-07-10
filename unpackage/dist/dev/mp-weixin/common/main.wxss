@@ -4558,6 +4558,11 @@ scroll-view.cu-steps .cu-item {
 .cuIcon-btn:before {
 	content: "\e601";
 }
+.wrap{
+		width:100%;
+		height:100vh;
+		background-color: #fff;
+}
 .bg-main{
 		background-color: #f36523;
 		color:#fff;

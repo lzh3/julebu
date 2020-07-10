@@ -6,7 +6,8 @@
     "pages/train/train",
     "pages/community/community",
     "pages/sell/sell",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/sell/jifenrule/jifenrule"
   ],
   "subPackages": [],
   "window": {

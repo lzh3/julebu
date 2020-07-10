@@ -1,6 +1,11 @@
 <template>
 	<view>
-		销售
+		<view class="list">
+			<view v-for="item in list" class="item">
+				<view class="img"></view>
+				<navigator :url='item.url'>{{item.detail}}</navigator>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -8,7 +13,27 @@
 	export default {
 		data() {
 			return {
-				
+				list:[
+					{
+						detail:'CPU销售'
+					},
+					{
+						detail:'CPU销售'
+					},
+					{
+						detail:'CPU销售'
+					},
+					{
+						detail:'CPU销售'
+					},
+					{
+						detail:'CPU销售'
+					},
+					{
+						detail:'积分规则',
+						url:'./jifenrule/jifenrule'
+					},
+				]
 			}
 		},
 		methods: {
@@ -17,6 +42,23 @@
 	}
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+	.list{
+		width:750rpx;
+		margin:0 auto;
+		padding:0 15rpx;
+		display: flex;
+		flex-wrap: wrap;
+		.item{
+			width:180rpx;
+			height:180rpx;
+			margin:20rpx 30rpx;
+			text-align: center;
+			background-color: skyblue;
+			.img{
+				width:110rpx;
+				height:110rpx;
+			}
+		}
+	}
 </style>

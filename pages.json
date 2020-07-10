@@ -42,6 +42,12 @@
 				"navigationBarTitleText": "登录"
 			}
         }
+        ,{
+            "path" : "pages/sell/jifenrule/jifenrule",
+            "style" : {
+				"navigationBarTitleText": "积分规则"
+			}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

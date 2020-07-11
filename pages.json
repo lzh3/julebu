@@ -9,64 +9,71 @@
 			"path": "pages/personal/personal",
 			"style": {
 				"navigationBarTitleText": "我的"
-				
+
 			}
-		}
-	    ,{
-            "path" : "pages/activity/activity",
-            "style" : {
+		}, {
+			"path": "pages/activity/activity",
+			"style": {
 				"navigationBarTitleText": "活动"
 			}
-        }
-        ,{
-            "path" : "pages/train/train",
-            "style" : {
+		}, {
+			"path": "pages/train/train",
+			"style": {
 				"navigationBarTitleText": "培训"
 			}
-        }
-        ,{
-            "path" : "pages/community/community",
-            "style" : {
+		}, {
+			"path": "pages/community/community",
+			"style": {
 				"navigationBarTitleText": "社区"
 			}
-        }
-        ,{
-            "path" : "pages/sell/sell",
-            "style" : {
+		}, {
+			"path": "pages/sell/sell",
+			"style": {
 				"navigationBarTitleText": "销售"
 			}
-        }
-        ,{
-            "path" : "pages/login/login",
-            "style" : {
+		}, {
+			"path": "pages/login/login",
+			"style": {
 				"navigationBarTitleText": "登录"
 			}
-        }
-        ,{
-            "path" : "pages/sell/jifenrule/jifenrule",
-            "style" : {
+		}, {
+			"path": "pages/sell/jifenrule/jifenrule",
+			"style": {
 				"navigationBarTitleText": "积分规则"
 			}
-        },
+		},
 		{
-		    "path" : "pages/sell/jifenrule/RuleDetail",
-		    "style" : {
+			"path": "pages/sell/jifenrule/RuleDetail",
+			"style": {
 				"navigationBarTitleText": "积分规则"
 			}
-		}
-        ,{
-            "path" : "pages/personal/mycollect/mycollect",
-            "style" : {
+		}, {
+			"path": "pages/personal/mycollect/mycollect",
+			"style": {
 				"navigationBarTitleText": "我的收藏"
 			}
-        }
-        ,{
-            "path" : "pages/personal/mycollect/collectdetail/collectdetail",
-            "style" : {
-				
+		}, {
+			"path": "pages/personal/mycollect/collectdetail/collectdetail",
+			"style": {
+
 			}
-        }
-    ],
+		}, {
+			"path": "pages/playersMustSee/playersMustSee",
+			"style": {
+				"navigationBarTitleText": "玩家必看"
+			}
+		}, {
+			"path": "pages/designerIn/designerIn",
+			"style": {
+				"navigationBarTitleText": "设计师IN"
+			}
+		}, {
+			"path": "pages/internetBar/internetBar",
+			"style": {
+				"navigationBarTitleText": "网吧专家"
+			}
+		}
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "A+俱乐部",
@@ -82,49 +89,50 @@
 		}]
 	},
 	"tabBar": {
-	        "color": "#000000",
-	        "selectedColor": "#f36523",
-	        // "borderStyle": "black",
-	        "backgroundColor": "#ffffff",
-	        // "height": "50px",
-	        "fontSize": "16px",
-	        //"iconWidth": "20rpx",
-	        // "spacing": "5px",
-	        "list": [{
-	            "pagePath": "pages/index/index",
-	            "iconPath": "static/image/icon/footer/home.png",
-	            "selectedIconPath": "static/image/icon/footer/home1.png",
-				"text":"首页"
-	        }, 
+		"color": "#000000",
+		"selectedColor": "#f36523",
+		// "borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		// "height": "50px",
+		"fontSize": "16px",
+		//"iconWidth": "20rpx",
+		// "spacing": "5px",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/image/icon/footer/home.png",
+				"selectedIconPath": "static/image/icon/footer/home1.png",
+				"text": "首页"
+			},
 			{
 				"pagePath": "pages/activity/activity",
-	            "iconPath": "static/image/icon/footer/act.png",
-	            "selectedIconPath": "static/image/icon/footer/act1.png",
-				"text":"活动"
+				"iconPath": "static/image/icon/footer/act.png",
+				"selectedIconPath": "static/image/icon/footer/act1.png",
+				"text": "活动"
 			},
 			{
 				"pagePath": "pages/train/train",
-	            "iconPath": "static/image/icon/footer/train.png",
-	            "selectedIconPath": "static/image/icon/footer/train1.png",
-				"text":"培训"
+				"iconPath": "static/image/icon/footer/train.png",
+				"selectedIconPath": "static/image/icon/footer/train1.png",
+				"text": "培训"
 			},
 			{
 				"pagePath": "pages/community/community",
-	            "iconPath": "static/image/icon/footer/sq.png",
-	            "selectedIconPath": "static/image/icon/footer/sq1.png",
-				"text":"社区"
+				"iconPath": "static/image/icon/footer/sq.png",
+				"selectedIconPath": "static/image/icon/footer/sq1.png",
+				"text": "社区"
 			},
 			{
 				"pagePath": "pages/sell/sell",
-	            "iconPath": "static/image/icon/footer/sell.png",
-	            "selectedIconPath": "static/image/icon/footer/sell1.png",
-				"text":"销售"
+				"iconPath": "static/image/icon/footer/sell.png",
+				"selectedIconPath": "static/image/icon/footer/sell1.png",
+				"text": "销售"
 			},
 			{
-	            "pagePath": "pages/personal/personal",
-	            "iconPath": "static/image/icon/footer/me.png",
-	            "selectedIconPath": "static/image/icon/footer/me1.png",
-				"text":"我的"
-	        }]
-	    }
+				"pagePath": "pages/personal/personal",
+				"iconPath": "static/image/icon/footer/me.png",
+				"selectedIconPath": "static/image/icon/footer/me1.png",
+				"text": "我的"
+			}
+		]
+	}
 }

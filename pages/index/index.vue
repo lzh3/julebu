@@ -1,6 +1,6 @@
 <template>
 	<view class="index-container">
-		<Swiper />
+		
 	</view>
 </template>
 

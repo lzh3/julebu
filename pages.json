@@ -2,7 +2,7 @@
 	"pages": [{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "A+俱乐部"
+				"navigationBarTitleText": "首页"
 			}
 		},
 		{

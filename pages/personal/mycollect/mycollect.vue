@@ -1,38 +1,35 @@
 <template>
 	<view class="container">
-		<view class="list">
-			<view v-for="item in collectList">
-				<view class="item bg-white">
-					<view class="pic"></view>
-					<view class="title">{{item.title}}</view>
-					<view class="del">
-						<image src="../../../static/image/icon/personal/del.png" mode=""></image>
-					</view>
-				</view>
-			</view>
-		</view>
+		<news-list></news-list>
 	</view>
 </template>
 
 <script>
+	import newsList from '../../common/newsList.vue'
 	export default {
 		data() {
 			return {
 				collectList:[
 					{
 						pic:'',
-						title:'AMD出大招狙击英特尔'
+						title:'AMD出大招狙击英特尔',
+						url:'./collectdetail/collectdetail'
 					},
 					{
 						pic:'',
-						title:'美国AMD半导体公司专门为计算机、通信和消费电子行业设计和制造各种创新的微处理器.'
+						title:'美国AMD半导体公司专门为计算机、通信和消费电子行业设计和制造各种创新的微处理器.',
+						url:'./collectdetail/collectdetail'
 					},
 					{
 						pic:'',
-						title:'AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔'
+						title:'AMD出大招狙击英特尔',
+						url:'./collectdetail/collectdetail'
 					}
 				]
 			}
+		},
+		components:{
+			newsList
 		},
 		methods: {
 			
@@ -45,6 +42,7 @@
 	position: relative;
 	width:100%;
 	height:210rpx;
+	margin-bottom:10rpx;
 	padding:30rpx;
 	box-sizing: border-box;
 	.pic{

@@ -130,42 +130,39 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var newsList = function newsList() {__webpack_require__.e(/*! require.ensure | pages/common/newsList */ "pages/common/newsList").then((function () {return resolve(__webpack_require__(/*! ../../common/newsList.vue */ 142));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
 {
   data: function data() {
     return {
       collectList: [
       {
         pic: '',
-        title: 'AMD出大招狙击英特尔' },
+        title: 'AMD出大招狙击英特尔',
+        url: './collectdetail/collectdetail' },
 
       {
         pic: '',
-        title: '美国AMD半导体公司专门为计算机、通信和消费电子行业设计和制造各种创新的微处理器.' },
+        title: '美国AMD半导体公司专门为计算机、通信和消费电子行业设计和制造各种创新的微处理器.',
+        url: './collectdetail/collectdetail' },
 
       {
         pic: '',
-        title: 'AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔' }] };
+        title: 'AMD出大招狙击英特尔',
+        url: './collectdetail/collectdetail' }] };
 
 
 
   },
+  components: {
+    newsList: newsList },
+
   methods: {} };exports.default = _default;
 
 /***/ }),

@@ -9,13 +9,15 @@
 			</view>
 			<view class="item">活动时间：<text class="date">{{item.date}}</text></view>
 			<view class="item">活动形式：<text class="type">{{item.type}}</text></view>
-			<view class="item">参与名额：<text class="limit">{{item.limit}}</text><text
-					class="isReported">{{item.isReported}}</text>
+			<view class="item">参与名额：<text class="limit">{{item.limit}}</text>
+				<text class="isReported">已有{{item.isReported}}人报名参加</text>
 			</view>
-			<view class="item">活动介绍：<text class="desc">{{item.desc}}</text></view>
+			<view class="item">活动介绍：
+				<view class="desc">{{item.desc}}</view>
+			</view>
+			<button type="primary" @click="joinActivity" class="btn">我要参与</button>
 		</view>
-		<button type="primary" @click="joinActivity">我要参与</button>
-		<view class="kefu">
+		<view class="kefu" @click="kefu">
 			<image src="../../static/image/kefu.png"></image>
 			<text>客服</text>
 		</view>
@@ -46,26 +48,38 @@
 		methods: {
 			joinActivity() {
 
-			}
+			},
+			kefu() {
+
+			},
 		},
 	}
 </script>
 
 <style lang="scss" scoped>
 	.activity-detail {
+		height: calc(100vh - 88rpx);
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+
 		.pic {
 			height: 350rpx;
 			width: 100%;
 		}
 
 		.content {
+			position: relative;
 			padding: 30rpx;
 			background: #fff;
+			flex: 1;
 
 			.item {
 				font-size: 26rpx;
 				font-weight: 500;
 				color: rgba(102, 102, 102, 1);
+				margin-bottom: 30rpx;
+				line-height: 1;
 
 				.theme {
 					font-size: 26rpx;
@@ -86,6 +100,57 @@
 					font-weight: 500;
 					color: rgba(243, 101, 35, 1);
 				}
+
+				.limit {
+					font-size: 26rpx;
+					font-weight: 500;
+					color: rgba(243, 157, 35, 1);
+				}
+
+				.isReported {
+					font-size: 22rpx;
+					font-weight: 500;
+					color: rgba(255, 76, 76, 1);
+					float: right;
+				}
+
+				.desc {
+					margin-top: 30rpx;
+					font-size: 26rpx;
+					font-weight: 500;
+					color: rgba(51, 51, 51, 1);
+					line-height: 48rpx;
+				}
+			}
+
+			.btn {
+				height: 64rpx;
+				line-height: 64rpx;
+				background-color: rgba(243, 101, 35, 1);
+				border-radius: 10rpx;
+				position: absolute;
+				bottom: 20rpx;
+				width: calc(100% - 60rpx);
+			}
+		}
+
+		.kefu {
+			display: flex;
+			flex-direction: column;
+			position: fixed;
+			right: 30rpx;
+			bottom: 160rpx;
+
+			image {
+				width: 55rpx;
+				height: 56rpx;
+			}
+
+			text {
+				font-size: 24rpx;
+				font-weight: 500;
+				color: rgba(243, 101, 35, 1);
+				margin-top: 10rpx;
 			}
 		}
 	}

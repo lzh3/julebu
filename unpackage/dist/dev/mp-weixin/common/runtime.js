@@ -104,11 +104,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/Swiper/Swiper":1,"pages/table/t-table":1,"pages/table/t-td":1,"pages/table/t-th":1,"pages/table/t-tr":1,"pages/common/newsList":1};
+/******/ 		var cssChunks = {"components/Swiper/Swiper":1,"pages/table/t-table":1,"pages/table/t-td":1,"pages/table/t-th":1,"pages/table/t-tr":1,"pages/common/newsList":1,"components/Kefu/index":1,"components/Modal/index":1,"components/uni-popup/uni-popup":1,"components/uni-transition/uni-transition":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"components/Swiper/Swiper":"components/Swiper/Swiper","pages/table/t-table":"pages/table/t-table","pages/table/t-td":"pages/table/t-td","pages/table/t-th":"pages/table/t-th","pages/table/t-tr":"pages/table/t-tr","pages/common/newsList":"pages/common/newsList"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"components/Swiper/Swiper":"components/Swiper/Swiper","pages/table/t-table":"pages/table/t-table","pages/table/t-td":"pages/table/t-td","pages/table/t-th":"pages/table/t-th","pages/table/t-tr":"pages/table/t-tr","pages/common/newsList":"pages/common/newsList","components/Kefu/index":"components/Kefu/index","components/Modal/index":"components/Modal/index","components/uni-popup/uni-popup":"components/uni-popup/uni-popup","components/uni-transition/uni-transition":"components/uni-transition/uni-transition"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

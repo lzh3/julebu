@@ -215,11 +215,13 @@ var _default =
   data: function data() {
     return {
       newsItems: [{
+        id: '1',
         url: "../../static/image/home/news.png",
         mainTitle: "【促销活动】",
         subTitle: "AMD618促销狂欢季全新上线 ",
         date: "06.01 12:00-06.18 24:00" },
       {
+        id: '2',
         url: "../../static/image/home/news.png",
         mainTitle: "【促销活动】",
         subTitle: "AMD618促销狂欢季全新上线 ",
@@ -263,6 +265,13 @@ var _default =
       console.log("TCL: bannerJump -> url", url);
       uni.navigateTo({
         url: url });
+
+    },
+    //点击资讯跳转
+    newsItemClick: function newsItemClick(item) {
+      console.log("TCL: newsItemClick -> item", item);
+      uni.navigateTo({
+        url: '/pages/activity-detail/activity-detail?id=1' });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

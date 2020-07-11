@@ -43,7 +43,7 @@
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
-  margin: 10px 0 5px;
+  margin-top: 10px;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
           justify-content: space-between;

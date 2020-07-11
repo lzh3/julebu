@@ -28,7 +28,12 @@
 				</view>
 			</view>
 		</view>
-
+		<!-- <view class="reward">
+			<view class="reward-title">
+				<image src="../../static/image/personal/reward.png" mode=""></image>
+				我的奖励
+			</view>
+		</view> -->
 	</view>
 </template>
 
@@ -64,7 +69,8 @@
 					},
 					{
 						icon: '../../static/image/icon/personal/7.png',
-						title: '我的积分'
+						title: '我的积分',
+						url:'./myjf/myjf'
 					},
 					{
 						icon: '../../static/image/icon/personal/8.png',
@@ -93,6 +99,20 @@
 </script>
 
 <style lang="scss" scoped>
+	.reward{
+		.reward-title{
+			width:100%;
+			height:60rpx;
+			line-height: 60rpx;
+			text-align: center;
+			background-color: #fff;
+			image{
+				width:40rpx;
+				height:40rpx;
+				vertical-align: middle;
+			}
+		}
+	}
 	.list {
 		width: 100%;
 		height: 342rpx;

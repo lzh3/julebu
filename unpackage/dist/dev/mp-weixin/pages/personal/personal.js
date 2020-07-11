@@ -164,6 +164,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -196,7 +201,8 @@ var _default =
 
       {
         icon: '../../static/image/icon/personal/7.png',
-        title: '我的积分' },
+        title: '我的积分',
+        url: './myjf/myjf' },
 
       {
         icon: '../../static/image/icon/personal/8.png',

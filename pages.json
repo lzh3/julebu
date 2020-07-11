@@ -75,7 +75,9 @@
 		},
 		{
 			"path": "pages/personal/mypost/mypost",
-			"style": {}
+			"style": {
+				"navigationBarTitleText": "我的帖子"
+			}
 		}, {
 			"path": "pages/activity-detail/activity-detail",
 			"style": {
@@ -92,7 +94,13 @@
 				"navigationBarTitleText": "课程培训详情页"
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/personal/myjf/myjf",
+            "style" : {
+				"navigationBarTitleText": "我的积分"
+			}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "A+俱乐部",

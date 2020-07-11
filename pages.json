@@ -81,6 +81,11 @@
 			"style": {
 				"navigationBarTitleText": "活动详情页"
 			}
+		}, {
+			"path": "pages/personal/mypost/postdetail/postdetail",
+			"style": {
+				"navigationBarTitleText": "帖子详情页"
+			}
 		}
 	],
 	"globalStyle": {

@@ -139,7 +139,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -227,13 +227,16 @@ var _default =
 
       bannerItems: [{
         url: '../../static/image/home/player.png',
-        title: '玩家必看' },
+        title: '玩家必看',
+        jumpUrl: "/pages/playersMustSee/playersMustSee" },
       {
         url: '../../static/image/home/uier.png',
-        title: '设计师in' },
+        title: '设计师in',
+        jumpUrl: "/pages/designerIn/designerIn" },
       {
         url: '../../static/image/home/InterneBar.png',
-        title: '网吧专家' }],
+        title: '网吧专家',
+        jumpUrl: "/pages/internetBar/internetBar" }],
 
       trainItem: {
         topPic: '../../static/image/home/train.png',
@@ -255,7 +258,14 @@ var _default =
     },
     train: function train() {
       console.log('培训');
+    },
+    bannerJump: function bannerJump(url) {
+      console.log("TCL: bannerJump -> url", url);
+      uni.navigateTo({
+        url: url });
+
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 /* 17 */

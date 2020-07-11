@@ -1,5 +1,5 @@
 <template>
-	<view class="activity-detail">
+	<view :class="['activity-detail',activityStatus]">
 		<image :src="item.pic" class="pic" />
 		<view class="content">
 			<view class="item">
@@ -15,10 +15,10 @@
 			<view class="item">活动介绍：
 				<view class="desc">{{item.desc}}</view>
 			</view>
-			<button type="primary" @click="joinActivity" class="btn">我要参与</button>
+			<button type="primary" @click="joinActivity" class="btn" :disabled="activityStatus !== 'online'">我要参与</button>
 		</view>
 		<Kefu />
-		<Modal ref="modal" :status="status" title="参与成功" desc="" />
+		<Modal ref="modal" :status="modalStatus" title="参与成功" desc="" />
 	</view>
 </template>
 
@@ -42,8 +42,8 @@
 					isReported: '40',
 					desc: '以下是活动介绍以下是活动介绍以下是活动介绍以下是活动 介绍以下是活动介绍以下是活动介绍以下是活动介绍以下是 介绍以下是活动介绍',
 				},
-				status: 'success'
-
+				modalStatus: 'success',
+				activityStatus: 'online', //活动状态 online 在线 not-yet还没开始 over过期了
 			};
 		},
 		//路由参数就收
@@ -65,7 +65,6 @@
 
 <style lang="scss" scoped>
 	.activity-detail {
-		// filter: grayscale(100%);
 		height: calc(100vh - 88rpx);
 		display: flex;
 		flex-direction: column;
@@ -141,5 +140,10 @@
 				width: calc(100% - 60rpx);
 			}
 		}
+	}
+
+	.not-yet,
+	.over {
+		filter: grayscale(100%);
 	}
 </style>

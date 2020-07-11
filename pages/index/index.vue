@@ -33,7 +33,7 @@
 		<!-- banner  -->
 		<view class="index-banner">
 			<view class="item" v-for="(item,index) in bannerItems" :key="index">
-				<image :src="item.url" mode="aspectFit" />
+				<image :src="item.url" mode="aspectFit" @click="bannerJump(item.jumpUrl)" />
 				<!-- <text>{{item.title}}</text> -->
 			</view>
 		</view>
@@ -87,12 +87,15 @@
 				bannerItems: [{
 					url: '../../static/image/home/player.png',
 					title: '玩家必看',
+					jumpUrl: "/pages/playersMustSee/playersMustSee"
 				}, {
 					url: '../../static/image/home/uier.png',
 					title: '设计师in',
+					jumpUrl: "/pages/designerIn/designerIn"
 				}, {
 					url: '../../static/image/home/InterneBar.png',
 					title: '网吧专家',
+					jumpUrl: "/pages/internetBar/internetBar"
 				}],
 				trainItem: {
 					topPic: '../../static/image/home/train.png',
@@ -115,6 +118,12 @@
 			train() {
 				console.log('培训');
 			},
+			bannerJump(url) {
+				console.log("TCL: bannerJump -> url", url)
+				uni.navigateTo({
+					url,
+				});
+			}
 		}
 	}
 </script>

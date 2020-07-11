@@ -174,9 +174,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
         isReported: '40',
         desc: '以下是活动介绍以下是活动介绍以下是活动介绍以下是活动 介绍以下是活动介绍以下是活动介绍以下是活动介绍以下是 介绍以下是活动介绍' },
 
-      status: 'success' };
-
-
+      modalStatus: 'success',
+      activityStatus: 'online' //活动状态 online 在线 not-yet还没开始 over过期了
+    };
   },
   //路由参数就收
   onLoad: function onLoad(opt) {

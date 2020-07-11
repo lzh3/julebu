@@ -17,6 +17,7 @@
     "pages/personal/mypost/mypost",
     "pages/activity-detail/activity-detail",
     "pages/personal/mypost/postdetail/postdetail",
+    "pages/course-detail/course-detail",
     "pages/personal/myjf/myjf",
     "pages/personal/myactivity/myactivity"
   ],

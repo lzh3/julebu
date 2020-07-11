@@ -138,6 +138,12 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
 var _default2 =
 {
   props: {
@@ -161,6 +167,9 @@ var _default2 =
     return {};
 
 
+  },
+  mounted: function mounted() {
+    console.log("TCL: onLoad -> this", this);
   },
   methods: {
     close: function close() {

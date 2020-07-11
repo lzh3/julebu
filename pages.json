@@ -66,6 +66,10 @@
 				
 			}
         }
+        ,{
+            "path" : "pages/personal/mypost/mypost",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

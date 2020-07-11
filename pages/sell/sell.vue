@@ -1,10 +1,12 @@
 <template>
-	<view>
+	<view class="bg-white">
 		<view class="list">
 			<view v-for="item in list" class="item">
 				<navigator :url='item.url'>
-					<view class="img"></view>
-					<view>{{item.detail}}</view>
+					<view class="img">
+						<image :src="item.pic" mode=""></image>
+					</view>
+					<view class="txt">{{item.detail}}</view>
 				</navigator>
 			</view>
 		</view>
@@ -17,27 +19,28 @@
 			return {
 				list: [{
 						detail: 'CPU销售',
-						url: './jifenrule/jifenrule'
+						url: './jifenrule/jifenrule',
+						pic:'../../static/image/sell/1.png'
 					},
 					{
-						detail: 'CPU销售',
-						url: './jifenrule/jifenrule'
+						detail: '显卡销售',
+						url: './jifenrule/jifenrule',
+						pic:'../../static/image/sell/1.png'
 					},
 					{
-						detail: 'CPU销售',
-						url: './jifenrule/jifenrule'
+						detail: '主板销售',
+						url: './jifenrule/jifenrule',
+						pic:'../../static/image/sell/1.png'
 					},
 					{
-						detail: 'CPU销售',
-						url: './jifenrule/jifenrule'
-					},
-					{
-						detail: 'CPU销售',
-						url: './jifenrule/jifenrule'
+						detail: '优选销售',
+						url: './jifenrule/jifenrule',
+						pic:'../../static/image/sell/1.png'
 					},
 					{
 						detail: '积分规则',
-						url: './jifenrule/jifenrule'
+						url: './jifenrule/jifenrule',
+						pic:'../../static/image/sell/1.png'
 					},
 				]
 			}
@@ -61,11 +64,18 @@
 			height: 180rpx;
 			margin: 20rpx 30rpx;
 			text-align: center;
-			background-color: skyblue;
 
 			.img {
 				width: 110rpx;
 				height: 110rpx;
+				margin: 0 auto;
+				image{
+					width:100%;
+					height:100%;
+				}
+			}
+			.txt{
+				margin-top:5px;
 			}
 		}
 	}

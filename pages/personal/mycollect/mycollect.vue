@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-		<news-list></news-list>
+		<news-list :dataList='dataList'></news-list>
 	</view>
 </template>
 
@@ -9,7 +9,7 @@
 	export default {
 		data() {
 			return {
-				collectList:[
+				dataList:[
 					{
 						pic:'',
 						title:'AMD出大招狙击英特尔',

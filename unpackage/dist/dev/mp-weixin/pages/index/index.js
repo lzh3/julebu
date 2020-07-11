@@ -168,13 +168,80 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
-      scrollTop: 0,
-      old: {
-        scrollTop: 0 } };
+      newsItems: [{
+        url: "../../static/image/home/news.png",
+        mainTitle: "【促销活动】",
+        subTitle: "AMD618促销狂欢季全新上线 ",
+        date: "06.01 12:00-06.18 24:00" },
+      {
+        url: "../../static/image/home/news.png",
+        mainTitle: "【促销活动】",
+        subTitle: "AMD618促销狂欢季全新上线 ",
+        date: "06.01 12:00-06.18 24:00" }],
+
+      bannerItems: [{
+        url: '../../static/image/home/player.png',
+        title: '玩家必看' },
+      {
+        url: '../../static/image/home/uier.png',
+        title: '设计师in' },
+      {
+        url: '../../static/image/home/InterneBar.png',
+        title: '网吧专家' }],
+
+      trainItem: {
+        topPic: '../../static/image/home/train.png',
+        title: 'AMD最新三代处理器全渠道销售培训',
+        status: '刚刚',
+        date: '06.04 8:00-06.06 15:00',
+        number: '50人',
+        type: '视频' } };
 
 
 
@@ -183,11 +250,11 @@ var _default =
     indexNotice: function indexNotice() {
       console.log('indexNotice');
     },
-    // 新闻滚动
-    scrollNews: function scrollNews(e) {
-      console.log('scrollNews');
-      console.log(e);
-      this.old.scrollTop = e.detail.scrollTop;
+    test: function test() {
+      console.log('考试');
+    },
+    train: function train() {
+      console.log('培训');
     } } };exports.default = _default;
 
 /***/ }),

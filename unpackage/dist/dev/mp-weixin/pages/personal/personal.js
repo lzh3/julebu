@@ -191,7 +191,8 @@ var _default =
 
       {
         icon: '../../static/image/icon/personal/6.png',
-        title: '我的帖子' },
+        title: '我的帖子',
+        url: './mypost/mypost' },
 
       {
         icon: '../../static/image/icon/personal/7.png',

@@ -54,6 +54,14 @@
 				"navigationBarTitleText": "积分规则"
 			}
 		}
+        ,{
+            "path" : "pages/personal/mycollect/mycollect",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/personal/mycollect/collectdetail/collectdetail",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
@@ -73,45 +81,45 @@
 	        "color": "#000000",
 	        "selectedColor": "#f36523",
 	        // "borderStyle": "black",
-	        // "backgroundColor": "#ffffff",
+	        "backgroundColor": "#ffffff",
 	        // "height": "50px",
-	        // "fontSize": "10px",
-	         "iconWidth": "20rpx",
+	        "fontSize": "16px",
+	        //"iconWidth": "20rpx",
 	        // "spacing": "5px",
 	        "list": [{
 	            "pagePath": "pages/index/index",
-	            "iconPath": "static/image/icon/footer/1.png",
-	            "selectedIconPath": "static/image/icon/footer/1.png",
+	            "iconPath": "static/image/icon/footer/home.png",
+	            "selectedIconPath": "static/image/icon/footer/home1.png",
 				"text":"首页"
 	        }, 
 			{
 				"pagePath": "pages/activity/activity",
-	            "iconPath": "static/image/icon/footer/1.png",
-	            "selectedIconPath": "static/image/icon/footer/1.png",
+	            "iconPath": "static/image/icon/footer/act.png",
+	            "selectedIconPath": "static/image/icon/footer/act1.png",
 				"text":"活动"
 			},
 			{
 				"pagePath": "pages/train/train",
-	            "iconPath": "static/image/icon/footer/1.png",
-	            "selectedIconPath": "static/image/icon/footer/1.png",
-				"text":"首培训"
+	            "iconPath": "static/image/icon/footer/train.png",
+	            "selectedIconPath": "static/image/icon/footer/train1.png",
+				"text":"培训"
 			},
 			{
 				"pagePath": "pages/community/community",
-	            "iconPath": "static/image/icon/footer/1.png",
-	            "selectedIconPath": "static/image/icon/footer/1.png",
+	            "iconPath": "static/image/icon/footer/sq.png",
+	            "selectedIconPath": "static/image/icon/footer/sq1.png",
 				"text":"社区"
 			},
 			{
 				"pagePath": "pages/sell/sell",
-	            "iconPath": "static/image/icon/footer/1.png",
-	            "selectedIconPath": "static/image/icon/footer/1.png",
+	            "iconPath": "static/image/icon/footer/sell.png",
+	            "selectedIconPath": "static/image/icon/footer/sell1.png",
 				"text":"销售"
 			},
 			{
 	            "pagePath": "pages/personal/personal",
-	            "iconPath": "static/image/icon/footer/1.png",
-	            "selectedIconPath": "static/image/icon/footer/1.png",
+	            "iconPath": "static/image/icon/footer/me.png",
+	            "selectedIconPath": "static/image/icon/footer/me1.png",
 				"text":"我的"
 	        }]
 	    }

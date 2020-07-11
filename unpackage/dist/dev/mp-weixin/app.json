@@ -8,7 +8,9 @@
     "pages/sell/sell",
     "pages/login/login",
     "pages/sell/jifenrule/jifenrule",
-    "pages/sell/jifenrule/RuleDetail"
+    "pages/sell/jifenrule/RuleDetail",
+    "pages/personal/mycollect/mycollect",
+    "pages/personal/mycollect/collectdetail/collectdetail"
   ],
   "subPackages": [],
   "window": {
@@ -20,42 +22,43 @@
   "tabBar": {
     "color": "#000000",
     "selectedColor": "#f36523",
-    "iconWidth": "20rpx",
+    "backgroundColor": "#ffffff",
+    "fontSize": "16px",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath": "static/image/icon/footer/1.png",
-        "selectedIconPath": "static/image/icon/footer/1.png",
+        "iconPath": "static/image/icon/footer/home.png",
+        "selectedIconPath": "static/image/icon/footer/home1.png",
         "text": "首页"
       },
       {
         "pagePath": "pages/activity/activity",
-        "iconPath": "static/image/icon/footer/1.png",
-        "selectedIconPath": "static/image/icon/footer/1.png",
+        "iconPath": "static/image/icon/footer/act.png",
+        "selectedIconPath": "static/image/icon/footer/act1.png",
         "text": "活动"
       },
       {
         "pagePath": "pages/train/train",
-        "iconPath": "static/image/icon/footer/1.png",
-        "selectedIconPath": "static/image/icon/footer/1.png",
-        "text": "首培训"
+        "iconPath": "static/image/icon/footer/train.png",
+        "selectedIconPath": "static/image/icon/footer/train1.png",
+        "text": "培训"
       },
       {
         "pagePath": "pages/community/community",
-        "iconPath": "static/image/icon/footer/1.png",
-        "selectedIconPath": "static/image/icon/footer/1.png",
+        "iconPath": "static/image/icon/footer/sq.png",
+        "selectedIconPath": "static/image/icon/footer/sq1.png",
         "text": "社区"
       },
       {
         "pagePath": "pages/sell/sell",
-        "iconPath": "static/image/icon/footer/1.png",
-        "selectedIconPath": "static/image/icon/footer/1.png",
+        "iconPath": "static/image/icon/footer/sell.png",
+        "selectedIconPath": "static/image/icon/footer/sell1.png",
         "text": "销售"
       },
       {
         "pagePath": "pages/personal/personal",
-        "iconPath": "static/image/icon/footer/1.png",
-        "selectedIconPath": "static/image/icon/footer/1.png",
+        "iconPath": "static/image/icon/footer/me.png",
+        "selectedIconPath": "static/image/icon/footer/me1.png",
         "text": "我的"
       }
     ]

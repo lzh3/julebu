@@ -162,33 +162,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var _default =
 {
   data: function data() {
     return {
-      list: [{
-        url: '../../static/image/icon/personal/1.png',
-        title: '我的收藏' },
+      list: [
+      {
+        icon: '../../static/image/icon/personal/1.png',
+        title: '店铺详情' },
 
       {
-        url: '../../static/image/icon/personal/2.png',
+        icon: '../../static/image/icon/personal/2.png',
+        title: '店面形象' },
+
+      {
+        icon: '../../static/image/icon/personal/3.png',
+        title: '店员管理' },
+
+      {
+        icon: '../../static/image/icon/personal/4.png',
         title: '我的活动' },
 
       {
-        url: '../../static/image/icon/personal/3.png',
-        title: '我的收藏' },
+        icon: '../../static/image/icon/personal/5.png',
+        title: '我的培训' },
 
       {
-        url: '../../static/image/icon/personal/4.png',
-        title: '我的活动' },
+        icon: '../../static/image/icon/personal/6.png',
+        title: '我的帖子' },
 
       {
-        url: '../../static/image/icon/personal/5.png',
-        title: '我的收藏' },
+        icon: '../../static/image/icon/personal/7.png',
+        title: '我的积分' },
 
       {
-        url: '../../static/image/icon/personal/6.png',
-        title: '我的活动' }] };
+        icon: '../../static/image/icon/personal/8.png',
+        title: '积分奖励' },
+
+      {
+        icon: '../../static/image/icon/personal/9.png',
+        title: '我的收藏',
+        url: './mycollect/mycollect' },
+
+      {
+        icon: '../../static/image/icon/personal/10.png',
+        title: '我的客服' }] };
 
 
 

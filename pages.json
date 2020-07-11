@@ -95,6 +95,12 @@
 				"navigationBarTitleText": "我的积分"
 			}
         }
+        ,{
+            "path" : "pages/personal/myactivity/myactivity",
+            "style" : {
+				"navigationBarTitleText": "我的活动"
+			}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
@@ -133,12 +139,12 @@
 				"selectedIconPath": "static/image/icon/footer/train1.png",
 				"text": "培训"
 			},
-			{
+			/* {
 				"pagePath": "pages/community/community",
 				"iconPath": "static/image/icon/footer/sq.png",
 				"selectedIconPath": "static/image/icon/footer/sq1.png",
 				"text": "社区"
-			},
+			}, */
 			{
 				"pagePath": "pages/sell/sell",
 				"iconPath": "static/image/icon/footer/sell.png",

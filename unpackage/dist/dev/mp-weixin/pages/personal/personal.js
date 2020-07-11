@@ -169,6 +169,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -188,7 +191,8 @@ var _default =
 
       {
         icon: '../../static/image/icon/personal/4.png',
-        title: '我的活动' },
+        title: '我的活动',
+        url: './myactivity/myactivity' },
 
       {
         icon: '../../static/image/icon/personal/5.png',

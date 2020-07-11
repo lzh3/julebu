@@ -1,7 +1,13 @@
 <template>
 	<view>
 		<view class="card">
+			<view class="card-bg-img">
+				<image src="../../../static/image/personal/bg.png" mode=""></image>
+			</view>
 			<view class="card-info">
+				<view class="info-bg-img">
+					<image src="../../../static/image/personal/card.png" mode=""></image>
+				</view>
 				<view class="name">A先生/女士</view>
 				<view class="jf">
 					<view>2020Q1可用积分</view>
@@ -95,17 +101,43 @@
 		}
 	}
 	.card{
+		position: relative;
 		width:100%;
 		height:280rpx;
-		background: url(../../../static/image/personal/bg.png) no-repeat 10%/cover;
+		// background: url(../../../static/image/personal/bg.png) no-repeat 10%/cover;
+		.card-bg-img{
+			position: absolute;
+			z-index: -1;
+			width: 100%;
+			height: 100%;
+			top:0;
+			left:0;
+			image{
+				width: 100%;
+				height: 100%;
+			}
+		}
 		.card-info{
+			position: relative;
 			width:690rpx;
 			height: 100%;
 			margin:0 auto;
 			color:white;
 			padding:30rpx;
 			font-size: 32rpx;
-			background: url(../../../static/image/personal/card.png) no-repeat 100%/cover;
+			// background: url(../../../static/image/personal/card.png) no-repeat 100%/cover;
+			.info-bg-img{
+				position: absolute;
+				z-index: -1;
+				width: 100%;
+				height: 100%;
+				top:0;
+				left:0;
+				image{
+					width: 100%;
+					height: 100%;
+				}
+			}
 			.jf{
 				display: flex;
 				margin:28rpx 0;

@@ -1,6 +1,9 @@
 <template>
 	<view class="container">
 		<view class="info-card">
+			<view class="card-bg-img">
+				<image src="../../static/image/personal/bg.png" mode=""></image>
+			</view>
 			<view class="info">
 				<view class="touxiang">
 					<!-- <image src="" mode=""></image> -->
@@ -56,7 +59,8 @@
 					},
 					{
 						icon: '../../static/image/icon/personal/4.png',
-						title: '我的活动'
+						title: '我的活动',
+						url:'./myactivity/myactivity'
 					},
 					{
 						icon: '../../static/image/icon/personal/5.png',
@@ -156,14 +160,27 @@
 
 	.info-card {
 		position: relative;
+		z-index: 0;
 		width: 100%;
 		height: 274rpx;
 		padding: 15rpx 30rpx;
 		box-sizing: border-box;
 		font-size: 24rpx;
-		background:url(../../static/image/personal/bg.png) no-repeat fixed top;
+		// background:url(../../static/image/personal/bg.png) no-repeat fixed top;
 		background-size: 100% 342rpx;
 		color:#fff;
+		.card-bg-img{
+			position: absolute;
+			top:0;
+			left:0;
+			width:100%;
+			height:100%;
+			z-index: -1;
+			image{
+				width:100%;
+				height:100%;
+			}
+		}
 
 		.touxiang {
 			width: 98rpx;

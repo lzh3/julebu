@@ -17,7 +17,8 @@
     "pages/personal/mypost/mypost",
     "pages/activity-detail/activity-detail",
     "pages/personal/mypost/postdetail/postdetail",
-    "pages/personal/myjf/myjf"
+    "pages/personal/myjf/myjf",
+    "pages/personal/myactivity/myactivity"
   ],
   "subPackages": [],
   "window": {
@@ -49,12 +50,6 @@
         "iconPath": "static/image/icon/footer/train.png",
         "selectedIconPath": "static/image/icon/footer/train1.png",
         "text": "培训"
-      },
-      {
-        "pagePath": "pages/community/community",
-        "iconPath": "static/image/icon/footer/sq.png",
-        "selectedIconPath": "static/image/icon/footer/sq1.png",
-        "text": "社区"
       },
       {
         "pagePath": "pages/sell/sell",

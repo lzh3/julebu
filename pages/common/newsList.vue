@@ -1,6 +1,6 @@
 <template>
 	<view class="list">
-		<view v-for="item in collectList">
+		<view v-for="item in dataList">
 			<navigator :url='item.url +"?title="+item.title' class="item bg-white">
 				<view class="pic"></view>
 				<view class="title">{{item.title}}</view>
@@ -14,24 +14,10 @@
 
 <script>
 	export default {
+		props:['dataList'],
 		data() {
 			return {
-				collectList: [{
-						pic: '',
-						title: 'AMD出大招狙击英特尔',
-						url: './collectdetail/collectdetail'
-					},
-					{
-						pic: '',
-						title: '美国AMD半导体公司专门为计算机、通信和消费电子行业设计和制造各种创新的微处理器.',
-						url: './collectdetail/collectdetail'
-					},
-					{
-						pic: '',
-						title: 'AMD出大招狙击英特尔',
-						url: './collectdetail/collectdetail'
-					}
-				]
+				
 			}
 		},
 		methods: {

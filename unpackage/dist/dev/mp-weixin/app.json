@@ -10,7 +10,8 @@
     "pages/sell/jifenrule/jifenrule",
     "pages/sell/jifenrule/RuleDetail",
     "pages/personal/mycollect/mycollect",
-    "pages/personal/mycollect/collectdetail/collectdetail"
+    "pages/personal/mycollect/collectdetail/collectdetail",
+    "pages/personal/mypost/mypost"
   ],
   "subPackages": [],
   "window": {

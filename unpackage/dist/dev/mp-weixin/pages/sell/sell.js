@@ -116,33 +116,36 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
 var _default =
 {
   data: function data() {
     return {
       list: [{
         detail: 'CPU销售',
-        url: './jifenrule/jifenrule' },
+        url: './jifenrule/jifenrule',
+        pic: '../../static/image/sell/1.png' },
 
       {
-        detail: 'CPU销售',
-        url: './jifenrule/jifenrule' },
+        detail: '显卡销售',
+        url: './jifenrule/jifenrule',
+        pic: '../../static/image/sell/1.png' },
 
       {
-        detail: 'CPU销售',
-        url: './jifenrule/jifenrule' },
+        detail: '主板销售',
+        url: './jifenrule/jifenrule',
+        pic: '../../static/image/sell/1.png' },
 
       {
-        detail: 'CPU销售',
-        url: './jifenrule/jifenrule' },
-
-      {
-        detail: 'CPU销售',
-        url: './jifenrule/jifenrule' },
+        detail: '优选销售',
+        url: './jifenrule/jifenrule',
+        pic: '../../static/image/sell/1.png' },
 
       {
         detail: '积分规则',
-        url: './jifenrule/jifenrule' }] };
+        url: './jifenrule/jifenrule',
+        pic: '../../static/image/sell/1.png' }] };
 
 
 

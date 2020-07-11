@@ -141,7 +141,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 {
   data: function data() {
     return {
-      collectList: [
+      dataList: [
       {
         pic: '',
         title: 'AMD出大招狙击英特尔',

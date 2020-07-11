@@ -130,23 +130,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 var _default =
 {
+  props: ['dataList'],
   data: function data() {
-    return {
-      collectList: [{
-        pic: '',
-        title: 'AMD出大招狙击英特尔',
-        url: './collectdetail/collectdetail' },
-
-      {
-        pic: '',
-        title: '美国AMD半导体公司专门为计算机、通信和消费电子行业设计和制造各种创新的微处理器.',
-        url: './collectdetail/collectdetail' },
-
-      {
-        pic: '',
-        title: 'AMD出大招狙击英特尔',
-        url: './collectdetail/collectdetail' }] };
-
+    return {};
 
 
   },

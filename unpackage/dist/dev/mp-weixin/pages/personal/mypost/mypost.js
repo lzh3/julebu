@@ -152,18 +152,41 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
-      dataList: [
-      {
+      dataList: [{
         title: '',
-        pic: [1, 2, 4],
+        pic: [1, 2, 4, 3],
         time: 'gg',
         look: 22,
         comment: 20,
-        dz: 20 }] };
+        dz: 20,
+        url: './postdetail/postdetail' },
+
+      {
+        title: '',
+        pic: [1, 2, 4, 3],
+        time: 'gg',
+        look: 22,
+        comment: 20,
+        dz: 20,
+        url: './postdetail/postdetail' }] };
 
 
 

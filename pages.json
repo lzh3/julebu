@@ -76,6 +76,11 @@
 		{
 			"path": "pages/personal/mypost/mypost",
 			"style": {}
+		}, {
+			"path": "pages/activity-detail/activity-detail",
+			"style": {
+				"navigationBarTitleText": "活动详情页"
+			}
 		}
 	],
 	"globalStyle": {

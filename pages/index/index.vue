@@ -19,7 +19,7 @@
 				<text>最新资讯</text>
 			</view>
 			<view class="scroll-news">
-				<view class="news-items" v-for="(item,index) in newsItems" :key="index">
+				<view class="news-items" v-for="(item,index) in newsItems" :key="index" @click="newsItemClick(item)">
 					<image :src="item.url" mode="" />
 					<view class="items-desc">
 						<view class="title">
@@ -74,11 +74,13 @@
 		data() {
 			return {
 				newsItems: [{
+					id: '1',
 					url: "../../static/image/home/news.png",
 					mainTitle: "【促销活动】",
 					subTitle: "AMD618促销狂欢季全新上线 ",
 					date: "06.01 12:00-06.18 24:00"
 				}, {
+					id: '2',
 					url: "../../static/image/home/news.png",
 					mainTitle: "【促销活动】",
 					subTitle: "AMD618促销狂欢季全新上线 ",
@@ -123,7 +125,14 @@
 				uni.navigateTo({
 					url,
 				});
-			}
+			},
+			//点击资讯跳转
+			newsItemClick(item) {
+				console.log("TCL: newsItemClick -> item", item)
+				uni.navigateTo({
+					url: '/pages/activity-detail/activity-detail?id=1'
+				});
+			},
 		}
 	}
 </script>

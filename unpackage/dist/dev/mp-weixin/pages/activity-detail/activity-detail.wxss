@@ -100,26 +100,4 @@
   bottom: 20rpx;
   width: calc(100% - 60rpx);
 }
-.activity-detail .kefu.data-v-e0545bf2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
-  position: fixed;
-  right: 30rpx;
-  bottom: 160rpx;
-}
-.activity-detail .kefu image.data-v-e0545bf2 {
-  width: 55rpx;
-  height: 56rpx;
-}
-.activity-detail .kefu text.data-v-e0545bf2 {
-  font-size: 24rpx;
-  font-weight: 500;
-  color: #f36523;
-  margin-top: 10rpx;
-}
 

@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "活动详情页",
-  "usingComponents": {}
+  "usingComponents": {
+    "kefu": "/components/Kefu/index",
+    "modal": "/components/Modal/index"
+  }
 }

@@ -89,7 +89,13 @@
 				"navigationBarTitleText": "帖子详情页"
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/personal/myjf/myjf",
+            "style" : {
+				"navigationBarTitleText": "我的积分"
+			}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "A+俱乐部",

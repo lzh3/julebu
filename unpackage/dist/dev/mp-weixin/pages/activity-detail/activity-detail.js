@@ -130,34 +130,37 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Kefu = function Kefu() {__webpack_require__.e(/*! require.ensure | components/Kefu/index */ "components/Kefu/index").then((function () {return resolve(__webpack_require__(/*! @/components/Kefu */ 204));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Modal = function Modal() {__webpack_require__.e(/*! require.ensure | components/Modal/index */ "components/Modal/index").then((function () {return resolve(__webpack_require__(/*! @/components/Modal */ 211));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
+  components: {
+    Kefu: Kefu,
+    Modal: Modal },
 
   data: function data() {
     return {
@@ -169,7 +172,9 @@ var _default =
         type: '线上活动',
         limit: '50人',
         isReported: '40',
-        desc: '以下是活动介绍以下是活动介绍以下是活动介绍以下是活动 介绍以下是活动介绍以下是活动介绍以下是活动介绍以下是 介绍以下是活动介绍' } };
+        desc: '以下是活动介绍以下是活动介绍以下是活动介绍以下是活动 介绍以下是活动介绍以下是活动介绍以下是活动介绍以下是 介绍以下是活动介绍' },
+
+      status: 'success' };
 
 
   },
@@ -179,9 +184,10 @@ var _default =
   },
   methods: {
     joinActivity: function joinActivity() {
-
+      this.$refs.modal.open();
     },
-    kefu: function kefu() {
+
+    login: function login() {
 
     } } };exports.default = _default;
 

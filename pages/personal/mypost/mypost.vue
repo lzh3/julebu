@@ -81,7 +81,7 @@
 
 			.pic-list {
 				display: flex;
-				margin: 10px 0 5px;
+				margin-top: 10px;
 				justify-content: space-between;
 
 				.pic {

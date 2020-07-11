@@ -15,6 +15,7 @@
     "pages/designerIn/designerIn",
     "pages/internetBar/internetBar",
     "pages/personal/mypost/mypost",
+    "pages/activity-detail/activity-detail",
     "pages/personal/mypost/postdetail/postdetail"
   ],
   "subPackages": [],

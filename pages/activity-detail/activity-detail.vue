@@ -17,16 +17,19 @@
 			</view>
 			<button type="primary" @click="joinActivity" class="btn">我要参与</button>
 		</view>
-		<view class="kefu" @click="kefu">
-			<image src="../../static/image/kefu.png"></image>
-			<text>客服</text>
-		</view>
+		<Kefu />
+		<Modal ref="modal" :status="status" title="参与成功" desc="" />
 	</view>
 </template>
 
 <script>
+	import Kefu from '@/components/Kefu'
+	import Modal from '@/components/Modal'
 	export default {
-
+		components: {
+			Kefu,
+			Modal
+		},
 		data() {
 			return {
 				item: {
@@ -38,7 +41,9 @@
 					limit: '50人',
 					isReported: '40',
 					desc: '以下是活动介绍以下是活动介绍以下是活动介绍以下是活动 介绍以下是活动介绍以下是活动介绍以下是活动介绍以下是 介绍以下是活动介绍',
-				}
+				},
+				status: 'success'
+
 			};
 		},
 		//路由参数就收
@@ -47,17 +52,20 @@
 		},
 		methods: {
 			joinActivity() {
+				this.$refs.modal.open()
+			},
+
+			login() {
 
 			},
-			kefu() {
 
-			},
 		},
 	}
 </script>
 
 <style lang="scss" scoped>
 	.activity-detail {
+		// filter: grayscale(100%);
 		height: calc(100vh - 88rpx);
 		display: flex;
 		flex-direction: column;
@@ -131,26 +139,6 @@
 				position: absolute;
 				bottom: 20rpx;
 				width: calc(100% - 60rpx);
-			}
-		}
-
-		.kefu {
-			display: flex;
-			flex-direction: column;
-			position: fixed;
-			right: 30rpx;
-			bottom: 160rpx;
-
-			image {
-				width: 55rpx;
-				height: 56rpx;
-			}
-
-			text {
-				font-size: 24rpx;
-				font-weight: 500;
-				color: rgba(243, 101, 35, 1);
-				margin-top: 10rpx;
 			}
 		}
 	}

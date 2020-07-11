@@ -46,6 +46,7 @@
 			padding: 30rpx;
 			display: flex;
 			justify-content: flex-start;
+			align-items: center;
 
 			>image {
 				// width: 100%;

@@ -145,6 +145,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
@@ -156,11 +157,11 @@ var _default =
 
       {
         pic: '',
-        title: '美国AMD半导体公司专门为计算机、通信和消费电子行业设计和制造各种创新的微处理器（CPU、GPU、主板芯片组、电视卡芯片等)，以及提供闪存和低功率处理器解决方案，公司成立于1969年。' },
+        title: '美国AMD半导体公司专门为计算机、通信和消费电子行业设计和制造各种创新的微处理器.' },
 
       {
         pic: '',
-        title: 'AMD出大招狙击英特尔AMD出大招狙击英特尔' }] };
+        title: 'AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔AMD出大招狙击英特尔' }] };
 
 
 

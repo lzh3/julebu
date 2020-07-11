@@ -43,7 +43,13 @@
 }
 .item .title.data-v-8721b5d4 {
   float: left;
-  word-wrap: wrap;
+  width: 414rpx;
+  margin-left: 15rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 .item .del.data-v-8721b5d4 {
   position: absolute;

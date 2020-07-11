@@ -21,7 +21,7 @@
 				 v-for="(item,index) in isCard?9:1" :key="index">
 				</view>
 			</view>
-			<view class="text-gray text-sm text-right padding">
+			<view class="text-gray text-sm text-left padding">
 				<text class="cuIcon-attentionfill margin-lr-xs"></text> 10
 				<text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
 				<text class="cuIcon-messagefill margin-lr-xs"></text> 30

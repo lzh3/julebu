@@ -86,6 +86,11 @@
 			"style": {
 				"navigationBarTitleText": "帖子详情页"
 			}
+		}, {
+			"path": "pages/course-detail/course-detail",
+			"style": {
+				"navigationBarTitleText": "课程培训详情页"
+			}
 		}
 	],
 	"globalStyle": {

@@ -4,14 +4,20 @@
     <view class="modal-wrap error" v-show="status === 'error'">
       <image src="../../static/image/error.png" class="error" />
       <text class="title">{{title}}</text>
-      <text class="desc">{{desc}}</text>
+      <text class="desc" v-if="$slots.desc">
+        <slot name="desc"></slot>
+      </text>
+      <text class="desc" v-else>{{desc}}</text>
       <button type="primary" @click="fn" class="btn">{{btnText}}</button>
       <image src="../../static/image/close.png" class="close" @click="close" />
     </view>
     <view class="modal-wrap success" v-show="status === 'success'">
       <image src="../../static/image/success-line.png" class="success" />
       <text class="title">{{title}}</text>
-      <text class="desc">{{desc}}</text>
+      <text class="desc" v-if="$slots.desc">
+        <slot name="desc"></slot>
+      </text>
+      <text class="desc" v-else>{{desc}}</text>
       <image src="../../static/image/close.png" class="close" @click="close" />
     </view>
   </uni-popup>
@@ -41,6 +47,9 @@
       return {
 
       };
+    },
+    mounted() {
+      console.log("TCL: onLoad -> this", this)
     },
     methods: {
       close() {

@@ -148,7 +148,7 @@
 			width: 98rpx;
 			height: 98rpx;
 			float: left;
-			border: 1px solid red;
+			border: 1px solid #fff;
 		}
 
 		.status {

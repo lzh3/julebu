@@ -2,7 +2,7 @@
 	"pages": [{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "A+俱乐部"
+				"navigationBarTitleText": "首页"
 			}
 		},
 		{
@@ -56,16 +56,20 @@
 		}
         ,{
             "path" : "pages/personal/mycollect/mycollect",
-            "style" : {}
+            "style" : {
+				"navigationBarTitleText": "我的收藏"
+			}
         }
         ,{
             "path" : "pages/personal/mycollect/collectdetail/collectdetail",
-            "style" : {}
+            "style" : {
+				
+			}
         }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "A+俱乐部",
 		"navigationBarBackgroundColor": "#f36523",
 		"backgroundColor": "#FFFFFF"
 	},

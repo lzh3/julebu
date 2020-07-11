@@ -4558,25 +4558,25 @@ scroll-view.cu-steps .cu-item {
 .cuIcon-btn:before {
 	content: "\e601";
 }
-.main-color{
-		color:#f36523;
+.main-color {
+	color: #f36523;
 }
-.wrap{
-		width:100%;
-		height:100vh;
-		background-color: #fff;
+.wrap {
+	width: 100%;
+	height: 100vh;
+	background-color: #fff;
 }
-.bg-main{
-		background-color: #f36523;
-		color:#fff;
+.bg-main {
+	background-color: #f36523;
+	color: #fff;
 }
-.container{
-		width:100%;
-		height:100vh;
-		background-color: #F5F5F5;
+.container {
+	width: 100%;
+	height: 100vh;
+	background-color: #F5F5F5;
 }
-.bg-white{
-		background-color: #fff;
+.bg-white {
+	background-color: #fff;
 }
 
 /* 解决头条小程序组件内引入字体不生效的问题 */

@@ -1,37 +1,35 @@
 <template>
 	<view class="container">
-		我的收藏
-		<view class="list">
-			<view class="item bg-white">
-				<view class="pic"></view>
-				<view class="title"></view>
-				<view class="del">
-					<image src="../../../static/image/icon/personal/del.png" mode=""></image>
-				</view>
-			</view>
-		</view>
+		<news-list></news-list>
 	</view>
 </template>
 
 <script>
+	import newsList from '../../common/newsList.vue'
 	export default {
 		data() {
 			return {
 				collectList:[
 					{
 						pic:'',
-						title:'AMD出大招狙击英特尔'
+						title:'AMD出大招狙击英特尔',
+						url:'./collectdetail/collectdetail'
 					},
 					{
 						pic:'',
-						title:'美国AMD半导体公司专门为计算机、通信和消费电子行业设计和制造各种创新的微处理器（CPU、GPU、主板芯片组、电视卡芯片等)，以及提供闪存和低功率处理器解决方案，公司成立于1969年。'
+						title:'美国AMD半导体公司专门为计算机、通信和消费电子行业设计和制造各种创新的微处理器.',
+						url:'./collectdetail/collectdetail'
 					},
 					{
 						pic:'',
-						title:'AMD出大招狙击英特尔AMD出大招狙击英特尔'
+						title:'AMD出大招狙击英特尔',
+						url:'./collectdetail/collectdetail'
 					}
 				]
 			}
+		},
+		components:{
+			newsList
 		},
 		methods: {
 			
@@ -44,6 +42,7 @@
 	position: relative;
 	width:100%;
 	height:210rpx;
+	margin-bottom:10rpx;
 	padding:30rpx;
 	box-sizing: border-box;
 	.pic{
@@ -58,7 +57,13 @@
 	}
 	.title{
 		float:left;
-		word-wrap: wrap;
+		width:414rpx;
+		margin-left:15rpx;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
 	}
 	.del{
 		position:absolute;

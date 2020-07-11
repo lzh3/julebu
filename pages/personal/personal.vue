@@ -19,10 +19,12 @@
 		<view class="list">
 			<view class="list-card bg-white">
 				<view class="item" v-for="item in list">
-					<view class="img">
-						<image :src="item.url" mode=""></image>
-					</view>
-					<view class="txt">{{item.title}}</view>
+					<navigator :url='item.url'>
+						<view class="img">
+							<image :src="item.icon" mode=""></image>
+						</view>
+						<view class="txt">{{item.title}}</view>
+					</navigator>
 				</view>
 			</view>
 		</view>
@@ -34,29 +36,47 @@
 	export default {
 		data() {
 			return {
-				list: [{
-						url: '../../static/image/icon/personal/1.png',
-						title: '我的收藏'
+				list: [
+					{
+						icon: '../../static/image/icon/personal/1.png',
+						title: '店铺详情'
 					},
 					{
-						url: '../../static/image/icon/personal/2.png',
+						icon: '../../static/image/icon/personal/2.png',
+						title: '店面形象'
+					},
+					{
+						icon: '../../static/image/icon/personal/3.png',
+						title: '店员管理'
+					},
+					{
+						icon: '../../static/image/icon/personal/4.png',
 						title: '我的活动'
 					},
 					{
-						url: '../../static/image/icon/personal/3.png',
-						title: '我的收藏'
+						icon: '../../static/image/icon/personal/5.png',
+						title: '我的培训'
 					},
 					{
-						url: '../../static/image/icon/personal/4.png',
-						title: '我的活动'
+						icon: '../../static/image/icon/personal/6.png',
+						title: '我的帖子'
 					},
 					{
-						url: '../../static/image/icon/personal/5.png',
-						title: '我的收藏'
+						icon: '../../static/image/icon/personal/7.png',
+						title: '我的积分'
 					},
 					{
-						url: '../../static/image/icon/personal/6.png',
-						title: '我的活动'
+						icon: '../../static/image/icon/personal/8.png',
+						title: '积分奖励'
+					},
+					{
+						icon: '../../static/image/icon/personal/9.png',
+						title: '我的收藏',
+						url:'./mycollect/mycollect'
+					},
+					{
+						icon: '../../static/image/icon/personal/10.png',
+						title: '我的客服'
 					},
 				]
 			}
@@ -76,24 +96,28 @@
 		width: 100%;
 		height: 342rpx;
 		position: relative;
-		border: 1px solid blue;
 
 		.list-card {
 			display: flex;
 			display: -webkit-flex;
 			position: absolute;
-			align-content: center;
+			align-items: center;
 			flex-wrap: wrap;
 			flex-direction: row;
 			width: 690rpx;
-			height: 342rpx;
-			top: -60rpx;
-			left: 30rpx;
+			top: -120rpx;
+			left: 50%;
+			margin-left:-345rpx;
+			border-radius: 10px;
+			padding:10rpx;
+			box-sizing: border-box;
+			overflow: hidden;
 
 			.item {
-				width: 152.5rpx;
-				height: 72rpx;
-				margin:10rpx;
+				width: 142.5rpx;
+				height: 82rpx;
+				padding:8rpx 0;
+				margin:10rpx 10rpx;
 				box-sizing: border-box;
 				text-align: center;
 				.img{
@@ -115,8 +139,10 @@
 		height: 274rpx;
 		padding: 15rpx 30rpx;
 		box-sizing: border-box;
-		border: 1px solid blue;
 		font-size: 24rpx;
+		background:url(../../static/image/personal/bg.png) no-repeat fixed top;
+		background-size: 100% 342rpx;
+		color:#fff;
 
 		.touxiang {
 			width: 98rpx;

@@ -100,4 +100,9 @@
   bottom: 20rpx;
   width: calc(100% - 60rpx);
 }
+.not-yet.data-v-e0545bf2,
+.over.data-v-e0545bf2 {
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
 

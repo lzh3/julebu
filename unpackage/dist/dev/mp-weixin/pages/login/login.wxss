@@ -24,6 +24,11 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.icon.data-v-4cabcc8a {
+  width: 40rpx;
+  height: 50rpx;
+  vertical-align: bottom;
+}
 .wrap.data-v-4cabcc8a {
   padding-top: 1px;
 }

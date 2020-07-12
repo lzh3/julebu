@@ -1,5 +1,8 @@
 <template>
 	<view>
+		<view class="activity-wrap">
+			<NotLogin pageName="活动" />
+		</view>
 		<view class="cu-card article no-card" v-for="item in list">
 			<view class="cu-item shadow">
 				<navigator :url="'../activity-detail/activity-detail?joined='+item.joined">
@@ -30,7 +33,11 @@
 </template>
 
 <script>
+	import NotLogin from "@/components/NotLogin";
 	export default {
+		components: {
+			NotLogin
+		},
 		data() {
 			return {
 				list:[
@@ -54,7 +61,7 @@
 			}
 		},
 		methods: {
-			
+
 		}
 	}
 </script>

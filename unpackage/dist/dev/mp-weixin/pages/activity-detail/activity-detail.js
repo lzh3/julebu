@@ -157,6 +157,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
 {
   components: {
     Kefu: Kefu,
@@ -172,6 +174,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
         type: '线上活动',
         limit: '50人',
         isReported: '40',
+        ing: 'true',
         desc: '以下是活动介绍以下是活动介绍以下是活动介绍以下是活动 介绍以下是活动介绍以下是活动介绍以下是活动介绍以下是 介绍以下是活动介绍' },
 
       modalStatus: 'success',

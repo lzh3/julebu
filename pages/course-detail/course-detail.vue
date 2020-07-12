@@ -1,13 +1,14 @@
 <template>
 	<view class="course-detail">
-		<video id="myVideo" :src="videoItem.src" @error="videoErrorCallback" :show-center-play-btn="true" enable-danmu
-			controls :poster="videoItem.poster" @play="play"></video>
+		<!-- 视频培训 -->
+		<video v-if="courseType==='视频'" id="myVideo" :src="videoItem.src" @error="videoErrorCallback"
+			:show-center-play-btn="true" enable-danmu controls :poster="videoItem.poster" @play="play"></video>
 		<view class="content">
 			<view class="header">
 				<image src="../../static/image/course-icon.png" mode="" />
 				<text>课程介绍</text>
 			</view>
-			<view class="content">
+			<view class="course-content">
 				<view class="item">
 					课程主题：
 					<text class="theme">{{item.theme}}</text>
@@ -18,11 +19,14 @@
 				<view class="item">参与名额：<text class="limit">{{item.limit}}</text>
 					<text class="isReported">已有{{item.isReported}}人报名参加</text>
 				</view>
-				<view class="item">视频介绍：
+				<view class="item item-last-child">{{courseType}}介绍：
 					<view class="desc">{{item.desc}}</view>
 				</view>
-				<button type="primary" v-if="joined" @click="report" class="btn">我要报名</button>
 			</view>
+			<view class="courseware-content" v-if="courseType==='课件'">
+				<image :src="item.pic" v-for="(item,index) in coursewareList" :key="index" />
+			</view>
+			<view class="btn-area"><button type="primary" v-if="joined" @click="report" class="btn">我要报名</button></view>
 			<Kefu />
 			<Modal ref="modal" :status="modalStatus" title="报名成功">
 				<view slot="desc">恭喜获得<text :style="{color:'rgba(243, 101, 35, 1)'}">10</text>积分</view>
@@ -41,13 +45,14 @@
 		},
 		data() {
 			return {
-				joined:false,
+				courseType: '视频',
+				joined: false,
 				videoItem: {
 					src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
 					poster: '../../static/image/poster.png'
 				},
 				item: {
-					joined:'true',
+					joined: 'true',
 					pic: '../../static/image/activity-pic.png',
 					status: '已开始',
 					theme: 'AMD最新五代处理器全渠道销售培训',
@@ -58,11 +63,18 @@
 					desc: '以下是活动介绍以下是活动介绍以下是活动介绍以下是活动 介绍以下是活动介绍以下是活动介绍以下是活动介绍以下是 介绍以下是活动介绍',
 				},
 				modalStatus: 'success',
+				//课件
+				coursewareList: [{
+					pic: '../../static/image/kejian1.png'
+				}, {
+					pic: '../../static/image/kejian1.png'
+				}]
 			}
 		},
 		onLoad(props) {
 			console.log(props)
-			this.joined=!props.joined;
+			this.joined = !props.joined;
+			this.courseType = props.type
 		},
 		methods: {
 			videoErrorCallback(e) {
@@ -122,14 +134,19 @@
 			width: 100%;
 		}
 
-		>.content {
+		.content {
 			position: relative;
-			padding: 30rpx;
-			background: #fff;
 			flex: 1;
 
+			.course-content {
+				padding: 0 30rpx 30rpx 30rpx;
+				background: #fff;
+			}
+
 			.header {
-				margin-bottom: 30rpx;
+				// margin-bottom: 30rpx;
+				padding: 30rpx;
+				background: #fff;
 
 				image {
 					width: 25rpx;
@@ -195,14 +212,39 @@
 				}
 			}
 
+			.item-last-child {
+				margin-bottom: 0 !important;
+			}
+		}
+
+		.courseware-content {
+			margin-top: 6rpx;
+			padding: 30rpx;
+			background: #fff;
+			padding-bottom: 100rpx;
+
+			image {
+				width: 100%;
+				margin-bottom: 30rpx;
+			}
+		}
+
+		.btn-area {
+			background: #fff;
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+			height: 100rpx;
+			display: flex;
+			align-items: center;
+
 			.btn {
 				height: 64rpx;
 				line-height: 64rpx;
 				background-color: rgba(243, 101, 35, 1);
 				border-radius: 10rpx;
-				position: absolute;
-				bottom: 20rpx;
 				width: calc(100% - 60rpx);
+
 			}
 		}
 

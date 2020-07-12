@@ -18,6 +18,7 @@
         <slot name="desc"></slot>
       </text>
       <text class="desc" v-else>{{desc}}</text>
+      <button type="primary" @click="fn" class="btn" v-if="$attrs.btn">{{btnText}}</button>
       <image src="../../static/image/close.png" class="close" @click="close" />
     </view>
   </uni-popup>

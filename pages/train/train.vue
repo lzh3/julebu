@@ -186,7 +186,7 @@
 			train(item) {
 				if (item.trainStatus !== 'overtime') {
 					uni.navigateTo({
-						url: `/pages/course-detail/course-detail?id=${item.id}`
+						url: `/pages/course-detail/course-detail?id=${item.id}&type=${item.type}`
 					});
 				}
 			},

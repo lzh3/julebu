@@ -5,19 +5,24 @@
 			<view class="item">
 				活动主题：
 				<text class="theme">{{item.theme}}</text>
-				<text class="status">{{item.status}}</text>
+				<text class="status" :class="{end:end}">{{item.status}}</text>
 			</view>
-			<view class="item">活动时间：<text class="date">{{item.date}}</text></view>
-			<view class="item">活动形式：<text class="type">{{item.type}}</text></view>
-			<view class="item">参与名额：<text class="limit">{{item.limit}}</text>
-				<text class="isReported">已有{{item.isReported}}人报名参加</text>
+			<view class="item">活动时间：<text class="date" :class="{end:end}">{{item.date}}</text></view>
+			<view class="item">活动形式：<text class="type" :class="{end:end}">{{item.type}}</text></view>
+			<view class="item">参与名额：<text class="limit"  :class="{end:end}">{{item.limit}}</text>
+				<text class="isReported" :class="{end:end}">已有{{item.isReported}}人报名参加</text>
 			</view>
 			<view class="item">活动介绍：
 				<view class="desc">{{item.desc}}</view>
 			</view>
 			<button type="primary" 
-				v-if="item.ing"
-			@click="joinActivity" class="btn" :disabled="activityStatus !== 'online'">我要参与</button>
+				@click="joinActivity" 
+				class="btn" 
+				v-if="joined"
+				:class="{over:end}"
+				:disabled="activityStatus !== 'online'">
+				我要参与
+			</button>
 		</view>
 		<Kefu />
 		<Modal ref="modal" :status="modalStatus" title="参与成功" desc="" />
@@ -34,6 +39,8 @@
 		},
 		data() {
 			return {
+				joined:true,
+				end:true,
 				item: {
 					pic: '../../static/image/activity-pic.png',
 					status: '已开始',
@@ -51,7 +58,11 @@
 		},
 		//路由参数就收
 		onLoad(opt) {
-			console.log("TCL: onLoad -> opt", opt)
+			console.log(opt)
+			if(opt.joined==='false'){
+				this.joined=false;
+			}
+			
 		},
 		methods: {
 			joinActivity() {
@@ -67,6 +78,9 @@
 </script>
 
 <style lang="scss" scoped>
+	.over{
+		background-color: #5E5C5C;
+	}
 	.activity-detail {
 		height: calc(100vh - 88rpx);
 		display: flex;
@@ -130,6 +144,9 @@
 					font-weight: 500;
 					color: rgba(51, 51, 51, 1);
 					line-height: 48rpx;
+				}
+				.end{
+					color:#333;
 				}
 			}
 

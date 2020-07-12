@@ -159,6 +159,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
+
+
+
 {
   components: {
     Kefu: Kefu,
@@ -166,6 +171,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
   data: function data() {
     return {
+      joined: true,
+      end: true,
       item: {
         pic: '../../static/image/activity-pic.png',
         status: '已开始',
@@ -183,7 +190,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   },
   //路由参数就收
   onLoad: function onLoad(opt) {
-    console.log("TCL: onLoad -> opt", opt);
+    console.log(opt);
+    if (opt.joined === 'false') {
+      this.joined = false;
+    }
+
   },
   methods: {
     joinActivity: function joinActivity() {

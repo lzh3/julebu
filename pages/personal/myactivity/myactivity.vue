@@ -2,7 +2,7 @@
 	<view>
 		<view class="cu-card article no-card" v-for="item in list">
 			<view class="cu-item shadow">
-				<navigator url="../../activity-detail/activity-detail">
+				<navigator :url="'../../activity-detail/activity-detail?joined='+item.joined">
 					<view class="content">
 						<view class="pic">
 							<image 
@@ -39,14 +39,16 @@
 						time:' 9:00-10:00',
 						num:30,
 						p_time:' 2020-07',
-						start:false
+						start:false,
+						joined:false, // 已经参与
 					},
 					{
 						title:'折磨生出苦难，苦难',
 						time:' 9:00-10:00',
 						num:30,
 						p_time:' 2020-07',
-						start:true
+						start:true,
+						joined:false
 					}
 				]
 			}

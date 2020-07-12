@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Kefu = function Kefu() {__webpack_require__.e(/*! require.ensure | components/Kefu/index */ "components/Kefu/index").then((function () {return resolve(__webpack_require__(/*! @/components/Kefu */ 197));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Modal = function Modal() {__webpack_require__.e(/*! require.ensure | components/Modal/index */ "components/Modal/index").then((function () {return resolve(__webpack_require__(/*! @/components/Modal */ 204));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Kefu = function Kefu() {__webpack_require__.e(/*! require.ensure | components/Kefu/index */ "components/Kefu/index").then((function () {return resolve(__webpack_require__(/*! @/components/Kefu */ 207));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Modal = function Modal() {__webpack_require__.e(/*! require.ensure | components/Modal/index */ "components/Modal/index").then((function () {return resolve(__webpack_require__(/*! @/components/Modal */ 214));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 

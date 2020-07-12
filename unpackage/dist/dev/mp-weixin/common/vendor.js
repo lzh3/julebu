@@ -7723,7 +7723,7 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 216:
+/***/ 226:
 /*!********************************************************************************!*\
   !*** C:/Users/ZONST/Desktop/uni-app-test/julebu/components/uni-popup/popup.js ***!
   \********************************************************************************/
@@ -7731,7 +7731,7 @@ internalMixin(Vue);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 217));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 227));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 // 定义 type 类型:弹出类型：top/bottom/center
 var config = {
   // 顶部弹出
@@ -7758,7 +7758,7 @@ var config = {
 
 /***/ }),
 
-/***/ 217:
+/***/ 227:
 /*!**********************************************************************************!*\
   !*** C:/Users/ZONST/Desktop/uni-app-test/julebu/components/uni-popup/message.js ***!
   \**********************************************************************************/

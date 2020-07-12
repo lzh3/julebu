@@ -11,13 +11,14 @@
 						<image class="icon" src="../../static/image/icon/login_register/phone.png" mode=""></image>
 					</view>
 					<input v-model='login_form.check_num' placeholder="请输入11位手机号" name="check_num"></input>
+					
+					<button class='cu-btn bg-main shadow'>获取验证码</button>
 				</view>
 				<view class="cu-form-group">
 					<view class="title">
 						<image class="icon" src="../../static/image/icon/login_register/safe.png" mode=""></image>
 					</view>
 					<input v-model="login_form.phone" placeholder="请输入6位验证码" name="phone"></input>
-					<button class='cu-btn bg-main shadow'>获取验证码</button>
 				</view>
 				<view class="cu-form-group"></view>
 			</view>

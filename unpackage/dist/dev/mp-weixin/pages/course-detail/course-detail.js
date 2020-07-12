@@ -173,11 +173,13 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
   data: function data() {
     return {
+      joined: false,
       videoItem: {
         src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
         poster: '../../static/image/poster.png' },
 
       item: {
+        joined: 'true',
         pic: '../../static/image/activity-pic.png',
         status: '已开始',
         theme: 'AMD最新五代处理器全渠道销售培训',
@@ -191,8 +193,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
   },
   onLoad: function onLoad(props) {
-    console.log("TCL: onLoad -> props", props);
-
+    console.log(props);
+    this.joined = !props.joined;
   },
   methods: {
     videoErrorCallback: function videoErrorCallback(e) {

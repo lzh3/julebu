@@ -39,7 +39,7 @@
 					},
 					{
 						detail: '积分规则',
-						url: './jifenrule/jifenrule',
+						url: '../register/register',
 						pic:'../../static/image/sell/1.png'
 					},
 				]

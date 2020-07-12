@@ -28,11 +28,18 @@
 			</view>
 		</view>
 		<button type="primary" @click="submit" class="btn">提交答案</button>
+		<Modal ref="modal" status="success" title="提交成功" desc="请在“我-我的培训”查看得分" btn btnText="立即查看" :cb="cb" />
+
 	</view>
 </template>
 
 <script>
+	import Modal from '@/components/Modal'
+
 	export default {
+		components: {
+			Modal
+		},
 		data() {
 			return {
 				title: "AMD最新五代处理器全渠道销售考试",
@@ -126,7 +133,11 @@
 		methods: {
 			// 提交答案
 			submit() {
-
+				this.$refs.modal.open()
+			},
+			// 请在“我-我的培训”查看得分
+			cb() {
+				// 跳转到我的培训
 			},
 			radioChange(EventHander) {
 				let arr = EventHander.detail.value.split('-')

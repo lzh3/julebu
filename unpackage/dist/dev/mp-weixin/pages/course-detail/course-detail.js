@@ -166,6 +166,10 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
+
+
 {
   components: {
     Kefu: Kefu,
@@ -173,6 +177,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
   data: function data() {
     return {
+      courseType: '视频',
       joined: false,
       videoItem: {
         src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
@@ -189,12 +194,19 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
         isReported: '40',
         desc: '以下是活动介绍以下是活动介绍以下是活动介绍以下是活动 介绍以下是活动介绍以下是活动介绍以下是活动介绍以下是 介绍以下是活动介绍' },
 
-      modalStatus: 'success' };
+      modalStatus: 'success',
+      //课件
+      coursewareList: [{
+        pic: '../../static/image/kejian1.png' },
+      {
+        pic: '../../static/image/kejian1.png' }] };
+
 
   },
   onLoad: function onLoad(props) {
     console.log(props);
     this.joined = !props.joined;
+    this.courseType = props.type;
   },
   methods: {
     videoErrorCallback: function videoErrorCallback(e) {

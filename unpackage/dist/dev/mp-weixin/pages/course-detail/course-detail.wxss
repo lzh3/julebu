@@ -71,22 +71,25 @@
   height: 419rpx;
   width: 100%;
 }
-.course-detail > .content.data-v-050d7def {
+.course-detail .content.data-v-050d7def {
   position: relative;
-  padding: 30rpx;
-  background: #fff;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
           flex: 1;
 }
-.course-detail > .content .header.data-v-050d7def {
-  margin-bottom: 30rpx;
+.course-detail .content .course-content.data-v-050d7def {
+  padding: 0 30rpx 30rpx 30rpx;
+  background: #fff;
 }
-.course-detail > .content .header image.data-v-050d7def {
+.course-detail .content .header.data-v-050d7def {
+  padding: 30rpx;
+  background: #fff;
+}
+.course-detail .content .header image.data-v-050d7def {
   width: 25rpx;
   height: 25rpx;
 }
-.course-detail > .content .header text.data-v-050d7def {
+.course-detail .content .header text.data-v-050d7def {
   font-size: 28rpx;
   font-weight: bold;
   color: #f36523;
@@ -94,55 +97,79 @@
   margin-left: 10rpx;
   line-height: 1;
 }
-.course-detail > .content .item.data-v-050d7def {
+.course-detail .content .item.data-v-050d7def {
   font-size: 26rpx;
   font-weight: 500;
   color: #666666;
   margin-bottom: 30rpx;
   line-height: 1;
 }
-.course-detail > .content .item .theme.data-v-050d7def {
+.course-detail .content .item .theme.data-v-050d7def {
   font-size: 26rpx;
   font-weight: bold;
   color: #333333;
 }
-.course-detail > .content .item .status.data-v-050d7def {
+.course-detail .content .item .status.data-v-050d7def {
   font-size: 22rpx;
   font-weight: 500;
   color: #f39d23;
   float: right;
 }
-.course-detail > .content .item .date.data-v-050d7def,
-.course-detail > .content .item .type.data-v-050d7def {
+.course-detail .content .item .date.data-v-050d7def,
+.course-detail .content .item .type.data-v-050d7def {
   font-size: 26rpx;
   font-weight: 500;
   color: #f36523;
 }
-.course-detail > .content .item .limit.data-v-050d7def {
+.course-detail .content .item .limit.data-v-050d7def {
   font-size: 26rpx;
   font-weight: 500;
   color: #f39d23;
 }
-.course-detail > .content .item .isReported.data-v-050d7def {
+.course-detail .content .item .isReported.data-v-050d7def {
   font-size: 22rpx;
   font-weight: 500;
   color: #ff4c4c;
   float: right;
 }
-.course-detail > .content .item .desc.data-v-050d7def {
+.course-detail .content .item .desc.data-v-050d7def {
   margin-top: 30rpx;
   font-size: 26rpx;
   font-weight: 500;
   color: #333333;
   line-height: 48rpx;
 }
-.course-detail > .content .btn.data-v-050d7def {
+.course-detail .content .item-last-child.data-v-050d7def {
+  margin-bottom: 0 !important;
+}
+.course-detail .courseware-content.data-v-050d7def {
+  margin-top: 6rpx;
+  padding: 30rpx;
+  background: #fff;
+  padding-bottom: 100rpx;
+}
+.course-detail .courseware-content image.data-v-050d7def {
+  width: 100%;
+  margin-bottom: 30rpx;
+}
+.course-detail .btn-area.data-v-050d7def {
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.course-detail .btn-area .btn.data-v-050d7def {
   height: 64rpx;
   line-height: 64rpx;
   background-color: #f36523;
   border-radius: 10rpx;
-  position: absolute;
-  bottom: 20rpx;
   width: calc(100% - 60rpx);
 }
 

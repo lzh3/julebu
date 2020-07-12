@@ -7766,26 +7766,33 @@ var config = {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _created$created$meth;function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default = (_created$created$meth = {
   created: function created() {
     if (this.type === 'message') {
-      // 不显示遮罩
+      // 获取自组件对象
       this.maskShow = false;
-      // 获取子组件对象
-      this.childrenMsg = null;
+      this.children = null;
+    }
+  } }, _defineProperty(_created$created$meth, "created", function created()
+{
+  if (this.type === 'message') {
+    // 不显示遮罩
+    this.maskShow = false;
+    // 获取子组件对象
+    this.childrenMsg = null;
+  }
+}), _defineProperty(_created$created$meth, "methods",
+{
+  customOpen: function customOpen() {
+    if (this.childrenMsg) {
+      this.childrenMsg.open();
     }
   },
-  methods: {
-    customOpen: function customOpen() {
-      if (this.childrenMsg) {
-        this.childrenMsg.open();
-      }
-    },
-    customClose: function customClose() {
-      if (this.childrenMsg) {
-        this.childrenMsg.close();
-      }
-    } } };exports.default = _default;
+  customClose: function customClose() {
+    if (this.childrenMsg) {
+      this.childrenMsg.close();
+    }
+  } }), _created$created$meth);exports.default = _default;
 
 /***/ }),
 

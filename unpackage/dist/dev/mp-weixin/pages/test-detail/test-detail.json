@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "考试详情页",
-  "usingComponents": {}
+  "usingComponents": {
+    "evan-checkbox-group": "/components/evan-checkbox-group/evan-checkbox-group",
+    "modal": "/components/Modal/index"
+  }
 }

@@ -374,7 +374,7 @@ __webpack_require__.r(__webpack_exports__);
     train: function train(item) {
       if (item.trainStatus !== 'overtime') {
         uni.navigateTo({
-          url: "/pages/course-detail/course-detail?id=".concat(item.id) });
+          url: "/pages/course-detail/course-detail?id=".concat(item.id, "&type=").concat(item.type) });
 
       }
     },

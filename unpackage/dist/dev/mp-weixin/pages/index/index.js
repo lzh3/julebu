@@ -246,7 +246,8 @@ var _default =
         status: '刚刚',
         date: '06.04 8:00-06.06 15:00',
         number: '50人',
-        type: '视频' } };
+        type: '视频',
+        id: Date.now() } };
 
 
 
@@ -257,9 +258,16 @@ var _default =
     },
     test: function test() {
       console.log('考试');
+      uni.navigateTo({
+        url: "/pages/test-detail/test-detail?id=".concat(this.trainItem.id) });
+
+
     },
     train: function train() {
       console.log('培训');
+      uni.navigateTo({
+        url: "/pages/course-detail/course-detail?id=".concat(this.trainItem.id, "&type=").concat(this.trainItem.type) });
+
     },
     bannerJump: function bannerJump(url) {
       console.log("TCL: bannerJump -> url", url);

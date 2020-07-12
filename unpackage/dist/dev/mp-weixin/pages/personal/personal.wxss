@@ -107,8 +107,16 @@
 .info-card .touxiang.data-v-cc0818b2 {
   width: 98rpx;
   height: 98rpx;
+  border-radius: 50%;
   float: left;
-  border: 1px solid #fff;
+  background-color: #fff;
+  overflow: hidden;
+  text-align: center;
+}
+.info-card .touxiang image.data-v-cc0818b2 {
+  width: 90%;
+  height: 90%;
+  vertical-align: middle;
 }
 .info-card .status.data-v-cc0818b2 {
   float: left;

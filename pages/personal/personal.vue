@@ -6,7 +6,7 @@
 			</view>
 			<view class="info">
 				<view class="touxiang">
-					<!-- <image src="" mode=""></image> -->
+					<image src="../../static/image/icon/personal/avator.png" mode=""></image>
 				</view>
 				<view class="status">
 					<view class="name">
@@ -64,7 +64,8 @@
 					},
 					{
 						icon: '../../static/image/icon/personal/5.png',
-						title: '我的培训'
+						title: '我的培训',
+						url:'./mytrain/mytrain'
 					},
 					{
 						icon: '../../static/image/icon/personal/6.png',
@@ -185,8 +186,16 @@
 		.touxiang {
 			width: 98rpx;
 			height: 98rpx;
+			border-radius: 50%;
 			float: left;
-			border: 1px solid #fff;
+			background-color: #fff;
+			overflow: hidden;
+			text-align: center;
+			image{
+				width:90%;
+				height:90%;
+				vertical-align: middle;
+			}
 		}
 
 		.status {

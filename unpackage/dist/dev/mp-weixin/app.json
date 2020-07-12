@@ -19,7 +19,10 @@
     "pages/personal/mypost/postdetail/postdetail",
     "pages/course-detail/course-detail",
     "pages/personal/myjf/myjf",
-    "pages/personal/myactivity/myactivity"
+    "pages/test-detail/test-detail",
+    "pages/personal/myactivity/myactivity",
+    "pages/personal/mytrain/mytrain",
+    "pages/register/register"
   ],
   "subPackages": [],
   "window": {

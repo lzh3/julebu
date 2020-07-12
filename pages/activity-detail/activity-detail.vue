@@ -15,7 +15,9 @@
 			<view class="item">活动介绍：
 				<view class="desc">{{item.desc}}</view>
 			</view>
-			<button type="primary" @click="joinActivity" class="btn" :disabled="activityStatus !== 'online'">我要参与</button>
+			<button type="primary" 
+				v-if="item.ing"
+			@click="joinActivity" class="btn" :disabled="activityStatus !== 'online'">我要参与</button>
 		</view>
 		<Kefu />
 		<Modal ref="modal" :status="modalStatus" title="参与成功" desc="" />
@@ -40,6 +42,7 @@
 					type: '线上活动',
 					limit: '50人',
 					isReported: '40',
+					ing:'true',
 					desc: '以下是活动介绍以下是活动介绍以下是活动介绍以下是活动 介绍以下是活动介绍以下是活动介绍以下是活动介绍以下是 介绍以下是活动介绍',
 				},
 				modalStatus: 'success',

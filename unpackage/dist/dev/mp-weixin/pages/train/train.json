@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "培训",
-  "usingComponents": {}
+  "usingComponents": {
+    "wuc-tab": "/components/wuc-tab/wuc-tab",
+    "kefu": "/components/Kefu/index"
+  }
 }

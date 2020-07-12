@@ -196,7 +196,8 @@ var _default =
 
       {
         icon: '../../static/image/icon/personal/5.png',
-        title: '我的培训' },
+        title: '我的培训',
+        url: './mytrain/mytrain' },
 
       {
         icon: '../../static/image/icon/personal/6.png',

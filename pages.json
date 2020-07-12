@@ -111,6 +111,18 @@
 				"navigationBarTitleText": "我的活动"
 			}
         }
+        ,{
+            "path" : "pages/personal/mytrain/mytrain",
+            "style" : {
+				"navigationBarTitleText": "我的培训"
+			}
+        }
+        ,{
+            "path" : "pages/register/register",
+            "style" : {
+				"navigationBarTitleText": "注册"
+			}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

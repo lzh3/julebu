@@ -21,7 +21,7 @@
 				<view class="item">视频介绍：
 					<view class="desc">{{item.desc}}</view>
 				</view>
-				<button type="primary" @click="report" class="btn">我要报名</button>
+				<button type="primary" v-if="joined" @click="report" class="btn">我要报名</button>
 			</view>
 			<Kefu />
 			<Modal ref="modal" :status="modalStatus" title="报名成功">
@@ -41,11 +41,13 @@
 		},
 		data() {
 			return {
+				joined:false,
 				videoItem: {
 					src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
 					poster: '../../static/image/poster.png'
 				},
 				item: {
+					joined:'true',
 					pic: '../../static/image/activity-pic.png',
 					status: '已开始',
 					theme: 'AMD最新五代处理器全渠道销售培训',
@@ -59,8 +61,8 @@
 			}
 		},
 		onLoad(props) {
-			console.log("TCL: onLoad -> props", props)
-
+			console.log(props)
+			this.joined=!props.joined;
 		},
 		methods: {
 			videoErrorCallback(e) {

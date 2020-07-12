@@ -93,12 +93,17 @@
 			"style": {
 				"navigationBarTitleText": "课程培训详情页"
 			}
-		}
-	    ,{
-            "path" : "pages/personal/myjf/myjf",
-            "style" : {
+		}, {
+			"path": "pages/personal/myjf/myjf",
+			"style": {
 				"navigationBarTitleText": "我的积分"
 			}
+		}
+	    ,{
+            "path" : "pages/test-detail/test-detail",
+            "style" : {
+              "navigationBarTitleText": "考试详情页"
+            }
         }
     ],
 	"globalStyle": {

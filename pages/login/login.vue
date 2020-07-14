@@ -12,7 +12,7 @@
 					</view>
 					<input v-model='login_form.phone' placeholder="请输入11位手机号" name="phone"></input>
 					
-					<button class='cu-btn bg-main shadow'>获取验证码</button>
+					<button class='cu-btn bg-main shadow' @click="getCode">获取验证码</button>
 				</view>
 				<view class="cu-form-group">
 					<view class="title">
@@ -41,10 +41,20 @@
 			KeFu,
 		},
 		methods: {
+			getCode(){
+				uni.request({
+					url:'/send/smscode',
+					method:'POST',
+					success(res){
+						console.log(res)
+					}
+				})
+			},
 			login(){
 				console.log(this.login_form)
 				uni.request({
 					url:'/login',
+					method:'POST',
 					data:this.login_form,
 					success(res){
 						console.log(res)

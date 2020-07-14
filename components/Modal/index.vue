@@ -61,6 +61,9 @@
       },
       fn() {
         this.cb()
+		uni.navigateTo({
+			url:'../../pages/personal/mytrain/mytrain'
+		})
       }
     },
 

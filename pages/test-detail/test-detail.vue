@@ -28,7 +28,7 @@
 			</view>
 		</view>
 		<button type="primary" @click="submit" class="btn">提交答案</button>
-		<Modal ref="modal" status="success" title="提交成功" desc="请在“我-我的培训”查看得分" btn btnText="立即查看" :cb="cb" />
+		<Modal ref="modal" status="success" title="提交成功" desc="请在“我的培训”查看得分" btn btnText="立即查看" :cb="cb" />
 
 	</view>
 </template>

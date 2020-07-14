@@ -8,21 +8,21 @@
 			<view class="info">
 				<view class="cu-form-group">
 					<view class="title">
-						<image class="icon" src="../../static/image/icon/login_register/phone.png" mode=""></image>
+						<image class="icon" src="../../static/image/icon/login_register/company.png" mode=""></image>
 					</view>
 					<input v-model='login_form.company' placeholder="请输入公司名称" name="check_num"></input>
 				</view>
 				<view class="cu-form-group">
 					<view class="title">
-						<image class="icon" src="../../static/image/icon/login_register/phone.png" mode=""></image>
+						<image class="icon" src="../../static/image/icon/login_register/address.png" mode=""></image>
 					</view>
 					<input v-model='login_form.address' placeholder="请输入公司地址,例:省-市-区/县-详细地址" name="check_num"></input>
 				</view>
 				<view class="cu-form-group">
 					<view class="title">
-						<image class="icon" src="../../static/image/icon/login_register/phone.png" mode=""></image>
+						<image class="icon" src="../../static/image/icon/login_register/range.png" mode=""></image>
 					</view>
-					<input v-model='login_form.phone' placeholder="请输入11位手机号" name="check_num"></input>
+					<input v-model='login_form.phone' placeholder="请输入经营范围" name="check_num"></input>
 				</view>
 				<view class="cu-form-group">
 					<view class="title">

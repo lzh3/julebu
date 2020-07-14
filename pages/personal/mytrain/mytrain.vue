@@ -25,7 +25,7 @@
 						</view>
 						<view :class="['operate-btn',v.trainStatus]">
 							<view class="test" @click="test(v)"><text>查看培训</text></view>
-							<view class="train-btn" @click="train(v)" v-if='v.done'><text>查看成绩</text></view>
+							<view class="train-btn" @click="lookResult(v)" v-if='v.done'><text>查看成绩</text></view>
 						</view>
 					</view>
 				</view>
@@ -169,12 +169,10 @@
 				}
 			},
 			// 培训
-			train(item) {
-				if (item.trainStatus !== 'overtime') {
-					uni.navigateTo({
-						url: `/pages/course-detail/course-detail?id=${item.id}`
-					});
-				}
+			lookResult(item) {
+				uni.navigateTo({
+					url: `/pages/personal/mytrain/result?id=${item.id}`
+				});
 			},
 			trainStatus(status) {
 				return {

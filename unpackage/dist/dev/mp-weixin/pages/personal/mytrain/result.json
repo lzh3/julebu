@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "成绩",
+  "usingComponents": {
+    "evan-checkbox-group": "/components/evan-checkbox-group/evan-checkbox-group",
+    "evan-checkbox": "/components/evan-checkbox/evan-checkbox",
+    "modal": "/components/Modal/index"
+  }
+}

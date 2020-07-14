@@ -116,8 +116,14 @@
             "style" : {
 				"navigationBarTitleText": "我的培训"
 			}
-        }
-        ,{
+        },
+		{
+		    "path" : "pages/personal/mytrain/result",
+		    "style" : {
+				"navigationBarTitleText": "成绩"
+			}
+		},
+		{
             "path" : "pages/register/register",
             "style" : {
 				"navigationBarTitleText": "注册"

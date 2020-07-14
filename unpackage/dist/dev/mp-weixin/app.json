@@ -22,6 +22,7 @@
     "pages/test-detail/test-detail",
     "pages/personal/myactivity/myactivity",
     "pages/personal/mytrain/mytrain",
+    "pages/personal/mytrain/result",
     "pages/register/register"
   ],
   "subPackages": [],

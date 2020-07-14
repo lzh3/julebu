@@ -305,12 +305,10 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     // 培训
-    train: function train(item) {
-      if (item.trainStatus !== 'overtime') {
-        uni.navigateTo({
-          url: "/pages/course-detail/course-detail?id=".concat(item.id) });
+    lookResult: function lookResult(item) {
+      uni.navigateTo({
+        url: "/pages/personal/mytrain/result?id=".concat(item.id) });
 
-      }
     },
     trainStatus: function trainStatus(status) {
       return {

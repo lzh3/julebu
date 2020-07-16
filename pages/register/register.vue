@@ -53,7 +53,7 @@
 					</view>
 					<input v-model='login_form.check_num' placeholder="请输入6位验证码" name="check_num"></input>
 				</view> -->
-				<Modal ref="pp" status='reg-error' :msg='msg'/>
+				<Modal ref="pp" status='reg-error' :msg='msg' />
 			</view>
 		</view>
 	</view>
@@ -64,9 +64,17 @@
 	export default {
 		data() {
 			return {
-				msg:'请输入正确信息!',
+				msg: '请输入正确信息!',
+				code: '',
 				reg_form: {
-
+					"company": "asdasd", // 公司名称
+					"province": "河北省", // 省
+					"city": "邯郸市", // 市
+					"address": "湖南省长沙市雨花区", // 详细地址
+					"business": "公司主营行业", // 公司主营行业
+					"realname": "联系人", // 联系人
+					"phone": "15030017934", // 联系手机
+					"code": "816726" // 验证码
 				}
 			}
 		},
@@ -75,7 +83,8 @@
 		},
 		methods: {
 			regFn() {
-				console.log(this.reg_form)
+				// console.log(this.reg_form)
+				let _this=this;
 				let {
 					address,
 					business,
@@ -87,44 +96,49 @@
 				var reg = /.+?(省|市|自治区|自治州|县|区)/g;
 				//console.log(this.reg_form.address.match(reg))
 
-				let regRes = [];
-				if (!regRes) {
-					regRes = this.reg_form.address.match(reg)
-				}
+				let regRes = this.reg_form.address.match(reg)||[];
+
 				if (address && business && code && company && connect && phone) {
 					uni.request({
 						url: '/register',
+						method: 'POST',
 						data: {
 							company, // 公司名称
 							"province": regRes[0], // 省
 							"city": regRes[1], // 市
 							address, // 详细地址
-							businness, // 公司主营行业
+							business, // 公司主营行业
 							"realname": connect, // 联系人
 							phone, // 联系手机
 							code // 验证码
+						},
+						success(res) {
+							console.log(res)
+							_this.msg=res.data.msg;
+							_this.$refs.pp.open()
+
 						}
 					})
 				} else {
-					this.$refs.pp.open()
+					_this.$refs.pp.open()
 				}
 			},
-			getCode(){
+			getCode() {
 				// this.$refs.modal.open()
-				let _this=this;
+				let _this = this;
 				uni.request({
-					url:'/send/smscode',
-					method:'POST',
-					data:{
-						phone:this.reg_form.phone
+					url: '/send/smscode',
+					method: 'POST',
+					data: {
+						phone: this.reg_form.phone
 					},
-					success(res){
-						if(Number(res.data.code)===200){
-							_this.code=res.data.code
-							uni.navigateTo({
+					success(res) {
+						if (Number(res.data.code) === 200) {
+							_this.code = res.data.code
+							/* uni.navigateTo({
 								url:'/pages/login/login'
-							})
-						}else{
+							}) */
+						} else {
 							_this.$refs.pp.open()
 						}
 					},

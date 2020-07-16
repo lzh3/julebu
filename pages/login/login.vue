@@ -27,7 +27,7 @@
 			
 		</view>
 		<ke-fu></ke-fu>
-		<Modal ref="modal" :isSuccess='false' :msg='fail_code' status="login" :title="modal_title"/>
+		<Modal ref="modal" :isSuccess='false' :msg='msg' :showlogin='showlogin' status="login" :title="modal_title"/>
 	</view>
 </template>
 
@@ -37,11 +37,15 @@
 	export default {
 		data() {
 			return {
+				showlogin:true,
 				code:'',
 				modal_title:'',
 				info:'yes',
-				login_form:{},
-				fail_code:1,
+				login_form:{
+					phone:'15030017934',
+					code:"123456"
+				},
+				msg:'请输入正确信息!',
 			}
 		},
 		components:{
@@ -74,18 +78,35 @@
 				})
 			},
 			login(){
-				console.log(this.code)
+				// console.log(this.code)
 				let _this=this;
-				uni.request({
-					url:'/login',
-					method:'POST',
-					data:this.login_form,
-					success(res){
-						console.log(res)
-						_this.modal_title=res.data.msg;
-						_this.$refs.modal.open()
-					}
-				})
+				if(this.code===this.login_form.code){
+					uni.request({
+						url:'/login',
+						method:'POST',
+						data:this.login_form,
+						success(res){
+							// console.log(res.data.data.token)
+							if(res.data.code===200){
+								 uni.setStorageSync('token', res.data.data.token);
+								_this.showlogin=false;
+								setTimeout(()=>{
+									uni.switchTab({
+										url:'../personal/personal'
+									})
+								},500)
+							}else{
+								_this.showlogin=true;
+							}
+							_this.msg=res.data.msg;
+							_this.modal_title=res.data.msg;
+							_this.$refs.modal.open()
+						}
+					})
+				}else{
+					_this.modal_title='验证码错误';
+					_this.$refs.modal.open()
+				}
 			}
 		}
 	}

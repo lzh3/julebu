@@ -93,6 +93,13 @@
 				]
 			}
 		},
+		onLoad(){
+			console.log(1)
+		},
+		onShow(){
+			let token=uni.getStorageSync('token');
+			console.log(token)
+		},
 		methods: {
 			loginFn() {
 				uni.navigateTo({

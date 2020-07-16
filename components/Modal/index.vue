@@ -23,11 +23,11 @@
 		</view>
 		<view class="login-wrap modal-wrap success" v-show="status === 'login'">
 			<text class="title login text-green" :class="isSuccess?'login_suc':'login_err'">{{msg}}</text>
-			<button type="default" v-show='true' class="btn reg-btn" @tap='toRegister'>去注册</button>
+			<button type="default" v-show='showlogin' class="btn reg-btn" @tap='toRegister'>去注册</button>
 		</view>
 		<view class="modal-wrap error" v-show="status === 'reg-error'">
-			<image src="../../static/image/error.png" class="error" />
 			<text class="title">{{msg}}</text>
+			<button type="primary" @click="loginFn" class="btn">去登录</button>
 			<image src="../../static/image/close.png" class="close" @click="close" />
 		</view>
 	</uni-popup>
@@ -43,6 +43,9 @@
 		props: {
 			msg: {
 				default: () => '请输入正确信息'
+			},
+			showlogin:{
+				default: () => false
 			},
 			isSuccess: {
 				default: () => 'login_suc'
@@ -72,6 +75,12 @@
 			console.log("TCL: onLoad -> this", this)
 		},
 		methods: {
+			loginFn(){
+				uni.navigateTo({
+					url: '../../pages/login/login'
+				})
+				this.$refs.popup.close();
+			},
 			toRegister() {
 				uni.navigateTo({
 					url: '../../pages/register/register'

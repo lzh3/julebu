@@ -1,21 +1,14 @@
 <template>
 	<view>
-		<view class="activity-wrap">
-			<NotLogin pageName="活动" />
-		</view>
-		<view class="cu-card article no-card" v-for="item in list">
+		<view class="cu-card article no-card"
+				v-if='showLogin'
+				v-for="item in list">
 			<view class="cu-item shadow">
 				<navigator :url="'../activity-detail/activity-detail?joined='+item.joined">
 					<view class="content">
 						<view class="pic">
-							<image 
-								v-if="item.start"
-								class="on"
-							    src="../../static/image/icon/personal/activity/start.png" mode=""></image>
-							 <image
-								 v-else
-								 class="on"
-								 src="../../static/image/icon/personal/activity/end.png" mode=""></image>
+							<image v-if="item.start" class="on" src="../../static/image/icon/personal/activity/start.png" mode=""></image>
+							<image v-else class="on" src="../../static/image/icon/personal/activity/end.png" mode=""></image>
 						</view>
 						<view class="desc">
 							<view class="text-content">主题:{{item.title}}</view>
@@ -29,6 +22,10 @@
 				</navigator>
 			</view>
 		</view>
+
+		<view class="activity-wrap" v-else>
+			<NotLogin pageName="活动" />
+		</view>
 	</view>
 </template>
 
@@ -40,64 +37,92 @@
 		},
 		data() {
 			return {
-				list:[
-					{
-						title:'折磨生出苦难，苦难',
-						time:' 9:00-10:00',
-						num:30,
-						p_time:' 2020-07',
-						start:false,
-						joined:true, // 已经参与
+				showLogin: true,
+				list: [{
+						title: '折磨生出苦难，苦难',
+						time: ' 9:00-10:00',
+						num: 30,
+						p_time: ' 2020-07',
+						start: false,
+						joined: true, // 已经参与
 					},
 					{
-						title:'折磨生出苦难，苦难',
-						time:' 9:00-10:00',
-						num:30,
-						p_time:' 2020-07',
-						start:true,
-						joined:true
+						title: '折磨生出苦难，苦难',
+						time: ' 9:00-10:00',
+						num: 30,
+						p_time: ' 2020-07',
+						start: true,
+						joined: true
 					}
 				]
 			}
 		},
+		onLoad() {
+			let token = uni.getStorageSync('token')
+			this.showLogin = token ? true: false;
+			this.getActivityList(1,token);
+		},
 		methods: {
-
+			// 获取活动列表
+			getActivityList(page,token){
+				uni.request({
+					url:'/events/list',
+					method:'POST',
+					header:{
+						'Authorization':token,
+					},
+					data:{
+						page,
+						limit:10
+					},
+					success(res){
+						console.log(res)
+					}
+				})
+			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	.cu-card{
-		margin-bottom:6rpx;
+	.cu-card {
+		margin-bottom: 6rpx;
 	}
-	.cu-item{
-		padding-top:30rpx;
-		.pic{
+
+	.cu-item {
+		padding-top: 30rpx;
+
+		.pic {
 			position: relative;
-			width:150rpx;
-			height:150rpx;
+			width: 150rpx;
+			height: 150rpx;
 			background-color: lightblue;
-			image{
-				width:100%;
-				height:100%;
+
+			image {
+				width: 100%;
+				height: 100%;
 			}
-			.on{
-				width:105rpx;
-				height:75rpx;
+
+			.on {
+				width: 105rpx;
+				height: 75rpx;
 				position: absolute;
-				left:0;
-				top:0;
+				left: 0;
+				top: 0;
 			}
 		}
-		.content{
-			.desc{
-				padding:0;
-				margin-left:10rpx;
-				view.text-content{
-					height:40rpx;
+
+		.content {
+			.desc {
+				padding: 0;
+				margin-left: 10rpx;
+
+				view.text-content {
+					height: 40rpx;
 					line-height: 40rpx;
-					.f-right{
-						float:right;
+
+					.f-right {
+						float: right;
 					}
 				}
 			}

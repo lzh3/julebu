@@ -12,7 +12,7 @@
 					</view>
 					<input v-model='login_form.phone' placeholder="请输入11位手机号" name="phone"></input>
 					
-					<button class='cu-btn bg-main shadow' @click="getCode">获取验证码</button>
+					<button class='cu-btn bg-main shadow' data-target="Modal" @click="getCode">获取验证码</button>
 				</view>
 				<view class="cu-form-group">
 					<view class="title">
@@ -24,40 +24,66 @@
 					<button class="login-btn bg-main" @click="login">登录</button>
 				</view>
 			</view>
+			
 		</view>
 		<ke-fu></ke-fu>
+		<Modal ref="modal" :isSuccess='false' :msg='fail_code' status="login" :title="modal_title"/>
 	</view>
 </template>
 
 <script>
 	import KeFu from '../../components/Kefu/index.vue'
+	import Modal from '../../components/Modal/index.vue'
 	export default {
 		data() {
 			return {
-				login_form:{}
+				code:'',
+				modal_title:'',
+				info:'yes',
+				login_form:{},
+				fail_code:1,
 			}
 		},
 		components:{
 			KeFu,
+			Modal,
 		},
 		methods: {
-			getCode(){
+			getCode(e){
+				// this.$refs.modal.open()
+				let _this=this;
 				uni.request({
 					url:'/send/smscode',
 					method:'POST',
+					data:{
+						phone:this.login_form.phone
+					},
 					success(res){
-						console.log(res)
+						console.log(res.data)
+						if(Number(res.data.code)===200){
+							_this.code=res.data.code;
+							uni.navigateTo({
+								url:'/pages/personal/personal'
+							})
+						}else{
+							_this.fail_code=0;
+							_this.modal_title=res.data.msg;
+							_this.$refs.modal.open()
+						}
 					}
 				})
 			},
 			login(){
-				console.log(this.login_form)
+				console.log(this.code)
+				let _this=this;
 				uni.request({
 					url:'/login',
 					method:'POST',
 					data:this.login_form,
 					success(res){
 						console.log(res)
+						_this.modal_title=res.data.msg;
+						_this.$refs.modal.open()
 					}
 				})
 			}

@@ -7,9 +7,11 @@
 				<image src="../../static/image/home/notice.png" class="icon" />
 				<text>通知公告</text>
 			</view>
-			<view class="header-desc">
-				<text class="info">AMD最新培训活动上线啦! 赶快来报名哟~</text>
-				<text class="date">06-04</text>
+			<view class="header-content">
+				<view class="header-desc" v-for="(item,index) in notices" :key="index">
+					<view class="info">{{item.title}}</view>
+					<view class="date">{{item.date}}</view>
+				</view>
 			</view>
 		</view>
 		<!-- 最新资讯 -->
@@ -109,6 +111,8 @@
 					id: Date.now()
 				},
 
+				notices: [], //通知
+
 			}
 		},
 		methods: {
@@ -141,7 +145,31 @@
 					url: '/pages/activity-detail/activity-detail?id=1'
 				});
 			},
-		}
+		},
+		mounted() {
+			uni.request({
+				url: '/index', //仅为示例，并非真实接口地址。
+				success: ({
+					data
+				}) => {
+					if (data.code == 200) {
+						let {
+							banners,
+							news,
+							notices,
+							train
+						} = data.data;
+						this.newsItems = news
+						this.bannerItems = banners
+						this.notices = notices.map(v => {
+							v.title = "香港各界：国安法让香港重回正轨 期待再出发" + Date.now()
+							return v
+						})
+						this.trainItem = train
+					}
+				}
+			});
+		},
 	}
 </script>
 
@@ -165,6 +193,7 @@
 			border-radius: 20upx;
 			position: relative;
 			top: -10upx;
+			overflow: hidden;
 
 			.header-title {
 				line-height: 1;
@@ -183,7 +212,7 @@
 			.header-desc {
 				margin-top: 30upx;
 				font-family: PingFang-SC-Medium;
-				font-size: 24upx;
+				font-size: 12px;
 				font-weight: normal;
 				font-stretch: normal;
 				line-height: 1;
@@ -209,6 +238,28 @@
 				font-stretch: normal;
 				letter-spacing: 0px;
 				color: #333333;
+			}
+		}
+
+		.header-content {
+			display: flex;
+			flex-wrap: no-wrap;
+			overflow: hidden;
+			flex-direction: column;
+
+			.info {
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+
+			.date {
+				width: fit-content;
+				white-space: nowrap;
+			}
+
+			.header-desc {
+				min-width: 100%;
 			}
 		}
 

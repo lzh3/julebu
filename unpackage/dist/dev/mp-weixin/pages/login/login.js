@@ -130,7 +130,10 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var KeFu = function KeFu() {__webpack_require__.e(/*! require.ensure | components/Kefu/index */ "components/Kefu/index").then((function () {return resolve(__webpack_require__(/*! ../../components/Kefu/index.vue */ 222));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var KeFu = function KeFu() {__webpack_require__.e(/*! require.ensure | components/Kefu/index */ "components/Kefu/index").then((function () {return resolve(__webpack_require__(/*! ../../components/Kefu/index.vue */ 228));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Modal = function Modal() {__webpack_require__.e(/*! require.ensure | components/Modal/index */ "components/Modal/index").then((function () {return resolve(__webpack_require__(/*! ../../components/Modal/index.vue */ 235));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
 
 
 
@@ -166,32 +169,76 @@ __webpack_require__.r(__webpack_exports__);
 {
   data: function data() {
     return {
-      login_form: {} };
+      showlogin: true,
+      code: '',
+      modal_title: '',
+      info: 'yes',
+      login_form: {
+        phone: '15030017934',
+        code: "929375" },
+
+      msg: '请输入正确信息!' };
 
   },
   components: {
-    KeFu: KeFu },
+    KeFu: KeFu,
+    Modal: Modal },
 
   methods: {
-    getCode: function getCode() {
+    getCode: function getCode(e) {
+      // this.$refs.modal.open()
+      var _this = this;
       uni.request({
-        url: 'send/smscode',
+        url: '/send/smscode',
         method: 'POST',
+        data: {
+          phone: this.login_form.phone },
+
         success: function success(res) {
-          console.log(res);
+          console.log(res.data);
+          if (Number(res.data.code) === 200) {
+            _this.code = res.data.code;
+            uni.navigateTo({
+              url: '/pages/personal/personal' });
+
+          } else {
+            _this.fail_code = 0;
+            _this.modal_title = res.data.msg;
+            _this.$refs.modal.open();
+          }
         } });
 
     },
     login: function login() {
-      console.log(this.login_form);
-      uni.request({
-        url: '/login',
-        method: 'POST',
-        data: this.login_form,
-        success: function success(res) {
-          console.log(res);
-        } });
+      // console.log(this.code)
+      var _this = this;
+      if (this.code === this.login_form.code) {
+        uni.request({
+          url: '/login',
+          method: 'POST',
+          data: this.login_form,
+          success: function success(res) {
+            // console.log(res.data.data.token)
+            if (res.data.code === 200) {
+              uni.setStorageSync('token', res.data.data.token);
+              _this.showlogin = false;
+              setTimeout(function () {
+                uni.switchTab({
+                  url: '../personal/personal' });
 
+              }, 500);
+            } else {
+              _this.showlogin = true;
+            }
+            _this.msg = res.data.msg;
+            _this.modal_title = res.data.msg;
+            _this.$refs.modal.open();
+          } });
+
+      } else {
+        _this.modal_title = '验证码错误';
+        _this.$refs.modal.open();
+      }
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

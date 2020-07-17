@@ -130,10 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var NotLogin = function NotLogin() {__webpack_require__.e(/*! require.ensure | components/NotLogin/index */ "components/NotLogin/index").then((function () {return resolve(__webpack_require__(/*! @/components/NotLogin */ 208));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
-
-
-
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var NotLogin = function NotLogin() {__webpack_require__.e(/*! require.ensure | components/NotLogin/index */ "components/NotLogin/index").then((function () {return resolve(__webpack_require__(/*! @/components/NotLogin */ 214));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -172,8 +169,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
   data: function data() {
     return {
-      list: [
-      {
+      showLogin: true,
+      list: [{
         title: '折磨生出苦难，苦难',
         time: ' 9:00-10:00',
         num: 30,
@@ -192,7 +189,30 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
   },
-  methods: {} };exports.default = _default;
+  onLoad: function onLoad() {
+    var token = uni.getStorageSync('token');
+    this.showLogin = token ? true : false;
+    this.getActivityList(1, token);
+  },
+  methods: {
+    // 获取活动列表
+    getActivityList: function getActivityList(page, token) {
+      uni.request({
+        url: '/events/list',
+        method: 'POST',
+        header: {
+          'authtoken': 'token ' + token },
+
+        data: {
+          page: page,
+          limit: 10 },
+
+        success: function success(res) {
+          console.log(res.data.data);
+        } });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

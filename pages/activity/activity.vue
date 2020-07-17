@@ -69,14 +69,14 @@
 					url:'/events/list',
 					method:'POST',
 					header:{
-						'Authorization':token,
+						'authtoken':'token '+token,
 					},
 					data:{
 						page,
 						limit:10
 					},
 					success(res){
-						console.log(res)
+						console.log(res.data.data)
 					}
 				})
 			}

@@ -43,7 +43,7 @@
 				info:'yes',
 				login_form:{
 					phone:'15030017934',
-					code:"123456"
+					code:"929375"
 				},
 				msg:'请输入正确信息!',
 			}

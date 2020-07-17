@@ -101,7 +101,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   Swiper: function() {
-    return __webpack_require__.e(/*! import() | components/Swiper/Swiper */ "components/Swiper/Swiper").then(__webpack_require__.bind(null, /*! @/components/Swiper/Swiper.vue */ 201))
+    return __webpack_require__.e(/*! import() | components/Swiper/Swiper */ "components/Swiper/Swiper").then(__webpack_require__.bind(null, /*! @/components/Swiper/Swiper.vue */ 207))
   }
 }
 var render = function() {

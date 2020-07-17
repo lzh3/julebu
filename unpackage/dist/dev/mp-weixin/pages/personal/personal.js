@@ -225,10 +225,45 @@ var _default =
 
 
   },
+  beforeCreate: function beforeCreate() {
+    var token = uni.getStorageSync('token');
+    // console.log(token)
+  },
+  onLoad: function onLoad() {
+    var token = uni.getStorageSync('token');
+    this.getUserInfo();
+
+  },
   methods: {
     loginFn: function loginFn() {
       uni.navigateTo({
         url: '../login/login' });
+
+    },
+    // 获取页面信息
+    getPageInfo: function getPageInfo() {
+      uni.request({
+        url: '/user/modules',
+        method: 'get',
+        header: {
+          'Authorization': token },
+
+        success: function success(res) {
+          console.log(res);
+        } });
+
+    },
+    // 获取个人信息
+    getUserInfo: function getUserInfo() {
+      uni.request({
+        url: '/userinfo',
+        method: 'get',
+        /* header:{
+                       	'Authorization':token,
+                       }, */
+        success: function success(res) {
+          console.log(res);
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

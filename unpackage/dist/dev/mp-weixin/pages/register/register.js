@@ -130,68 +130,153 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Modal = function Modal() {__webpack_require__.e(/*! require.ensure | components/Modal/index */ "components/Modal/index").then((function () {return resolve(__webpack_require__(/*! ../../components/Modal/index.vue */ 235));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
   data: function data() {
     return {
-      login_form: {} };
-
-
+      msg: '请输入正确信息!',
+      code: '',
+      reg_form: {
+        "company": "asdasd", // 公司名称
+        "province": "河北省", // 省
+        "city": "邯郸市", // 市
+        "address": "湖南省长沙市雨花区", // 详细地址
+        "business": "公司主营行业", // 公司主营行业
+        "realname": "联系人", // 联系人
+        "phone": "15030017934", // 联系手机
+        "code": "816726" // 验证码
+      } };
 
   },
-  methods: {} };exports.default = _default;
+  components: {
+    Modal: Modal },
+
+  methods: {
+    regFn: function regFn() {
+      // console.log(this.reg_form)
+      var _this = this;var _this$reg_form =
+
+
+
+
+
+
+
+      this.reg_form,address = _this$reg_form.address,business = _this$reg_form.business,code = _this$reg_form.code,company = _this$reg_form.company,connect = _this$reg_form.connect,phone = _this$reg_form.phone;
+      var reg = /.+?(省|市|自治区|自治州|县|区)/g;
+      //console.log(this.reg_form.address.match(reg))
+
+      var regRes = this.reg_form.address.match(reg) || [];
+
+      if (address && business && code && company && connect && phone) {
+        uni.request({
+          url: '/register',
+          method: 'POST',
+          data: {
+            company: company, // 公司名称
+            "province": regRes[0], // 省
+            "city": regRes[1], // 市
+            address: address, // 详细地址
+            business: business, // 公司主营行业
+            "realname": connect, // 联系人
+            phone: phone, // 联系手机
+            code: code // 验证码
+          },
+          success: function success(res) {
+            console.log(res);
+            _this.msg = res.data.msg;
+            _this.$refs.pp.open();
+
+          } });
+
+      } else {
+        _this.$refs.pp.open();
+      }
+    },
+    getCode: function getCode() {
+      // this.$refs.modal.open()
+      var _this = this;
+      uni.request({
+        url: '/send/smscode',
+        method: 'POST',
+        data: {
+          phone: this.reg_form.phone },
+
+        success: function success(res) {
+          if (Number(res.data.code) === 200) {
+            _this.code = res.data.code;
+            /* uni.navigateTo({
+                                        	url:'/pages/login/login'
+                                        }) */
+          } else {
+            _this.$refs.pp.open();
+          }
+        } });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

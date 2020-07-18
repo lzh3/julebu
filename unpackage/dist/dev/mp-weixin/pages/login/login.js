@@ -174,8 +174,8 @@ __webpack_require__.r(__webpack_exports__);
       modal_title: '',
       info: 'yes',
       login_form: {
-        phone: '15030017934',
-        code: "929375" },
+        phone: '18270825622',
+        code: "" },
 
       msg: '请输入正确信息!' };
 
@@ -187,12 +187,16 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getCode: function getCode(e) {
       // this.$refs.modal.open()
+      console.log(1);
       var _this = this;
       uni.request({
-        url: '/send/smscode',
+        url: 'https://amd.mcooks.cn/api/send/smscode',
         method: 'POST',
         data: {
           phone: this.login_form.phone },
+
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' },
 
         success: function success(res) {
           console.log(res.data);
@@ -206,39 +210,44 @@ __webpack_require__.r(__webpack_exports__);
             _this.modal_title = res.data.msg;
             _this.$refs.modal.open();
           }
+        },
+        fail: function fail(e) {
+          console.log(e);
         } });
 
     },
     login: function login() {
+      console.log('login');
       // console.log(this.code)
       var _this = this;
-      if (this.code === this.login_form.code) {
-        uni.request({
-          url: '/login',
-          method: 'POST',
-          data: this.login_form,
-          success: function success(res) {
-            // console.log(res.data.data.token)
-            if (res.data.code === 200) {
-              uni.setStorageSync('token', res.data.data.token);
-              _this.showlogin = false;
-              setTimeout(function () {
-                uni.switchTab({
-                  url: '../personal/personal' });
+      uni.request({
+        url: 'https://amd.mcooks.cn/api/login',
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' },
 
-              }, 500);
-            } else {
-              _this.showlogin = true;
-            }
-            _this.msg = res.data.msg;
-            _this.modal_title = res.data.msg;
-            _this.$refs.modal.open();
-          } });
+        data: this.login_form,
+        success: function success(res) {
+          // console.log(res.data.data.token)
+          if (res.data.code === 200) {
+            uni.setStorageSync('token', res.data.data.token);
+            _this.showlogin = false;
+            setTimeout(function () {
+              uni.switchTab({
+                url: '../personal/personal' });
 
-      } else {
-        _this.modal_title = '验证码错误';
-        _this.$refs.modal.open();
-      }
+            }, 500);
+          } else {
+            _this.showlogin = true;
+          }
+          _this.msg = res.data.msg;
+          _this.modal_title = res.data.msg;
+          _this.$refs.modal.open();
+        },
+        fail: function fail(e) {
+          console.log(e);
+        } });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

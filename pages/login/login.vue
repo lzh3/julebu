@@ -11,7 +11,7 @@
 						<image class="icon" src="../../static/image/icon/login_register/phone.png" mode=""></image>
 					</view>
 					<input v-model='login_form.phone' placeholder="请输入11位手机号" name="phone"></input>
-					
+
 					<button class='cu-btn bg-main shadow' data-target="Modal" @click="getCode">获取验证码</button>
 				</view>
 				<view class="cu-form-group">
@@ -24,10 +24,10 @@
 					<button class="login-btn bg-main" @click="login">登录</button>
 				</view>
 			</view>
-			
+
 		</view>
 		<ke-fu></ke-fu>
-		<Modal ref="modal" :isSuccess='false' :msg='msg' :showlogin='showlogin' status="login" :title="modal_title"/>
+		<Modal ref="modal" :isSuccess='false' :msg='msg' :showlogin='showlogin' status="login" :title="modal_title" />
 	</view>
 </template>
 
@@ -37,113 +37,130 @@
 	export default {
 		data() {
 			return {
-				showlogin:true,
-				code:'',
-				modal_title:'',
-				info:'yes',
-				login_form:{
-					phone:'15030017934',
-					code:"929375"
+				showlogin: true,
+				code: '',
+				modal_title: '',
+				info: 'yes',
+				login_form: {
+					phone: '18270825622',
+					code: ""
 				},
-				msg:'请输入正确信息!',
+				msg: '请输入正确信息!',
 			}
 		},
-		components:{
+		components: {
 			KeFu,
 			Modal,
 		},
 		methods: {
-			getCode(e){
+			getCode(e) {
 				// this.$refs.modal.open()
-				let _this=this;
+				console.log(1)
+				let _this = this;
 				uni.request({
-					url:'/send/smscode',
-					method:'POST',
-					data:{
-						phone:this.login_form.phone
+					url: '/send/smscode',
+					method: 'POST',
+					data: {
+						phone: this.login_form.phone
 					},
-					success(res){
+					header: {
+						'content-type': 'application/x-www-form-urlencoded'
+					},
+					success(res) {
 						console.log(res.data)
-						if(Number(res.data.code)===200){
-							_this.code=res.data.code;
+						if (Number(res.data.code) === 200) {
+							_this.code = res.data.code;
 							uni.navigateTo({
-								url:'/pages/personal/personal'
+								url: '/pages/personal/personal'
 							})
-						}else{
-							_this.fail_code=0;
-							_this.modal_title=res.data.msg;
+						} else {
+							_this.fail_code = 0;
+							_this.modal_title = res.data.msg;
 							_this.$refs.modal.open()
 						}
+					},
+					fail(e) {
+						console.log(e)
 					}
 				})
 			},
-			login(){
+			login() {
+				console.log('login')
 				// console.log(this.code)
-				let _this=this;
-				if(this.code===this.login_form.code){
-					uni.request({
-						url:'/login',
-						method:'POST',
-						data:this.login_form,
-						success(res){
-							// console.log(res.data.data.token)
-							if(res.data.code===200){
-								 uni.setStorageSync('token', res.data.data.token);
-								_this.showlogin=false;
-								setTimeout(()=>{
-									uni.switchTab({
-										url:'../personal/personal'
-									})
-								},500)
-							}else{
-								_this.showlogin=true;
-							}
-							_this.msg=res.data.msg;
-							_this.modal_title=res.data.msg;
-							_this.$refs.modal.open()
+				let _this = this;
+				uni.request({
+					url: '/login',
+					method: 'POST',
+					header: {
+						'content-type': 'application/x-www-form-urlencoded'
+					},
+					data: this.login_form,
+					success(res) {
+						// console.log(res.data.data.token)
+						if (res.data.code === 200) {
+							uni.setStorageSync('token', res.data.data.token);
+							_this.showlogin = false;
+							setTimeout(() => {
+								uni.switchTab({
+									url: '../personal/personal'
+								})
+							}, 500)
+						} else {
+							_this.showlogin = true;
 						}
-					})
-				}else{
-					_this.modal_title='验证码错误';
-					_this.$refs.modal.open()
-				}
+						_this.msg = res.data.msg;
+						_this.modal_title = res.data.msg;
+						_this.$refs.modal.open()
+					},
+					fail(e){
+						console.log(e)
+					}
+				})
 			}
+
 		}
 	}
 </script>
 
 <style lang='scss' scoped>
-	.login-btn{
-		width:100%;
-		height:40px;
-		margin:8px 0;
+	.login-btn {
+		width: 100%;
+		height: 40px;
+		margin: 8px 0;
 		line-height: 40px;
-		color:#fff;
-		
+		color: #fff;
+
 	}
-	.icon{
-		width:40rpx;
-		height:50rpx;
+
+	.icon {
+		width: 40rpx;
+		height: 50rpx;
 		vertical-align: bottom;
 	}
-	.wrap{
-		padding-top:1px;
+
+	.wrap {
+		padding-top: 1px;
 	}
-	.content{
-		margin:160rpx auto;
-		.main-title{
+
+	.content {
+		margin: 160rpx auto;
+
+		.main-title {
 			text-align: center;
-			.cn{
+
+			.cn {
 				font-size: 32rpx;
 			}
-			.en{
+
+			.en {
 				font-size: 22rpx;
-				color:#bbb;
+				color: #bbb;
 			}
 		}
-		.info{
-			width:90%;
-			margin:10px auto;
+
+		.info {
+			width: 90%;
+			margin: 10px auto;
 		}
 	}
 </style>

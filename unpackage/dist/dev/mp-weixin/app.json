@@ -26,25 +26,7 @@
     "pages/register/register",
     "pages/mustlook/mustlook"
   ],
-  "subPackages": [
-    {
-      "root":"pages/index/index",
-      "pages":[
-        "pages/index/index",
-        "components/Swiper/Swiper",
-        "components/wuc-tab/wuc-tab"
-      ]
-    },
-    {
-      "root":"pages/personal/personal",
-      "pages":[
-        "pages/personal/personal",
-        "pages/personal/myactivity/myactivity",
-        "pages/personal/mycollect/collectdetail/collectdetail",
-        "pages/personal/mycollect/mycollect"
-      ]
-    }
-  ],
+  "subPackages": [],
   "window": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "A+俱乐部",

@@ -249,6 +249,9 @@ __webpack_require__.r(__webpack_exports__);
             _this.msg = res.data.msg;
             _this.$refs.pp.open();
 
+          },
+          fail: function fail(e) {
+            console.log(e);
           } });
 
       } else {

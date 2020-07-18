@@ -325,6 +325,9 @@ __webpack_require__.r(__webpack_exports__);
     WucTab: WucTab,
     Kefu: Kefu },
 
+  onLoad: function onLoad() {
+    this.getTrainList();
+  },
   methods: {
     tabChange: function tabChange(index) {
       this.TabCur = index;
@@ -355,6 +358,20 @@ __webpack_require__.r(__webpack_exports__);
         notyet: '未开始',
         overtime: '已过期' }[
       status];
+    },
+    getTrainList: function getTrainList() {
+      var _this = this;
+      uni.request({
+        url: '/trained/list',
+        method: 'get',
+        header: {
+          'authtoken': 'token ' + this.token },
+
+        success: function success(res) {
+          console.log(res.data);
+
+        } });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

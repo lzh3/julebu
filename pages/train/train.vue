@@ -166,6 +166,9 @@
 			WucTab,
 			Kefu
 		},
+		onLoad(){
+			this.getTrainList();
+		},
 		methods: {
 			tabChange(index) {
 				this.TabCur = index;
@@ -196,6 +199,20 @@
 					notyet: '未开始',
 					overtime: '已过期',
 				} [status]
+			},
+			getTrainList(){
+				let _this=this;
+				uni.request({
+					url:'/trained/list',
+					method:'get',
+					header:{
+						'authtoken':'token '+this.token,
+					},
+					success(res){
+						console.log(res.data)
+						
+					}
+				})
 			}
 		},
 	}

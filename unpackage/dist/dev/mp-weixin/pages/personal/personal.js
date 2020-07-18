@@ -172,10 +172,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
+      token: '',
+      username: '',
+      id: '',
+      jf: '',
+      avatar: '',
+      type: '',
+      user_info: {},
       list: [
       {
         icon: '../../static/image/icon/personal/1.png',
@@ -227,10 +237,11 @@ var _default =
   },
   beforeCreate: function beforeCreate() {
     var token = uni.getStorageSync('token');
+    this.token = uni.getStorageSync('token');
     // console.log(token)
   },
   onLoad: function onLoad() {
-    var token = uni.getStorageSync('token');
+    this.token = uni.getStorageSync('token');
     this.getUserInfo();
 
   },
@@ -242,11 +253,12 @@ var _default =
     },
     // 获取页面信息
     getPageInfo: function getPageInfo() {
+      var token = this.token;
       uni.request({
         url: '/user/modules',
         method: 'get',
         header: {
-          'Authorization': token },
+          'authtoken': 'token ' + token },
 
         success: function success(res) {
           console.log(res);
@@ -255,14 +267,38 @@ var _default =
     },
     // 获取个人信息
     getUserInfo: function getUserInfo() {
+      var _this = this;
       uni.request({
         url: '/userinfo',
         method: 'get',
-        /* header:{
-                       	'Authorization':token,
-                       }, */
+        header: {
+          'authtoken': 'token ' + this.token },
+
         success: function success(res) {
-          console.log(res);
+          console.log(res.data);
+          if (res.data.code == 200) {var _res$data$data =
+            res.data.data,nickname = _res$data$data.nickname,id_type = _res$data$data.id_type,id = _res$data$data.id,reg_ip = _res$data$data.reg_ip,realname = _res$data$data.realname,avatar = _res$data$data.avatar;
+            _this.user_name = realname;
+            _this.id = id;
+            _this.jf = reg_ip;
+            _this.avatar = avatar;
+            switch (id_type) {
+              case 1:
+                _this.type = '注册用户';
+                break;
+              case 2:
+                _this.type = '锐龙店面';
+                break;
+              case 3:
+                _this.type = '渠道用户';
+                break;
+              case 4:
+                _this.type = 'CSR';
+                break;}
+
+
+          }
+
         } });
 
     } } };exports.default = _default;

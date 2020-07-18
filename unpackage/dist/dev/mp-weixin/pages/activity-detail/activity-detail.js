@@ -130,7 +130,13 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Kefu = function Kefu() {__webpack_require__.e(/*! require.ensure | components/Kefu/index */ "components/Kefu/index").then((function () {return resolve(__webpack_require__(/*! @/components/Kefu */ 228));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Modal = function Modal() {__webpack_require__.e(/*! require.ensure | components/Modal/index */ "components/Modal/index").then((function () {return resolve(__webpack_require__(/*! @/components/Modal */ 235));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Kefu = function Kefu() {__webpack_require__.e(/*! require.ensure | components/Kefu/index */ "components/Kefu/index").then((function () {return resolve(__webpack_require__(/*! @/components/Kefu */ 228));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Modal = function Modal() {__webpack_require__.e(/*! require.ensure | components/Modal/index */ "components/Modal/index").then((function () {return resolve(__webpack_require__(/*! @/components/Modal */ 235));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
 
 
 
@@ -174,15 +180,15 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       joined: true,
       end: true,
       item: {
-        pic: '../../static/image/activity-pic.png',
-        status: '已开始',
-        theme: 'AMD 618促销狂欢季全新上线',
-        date: '06.01 12:00~06.18 24:00',
-        type: '线上活动',
-        limit: '50人',
-        isReported: '40',
-        ing: 'true',
-        desc: '以下是活动介绍以下是活动介绍以下是活动介绍以下是活动 介绍以下是活动介绍以下是活动介绍以下是活动介绍以下是 介绍以下是活动介绍' },
+        /* pic: '../../static/image/activity-pic.png',
+             status: '已开始',
+             theme: 'AMD 618促销狂欢季全新上线',
+             date: '06.01 12:00~06.18 24:00',
+             type: '线上活动',
+             limit: '50人',
+             isReported: '40',
+             ing:'true',
+             desc: '以下是活动介绍以下是活动介绍以下是活动介绍以下是活动 介绍以下是活动介绍以下是活动介绍以下是活动介绍以下是 介绍以下是活动介绍', */},
 
       modalStatus: 'success',
       activityStatus: 'online' //活动状态 online 在线 not-yet还没开始 over过期了
@@ -190,20 +196,32 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   },
   //路由参数就收
   onLoad: function onLoad(opt) {
-    console.log(opt);
-    if (opt.joined === 'false') {
-      this.joined = false;
-    }
-
+    var token = uni.getStorageSync('token');
+    console.log(opt.id);
+    this.getDetail(opt.id, token);
   },
   methods: {
     joinActivity: function joinActivity() {
       this.$refs.modal.open();
     },
+    getDetail: function getDetail(id, token) {
+      var _this = this;
+      uni.request({
+        url: '/events/show',
+        method: 'POST',
+        header: {
+          'authtoken': 'token ' + token },
 
-    login: function login() {
+        data: {
+          id: id },
+
+        success: function success(res) {
+          console.log(res.data);
+          _this.item = res.data.data;
+        } });
 
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

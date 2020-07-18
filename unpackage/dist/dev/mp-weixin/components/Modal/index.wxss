@@ -24,6 +24,9 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.reg_err.data-v-0f7d5fa4 {
+  margin: 30rpx 0;
+}
 .reg-btn.data-v-0f7d5fa4 {
   color: #fff;
 }

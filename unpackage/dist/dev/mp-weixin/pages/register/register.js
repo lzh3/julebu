@@ -265,6 +265,7 @@ __webpack_require__.r(__webpack_exports__);
           phone: this.reg_form.phone },
 
         success: function success(res) {
+          console.log(res.data);
           if (Number(res.data.code) === 200) {
             _this.code = res.data.code;
             /* uni.navigateTo({

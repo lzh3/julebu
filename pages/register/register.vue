@@ -133,6 +133,7 @@
 						phone: this.reg_form.phone
 					},
 					success(res) {
+						console.log(res.data)
 						if (Number(res.data.code) === 200) {
 							_this.code = res.data.code
 							/* uni.navigateTo({

@@ -2,20 +2,32 @@
 	<view>
 		<view class="cu-card article no-card"
 				v-if='showLogin'
-				v-for="item in list">
+				v-for="(item,key) in list">
 			<view class="cu-item shadow">
-				<navigator :url="'../activity-detail/activity-detail?joined='+item.joined">
+				<navigator :url="'../activity-detail/activity-detail?id='+item.id">
 					<view class="content">
 						<view class="pic">
-							<image v-if="item.start" class="on" src="../../static/image/icon/personal/activity/start.png" mode=""></image>
-							<image v-else class="on" src="../../static/image/icon/personal/activity/end.png" mode=""></image>
+							<image class="img" :src="item.image" mode=""></image>
+							<image class="on"
+								v-if='item.status==="in_start"'
+								src="../../static/image/activity/in_start.png" mode=""></image>
+							<image class="on"
+								v-else-if="item.status==='not_start'"
+								src="../../static/image/activity/not_start.png" mode=""></image>
+							<image class="on"
+								v-else-if="item.status==='end'"
+								src="../../static/image/activity/end.png" mode=""></image>
+							
 						</view>
 						<view class="desc">
 							<view class="text-content">主题:{{item.title}}</view>
-							<view class="text-content">时间:{{item.time}}</view>
 							<view class="text-content">
-								活动名额: <text>{{item.num}}人</text>
-								<text class="f-right">{{item.p_time}}</text>
+								时间:<text class="main-color">
+									{{item.start_time}}-{{item.end_time}}</text>
+							</view>
+							<view class="text-content ">
+								活动名额:<text class="main-color"> {{item.quota_count}}人</text>
+								<text class="f-right">已有{{item.partic_count}}人参与</text>
 							</view>
 						</view>
 					</view>
@@ -38,23 +50,7 @@
 		data() {
 			return {
 				showLogin: true,
-				list: [{
-						title: '折磨生出苦难，苦难',
-						time: ' 9:00-10:00',
-						num: 30,
-						p_time: ' 2020-07',
-						start: false,
-						joined: true, // 已经参与
-					},
-					{
-						title: '折磨生出苦难，苦难',
-						time: ' 9:00-10:00',
-						num: 30,
-						p_time: ' 2020-07',
-						start: true,
-						joined: true
-					}
-				]
+				list: []
 			}
 		},
 		onLoad() {
@@ -65,6 +61,7 @@
 		methods: {
 			// 获取活动列表
 			getActivityList(page,token){
+				let _this=this;
 				uni.request({
 					url:'/events/list',
 					method:'POST',
@@ -76,7 +73,8 @@
 						limit:10
 					},
 					success(res){
-						console.log(res.data.data)
+						console.log(res.data)
+						_this.list=res.data.data;
 					}
 				})
 			}
@@ -98,7 +96,7 @@
 			height: 150rpx;
 			background-color: lightblue;
 
-			image {
+			.img {
 				width: 100%;
 				height: 100%;
 			}

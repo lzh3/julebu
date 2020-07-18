@@ -3,7 +3,7 @@
     <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval"
       :duration="duration">
       <swiper-item v-for="(item,index) in swiperItems" :key="index" class="item">
-        <image mode="aspectFill" :src="item.url"></image>
+        <image mode="aspectFill" :src="item.image" @click="jump(item.url)"></image>
       </swiper-item>
     </swiper>
   </view>
@@ -11,16 +11,11 @@
 
 <script>
   export default {
+    props: {
+      swiperItems: Array
+    },
     data() {
       return {
-        url: '',
-        swiperItems: [{
-          url: '../../static/image/home/banner1.jpg'
-        }, {
-          url: '../../static/image/home/banner2.png'
-        }, {
-          url: '../../static/image/home/banner2.png'
-        }],
         indicatorDots: true,
         autoplay: true,
         interval: 2000,
@@ -28,13 +23,13 @@
       }
     },
     methods: {
-      init() {
-        this.$http.get(this.url)
+      jump(url) {
+        uni.navigateTo({
+          url
+        });
       }
     },
-    mounted() {
-      // this.init()
-    },
+    mounted() {},
   }
 </script>
 

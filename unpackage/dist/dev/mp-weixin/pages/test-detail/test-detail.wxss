@@ -24,12 +24,12 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.test-detail.data-v-9bb0287e {
+.test-detail.data-v-15d2f360 {
   background: #fff;
   min-height: calc(100vh - 88rpx);
   padding-bottom: 84rpx;
 }
-.test-detail .test-name.data-v-9bb0287e {
+.test-detail .test-name.data-v-15d2f360 {
   font-size: 32rpx;
   font-weight: bold;
   color: #333333;
@@ -37,21 +37,21 @@
   padding-top: 50rpx;
   line-height: 1;
 }
-.test-detail .content.data-v-9bb0287e {
+.test-detail .content.data-v-15d2f360 {
   padding: 0 28rpx;
 }
-.test-detail .content .item .checkout-content.data-v-9bb0287e,
-.test-detail .content .item .uni-list-cell.data-v-9bb0287e {
+.test-detail .content .item .checkout-content.data-v-15d2f360,
+.test-detail .content .item .uni-list-cell.data-v-15d2f360 {
   margin-bottom: 22rpx;
 }
-.test-detail .content .item .test-option-name.data-v-9bb0287e {
+.test-detail .content .item .test-option-name.data-v-15d2f360 {
   font-size: 30rpx;
   font-weight: 500;
   color: #333333;
   margin: 46rpx 0 28rpx 0;
   line-height: 1;
 }
-.test-detail .content .item .uni-list-cell.data-v-9bb0287e {
+.test-detail .content .item .uni-list-cell.data-v-15d2f360 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -63,23 +63,23 @@
           align-items: center;
   line-height: 1;
 }
-.test-detail .content .item .uni-list-cell .radio.data-v-9bb0287e {
+.test-detail .content .item .uni-list-cell .radio.data-v-15d2f360 {
   margin-right: 10rpx;
 }
-.test-detail .content .item .uni-list-cell .radio.data-v-9bb0287e .uni-radio-input-checked {
+.test-detail .content .item .uni-list-cell .radio.data-v-15d2f360 .uni-radio-input-checked {
   background-color: #F36523 !important;
   border-color: #F36523 !important;
 }
-.test-detail .content .item .uni-list-cell .radio radio.data-v-9bb0287e {
+.test-detail .content .item .uni-list-cell .radio radio.data-v-15d2f360 {
   -webkit-transform: scale(0.7);
           transform: scale(0.7);
 }
-.test-detail .content .item .uni-list-cell .radio-content.data-v-9bb0287e {
+.test-detail .content .item .uni-list-cell .radio-content.data-v-15d2f360 {
   font-size: 30rpx;
   font-weight: 500;
   color: #333333;
 }
-.test-detail button.data-v-9bb0287e {
+.test-detail button.data-v-15d2f360 {
   width: 690rpx;
   height: 64rpx;
   line-height: 64rpx;

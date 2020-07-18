@@ -130,6 +130,10 @@
 			}
         }
         
+        ,{
+            "path" : "pages/mustlook/mustlook",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

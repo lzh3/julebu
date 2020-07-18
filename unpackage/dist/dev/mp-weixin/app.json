@@ -23,9 +23,28 @@
     "pages/personal/myactivity/myactivity",
     "pages/personal/mytrain/mytrain",
     "pages/personal/mytrain/result",
-    "pages/register/register"
+    "pages/register/register",
+    "pages/mustlook/mustlook"
   ],
-  "subPackages": [],
+  "subPackages": [
+    {
+      "root":"pages/index/index",
+      "pages":[
+        "pages/index/index",
+        "components/Swiper/Swiper",
+        "components/wuc-tab/wuc-tab"
+      ]
+    },
+    {
+      "root":"pages/personal/personal",
+      "pages":[
+        "pages/personal/personal",
+        "pages/personal/myactivity/myactivity",
+        "pages/personal/mycollect/collectdetail/collectdetail",
+        "pages/personal/mycollect/mycollect"
+      ]
+    }
+  ],
   "window": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "A+俱乐部",
@@ -70,6 +89,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap43.json"
+  "usingComponents": {}
 }

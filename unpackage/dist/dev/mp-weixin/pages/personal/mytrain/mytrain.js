@@ -94,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   wucTab: function() {
-    return __webpack_require__.e(/*! import() | components/wuc-tab/wuc-tab */ "components/wuc-tab/wuc-tab").then(__webpack_require__.bind(null, /*! @/components/wuc-tab/wuc-tab.vue */ 215))
+    return __webpack_require__.e(/*! import() | components/wuc-tab/wuc-tab */ "components/wuc-tab/wuc-tab").then(__webpack_require__.bind(null, /*! @/components/wuc-tab/wuc-tab.vue */ 221))
   }
 }
 var render = function() {
@@ -134,7 +134,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var WucTab = function WucTab() {__webpack_require__.e(/*! require.ensure | components/wuc-tab/wuc-tab */ "components/wuc-tab/wuc-tab").then((function () {return resolve(__webpack_require__(/*! @/components/wuc-tab/wuc-tab.vue */ 215));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var swiper = function swiper() {__webpack_require__.e(/*! require.ensure | components/wuc-tab/wuc-tab */ "components/wuc-tab/wuc-tab").then((function () {return resolve(__webpack_require__(/*! @/components/wuc-tab/wuc-tab.vue */ 215));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Kefu = function Kefu() {__webpack_require__.e(/*! require.ensure | components/Kefu/index */ "components/Kefu/index").then((function () {return resolve(__webpack_require__(/*! @/components/Kefu */ 222));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var WucTab = function WucTab() {__webpack_require__.e(/*! require.ensure | components/wuc-tab/wuc-tab */ "components/wuc-tab/wuc-tab").then((function () {return resolve(__webpack_require__(/*! @/components/wuc-tab/wuc-tab.vue */ 221));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var swiper = function swiper() {__webpack_require__.e(/*! require.ensure | components/wuc-tab/wuc-tab */ "components/wuc-tab/wuc-tab").then((function () {return resolve(__webpack_require__(/*! @/components/wuc-tab/wuc-tab.vue */ 221));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Kefu = function Kefu() {__webpack_require__.e(/*! require.ensure | components/Kefu/index */ "components/Kefu/index").then((function () {return resolve(__webpack_require__(/*! @/components/Kefu */ 228));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 

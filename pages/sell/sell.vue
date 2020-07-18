@@ -39,7 +39,8 @@
 					},
 					{
 						detail: '积分规则',
-						url: '../register/register',
+						//url: '../register/register',
+						url:'../mustlook/mustlook',
 						pic:'../../static/image/sell/1.png'
 					},
 				]

@@ -93,17 +93,45 @@
 				]
 			}
 		},
-		onLoad(){
-			console.log(1)
-		},
-		onShow(){
+		beforeCreate(){
 			let token=uni.getStorageSync('token');
-			console.log(token)
+			// console.log(token)
+		},
+		onLoad(){
+			let token=uni.getStorageSync('token');
+			this.getUserInfo();
+			
 		},
 		methods: {
 			loginFn() {
 				uni.navigateTo({
 					url: '../login/login'
+				})
+			},
+			// 获取页面信息
+			getPageInfo(){
+				uni.request({
+					url:'/user/modules',
+					method:'get',
+					header:{
+						'Authorization':token,
+					},
+					success(res){
+						console.log(res)
+					}
+				})
+			},
+			// 获取个人信息
+			getUserInfo(){
+				uni.request({
+					url:'/userinfo',
+					method:'get',
+					/* header:{
+						'Authorization':token,
+					}, */
+					success(res){
+						console.log(res)
+					}
 				})
 			}
 		}

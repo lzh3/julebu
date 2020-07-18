@@ -1,19 +1,25 @@
 <template>
 	<view :class="['activity-detail',activityStatus]">
-		<image :src="item.pic" class="pic" />
+		<image :src="item.image" class="pic" />
 		<view class="content">
 			<view class="item">
 				活动主题：
-				<text class="theme">{{item.theme}}</text>
-				<text class="status" :class="{end:end}">{{item.status}}</text>
+				<text class="theme">{{item.title}}</text>
+				<text class="status">
+					{{item.status==='in_start'?'进行中':(item.status==='end'?'已结束':'未开始')}}
+				</text>
 			</view>
-			<view class="item">活动时间：<text class="date" :class="{end:end}">{{item.date}}</text></view>
+			<view class="item">活动时间：
+				<text class="date" :class="{end:end}">
+					{{item.start_time}}-{{item.end_time}}
+				</text>
+			</view>
 			<view class="item">活动形式：<text class="type" :class="{end:end}">{{item.type}}</text></view>
-			<view class="item">参与名额：<text class="limit"  :class="{end:end}">{{item.limit}}</text>
-				<text class="isReported" :class="{end:end}">已有{{item.isReported}}人报名参加</text>
-			</view>
+			<!-- <view class="item">参与名额：<text class="limit"  :class="{end:end}">{{item.limit}}</text>
+				 <text class="isReported" :class="{end:end}">已有{{item.isReported}}人报名参加</text> 
+			</view> -->
 			<view class="item">活动介绍：
-				<view class="desc">{{item.desc}}</view>
+				<view class="desc">{{item.description}}</view>
 			</view>
 			<button type="primary" 
 				@click="joinActivity" 
@@ -42,7 +48,7 @@
 				joined:true,
 				end:true,
 				item: {
-					pic: '../../static/image/activity-pic.png',
+					/* pic: '../../static/image/activity-pic.png',
 					status: '已开始',
 					theme: 'AMD 618促销狂欢季全新上线',
 					date: '06.01 12:00~06.18 24:00',
@@ -50,7 +56,7 @@
 					limit: '50人',
 					isReported: '40',
 					ing:'true',
-					desc: '以下是活动介绍以下是活动介绍以下是活动介绍以下是活动 介绍以下是活动介绍以下是活动介绍以下是活动介绍以下是 介绍以下是活动介绍',
+					desc: '以下是活动介绍以下是活动介绍以下是活动介绍以下是活动 介绍以下是活动介绍以下是活动介绍以下是活动介绍以下是 介绍以下是活动介绍', */
 				},
 				modalStatus: 'success',
 				activityStatus: 'online', //活动状态 online 在线 not-yet还没开始 over过期了
@@ -58,21 +64,31 @@
 		},
 		//路由参数就收
 		onLoad(opt) {
-			console.log(opt)
-			if(opt.joined==='false'){
-				this.joined=false;
-			}
-			
+			let token = uni.getStorageSync('token')
+			console.log(opt.id)
+			this.getDetail(opt.id,token)
 		},
 		methods: {
 			joinActivity() {
 				this.$refs.modal.open()
 			},
-
-			login() {
-
-			},
-
+			getDetail(id,token){
+				let _this=this;
+				uni.request({
+					url:'/events/show',
+					method:'POST',
+					header:{
+						'authtoken':'token '+token,
+					},
+					data:{
+						id
+					},
+					success(res){
+						console.log(res.data)
+						_this.item=res.data.data;
+					}
+				})
+			}
 		},
 	}
 </script>

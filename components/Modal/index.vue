@@ -26,7 +26,7 @@
 			<button type="default" v-show='showlogin' class="btn reg-btn" @tap='toRegister'>去注册</button>
 		</view>
 		<view class="modal-wrap error" v-show="status === 'reg-error'">
-			<text class="title">{{msg}}</text>
+			<text class="title" :class="{reg_err:status==='reg-error'}">{{msg}}</text>
 			<button type="primary" @click="loginFn" class="btn">去登录</button>
 			<image src="../../static/image/close.png" class="close" @click="close" />
 		</view>
@@ -105,6 +105,9 @@
 </script>
 
 <style scoped lang='scss'>
+	.reg_err{
+		margin:30rpx 0;
+	}
 	.reg-btn {
 		color:#fff;
 	} 

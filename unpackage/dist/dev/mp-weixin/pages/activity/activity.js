@@ -163,6 +163,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 {
   components: {
     NotLogin: NotLogin },
@@ -170,23 +182,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       showLogin: true,
-      list: [{
-        title: '折磨生出苦难，苦难',
-        time: ' 9:00-10:00',
-        num: 30,
-        p_time: ' 2020-07',
-        start: false,
-        joined: true // 已经参与
-      },
-      {
-        title: '折磨生出苦难，苦难',
-        time: ' 9:00-10:00',
-        num: 30,
-        p_time: ' 2020-07',
-        start: true,
-        joined: true }] };
-
-
+      list: [] };
 
   },
   onLoad: function onLoad() {
@@ -197,6 +193,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     // 获取活动列表
     getActivityList: function getActivityList(page, token) {
+      var _this = this;
       uni.request({
         url: '/events/list',
         method: 'POST',
@@ -208,7 +205,8 @@ __webpack_require__.r(__webpack_exports__);
           limit: 10 },
 
         success: function success(res) {
-          console.log(res.data.data);
+          console.log(res.data);
+          _this.list = res.data.data;
         } });
 
     } } };exports.default = _default;

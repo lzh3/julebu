@@ -1,6 +1,5 @@
 <template>
 	<view>
-
 		<view class="activity-wrap" v-if='showLogin'>
 			<NotLogin pageName="活动"></NotLogin>
 		</view>

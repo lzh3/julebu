@@ -174,7 +174,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 {
   components: {
     NotLogin: NotLogin },
@@ -186,7 +185,9 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   onLoad: function onLoad() {
+    console.log(123);
     var token = uni.getStorageSync('token');
+    console.log(token);
     this.showLogin = token ? true : false;
     this.getActivityList(1, token);
   },
@@ -195,10 +196,11 @@ __webpack_require__.r(__webpack_exports__);
     getActivityList: function getActivityList(page, token) {
       var _this = this;
       uni.request({
-        url: '/events/list',
+        url: 'https://amd.mcooks.cn/api/events/list',
         method: 'POST',
         header: {
-          'authtoken': 'token ' + token },
+          'authtoken': 'token ' + token,
+          'content-type': 'application/x-www-form-urlencoded' },
 
         data: {
           page: page,
@@ -207,6 +209,9 @@ __webpack_require__.r(__webpack_exports__);
         success: function success(res) {
           console.log(res.data);
           _this.list = res.data.data;
+        },
+        fail: function fail(e) {
+          console.log(e);
         } });
 
     } } };exports.default = _default;

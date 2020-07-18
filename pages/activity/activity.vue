@@ -1,8 +1,11 @@
 <template>
 	<view>
+		
+		<view class="activity-wrap" v-if='showLogin'>
+			<NotLogin pageName="活动"></NotLogin>
+		</view>
 		<view class="cu-card article no-card"
-				v-if='showLogin'
-				v-for="(item,key) in list">
+				v-for="(item,key) in list" :key='key'>
 			<view class="cu-item shadow">
 				<navigator :url="'../activity-detail/activity-detail?id='+item.id">
 					<view class="content">
@@ -34,10 +37,6 @@
 				</navigator>
 			</view>
 		</view>
-
-		<view class="activity-wrap" v-else>
-			<NotLogin pageName="活动" />
-		</view>
 	</view>
 </template>
 
@@ -54,7 +53,9 @@
 			}
 		},
 		onLoad() {
+			console.log(123)
 			let token = uni.getStorageSync('token')
+			console.log(token)
 			this.showLogin = token ? true: false;
 			this.getActivityList(1,token);
 		},
@@ -63,10 +64,11 @@
 			getActivityList(page,token){
 				let _this=this;
 				uni.request({
-					url:'/events/list',
+					url:'https://amd.mcooks.cn/api/events/list',
 					method:'POST',
 					header:{
 						'authtoken':'token '+token,
+						'content-type': 'application/x-www-form-urlencoded'
 					},
 					data:{
 						page,
@@ -75,6 +77,9 @@
 					success(res){
 						console.log(res.data)
 						_this.list=res.data.data;
+					},
+					fail(e){
+						console.log(e)
 					}
 				})
 			}

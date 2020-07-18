@@ -54,7 +54,9 @@
 			}
 		},
 		methods: {
-			
+			getList(){
+				
+			}
 		}
 	}
 </script>

@@ -26,7 +26,7 @@
 				class="btn" 
 				v-if="joined"
 				:class="{over:end}"
-				:disabled="activityStatus !== 'online'">
+				:disabled="item.is_sign==0">
 				我要参与
 			</button>
 		</view>
@@ -66,6 +66,9 @@
 		onLoad(opt) {
 			let token = uni.getStorageSync('token')
 			console.log(opt.id)
+			if(opt.joined){
+				this.joined = false;
+			}
 			this.getDetail(opt.id,token)
 		},
 		methods: {

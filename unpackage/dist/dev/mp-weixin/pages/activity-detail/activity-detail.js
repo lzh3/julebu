@@ -198,6 +198,9 @@ __webpack_require__.r(__webpack_exports__);
   onLoad: function onLoad(opt) {
     var token = uni.getStorageSync('token');
     console.log(opt.id);
+    if (opt.joined) {
+      this.joined = false;
+    }
     this.getDetail(opt.id, token);
   },
   methods: {

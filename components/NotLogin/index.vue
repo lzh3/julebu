@@ -2,7 +2,7 @@
   <view class="not-login-wrap">
     <view class="content">
       <image src="../../static/image/headimg.png" />
-      <text>你还未登录,不能参加{{pageName}}.</text>
+      <text class="txt">你还未登录,不能参加{{pageName}}.</text>
       <button @click="jump">立即登录</button>
     </view>
   </view>
@@ -52,7 +52,7 @@
       align-items: center;
       flex-direction: column;
 
-      text {
+      .txt {
         font-size: 26rpx;
         font-weight: 500;
         color: rgba(102, 102, 102, 1);

@@ -185,7 +185,10 @@ var _default =
 
 
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    getList: function getList() {
+
+    } } };exports.default = _default;
 
 /***/ }),
 

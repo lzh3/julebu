@@ -1,26 +1,22 @@
 <template>
 	<view>
-		
+
 		<view class="activity-wrap" v-if='showLogin'>
 			<NotLogin pageName="活动"></NotLogin>
 		</view>
-		<view class="cu-card article no-card"
-				v-for="(item,key) in list" :key='key'>
+		<view class="cu-card article no-card" v-for="(item,key) in list" :key='key' v-else>
 			<view class="cu-item shadow">
 				<navigator :url="'../activity-detail/activity-detail?id='+item.id">
 					<view class="content">
 						<view class="pic">
 							<image class="img" :src="item.image" mode=""></image>
-							<image class="on"
-								v-if='item.status==="in_start"'
-								src="../../static/image/activity/in_start.png" mode=""></image>
-							<image class="on"
-								v-else-if="item.status==='not_start'"
-								src="../../static/image/activity/not_start.png" mode=""></image>
-							<image class="on"
-								v-else-if="item.status==='end'"
-								src="../../static/image/activity/end.png" mode=""></image>
-							
+							<image class="on" v-if='item.status==="in_start"' src="../../static/image/activity/in_start.png" mode="">
+							</image>
+							<image class="on" v-else-if="item.status==='not_start'" src="../../static/image/activity/not_start.png"
+								mode=""></image>
+							<image class="on" v-else-if="item.status==='end'" src="../../static/image/activity/end.png" mode="">
+							</image>
+
 						</view>
 						<view class="desc">
 							<view class="text-content">主题:{{item.title}}</view>
@@ -48,37 +44,41 @@
 		},
 		data() {
 			return {
-				showLogin: true,
+				showLogin: false,
 				list: []
 			}
 		},
-		onLoad() {
-			console.log(123)
+		onShow() {
 			let token = uni.getStorageSync('token')
-			console.log(token)
-			this.showLogin = token ? true: false;
-			this.getActivityList(1,token);
+			if (token) {
+				this.getActivityList(1, token);
+			} else {
+				this.showLogin = true
+			}
+		},
+		onLoad() {
+
 		},
 		methods: {
 			// 获取活动列表
-			getActivityList(page,token){
-				let _this=this;
+			getActivityList(page, token) {
+				let _this = this;
 				uni.request({
-					url:'https://amd.mcooks.cn/api/events/list',
-					method:'POST',
-					header:{
-						'authtoken':'token '+token,
+					url: '/events/list',
+					method: 'POST',
+					header: {
+						'authtoken': 'token ' + token,
 						'content-type': 'application/x-www-form-urlencoded'
 					},
-					data:{
+					data: {
 						page,
-						limit:10
+						limit: 10
 					},
-					success(res){
+					success(res) {
 						console.log(res.data)
-						_this.list=res.data.data;
+						_this.list = res.data.data;
 					},
-					fail(e){
+					fail(e) {
 						console.log(e)
 					}
 				})

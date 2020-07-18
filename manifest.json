@@ -56,7 +56,7 @@
 			"proxy": {
 				"/": {
 					"target": "https://amd.mcooks.cn/api", //请求的目标域名
-					"changeOrigin": false,
+					"changeOrigin": true,
 					"secure": false
 				}
 			}

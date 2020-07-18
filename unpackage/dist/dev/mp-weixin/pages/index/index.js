@@ -220,95 +220,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
     return {
-      newsItems: [
-      {
-        id: "1",
-        url: "../../static/image/home/news.png",
-        mainTitle: "【促销活动】",
-        subTitle: "AMD618促销狂欢季全新上线 ",
-        date: "06.01 12:00-06.18 24:00" },
-
-      {
-        id: "2",
-        url: "../../static/image/home/news.png",
-        mainTitle: "【促销活动】",
-        subTitle: "AMD618促销狂欢季全新上线 ",
-        date: "06.01 12:00-06.18 24:00" }],
-
-
-      bannerItems: [
-      {
-        url: "../../static/image/home/player.png",
-        title: "玩家必看",
+      indexBanner: [],
+      newsItems: [],
+      bannerItems: [{
+        url: '../../static/image/home/player.png',
+        title: '玩家必看',
         jumpUrl: "/pages/playersMustSee/playersMustSee" },
-
       {
-        url: "../../static/image/home/uier.png",
-        title: "设计师in",
+        url: '../../static/image/home/uier.png',
+        title: '设计师in',
         jumpUrl: "/pages/designerIn/designerIn" },
-
       {
-        url: "../../static/image/home/InterneBar.png",
-        title: "网吧专家",
+        url: '../../static/image/home/InterneBar.png',
+        title: '网吧专家',
         jumpUrl: "/pages/internetBar/internetBar" }],
 
-
-      trainItem: {
-        topPic: "../../static/image/home/train.png",
-        title: "AMD最新三代处理器全渠道销售培训",
-        status: "刚刚",
-        date: "06.04 8:00-06.06 15:00",
-        number: "50人",
-        type: "视频",
-        id: Date.now() },
-
-
+      trainItem: [],
       notices: [], //通知
       isCurrent: 0 };
 
@@ -358,18 +289,24 @@ var _default =
   mounted: function mounted() {var _this2 = this;
     uni.request({
       url: "/index", //仅为示例，并非真实接口地址。
-      success: function success(_ref) {var data = _ref.data;
+      success: function success(_ref)
+
+      {var data = _ref.data;
         if (data.code == 200) {var _data$data =
+
+
+
+
+
           data.data,banners = _data$data.banners,news = _data$data.news,notices = _data$data.notices,train = _data$data.train;
           _this2.newsItems = news;
-          _this2.bannerItems = banners;
-          _this2.notices = [
-          { title: "31省新增22例确诊 本土16例", date: "07-15" },
-          { title: "一对香港母子入境广东珠海确诊新", date: "07-16" },
-          { title: "乌鲁木齐已启动疫情应急响应预案", date: "07-18" }];
-
+          _this2.indexBanner = banners;
+          _this2.notices = notices;
           _this2.autoplayNotice();
           _this2.trainItem = train;
+          console.log("TCL: mounted -> newsItems", _this2.newsItems);
+          console.log("TCL: mounted -> bannerItems", _this2.bannerItems);
+          console.log("TCL: mounted -> trainItem", _this2.trainItem);
         }
       } });
 

@@ -63,14 +63,34 @@
 				"navigationBarTitleText": "玩家必看"
 			}
 		}, {
+			"path": "pages/playersMustSee/lists/lists",
+			"style": {
+				"navigationBarTitleText": "玩家必看列表"
+			}
+		}, {
+			"path": "pages/playersMustSee/detail/detail",
+			"style": {
+				"navigationBarTitleText": "玩家必看详情"
+			}
+		}, {
 			"path": "pages/designerIn/designerIn",
 			"style": {
 				"navigationBarTitleText": "设计师IN"
 			}
 		}, {
+			"path": "pages/designerIn/detail/detail",
+			"style": {
+				"navigationBarTitleText": "设计师IN详情"
+			}
+		}, {
 			"path": "pages/internetBar/internetBar",
 			"style": {
 				"navigationBarTitleText": "网吧专家"
+			}
+		}, {
+			"path": "pages/internetBar/detail/detail",
+			"style": {
+				"navigationBarTitleText": "网吧专家详情"
 			}
 		},
 		{
@@ -98,43 +118,40 @@
 			"style": {
 				"navigationBarTitleText": "我的积分"
 			}
-		}
-	    ,{
-            "path" : "pages/test-detail/test-detail",
-            "style" : {
-              "navigationBarTitleText": "考试详情页"
-            }
-        }
-        ,{
-            "path" : "pages/personal/myactivity/myactivity",
-            "style" : {
+		}, {
+			"path": "pages/test-detail/test-detail",
+			"style": {
+				"navigationBarTitleText": "考试详情页"
+			}
+		}, {
+			"path": "pages/personal/myactivity/myactivity",
+			"style": {
 				"navigationBarTitleText": "我的活动"
 			}
-        }
-        ,{
-            "path" : "pages/personal/mytrain/mytrain",
-            "style" : {
+		}, {
+			"path": "pages/personal/mytrain/mytrain",
+			"style": {
 				"navigationBarTitleText": "我的培训"
 			}
-        },
+		},
 		{
-		    "path" : "pages/personal/mytrain/result",
-		    "style" : {
+			"path": "pages/personal/mytrain/result",
+			"style": {
 				"navigationBarTitleText": "成绩"
 			}
 		},
 		{
-            "path" : "pages/register/register",
-            "style" : {
+			"path": "pages/register/register",
+			"style": {
 				"navigationBarTitleText": "注册"
 			}
-        }
-        
-        ,{
-            "path" : "pages/mustlook/mustlook",
-            "style" : {}
-        }
-    ],
+		}
+
+		, {
+			"path": "pages/mustlook/mustlook",
+			"style": {}
+		}
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "A+俱乐部",

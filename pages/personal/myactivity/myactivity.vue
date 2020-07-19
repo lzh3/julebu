@@ -2,23 +2,23 @@
 	<view>
 		<view class="cu-card article no-card" v-for="item in list">
 			<view class="cu-item shadow">
-				<navigator :url="'../../activity-detail/activity-detail?joined='+item.joined">
+				<navigator :url="'../../activity-detail/activity-detail?joined='+item.joined+'&id='+item.id">
 					<view class="content">
 						<view class="pic">
 							<image 
-								v-if="item.start"
+								v-if="item.start==='in_start'"
 								class="on"
-							    src="../../../static/image/icon/personal/activity/start.png" mode=""></image>
+							    :src="item.image" mode=""></image>
 							 <image
 								 v-else
 								 class="on"
-								 src="../../../static/image/icon/personal/activity/end.png" mode=""></image>
+								 :src="item.image" mode=""></image>
 						</view>
 						<view class="desc">
 							<view class="text-content">主题:{{item.title}}</view>
-							<view class="text-content">时间:{{item.time}}</view>
+							<view class="text-content">时间:{{item.start_time}}-{{item.end_time}}</view>
 							<view class="text-content">
-								活动名额: <text>{{item.num}}人</text>
+								<!-- 活动名额: <text>{{item.num}}人</text> -->
 								<text class="f-right">{{item.p_time}}</text>
 							</view>
 						</view>
@@ -38,6 +38,7 @@
 						title:'折磨生出苦难，苦难',
 						time:' 9:00-10:00',
 						num:30,
+						id:2,
 						p_time:' 2020-07',
 						start:false,
 						joined:false, // 已经参与
@@ -46,6 +47,7 @@
 						title:'折磨生出苦难，苦难',
 						time:' 9:00-10:00',
 						num:30,
+						id:1,
 						p_time:' 2020-07',
 						start:true,
 						joined:false
@@ -53,9 +55,31 @@
 				]
 			}
 		},
+		onLoad(){
+			let token = uni.getStorageSync('token')
+			this.getList(1,token)
+		},
 		methods: {
-			getList(){
-				
+			getList(page,token){
+				let _this=this;
+				uni.request({
+					url:'sign-events',
+					method:'POST',
+					header:{
+						'authtoken':'token '+token,
+					},
+					data:{
+						page,
+						limit:10
+					},
+					success(res){
+						console.log(res.data)
+						// _this.list=res.data.data;
+					},
+					fail(e){
+						console.log(e)
+					}
+				})
 			}
 		}
 	}

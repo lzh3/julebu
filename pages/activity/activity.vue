@@ -5,6 +5,7 @@
 			<NotLogin pageName="活动"></NotLogin>
 		</view>
 		<view class="cu-card article no-card"
+				v-else
 				v-for="(item,key) in list" :key='key'>
 			<view class="cu-item shadow">
 				<navigator :url="'../activity-detail/activity-detail?id='+item.id">
@@ -53,10 +54,8 @@
 			}
 		},
 		onLoad() {
-			console.log(123)
 			let token = uni.getStorageSync('token')
-			console.log(token)
-			this.showLogin = token ? true: false;
+			this.showLogin = token==='' ? true: false;
 			this.getActivityList(1,token);
 		},
 		methods: {
@@ -64,7 +63,7 @@
 			getActivityList(page,token){
 				let _this=this;
 				uni.request({
-					url:'https://amd.mcooks.cn/api/events/list',
+					url:'events/list',
 					method:'POST',
 					header:{
 						'authtoken':'token '+token,

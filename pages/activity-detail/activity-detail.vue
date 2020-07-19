@@ -65,7 +65,7 @@
 		//路由参数就收
 		onLoad(opt) {
 			let token = uni.getStorageSync('token')
-			console.log(opt.id)
+			console.log(opt)
 			if(opt.joined){
 				this.joined = false;
 			}

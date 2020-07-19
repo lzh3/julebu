@@ -143,7 +143,9 @@
 						'authtoken':'token '+this.token,
 					},
 					success(res){
-						console.log(res.data)
+						console.log(res.data.data.nickname)
+						let nickname=res.data.data.nickname;
+						uni.setStorageSync('username',nickname)
 						if(res.data.code==200){
 							const {nickname,id_type,id,reg_ip,realname,avatar}=res.data.data
 							_this.user_name=realname

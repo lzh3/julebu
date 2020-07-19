@@ -45,6 +45,19 @@
 					<input v-model="reg_form.code" placeholder="请输入6位验证码" name="phone"></input>
 				</view>
 				<view class="cu-form-group">
+					<view class="uni-title">是否愿意加入amd体系</view>
+					<view class="uni-padding-wrap">
+						<radio-group>
+							<label class="radio">
+								<radio value="0" v-model="reg_form.is_join_amd"/>是
+							</label>
+							<label class="radio">
+								<radio value="1" v-model="reg_form.is_join_amd"/>否
+							</label>
+						</radio-group>
+					</view>
+				</view>
+				<view class="cu-form-group">
 					<button class="reg-btn bg-main" @click="regFn">注册</button>
 				</view>
 				<!-- <view class="cu-form-group">
@@ -67,7 +80,7 @@
 				msg: '请输入正确信息!',
 				code: '',
 				reg_form: {
-					connect:'联系人',
+					connect: '联系人',
 					"company": "asdasd", // 公司名称
 					"province": "河北省", // 省
 					"city": "邯郸市", // 市
@@ -75,7 +88,8 @@
 					"business": "公司主营行业", // 公司主营行业
 					"realname": "联系人", // 联系人
 					"phone": "18270825622", // 联系手机
-					"code": "816726" // 验证码
+					"code": "816726", // 验证码
+					is_join_amd: "0",
 				}
 			}
 		},
@@ -85,19 +99,21 @@
 		methods: {
 			regFn() {
 				// console.log(this.reg_form)
-				let _this=this;
+				let _this = this;
 				let {
 					address,
 					business,
 					code,
 					company,
 					connect,
-					phone
+					phone,
+					is_join_amd
 				} = this.reg_form;
 				var reg = /.+?(省|市|自治区|自治州|县|区)/g;
 				//console.log(this.reg_form.address.match(reg))
 
-				let regRes = this.reg_form.address.match(reg)||[];
+				let regRes = this.reg_form.address.match(reg) || [];
+				console.log(regRes)
 
 				if (address && business && code && company && connect && phone) {
 					uni.request({
@@ -107,20 +123,21 @@
 							company, // 公司名称
 							"province": regRes[0], // 省
 							"city": regRes[1], // 市
-							"district":regRes[2],
+							"district": regRes[2],
 							address, // 详细地址
 							business, // 公司主营行业
 							"realname": connect, // 联系人
 							phone, // 联系手机
-							code // 验证码
+							code, // 验证码
+							is_join_amd:Number(is_join_amd)
 						},
 						success(res) {
 							console.log(res)
-							_this.msg=res.data.msg;
+							_this.msg = res.data.msg;
 							_this.$refs.pp.open()
 
 						},
-						fail(e){
+						fail(e) {
 							console.log(e)
 						}
 					})

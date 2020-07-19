@@ -70,9 +70,9 @@
 						console.log(res.data)
 						if (Number(res.data.code) === 200) {
 							_this.code = res.data.code;
-							uni.navigateTo({
+							/* uni.navigateTo({
 								url: '/pages/personal/personal'
-							})
+							}) */
 						} else {
 							_this.fail_code = 0;
 							_this.modal_title = res.data.msg;
@@ -96,7 +96,7 @@
 					},
 					data: this.login_form,
 					success(res) {
-						// console.log(res.data.data.token)
+						console.log(res.data)
 						if (res.data.code === 200) {
 							uni.setStorageSync('token', res.data.data.token);
 							_this.showlogin = false;

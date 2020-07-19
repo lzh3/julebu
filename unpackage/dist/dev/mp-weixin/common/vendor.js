@@ -8760,6 +8760,29 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
+/***/ 354:
+/*!****************************************************************!*\
+  !*** C:/Users/ZONST/Desktop/uni-app-test/julebu/static/api.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; /**
+                                                                                                      * 地址配置文件
+                                                                                                      */
+// const host = 'http://dora.vaiwan.com'; // 域名
+var host = 'https://amd.mcooks.cn'; // 域名
+
+var config = {
+  host: host,
+  getPlates: host + '/api/plates' // 获取信息列表
+};var _default =
+
+config;exports.default = _default;
+
+/***/ }),
+
 /***/ 4:
 /*!*************************************************************!*\
   !*** C:/Users/ZONST/Desktop/uni-app-test/julebu/pages.json ***!

@@ -1,6 +1,6 @@
 <template>
   <view class="players-must-see">
-    <view class="items" v-for="(item,index) in list" :key="index">
+    <view class="items" v-for="(item,index) in list" :key="index" @click="jump(item.type)">
       <image :src="item.icon" mode="" />
       <text>{{item.title}}</text>
     </view>
@@ -15,20 +15,27 @@
           title: '锐龙情报站',
           icon: '../../static/image//playersMustSee/borad.png',
           url: '',
+          type: 1
         }, {
           title: '锐龙影院',
           icon: '../../static/image//playersMustSee/movie.png',
           url: '',
+          type: 2
         }, {
           title: '锐龙画廊',
           icon: '../../static/image//playersMustSee/pic.png',
           url: '',
-        }]
+          type: 3
+        }],
       };
     },
 
     methods: {
-
+      jump(type) {
+        uni.navigateTo({
+          url: 'lists/lists?type=' + type,
+        });
+      }
     },
 
   };

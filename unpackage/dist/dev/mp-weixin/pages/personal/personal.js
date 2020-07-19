@@ -279,6 +279,13 @@ var _default =
           var nickname = res.data.data.nickname;
           uni.setStorageSync('username', nickname);
           if (res.data.code == 200) {var _res$data$data =
+
+
+
+
+
+
+
             res.data.data,_nickname = _res$data$data.nickname,id_type = _res$data$data.id_type,id = _res$data$data.id,reg_ip = _res$data$data.reg_ip,realname = _res$data$data.realname,avatar = _res$data$data.avatar;
             _this.username = realname;
             _this.id = id;

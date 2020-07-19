@@ -130,22 +130,23 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _api = _interopRequireDefault(__webpack_require__(/*! ../../static/api.js */ 354));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}var _default =
 {
   data: function data() {
     return {
@@ -157,14 +158,76 @@ var _default =
         pic: "../../static/image/internetBar/pic.png" },
       {
         title: '网吧干货分享平台 - AMD 3600 + 16G内存 + 1080的游戏测试',
-        pic: "../../static/image/internetBar/pic.png" }] };
+        pic: "../../static/image/internetBar/pic.png" }],
 
+      type: 2,
+      son_type: 1,
+      page: 1,
+      limit: 10,
+      lists: [] };
 
   },
   methods: {
     detail: function detail(item) {
       console.log("TCL: detail -> item", item);
-    } } };exports.default = _default;
+      var url = '';
+      if (item.info_type == 1) {
+        url = item.image;
+      } else if (item.info_type == 2) {
+        url = item.video;
+      } else if (item.info_type == 3) {
+        url = item.outer_url;
+      }
+      uni.navigateTo({
+        url: 'detail/detail?type=' + item.info_type + '&url=' + url });
+
+    },
+    getPlates: function getPlates() {var _this = this;
+      uni.request({
+        url: _api.default.getPlates,
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' },
+
+        data: {
+          type: this.type,
+          son_type: this.son_type,
+          page: this.page,
+          limit: this.limit },
+
+        success: function success(res) {
+          console.log(res);
+          // console.log(res.data.data.token)
+          if (res.data.code == 200) {
+            if (_this.page == 1) {
+              _this.lists = res.data.data;
+            } else {
+              if (res.data.data && res.data.data.length != 0) {
+                _this.lists = [].concat(_toConsumableArray(_this.lists), _toConsumableArray(res.data.data));
+              } else {
+                _this.page -= 1;
+              }
+            }
+          }
+        },
+        fail: function fail(e) {
+          console.log(e);
+        } });
+
+    } },
+
+  onShow: function onShow() {
+    this.page = 1;
+    this.getPlates();
+  },
+  onLoad: function onLoad(options) {
+    this.getPlates();
+  },
+  onReachBottom: function onReachBottom() {
+    this.page += 1;
+    this.getPlates();
+  } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

@@ -142,17 +142,24 @@
 					header: {
 						'authtoken': 'token ' + this.token,
 					},
-					success(res){
+					success(res) {
 						console.log(res.data.data.nickname)
-						let nickname=res.data.data.nickname;
-						uni.setStorageSync('username',nickname)
-						if(res.data.code==200){
-							const {nickname,id_type,id,reg_ip,realname,avatar}=res.data.data
-							_this.username=realname
-							_this.id=id
-							_this.jf=reg_ip
-							_this.avatar=avatar
-							switch (id_type){
+						let nickname = res.data.data.nickname;
+						uni.setStorageSync('username', nickname)
+						if (res.data.code == 200) {
+							const {
+								nickname,
+								id_type,
+								id,
+								reg_ip,
+								realname,
+								avatar
+							} = res.data.data
+							_this.username = realname
+							_this.id = id
+							_this.jf = reg_ip
+							_this.avatar = avatar
+							switch (id_type) {
 								case 1:
 									_this.type = '注册用户'
 									break;

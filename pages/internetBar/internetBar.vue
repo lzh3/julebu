@@ -1,7 +1,7 @@
 <template>
 	<view class="internet-bar">
-		<view class="items" v-for="(item,index) in list" :key="index">
-			<image :src="item.pic" mode="scaleToFill" />
+		<view class="items" v-for="(item,index) in lists" :key="index">
+			<image :src="item.cover" mode="aspectFill" />
 			<view class="items-content">
 				<view class="title">{{item.title}}</view>
 				<view class="operate-btn" @click="detail(item)">
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+	import api from '../../static/api.js'
 	export default {
 		data() {
 			return {
@@ -26,14 +27,74 @@
 				}, {
 					title: '网吧干货分享平台 - AMD 3600 + 16G内存 + 1080的游戏测试',
 					pic: "../../static/image/internetBar/pic.png",
-				}]
+				}],
+				type: 2,
+				son_type: 1,
+				page: 1,
+				limit: 10,
+				lists: []
 			}
 		},
 		methods: {
 			detail(item) {
 				console.log("TCL: detail -> item", item)
+				let url = '';
+				if (item.info_type == 1) {
+					url = item.image;
+				} else if (item.info_type == 2) {
+					url = item.video;
+				} else if (item.info_type == 3) {
+					url = item.outer_url;
+				}
+				uni.navigateTo({
+					url: 'detail/detail?type=' + item.info_type + '&url=' + url,
+				});
+			},
+			getPlates() {
+				uni.request({
+					url: api.getPlates,
+					method: 'POST',
+					header: {
+						'content-type': 'application/x-www-form-urlencoded'
+					},
+					data: {
+						type: this.type,
+						son_type: this.son_type,
+						page: this.page,
+						limit: this.limit
+					},
+					success: (res) => {
+						console.log(res)
+						// console.log(res.data.data.token)
+						if (res.data.code == 200) {
+							if (this.page == 1) {
+								this.lists = res.data.data;
+							} else {
+								if (res.data.data && res.data.data.length != 0) {
+									this.lists = [...this.lists, ...res.data.data];
+								} else {
+									this.page -= 1;
+								}
+							}
+						}
+					},
+					fail(e) {
+						console.log(e)
+					}
+				})
 			}
-		}
+		},
+		onShow() {
+			this.page = 1;
+			this.getPlates();
+		},
+		onLoad(options) {
+			this.getPlates();
+		},
+		onReachBottom() {
+			this.page += 1;
+			this.getPlates();
+		},
 	}
 </script>
 
@@ -57,6 +118,7 @@
 			}
 
 			.items-content {
+				flex: 1;
 				margin-left: 20rpx;
 
 				.title {

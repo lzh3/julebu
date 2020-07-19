@@ -42,7 +42,7 @@
 				modal_title: '',
 				info: 'yes',
 				login_form: {
-					phone: '18270825622',
+					phone: '15030017934',
 					code: ""
 				},
 				msg: '请输入正确信息!',
@@ -112,7 +112,7 @@
 						_this.modal_title = res.data.msg;
 						_this.$refs.modal.open()
 					},
-					fail(e){
+					fail(e) {
 						console.log(e)
 					}
 				})

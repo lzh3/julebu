@@ -8,7 +8,7 @@
 				<view class="touxiang">
 					<!-- -->
 					<image v-if="avatar==''" src="../../static/image/icon/personal/avator.png" mode=""></image>
-					<image :src="avatar" v-else mode=""></image> 
+					<image :src="avatar" v-else mode=""></image>
 				</view>
 				<view class="status">
 					<view class="name">
@@ -27,7 +27,7 @@
 				<view class="item" v-for="item in list">
 					<navigator :url='item.url'>
 						<view class="img">
-							<image :src="item.icon" mode=""></image>
+							<image :src="item.image" mode=""></image>
 						</view>
 						<view class="txt">{{item.title}}</view>
 					</navigator>
@@ -47,71 +47,71 @@
 	export default {
 		data() {
 			return {
-				token:'',
-				username:'',
-				id:'',
-				jf:'',
-				avatar:'',
-				type:'',
-				user_info:{},
-				list: [
-					{
-						icon: '../../static/image/icon/personal/1.png',
+				token: '',
+				username: '',
+				id: '',
+				jf: '',
+				avatar: '',
+				type: '',
+				user_info: {},
+				list: [{
+						image: '../../static/image/icon/personal/1.png',
 						title: '店铺详情'
 					},
 					{
-						icon: '../../static/image/icon/personal/2.png',
+						image: '../../static/image/icon/personal/2.png',
 						title: '店面形象'
 					},
 					{
-						icon: '../../static/image/icon/personal/3.png',
+						image: '../../static/image/icon/personal/3.png',
 						title: '店员管理'
 					},
 					{
-						icon: '../../static/image/icon/personal/4.png',
+						image: '../../static/image/icon/personal/4.png',
 						title: '我的活动',
-						url:'./myactivity/myactivity'
+						url: './myactivity/myactivity'
 					},
 					{
-						icon: '../../static/image/icon/personal/5.png',
+						image: '../../static/image/icon/personal/5.png',
 						title: '我的培训',
-						url:'./mytrain/mytrain'
+						url: './mytrain/mytrain'
 					},
 					{
-						icon: '../../static/image/icon/personal/6.png',
+						image: '../../static/image/icon/personal/6.png',
 						title: '我的帖子',
-						url:'./mypost/mypost'
+						url: './mypost/mypost'
 					},
 					{
-						icon: '../../static/image/icon/personal/7.png',
+						image: '../../static/image/icon/personal/7.png',
 						title: '我的积分',
-						url:'./myjf/myjf'
+						url: './myjf/myjf'
 					},
 					{
-						icon: '../../static/image/icon/personal/8.png',
+						image: '../../static/image/icon/personal/8.png',
 						title: '积分奖励'
 					},
 					{
-						icon: '../../static/image/icon/personal/9.png',
+						image: '../../static/image/icon/personal/9.png',
 						title: '我的收藏',
-						url:'./mycollect/mycollect'
+						url: './mycollect/mycollect'
 					},
 					{
-						icon: '../../static/image/icon/personal/10.png',
+						image: '../../static/image/icon/personal/10.png',
 						title: '我的客服'
 					},
 				]
 			}
 		},
-		beforeCreate(){
-			let token=uni.getStorageSync('token');
-			this.token=uni.getStorageSync('token');
+		beforeCreate() {
+			let token = uni.getStorageSync('token');
+			this.token = uni.getStorageSync('token');
 			// console.log(token)
 		},
-		onLoad(){
-			this.token=uni.getStorageSync('token');
+		onLoad() {
+			this.token = uni.getStorageSync('token');
 			this.getUserInfo();
-			
+			this.getPageInfo();
+
 		},
 		methods: {
 			loginFn() {
@@ -120,27 +120,27 @@
 				})
 			},
 			// 获取页面信息
-			getPageInfo(){
-				let token=this.token;
+			getPageInfo() {
+				let token = this.token;
 				uni.request({
-					url:'/user/modules',
-					method:'get',
-					header:{
-						'authtoken':'token '+token,
+					url: '/user/modules',
+					method: 'get',
+					header: {
+						'authtoken': 'token ' + token,
 					},
-					success(res){
-						console.log(res)
+					success(res) {
+						console.log("TCL: success -> res user/modules", res)
 					}
 				})
 			},
 			// 获取个人信息
-			getUserInfo(){
-				let _this=this;
+			getUserInfo() {
+				let _this = this;
 				uni.request({
-					url:'/userinfo',
-					method:'get',
-					header:{
-						'authtoken':'token '+this.token,
+					url: '/userinfo',
+					method: 'get',
+					header: {
+						'authtoken': 'token ' + this.token,
 					},
 					success(res){
 						console.log(res.data.data.nickname)
@@ -154,21 +154,21 @@
 							_this.avatar=avatar
 							switch (id_type){
 								case 1:
-									_this.type='注册用户'
+									_this.type = '注册用户'
 									break;
 								case 2:
-									_this.type='锐龙店面'
+									_this.type = '锐龙店面'
 									break;
 								case 3:
-									_this.type='渠道用户'
+									_this.type = '渠道用户'
 									break;
 								case 4:
-									_this.type='CSR'
+									_this.type = 'CSR'
 									break;
 							}
-							
+
 						}
-						
+
 					}
 				})
 			}
@@ -177,20 +177,22 @@
 </script>
 
 <style lang="scss" scoped>
-	.reward{
-		.reward-title{
-			width:100%;
-			height:60rpx;
+	.reward {
+		.reward-title {
+			width: 100%;
+			height: 60rpx;
 			line-height: 60rpx;
 			text-align: center;
 			background-color: #fff;
-			image{
-				width:40rpx;
-				height:40rpx;
+
+			image {
+				width: 40rpx;
+				height: 40rpx;
 				vertical-align: middle;
 			}
 		}
 	}
+
 	.list {
 		width: 100%;
 		height: 342rpx;
@@ -206,26 +208,28 @@
 			width: 690rpx;
 			top: -120rpx;
 			left: 50%;
-			margin-left:-345rpx;
+			margin-left: -345rpx;
 			border-radius: 10px;
-			padding:10rpx;
+			padding: 10rpx;
 			box-sizing: border-box;
 			overflow: hidden;
 
 			.item {
 				width: 142.5rpx;
 				height: 82rpx;
-				padding:8rpx 0;
-				margin:10rpx 10rpx;
+				padding: 8rpx 0;
+				margin: 10rpx 10rpx;
 				box-sizing: border-box;
 				text-align: center;
-				.img{
-					width:40rpx;
-					height:40rpx;
-					margin :0 auto;
-					image{
-						width:100%;
-						height:100%;
+
+				.img {
+					width: 40rpx;
+					height: 40rpx;
+					margin: 0 auto;
+
+					image {
+						width: 100%;
+						height: 100%;
 					}
 				}
 			}
@@ -242,17 +246,19 @@
 		font-size: 24rpx;
 		// background:url(../../static/image/personal/bg.png) no-repeat fixed top;
 		background-size: 100% 342rpx;
-		color:#fff;
-		.card-bg-img{
+		color: #fff;
+
+		.card-bg-img {
 			position: absolute;
-			top:0;
-			left:0;
-			width:100%;
-			height:100%;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
 			z-index: -1;
-			image{
-				width:100%;
-				height:100%;
+
+			image {
+				width: 100%;
+				height: 100%;
 			}
 		}
 
@@ -264,9 +270,10 @@
 			background-color: #fff;
 			overflow: hidden;
 			text-align: center;
-			image{
-				width:90%;
-				height:90%;
+
+			image {
+				width: 90%;
+				height: 90%;
 				vertical-align: middle;
 			}
 		}
@@ -293,7 +300,8 @@
 			border-radius: 10rpx;
 			background-color: #f39d23;
 		}
-		.type{
+
+		.type {
 			position: absolute;
 			line-height: 48rpx;
 			text-align: center;

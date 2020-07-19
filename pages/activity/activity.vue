@@ -1,43 +1,36 @@
 <template>
 	<view>
-		
 		<view class="activity-wrap" v-if='showLogin'>
 			<NotLogin pageName="活动"></NotLogin>
 		</view>
-		<view class="cu-card article no-card"
-				v-else
-				v-for="(item,key) in list" :key='key'>
-			<view class="cu-item shadow">
-				<navigator :url="'../activity-detail/activity-detail?id='+item.id">
-					<view class="content">
-						<view class="pic">
-							<image class="img" :src="item.image" mode=""></image>
-							<image class="on"
-								v-if='item.status==="in_start"'
-								src="../../static/image/activity/in_start.png" mode=""></image>
-							<image class="on"
-								v-else-if="item.status==='not_start'"
-								src="../../static/image/activity/not_start.png" mode=""></image>
-							<image class="on"
-								v-else-if="item.status==='end'"
-								src="../../static/image/activity/end.png" mode=""></image>
-							
-						</view>
-						<view class="desc">
-							<view class="text-content">主题:{{item.title}}</view>
-							<view class="text-content">
-								时间:<text class="main-color">
-									{{item.start_time}}-{{item.end_time}}</text>
+		<view class="cu-card article no-card" v-else v-for="(item,key) in list" :key='key'>
+				<view class="cu-item shadow">
+					<navigator :url="'../activity-detail/activity-detail?id='+item.id">
+						<view class="content">
+							<view class="pic">
+								<image class="img" :src="item.image" mode=""></image>
+								<image class="on" v-if='item.status==="in_start"' src="../../static/image/activity/in_start.png" mode="">
+								</image>
+								<image class="on" v-else-if="item.status==='not_start'" src="../../static/image/activity/not_start.png" mode=""></image>
+								<image class="on" v-else-if="item.status==='end'" src="../../static/image/activity/end.png" mode="">
+								</image>
+
 							</view>
-							<view class="text-content ">
-								活动名额:<text class="main-color"> {{item.quota_count}}人</text>
-								<text class="f-right">已有{{item.partic_count}}人参与</text>
+							<view class="desc">
+								<view class="text-content">主题:{{item.title}}</view>
+								<view class="text-content">
+									时间:<text class="main-color">
+										{{item.start_time}}-{{item.end_time}}</text>
+								</view>
+								<view class="text-content ">
+									活动名额:<text class="main-color"> {{item.quota_count}}人</text>
+									<text class="f-right">已有{{item.partic_count}}人参与</text>
+								</view>
 							</view>
 						</view>
-					</view>
-				</navigator>
+					</navigator>
+				</view>
 			</view>
-		</view>
 	</view>
 </template>
 
@@ -49,35 +42,34 @@
 		},
 		data() {
 			return {
-				showLogin: true,
+				showLogin: false,
 				list: []
 			}
 		},
 		onLoad() {
 			let token = uni.getStorageSync('token')
-			this.showLogin = token==='' ? true: false;
-			this.getActivityList(1,token);
+			this.showLogin = token === '' ? true : false;
+			this.getActivityList(1, token);
 		},
 		methods: {
 			// 获取活动列表
-			getActivityList(page,token){
-				let _this=this;
+			getActivityList(page, token) {
+				let _this = this;
 				uni.request({
-					url:'events/list',
-					method:'POST',
-					header:{
-						'authtoken':'token '+token,
-						'content-type': 'application/x-www-form-urlencoded'
+					url: '/events/list',
+					method: 'POST',
+					header: {
+						'authtoken': 'token ' + token,
 					},
-					data:{
+					data: {
 						page,
-						limit:10
+						limit: 10
 					},
-					success(res){
+					success(res) {
 						console.log(res.data)
-						_this.list=res.data.data;
+						_this.list = res.data.data;
 					},
-					fail(e){
+					fail(e) {
 						console.log(e)
 					}
 				})

@@ -1,15 +1,23 @@
 <template>
 	<view class="index-container">
-		<Swiper />
+		<Swiper :swiperItems="indexBanner" />
 		<!-- 通知公告 -->
 		<view class="index-notice" @click="indexNotice">
 			<view class="header-title">
 				<image src="../../static/image/home/notice.png" class="icon" />
 				<text>通知公告</text>
 			</view>
-			<view class="header-desc">
-				<text class="info">AMD最新培训活动上线啦! 赶快来报名哟~</text>
-				<text class="date">06-04</text>
+			<view class="header-content">
+				<!-- <transition-group
+          enter-active-class="animated fadeInUp"
+          leave-active-class="animated fadeOutUp"
+        > -->
+				<view v-show="index == isCurrent" class="header-desc animated fadeInUp" v-for="(item,index) in notices"
+					:key="item.title">
+					<view class="info">{{item.title}}</view>
+					<view class="date">{{item.date}}</view>
+				</view>
+				<!-- </transition-group> -->
 			</view>
 		</view>
 		<!-- 最新资讯 -->
@@ -19,13 +27,13 @@
 				<text>最新资讯</text>
 			</view>
 			<view class="scroll-news">
-				<view class="news-items" v-for="(item,index) in newsItems" :key="index" @click="newsItemClick(item)">
+				<view class="news-items" v-for="(item,index) in newsItems" :key="item.id" @click="newsItemClick(item)">
 					<image :src="item.url" mode="" />
 					<view class="items-desc">
 						<view class="title">
-							<text>{{item.mainTitle}}</text>{{item.subTitle}}
+							<text :style="{color:item.tag_color}">【{{item.tag}}】</text>{{item.title}}
 						</view>
-						<text class="date">{{item.date}}</text>
+						<text class="date">{{item.desc}}</text>
 					</view>
 				</view>
 			</view>
@@ -43,28 +51,30 @@
 				<image src="../../static/image/home/activity.png" class="icon" />
 				<text>最新培训</text>
 			</view>
-			<view class="train-content">
-				<image :src="trainItem.topPic" mode="aspectFit" />
-				<view class="main">
-					<view class="header">
-						<text>{{trainItem.title}}</text>
-						<view>
-							<image src="../../static/image/home/time.png" mode="" />
-							<text class="time-status">{{trainItem.status}}</text>
+			<block v-for="item in trainItem">
+				<view class="train-content">
+					<image :src="item.topPic" mode="aspectFit" />
+					<view class="main">
+						<view class="header">
+							<text>{{item.title}}</text>
+							<view>
+								<image src="../../static/image/home/time.png" mode="" />
+								<text class="time-status">{{item.time}}</text>
+							</view>
 						</view>
-					</view>
-					<text class="date">培训时间：<text>{{trainItem.date}}</text></text>
-					<view class="train-info">
-						<view>培训名额：<text>{{trainItem.number}}</text></view>
-						<view>培训方式：<text>{{trainItem.type}}</text></view>
-						<view class="operate-btn">
-							<view class="test" @click="test"><text>考试</text></view>
-							<view class="divide"></view>
-							<view class="train" @click="train"><text>培训</text></view>
+						<text class="date">培训时间：<text>{{item.start_time}} - {{item.end_time}}</text></text>
+						<view class="train-info">
+							<view>培训名额：<text>{{item.quota_count}}</text></view>
+							<view>培训方式：<text>{{item.mode === 1 ? '视频培训' : '课件培训'}}</text></view>
+							<view class="operate-btn">
+								<view class="test" @click="test" v-if="item.exam"><text>考试</text></view>
+								<view class="divide"></view>
+								<view class="train" @click="train"><text>培训</text></view>
+							</view>
 						</view>
 					</view>
 				</view>
-			</view>
+			</block>
 		</view>
 	</view>
 </template>
@@ -73,19 +83,8 @@
 	export default {
 		data() {
 			return {
-				newsItems: [{
-					id: '1',
-					url: "../../static/image/home/news.png",
-					mainTitle: "【促销活动】",
-					subTitle: "AMD618促销狂欢季全新上线 ",
-					date: "06.01 12:00-06.18 24:00"
-				}, {
-					id: '2',
-					url: "../../static/image/home/news.png",
-					mainTitle: "【促销活动】",
-					subTitle: "AMD618促销狂欢季全新上线 ",
-					date: "06.01 12:00-06.18 24:00"
-				}],
+				indexBanner: [],
+				newsItems: [],
 				bannerItems: [{
 					url: '../../static/image/home/player.png',
 					title: '玩家必看',
@@ -99,53 +98,84 @@
 					title: '网吧专家',
 					jumpUrl: "/pages/internetBar/internetBar"
 				}],
-				trainItem: {
-					topPic: '../../static/image/home/train.png',
-					title: 'AMD最新三代处理器全渠道销售培训',
-					status: '刚刚',
-					date: '06.04 8:00-06.06 15:00',
-					number: '50人',
-					type: '视频',
-					id: Date.now()
-				},
-
-			}
+				trainItem: [],
+				notices: [], //通知
+				isCurrent: 0
+			};
 		},
 		methods: {
 			indexNotice() {
-				console.log('indexNotice');
+				console.log("indexNotice");
 			},
 			test() {
-				console.log('考试');
+				console.log("考试");
 				uni.navigateTo({
 					url: `/pages/test-detail/test-detail?id=${this.trainItem.id}`
 				});
-
 			},
 			train() {
-				console.log('培训');
+				console.log("培训");
 				uni.navigateTo({
 					url: `/pages/course-detail/course-detail?id=${this.trainItem.id}&type=${this.trainItem.type}`
 				});
 			},
 			bannerJump(url) {
-				console.log("TCL: bannerJump -> url", url)
+				console.log("TCL: bannerJump -> url", url);
 				uni.navigateTo({
-					url,
+					url
 				});
 			},
 			//点击资讯跳转
 			newsItemClick(item) {
-				console.log("TCL: newsItemClick -> item", item)
+				console.log("TCL: newsItemClick -> item", item);
 				uni.navigateTo({
-					url: '/pages/activity-detail/activity-detail?id=1'
+					url: "/pages/activity-detail/activity-detail?id=1"
 				});
 			},
+			autoplayNotice() {
+				let length = this.notices.length;
+				if (this.isCurrent >= length) {
+					this.isCurrent = 0;
+					this.autoplayNotice();
+				} else {
+					setTimeout(() => {
+						this.isCurrent++;
+						this.autoplayNotice();
+					}, 3000);
+				}
+			}
+		},
+		mounted() {
+			uni.request({
+				url: "/index", //仅为示例，并非真实接口地址。
+				success: ({
+					data
+				}) => {
+					if (data.code == 200) {
+						let {
+							banners,
+							news,
+							notices,
+							train
+						} = data.data;
+						this.newsItems = news;
+						this.indexBanner = banners;
+						this.notices = notices;
+						this.autoplayNotice();
+						this.trainItem = train;
+						console.log("TCL: mounted -> newsItems", this.newsItems);
+						console.log("TCL: mounted -> bannerItems", this.bannerItems);
+						console.log("TCL: mounted -> trainItem", this.trainItem);
+					}
+				}
+			});
 		}
-	}
+	};
 </script>
 
 <style lang="scss" scoped>
+	@import "./animate";
+
 	.index-container {
 		/* padding: 20px; */
 		font-size: 14px;
@@ -165,10 +195,10 @@
 			border-radius: 20upx;
 			position: relative;
 			top: -10upx;
+			overflow: hidden;
 
 			.header-title {
 				line-height: 1;
-
 
 				text {
 					font-size: 28upx;
@@ -183,7 +213,7 @@
 			.header-desc {
 				margin-top: 30upx;
 				font-family: PingFang-SC-Medium;
-				font-size: 24upx;
+				font-size: 12px;
 				font-weight: normal;
 				font-stretch: normal;
 				line-height: 1;
@@ -209,6 +239,28 @@
 				font-stretch: normal;
 				letter-spacing: 0px;
 				color: #333333;
+			}
+		}
+
+		.header-content {
+			display: flex;
+			flex-wrap: no-wrap;
+			overflow: hidden;
+			flex-direction: column;
+
+			.info {
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+
+			.date {
+				width: fit-content;
+				white-space: nowrap;
+			}
+
+			.header-desc {
+				min-width: 100%;
 			}
 		}
 
@@ -263,7 +315,7 @@
 			}
 		}
 
-		//banner 
+		//banner
 		.index-banner {
 			padding: 20rpx 30rpx;
 			display: flex;
@@ -342,7 +394,6 @@
 								margin-left: 10rpx;
 							}
 						}
-
 					}
 
 					.date {
@@ -351,7 +402,7 @@
 						line-height: 1;
 
 						text {
-							color: #F36523
+							color: #f36523;
 						}
 					}
 
@@ -361,7 +412,7 @@
 						justify-content: space-between;
 
 						text {
-							color: #F36523
+							color: #f36523;
 						}
 
 						.operate-btn {

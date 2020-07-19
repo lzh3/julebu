@@ -1,41 +1,46 @@
 <template>
-	<view class="train">
-		<wuc-tab :tab-list="tabList" :tabCur.sync="TabCur" @change="tabChange" :textFlex="true">
-		</wuc-tab>
-		<swiper :current="TabCur" duration="300" @change="swiperChange">
-			<swiper-item v-for="(item,index) in tabList" :key="index">
-				<view class="item" v-for="(v,index) in item.list" :key="index">
-					<view class="content">
-						<view class="top-pic">
-							<image :src="v.topPic" mode="" class="main-pic" />
-							<view :class="['jiao-biao',v.trainStatus]">{{trainStatus(v.trainStatus)}}</view>
+	<view>
+		<view class="activity-wrap" v-if='showLogin'>
+			<NotLogin pageName="培训"></NotLogin>
+		</view>
+		<view class="train">
+			<wuc-tab :tab-list="tabList" :tabCur.sync="TabCur" @change="tabChange" :textFlex="true">
+			</wuc-tab>
+			<swiper :current="TabCur" duration="300" @change="swiperChange">
+				<swiper-item v-for="(item,index) in tabList" :key="index">
+					<view class="item" v-for="(v,index) in item.list" :key="index">
+						<view class="content">
+							<view class="top-pic">
+								<image :src="v.topPic" mode="" class="main-pic" />
+								<view :class="['jiao-biao',v.trainStatus]">{{trainStatus(v.trainStatus)}}</view>
+							</view>
+							<view class="text-area">
+								<text class="title">{{v.title}}</text>
+								<view class="train-time">培训时间：<text>{{v.date}}</text></view>
+								<view class="train-info">
+									<view>培训名额：<text>{{v.limit}}</text></view>
+									<view class="type">培训方式：<text>{{v.type}}</text></view>
+								</view>
+							</view>
 						</view>
-						<view class="text-area">
-							<text class="title">{{v.title}}</text>
-							<view class="train-time">培训时间：<text>{{v.date}}</text></view>
-							<view class="train-info">
-								<view>培训名额：<text>{{v.limit}}</text></view>
-								<view class="type">培训方式：<text>{{v.type}}</text></view>
+						<view class="operate">
+							<view class="time-wrap">
+								<image src="../../static/image/home/time.png" mode="" />
+								<text class="time">{{v.time}}</text>
+								<text
+									:class="['sign-number',v.trainStatus === 'overtime' && 'sign-number-failed']">已有{{v.signNumber}}人报名参加</text>
+							</view>
+							<view :class="['operate-btn',v.trainStatus === 'overtime' && 'overtime-btn']">
+								<view class="test" @click="test(v)"><text>考试</text></view>
+								<view class="divide"></view>
+								<view class="train-btn" @click="train(v)"><text>培训</text></view>
 							</view>
 						</view>
 					</view>
-					<view class="operate">
-						<view class="time-wrap">
-							<image src="../../static/image/home/time.png" mode="" />
-							<text class="time">{{v.time}}</text>
-							<text
-								:class="['sign-number',v.trainStatus === 'overtime' && 'sign-number-failed']">已有{{v.signNumber}}人报名参加</text>
-						</view>
-						<view :class="['operate-btn',v.trainStatus === 'overtime' && 'overtime-btn']">
-							<view class="test" @click="test(v)"><text>考试</text></view>
-							<view class="divide"></view>
-							<view class="train-btn" @click="train(v)"><text>培训</text></view>
-						</view>
-					</view>
-				</view>
-			</swiper-item>
-		</swiper>
-		<Kefu />
+				</swiper-item>
+			</swiper>
+			<Kefu />
+		</view>
 	</view>
 </template>
 
@@ -46,6 +51,8 @@
 	export default {
 		data() {
 			return {
+				token: '',
+				showLogin: false,
 				TabCur: 0,
 				tabList: [{
 						name: '季度培训',
@@ -159,15 +166,20 @@
 						]
 					}
 				],
-
 			}
 		},
 		components: {
 			WucTab,
 			Kefu
 		},
-		onLoad(){
-			this.getTrainList();
+		onShow() {
+			let token = uni.getStorageSync('token')
+			if (token) {
+				this.token = token
+				this.getTrainList();
+			} else {
+				this.showLogin = true
+			}
 		},
 		methods: {
 			tabChange(index) {
@@ -200,17 +212,18 @@
 					overtime: '已过期',
 				} [status]
 			},
-			getTrainList(){
-				let _this=this;
+			getTrainList() {
+				console.log("TCL: getTrainList -> this.token", this.token)
+				let that = this
 				uni.request({
-					url:'/trained/list',
-					method:'get',
-					header:{
-						'authtoken':'token '+this.token,
+					url: '/trained/list',
+					method: 'post',
+					header: {
+						'authtoken': 'token ' + this.token,
 					},
-					success(res){
-						console.log(res.data)
-						
+					success(res) {
+						console.log('train-----------', res.data)
+						that.tabList[0].list = res.data.data // 季度培训
 					}
 				})
 			}

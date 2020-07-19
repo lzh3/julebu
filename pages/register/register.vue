@@ -113,7 +113,6 @@
 				//console.log(this.reg_form.address.match(reg))
 
 				let regRes = this.reg_form.address.match(reg) || [];
-				console.log(regRes)
 
 				if (address && business && code && company && connect && phone) {
 					uni.request({

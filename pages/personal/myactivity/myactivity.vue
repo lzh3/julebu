@@ -63,7 +63,7 @@
 			getList(page,token){
 				let _this=this;
 				uni.request({
-					url:'sign-events',
+					url:'https://amd.mcooks.cn/api/sign-events',
 					method:'POST',
 					header:{
 						'authtoken':'token '+token,

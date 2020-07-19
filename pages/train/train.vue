@@ -216,7 +216,7 @@
 				console.log("TCL: getTrainList -> this.token", this.token)
 				let that = this
 				uni.request({
-					url: '/trained/list',
+					url: 'https://amd.mcooks.cn/api/trained/list',
 					method: 'post',
 					header: {
 						'authtoken': 'token ' + this.token,

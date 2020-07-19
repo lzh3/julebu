@@ -137,7 +137,7 @@
 			getUserInfo() {
 				let _this = this;
 				uni.request({
-					url: '/userinfo',
+					url: 'https://amd.mcooks.cn/api/userinfo',
 					method: 'get',
 					header: {
 						'authtoken': 'token ' + this.token,
@@ -148,7 +148,7 @@
 						uni.setStorageSync('username',nickname)
 						if(res.data.code==200){
 							const {nickname,id_type,id,reg_ip,realname,avatar}=res.data.data
-							_this.user_name=realname
+							_this.username=realname
 							_this.id=id
 							_this.jf=reg_ip
 							_this.avatar=avatar

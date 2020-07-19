@@ -56,7 +56,7 @@
 			getActivityList(page, token) {
 				let _this = this;
 				uni.request({
-					url: '/events/list',
+					url: 'https://amd.mcooks.cn/api/events/list',
 					method: 'POST',
 					header: {
 						'authtoken': 'token ' + token,

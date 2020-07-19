@@ -147,7 +147,7 @@
 		},
 		mounted() {
 			uni.request({
-				url: "/index", //仅为示例，并非真实接口地址。
+				url: "https://amd.mcooks.cn/api/index", //仅为示例，并非真实接口地址。
 				success: ({
 					data
 				}) => {

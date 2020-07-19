@@ -78,7 +78,7 @@
 			getDetail(id,token){
 				let _this=this;
 				uni.request({
-					url:'/events/show',
+					url:'https://amd.mcooks.cn/api/events/show',
 					method:'POST',
 					header:{
 						'authtoken':'token '+token,

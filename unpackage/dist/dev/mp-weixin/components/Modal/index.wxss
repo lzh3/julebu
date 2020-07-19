@@ -24,13 +24,13 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.reg_err.data-v-77e01ce5 {
+.reg_err.data-v-0f7d5fa4 {
   margin: 30rpx 0;
 }
-.reg-btn.data-v-77e01ce5 {
+.reg-btn.data-v-0f7d5fa4 {
   color: #fff;
 }
-.login-wrap.data-v-77e01ce5 {
+.login-wrap.data-v-0f7d5fa4 {
   width: 438rpx;
   min-height: 200rpx;
   background: white;
@@ -47,15 +47,15 @@
           align-items: center;
   position: relative;
 }
-.login-wrap .login.data-v-77e01ce5 {
+.login-wrap .login.data-v-0f7d5fa4 {
   font-size: 36rpx;
   font-weight: bold;
   line-height: 200rpx;
 }
-.login-wrap .login.login_err.data-v-77e01ce5 {
+.login-wrap .login.login_err.data-v-0f7d5fa4 {
   color: red;
 }
-.modal-wrap.data-v-77e01ce5 {
+.modal-wrap.data-v-0f7d5fa4 {
   width: 438rpx;
   min-height: 200rpx;
   background: white;
@@ -73,40 +73,40 @@
   padding-bottom: 30rpx;
   position: relative;
 }
-.modal-wrap .error.data-v-77e01ce5 {
+.modal-wrap .error.data-v-0f7d5fa4 {
   width: 80rpx;
   min-width: 80rpx;
   height: 80rpx;
   min-height: 80rpx;
   margin: 20rpx 0;
 }
-.modal-wrap .success.data-v-77e01ce5 {
+.modal-wrap .success.data-v-0f7d5fa4 {
   width: 70rpx;
   min-width: 70rpx;
   height: 70rpx;
   min-height: 70rpx;
   margin: 20rpx 0;
 }
-.modal-wrap .close.data-v-77e01ce5 {
+.modal-wrap .close.data-v-0f7d5fa4 {
   width: 40rpx;
   height: 40rpx;
   position: absolute;
   z-index: 99999;
   bottom: -50rpx;
 }
-.modal-wrap .title.data-v-77e01ce5 {
+.modal-wrap .title.data-v-0f7d5fa4 {
   font-size: 30rpx;
   font-weight: bold;
   color: #333333;
 }
-.modal-wrap .desc.data-v-77e01ce5 {
+.modal-wrap .desc.data-v-0f7d5fa4 {
   line-height: 1;
   font-size: 24rpx;
   font-weight: 500;
   margin: 20rpx 30rpx;
   color: #999999;
 }
-.modal-wrap .btn.data-v-77e01ce5 {
+.modal-wrap .btn.data-v-0f7d5fa4 {
   box-sizing: content-box;
   width: 145rpx;
   min-height: 48rpx;

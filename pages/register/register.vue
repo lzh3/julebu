@@ -116,7 +116,7 @@
 
 				if (address && business && code && company && connect && phone) {
 					uni.request({
-						url: '/register',
+						url: 'https://amd.mcooks.cn/api/register',
 						method: 'POST',
 						data: {
 							company, // 公司名称
@@ -148,7 +148,7 @@
 				// this.$refs.modal.open()
 				let _this = this;
 				uni.request({
-					url: '/send/smscode',
+					url: 'https://amd.mcooks.cn/api/send/smscode',
 					method: 'POST',
 					data: {
 						phone: this.reg_form.phone

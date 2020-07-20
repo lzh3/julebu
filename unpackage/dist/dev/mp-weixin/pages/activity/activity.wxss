@@ -24,6 +24,10 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.activity-wrap.data-v-5c3c7c87 {
+  height: 100vh;
+  background-color: #fff;
+}
 .cu-card.data-v-5c3c7c87 {
   margin-bottom: 6rpx;
 }

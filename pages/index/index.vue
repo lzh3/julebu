@@ -105,29 +105,29 @@
 		},
 		methods: {
 			indexNotice() {
-				console.log("indexNotice");
+				// console.log("indexNotice");
 			},
 			test() {
-				console.log("考试");
+				// console.log("考试");
 				uni.navigateTo({
 					url: `/pages/test-detail/test-detail?id=${this.trainItem.id}`
 				});
 			},
 			train() {
-				console.log("培训");
+				// console.log("培训");
 				uni.navigateTo({
 					url: `/pages/course-detail/course-detail?id=${this.trainItem.id}&type=${this.trainItem.type}`
 				});
 			},
 			bannerJump(url) {
-				console.log("TCL: bannerJump -> url", url);
+				// console.log("TCL: bannerJump -> url", url);
 				uni.navigateTo({
 					url
 				});
 			},
 			//点击资讯跳转
 			newsItemClick(item) {
-				console.log("TCL: newsItemClick -> item", item);
+				// console.log("TCL: newsItemClick -> item", item);
 				uni.navigateTo({
 					url: "/pages/activity-detail/activity-detail?id=1"
 				});

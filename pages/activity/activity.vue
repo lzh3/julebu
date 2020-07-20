@@ -1,9 +1,9 @@
 <template>
 	<view>
-		<view class="activity-wrap" v-if='showLogin'>
+		<view class="activity-wrap container" :style='{display:showLogin}'>
 			<NotLogin pageName="活动"></NotLogin>
 		</view>
-		<view class="cu-card article no-card" v-else v-for="(item,key) in list" :key='key'>
+		<view class="cu-card article no-card" :style='{display:showCard}' v-for="(item,key) in list" :key='key'>
 				<view class="cu-item shadow">
 					<navigator :url="'../activity-detail/activity-detail?id='+item.id">
 						<view class="content">
@@ -42,13 +42,17 @@
 		},
 		data() {
 			return {
-				showLogin: false,
+				showCard: '',
+				showLogin: '',
 				list: []
 			}
 		},
 		onLoad() {
 			let token = uni.getStorageSync('token')
-			this.showLogin = token == '' ? true : false;
+			console.log(token)
+			this.showLogin = token == '' ? "block" : "none";
+			this.showCard = token ==''?'none':'block'
+			console.log(this.showCard,this.showLogin)
 			this.getActivityList(1, token);
 		},
 		methods: {
@@ -79,6 +83,10 @@
 </script>
 
 <style lang="scss" scoped>
+	.activity-wrap{
+			height:100vh;
+			background-color: #fff;
+	}
 	.cu-card {
 		margin-bottom: 6rpx;
 	}

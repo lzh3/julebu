@@ -21,7 +21,7 @@
 					</view>
 					<view class="operate">
 						<view class="time-wrap">
-							<text class="time"  v-if="v.done">得分：{{v.result}}</text>
+							<text class="time" v-if="v.done">得分：{{v.result}}</text>
 						</view>
 						<view :class="['operate-btn',v.trainStatus]">
 							<view class="test" @click="test(v)"><text>查看培训</text></view>
@@ -42,7 +42,8 @@
 		data() {
 			return {
 				TabCur: 0,
-				tabList: [{
+				tabList: [
+					{
 						name: '季度培训',
 						list: [{
 								id: Date.now(),
@@ -52,27 +53,17 @@
 								limit: 100,
 								type: '视频',
 								result: 90,
-								done:true  //已经开始
+								done: true //已经开始
 							},
 							{
 								id: Date.now(),
 								topPic: '../../../static/image/train-pic.png',
 								title: 'AMD最新三代处理器全渠道销售培训',
 								date: '06.04 8:00-06.06 12:00',
-								limit: 50,
-								type: '课件',
+								limit: 100,
+								type: '视频',
 								result: 90,
-								done:true  //未开始
-							},
-							{
-								id: Date.now(),
-								topPic: '../../../static/image/train-pic.png',
-								title: 'AMD最新三代处理器全渠道销售培训',
-								date: '06.04 8:00-06.06 12:00',
-								limit: 10,
-								type: '课件',
-								result: 99,
-								done:false , //过期
+								done: true //已经开始
 							},
 						]
 					},
@@ -86,7 +77,7 @@
 								limit: 100,
 								type: '视频',
 								result: 90,
-								done:true, //未培训
+								done: true, //未培训
 							},
 							{
 								id: Date.now(),
@@ -96,7 +87,7 @@
 								limit: 50,
 								type: '课件',
 								result: 90,
-								done:true, //未开始
+								done: true, //未开始
 							},
 							{
 								id: Date.now(),
@@ -106,7 +97,7 @@
 								limit: 10,
 								type: '课件',
 								result: 99,
-								done:true, //过期
+								done: true, //过期
 							},
 						]
 					},
@@ -120,7 +111,7 @@
 								limit: 100,
 								type: '视频',
 								result: 90,
-								done:true, //已经开始
+								done: true, //已经开始
 							},
 							{
 								id: Date.now(),
@@ -130,7 +121,7 @@
 								limit: 50,
 								type: '课件',
 								result: 90,
-								done:true, //未开始
+								done: true, //未开始
 							},
 							{
 								id: Date.now(),
@@ -140,7 +131,7 @@
 								limit: 10,
 								type: '课件',
 								result: 99,
-								done:true, //过期
+								done: true, //过期
 							},
 						]
 					}
@@ -153,6 +144,7 @@
 			Kefu
 		},
 		methods: {
+
 			tabChange(index) {
 				this.TabCur = index;
 			},
@@ -275,9 +267,11 @@
 						color: rgba(102, 102, 102, 1);
 						display: flex;
 						justify-content: space-between;
-						view{
-							width:50%;
+
+						view {
+							width: 50%;
 						}
+
 						text {
 							color: #F39D23
 						}
@@ -321,11 +315,13 @@
 					display: flex;
 					justify-self: space-between;
 					position: relative;
-					view{
-						width:130rpx;
-						margin:0 10rpx;
+
+					view {
+						width: 130rpx;
+						margin: 0 10rpx;
 						border-radius: 6rpx;
 					}
+
 					.test {
 						flex: 1;
 						background: #f36523;
@@ -358,9 +354,10 @@
 				}
 
 				.overtime-btn {
-					view{
-						margin:0 10rpx;
+					view {
+						margin: 0 10rpx;
 					}
+
 					.test,
 					.train-btn {
 						background: #666;

@@ -22,11 +22,6 @@
 				"navigationBarTitleText": "培训"
 			}
 		}, {
-			"path": "pages/community/community",
-			"style": {
-				"navigationBarTitleText": "社区"
-			}
-		}, {
 			"path": "pages/sell/sell",
 			"style": {
 				"navigationBarTitleText": "销售"
@@ -147,10 +142,6 @@
 			}
 		}
 
-		, {
-			"path": "pages/mustlook/mustlook",
-			"style": {}
-		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
@@ -158,6 +149,56 @@
 		"navigationBarBackgroundColor": "#f36523",
 		"backgroundColor": "#FFFFFF"
 	},
+	"subPackages": [{
+			"root": "packageA",
+			"pages": [
+				"personal/myactivity/myactivity",
+				"personal/mycollect/myactivity",
+				"personal/myjf/myjf",
+				"personal/mypost/mypost/mytrain"
+			]
+		},
+		{
+			"root": "packageB",
+			"pages": [
+				"pages/activity/activity",
+				"pages/activity-detail/activity-detail"
+			]
+		},
+		{
+			"root": "packageC",
+			"pages": [
+				"pages/login/login",
+				"pages/register/register",
+				"pages/index/index"
+			]
+		},
+		{
+			"root": "packageD",
+			"pages": [
+				"components/evan-checkbox/evan-checkbox",
+				"components/evan-checkbox-group/evan-checkbox-group",
+				"components/Kefu/index",
+				"components/Modal/index"
+			]
+		},
+		{
+			"root": "packageE",
+			"pages": [
+				"components/NotLogin/index",
+				"components/Swiper/Swiper",
+				"components/uni-icons/uni-icons",
+				"components/wuc-tab/wuc-tab"
+			]
+		},
+		{
+			"root": "packageF",
+			"pages": [
+				"pages/train/train",
+				"pages/course-detail/course-detail"
+			]
+		}
+	],
 	"condition": {
 		"current": 0,
 		"list": [{
@@ -172,7 +213,7 @@
 		"backgroundColor": "#ffffff",
 		"fontSize": "16px",
 		// "height":"60px",
-		"iconWidth":"16px",
+		"iconWidth": "16px",
 		"list": [{
 				"pagePath": "pages/index/index",
 				"iconPath": "static/image/icon/footer/home.png",

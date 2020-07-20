@@ -6,19 +6,19 @@
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
   \**********************************************************************************************************/
-/*! exports provided: default */function(e,t,n){"use strict";function r(e,t,n,r,o,i,a,s,c,u){var f,l="function"===typeof e?e.options:e;if(c){l.components||(l.components={});var p=Object.prototype.hasOwnProperty;for(var d in c)p.call(c,d)&&!p.call(l.components,d)&&(l.components[d]=c[d])}if(u&&((u.beforeCreate||(u.beforeCreate=[])).unshift((function(){this[u.__module]=this})),(l.mixins||(l.mixins=[])).push(u)),t&&(l.render=t,l.staticRenderFns=n,l._compiled=!0),r&&(l.functional=!0),i&&(l._scopeId="data-v-"+i),a?(f=function(e){e=e||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext,e||"undefined"===typeof __VUE_SSR_CONTEXT__||(e=__VUE_SSR_CONTEXT__),o&&o.call(this,e),e&&e._registeredComponents&&e._registeredComponents.add(a)},l._ssrRegister=f):o&&(f=s?function(){o.call(this,this.$root.$options.shadowRoot)}:o),f)if(l.functional){l._injectStyles=f;var h=l.render;l.render=function(e,t){return f.call(t),h(e,t)}}else{var v=l.beforeCreate;l.beforeCreate=v?[].concat(v,f):[f]}return{exports:e,options:l}}n.r(t),n.d(t,"default",(function(){return r}))},111:
+/*! exports provided: default */function(e,t,n){"use strict";function r(e,t,n,r,o,i,a,s,c,u){var f,l="function"===typeof e?e.options:e;if(c){l.components||(l.components={});var p=Object.prototype.hasOwnProperty;for(var d in c)p.call(c,d)&&!p.call(l.components,d)&&(l.components[d]=c[d])}if(u&&((u.beforeCreate||(u.beforeCreate=[])).unshift((function(){this[u.__module]=this})),(l.mixins||(l.mixins=[])).push(u)),t&&(l.render=t,l.staticRenderFns=n,l._compiled=!0),r&&(l.functional=!0),i&&(l._scopeId="data-v-"+i),a?(f=function(e){e=e||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext,e||"undefined"===typeof __VUE_SSR_CONTEXT__||(e=__VUE_SSR_CONTEXT__),o&&o.call(this,e),e&&e._registeredComponents&&e._registeredComponents.add(a)},l._ssrRegister=f):o&&(f=s?function(){o.call(this,this.$root.$options.shadowRoot)}:o),f)if(l.functional){l._injectStyles=f;var h=l.render;l.render=function(e,t){return f.call(t),h(e,t)}}else{var v=l.beforeCreate;l.beforeCreate=v?[].concat(v,f):[f]}return{exports:e,options:l}}n.r(t),n.d(t,"default",(function(){return r}))},105:
 /*!****************************************************************!*\
   !*** C:/Users/ZONST/Desktop/uni-app-test/julebu/static/api.js ***!
   \****************************************************************/
-/*! no static exports found */function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var r="https://amd.mcooks.cn",o={host:r,getPlates:r+"/api/plates"},i=o;t.default=i},192:
+/*! no static exports found */function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var r="https://amd.mcooks.cn",o={host:r,getPlates:r+"/api/plates"},i=o;t.default=i},186:
 /*!*********************************************************************************************!*\
   !*** ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator/index.js ***!
   \*********************************************************************************************/
-/*! no static exports found */function(e,t,n){e.exports=n(/*! regenerator-runtime */193)},193:
+/*! no static exports found */function(e,t,n){e.exports=n(/*! regenerator-runtime */187)},187:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
-/*! no static exports found */function(e,t,n){var r=function(){return this||"object"===typeof self&&self}()||Function("return this")(),o=r.regeneratorRuntime&&Object.getOwnPropertyNames(r).indexOf("regeneratorRuntime")>=0,i=o&&r.regeneratorRuntime;if(r.regeneratorRuntime=void 0,e.exports=n(/*! ./runtime */194),o)r.regeneratorRuntime=i;else try{delete r.regeneratorRuntime}catch(a){r.regeneratorRuntime=void 0}},194:
+/*! no static exports found */function(e,t,n){var r=function(){return this||"object"===typeof self&&self}()||Function("return this")(),o=r.regeneratorRuntime&&Object.getOwnPropertyNames(r).indexOf("regeneratorRuntime")>=0,i=o&&r.regeneratorRuntime;if(r.regeneratorRuntime=void 0,e.exports=n(/*! ./runtime */188),o)r.regeneratorRuntime=i;else try{delete r.regeneratorRuntime}catch(a){r.regeneratorRuntime=void 0}},188:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -36,15 +36,15 @@ var n=Object.freeze({});function r(e){return void 0===e||null===e}function o(e){
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
   \***********************************/
-/*! no static exports found */function(e,t){var n;n=function(){return this}();try{n=n||new Function("return this")()}catch(r){"object"===typeof window&&(n=window)}e.exports=n},330:
+/*! no static exports found */function(e,t){var n;n=function(){return this}();try{n=n||new Function("return this")()}catch(r){"object"===typeof window&&(n=window)}e.exports=n},318:
 /*!********************************************************************************!*\
   !*** C:/Users/ZONST/Desktop/uni-app-test/julebu/components/uni-popup/popup.js ***!
   \********************************************************************************/
-/*! no static exports found */function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var r=o(n(/*! ./message.js */331));function o(e){return e&&e.__esModule?e:{default:e}}var i={top:"top",bottom:"bottom",center:"center",message:"top",dialog:"center",share:"bottom"},a={data:function(){return{config:i}},mixins:[r.default]};t.default=a},331:
+/*! no static exports found */function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var r=o(n(/*! ./message.js */319));function o(e){return e&&e.__esModule?e:{default:e}}var i={top:"top",bottom:"bottom",center:"center",message:"top",dialog:"center",share:"bottom"},a={data:function(){return{config:i}},mixins:[r.default]};t.default=a},319:
 /*!**********************************************************************************!*\
   !*** C:/Users/ZONST/Desktop/uni-app-test/julebu/components/uni-popup/message.js ***!
   \**********************************************************************************/
-/*! no static exports found */function(e,t,n){"use strict";var r;function o(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var i=(r={created:function(){"message"===this.type&&(this.maskShow=!1,this.children=null)}},o(r,"created",(function(){"message"===this.type&&(this.maskShow=!1,this.childrenMsg=null)})),o(r,"methods",{customOpen:function(){this.childrenMsg&&this.childrenMsg.open()},customClose:function(){this.childrenMsg&&this.childrenMsg.close()}}),r);t.default=i},339:
+/*! no static exports found */function(e,t,n){"use strict";var r;function o(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var i=(r={created:function(){"message"===this.type&&(this.maskShow=!1,this.children=null)}},o(r,"created",(function(){"message"===this.type&&(this.maskShow=!1,this.childrenMsg=null)})),o(r,"methods",{customOpen:function(){this.childrenMsg&&this.childrenMsg.open()},customClose:function(){this.childrenMsg&&this.childrenMsg.close()}}),r);t.default=i},327:
 /*!********************************************************************************!*\
   !*** C:/Users/ZONST/Desktop/uni-app-test/julebu/components/uni-icons/icons.js ***!
   \********************************************************************************/

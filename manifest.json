@@ -47,7 +47,10 @@
         "appid" : "wx580ac608bd2f9812",
         "setting" : {
             "urlCheck" : false
-        }
+        },
+		"optimization": {
+		    "subPackages": true
+		  }
     },
     "h5" : {
         "devServer" : {

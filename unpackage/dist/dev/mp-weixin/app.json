@@ -4,7 +4,6 @@
     "pages/personal/personal",
     "pages/activity/activity",
     "pages/train/train",
-    "pages/community/community",
     "pages/sell/sell",
     "pages/login/login",
     "pages/sell/jifenrule/jifenrule",
@@ -27,8 +26,7 @@
     "pages/personal/myactivity/myactivity",
     "pages/personal/mytrain/mytrain",
     "pages/personal/mytrain/result",
-    "pages/register/register",
-    "pages/mustlook/mustlook"
+    "pages/register/register"
   ],
   "subPackages": [],
   "window": {
@@ -76,6 +74,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap30.json"
+  "usingComponents": {}
 }

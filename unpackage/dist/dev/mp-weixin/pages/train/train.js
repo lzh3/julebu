@@ -94,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   wucTab: function() {
-    return __webpack_require__.e(/*! import() | components/wuc-tab/wuc-tab */ "components/wuc-tab/wuc-tab").then(__webpack_require__.bind(null, /*! @/components/wuc-tab/wuc-tab.vue */ 257))
+    return __webpack_require__.e(/*! import() | components/wuc-tab/wuc-tab */ "components/wuc-tab/wuc-tab").then(__webpack_require__.bind(null, /*! @/components/wuc-tab/wuc-tab.vue */ 245))
   }
 }
 var render = function() {
@@ -157,7 +157,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var WucTab = function WucTab() {__webpack_require__.e(/*! require.ensure | components/wuc-tab/wuc-tab */ "components/wuc-tab/wuc-tab").then((function () {return resolve(__webpack_require__(/*! @/components/wuc-tab/wuc-tab.vue */ 257));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var swiper = function swiper() {__webpack_require__.e(/*! require.ensure | components/wuc-tab/wuc-tab */ "components/wuc-tab/wuc-tab").then((function () {return resolve(__webpack_require__(/*! @/components/wuc-tab/wuc-tab.vue */ 257));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Kefu = function Kefu() {__webpack_require__.e(/*! require.ensure | components/Kefu/index */ "components/Kefu/index").then((function () {return resolve(__webpack_require__(/*! @/components/Kefu */ 264));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var WucTab = function WucTab() {__webpack_require__.e(/*! require.ensure | components/wuc-tab/wuc-tab */ "components/wuc-tab/wuc-tab").then((function () {return resolve(__webpack_require__(/*! @/components/wuc-tab/wuc-tab.vue */ 245));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var swiper = function swiper() {__webpack_require__.e(/*! require.ensure | components/wuc-tab/wuc-tab */ "components/wuc-tab/wuc-tab").then((function () {return resolve(__webpack_require__(/*! @/components/wuc-tab/wuc-tab.vue */ 245));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Kefu = function Kefu() {__webpack_require__.e(/*! require.ensure | components/Kefu/index */ "components/Kefu/index").then((function () {return resolve(__webpack_require__(/*! @/components/Kefu */ 252));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -213,116 +213,23 @@ __webpack_require__.r(__webpack_exports__);
       token: '',
       showLogin: false,
       TabCur: 0,
+      page: 1,
+      limit: 6,
+      type: 1, //培训方式 1、季度培训 2、产品知识 3、ACCSP
       tabList: [{
         name: '季度培训',
-        list: [{
-          id: Date.now(),
-          topPic: '../../static/image/train-pic.png',
-          title: 'AMD最新三代处理器全渠道销售培训',
-          date: '06.04 8:00-06.06 12:00',
-          limit: 100,
-          type: '视频',
-          time: '刚刚',
-          signNumber: 90,
-          trainStatus: 'online' //已经开始
-        },
-        {
-          id: Date.now(),
-          topPic: '../../static/image/train-pic.png',
-          title: 'AMD最新三代处理器全渠道销售培训',
-          date: '06.04 8:00-06.06 12:00',
-          limit: 50,
-          type: '课件',
-          time: '刚刚',
-          signNumber: 90,
-          trainStatus: 'notyet' //未开始
-        },
-        {
-          id: Date.now(),
-          topPic: '../../static/image/train-pic.png',
-          title: 'AMD最新三代处理器全渠道销售培训',
-          date: '06.04 8:00-06.06 12:00',
-          limit: 10,
-          type: '课件',
-          time: '刚刚',
-          signNumber: 99,
-          trainStatus: 'overtime' //过期
-        }] },
-
+        list: [],
+        type: 1 },
 
       {
         name: '产品知识',
-        list: [{
-          id: Date.now(),
-          topPic: '../../static/image/train-pic.png',
-          title: '产品知识',
-          date: '06.04 8:00-06.06 12:00',
-          limit: 100,
-          type: '视频',
-          time: '刚刚',
-          signNumber: 90,
-          trainStatus: 'online' //已经开始
-        },
-        {
-          id: Date.now(),
-          topPic: '../../static/image/train-pic.png',
-          title: '产品知识',
-          date: '06.04 8:00-06.06 12:00',
-          limit: 50,
-          type: '课件',
-          time: '刚刚',
-          signNumber: 90,
-          trainStatus: 'notyet' //未开始
-        },
-        {
-          id: Date.now(),
-          topPic: '../../static/image/train-pic.png',
-          title: '产品知识',
-          date: '06.04 8:00-06.06 12:00',
-          limit: 10,
-          type: '课件',
-          time: '刚刚',
-          signNumber: 99,
-          trainStatus: 'overtime' //过期
-        }] },
-
+        list: [],
+        type: 2 },
 
       {
         name: 'ACCSP认证',
-        list: [{
-          id: Date.now(),
-          topPic: '../../static/image/train-pic.png',
-          title: 'ACCSP认证',
-          date: '06.04 8:00-06.06 12:00',
-          limit: 100,
-          type: '视频',
-          time: '刚刚',
-          signNumber: 90,
-          trainStatus: 'online' //已经开始
-        },
-        {
-          id: Date.now(),
-          topPic: '../../static/image/train-pic.png',
-          title: 'ACCSP认证',
-          date: '06.04 8:00-06.06 12:00',
-          limit: 50,
-          type: '课件',
-          time: '刚刚',
-          signNumber: 90,
-          trainStatus: 'notyet' //未开始
-        },
-        {
-          id: Date.now(),
-          topPic: '../../static/image/train-pic.png',
-          title: 'ACCSP认证',
-          date: '06.04 8:00-06.06 12:00',
-          limit: 10,
-          type: '课件',
-          time: '刚刚',
-          signNumber: 99,
-          trainStatus: 'overtime' //过期
-        }] }] };
-
+        list: [],
+        type: 3 }] };
 
 
 
@@ -340,6 +247,15 @@ __webpack_require__.r(__webpack_exports__);
       this.showLogin = true;
     }
   },
+  watch: {
+    TabCur: function TabCur(n) {
+      // 没数据再请求
+      if (this.tabList[n].list.length == 0) {
+        this.type = n + 1;
+        this.getTrainList();
+      }
+    } },
+
   methods: {
     tabChange: function tabChange(index) {
       this.TabCur = index;
@@ -358,7 +274,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     // 培训
     train: function train(item) {
-      if (item.trainStatus !== 'overtime') {
+      if (item.status !== 'overtime') {
         uni.navigateTo({
           url: "/pages/course-detail/course-detail?id=".concat(item.id, "&type=").concat(item.type) });
 
@@ -366,23 +282,27 @@ __webpack_require__.r(__webpack_exports__);
     },
     trainStatus: function trainStatus(status) {
       return {
-        online: '已开始',
+        in_start: '已开始',
         notyet: '未开始',
         overtime: '已过期' }[
       status];
     },
     getTrainList: function getTrainList() {
-      console.log("TCL: getTrainList -> this.token", this.token);
       var that = this;
       uni.request({
+        // url: 'https://amd.mcooks.cn/api/trained/list',
         url: '/trained/list',
         method: 'post',
         header: {
           'authtoken': 'token ' + this.token },
 
+        data: {
+          page: that.page,
+          limit: that.limit,
+          type: that.type },
+
         success: function success(res) {
-          console.log('train-----------', res.data);
-          that.tabList[0].list = res.data.data; // 季度培训
+          that.tabList[that.TabCur].list = res.data.data; // 季度培训
         } });
 
     } } };exports.default = _default;

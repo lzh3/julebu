@@ -1696,7 +1696,7 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 111:
+/***/ 105:
 /*!***********************************!*\
   !*** D:/110/julebu/static/api.js ***!
   \***********************************/
@@ -1719,18 +1719,18 @@ config;exports.default = _default;
 
 /***/ }),
 
-/***/ 192:
+/***/ 186:
 /*!*********************************************************************************************!*\
   !*** ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator/index.js ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 193);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 187);
 
 /***/ }),
 
-/***/ 193:
+/***/ 187:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -1761,7 +1761,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 194);
+module.exports = __webpack_require__(/*! ./runtime */ 188);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -1778,7 +1778,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 194:
+/***/ 188:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -8570,7 +8570,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 330:
+/***/ 318:
 /*!***************************************************!*\
   !*** D:/110/julebu/components/uni-popup/popup.js ***!
   \***************************************************/
@@ -8578,7 +8578,7 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 331));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 319));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 // 定义 type 类型:弹出类型：top/bottom/center
 var config = {
   // 顶部弹出
@@ -8605,7 +8605,7 @@ var config = {
 
 /***/ }),
 
-/***/ 331:
+/***/ 319:
 /*!*****************************************************!*\
   !*** D:/110/julebu/components/uni-popup/message.js ***!
   \*****************************************************/
@@ -8643,7 +8643,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 339:
+/***/ 327:
 /*!***************************************************!*\
   !*** D:/110/julebu/components/uni-icons/icons.js ***!
   \***************************************************/

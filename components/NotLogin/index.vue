@@ -65,7 +65,7 @@
         line-height: 60rpx;
         background: rgba(243, 101, 35, 1);
         border-radius: 10rpx;
-		font-size: 16px;
+        font-size: 16px;
         color: #fff;
       }
     }

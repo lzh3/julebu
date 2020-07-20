@@ -58,7 +58,7 @@
 				console.log(1)
 				let _this = this;
 				uni.request({
-					url: '/send/smscode',
+					url: 'https://amd.mcooks.cn/api/send/smscode',
 					method: 'POST',
 					data: {
 						phone: this.login_form.phone
@@ -89,7 +89,7 @@
 				// console.log(this.code)
 				let _this = this;
 				uni.request({
-					url: '/login',
+					url: 'https://amd.mcooks.cn/api/login',
 					method: 'POST',
 					header: {
 						'content-type': 'application/x-www-form-urlencoded'

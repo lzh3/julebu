@@ -1,36 +1,37 @@
 <template>
 	<view>
-		<view class="activity-wrap" v-if='showLogin'>
+		<view class="activity-wrap container" :style='{display:showLogin}'>
 			<NotLogin pageName="活动"></NotLogin>
 		</view>
-		<view class="cu-card article no-card" v-else v-for="(item,key) in list" :key='key'>
-				<view class="cu-item shadow">
-					<navigator :url="'../activity-detail/activity-detail?id='+item.id">
-						<view class="content">
-							<view class="pic">
-								<image class="img" :src="item.image" mode=""></image>
-								<image class="on" v-if='item.status==="in_start"' src="../../static/image/activity/in_start.png" mode="">
-								</image>
-								<image class="on" v-else-if="item.status==='not_start'" src="../../static/image/activity/not_start.png" mode=""></image>
-								<image class="on" v-else-if="item.status==='end'" src="../../static/image/activity/end.png" mode="">
-								</image>
+		<view class="cu-card article no-card" :style='{display:showCard}' v-for="(item,key) in list" :key='key'>
+			<view class="cu-item shadow">
+				<navigator :url="'../activity-detail/activity-detail?id='+item.id">
+					<view class="content">
+						<view class="pic">
+							<image class="img" :src="item.image" mode=""></image>
+							<image class="on" v-if='item.status==="in_start"' src="../../static/image/activity/in_start.png" mode="">
+							</image>
+							<image class="on" v-else-if="item.status==='not_start'" src="../../static/image/activity/not_start.png"
+								mode=""></image>
+							<image class="on" v-else-if="item.status==='end'" src="../../static/image/activity/end.png" mode="">
+							</image>
 
+						</view>
+						<view class="desc">
+							<view class="text-content">主题:{{item.title}}</view>
+							<view class="text-content">
+								时间:<text class="main-color">
+									{{item.start_time}}-{{item.end_time}}</text>
 							</view>
-							<view class="desc">
-								<view class="text-content">主题:{{item.title}}</view>
-								<view class="text-content">
-									时间:<text class="main-color">
-										{{item.start_time}}-{{item.end_time}}</text>
-								</view>
-								<view class="text-content ">
-									活动名额:<text class="main-color"> {{item.quota_count}}人</text>
-									<text class="f-right">已有{{item.partic_count}}人参与</text>
-								</view>
+							<view class="text-content ">
+								活动名额:<text class="main-color"> {{item.quota_count}}人</text>
+								<text class="f-right">已有{{item.partic_count}}人参与</text>
 							</view>
 						</view>
-					</navigator>
-				</view>
+					</view>
+				</navigator>
 			</view>
+		</view>
 	</view>
 </template>
 
@@ -42,21 +43,28 @@
 		},
 		data() {
 			return {
-				showLogin: false,
+				showCard: '',
+				showLogin: '',
 				list: []
 			}
 		},
-		onLoad() {
+		onShow() {
 			let token = uni.getStorageSync('token')
-			this.showLogin = token === '' ? true : false;
-			this.getActivityList(1, token);
+			if (token == '') {
+				this.showLogin = "block"
+				this.showCard = 'none'
+			} else {
+				this.getActivityList(1, token);
+				this.showLogin = "none";
+				this.showCard = 'block'
+			}
 		},
 		methods: {
 			// 获取活动列表
 			getActivityList(page, token) {
 				let _this = this;
 				uni.request({
-					url: '/events/list',
+					url: 'https://amd.mcooks.cn/api/events/list',
 					method: 'POST',
 					header: {
 						'authtoken': 'token ' + token,
@@ -66,12 +74,9 @@
 						limit: 10
 					},
 					success(res) {
-						console.log(res.data)
 						_this.list = res.data.data;
 					},
-					fail(e) {
-						console.log(e)
-					}
+					fail(e) {}
 				})
 			}
 		}
@@ -79,6 +84,11 @@
 </script>
 
 <style lang="scss" scoped>
+	.activity-wrap {
+		height: 100vh;
+		background-color: #fff;
+	}
+
 	.cu-card {
 		margin-bottom: 6rpx;
 	}

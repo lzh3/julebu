@@ -101,7 +101,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   Swiper: function() {
-    return __webpack_require__.e(/*! import() | components/Swiper/Swiper */ "components/Swiper/Swiper").then(__webpack_require__.bind(null, /*! @/components/Swiper/Swiper.vue */ 243))
+    return __webpack_require__.e(/*! import() | components/Swiper/Swiper */ "components/Swiper/Swiper").then(__webpack_require__.bind(null, /*! @/components/Swiper/Swiper.vue */ 231))
   }
 }
 var render = function() {
@@ -245,30 +245,24 @@ var _default =
 
   },
   methods: {
-    indexNotice: function indexNotice() {
-      console.log("indexNotice");
-    },
+    indexNotice: function indexNotice() {},
     test: function test() {
-      console.log("考试");
       uni.navigateTo({
         url: "/pages/test-detail/test-detail?id=".concat(this.trainItem.id) });
 
     },
     train: function train() {
-      console.log("培训");
       uni.navigateTo({
         url: "/pages/course-detail/course-detail?id=".concat(this.trainItem.id, "&type=").concat(this.trainItem.type) });
 
     },
     bannerJump: function bannerJump(url) {
-      console.log("TCL: bannerJump -> url", url);
       uni.navigateTo({
         url: url });
 
     },
     //点击资讯跳转
     newsItemClick: function newsItemClick(item) {
-      console.log("TCL: newsItemClick -> item", item);
       uni.navigateTo({
         url: "/pages/activity-detail/activity-detail?id=1" });
 
@@ -287,7 +281,6 @@ var _default =
     } },
 
   mounted: function mounted() {var _this2 = this;
-    console.log("TCL: mounted -> 1", 1);
     uni.request({
       url: "https://amd.mcooks.cn/api/index", //仅为示例，并非真实接口地址。
       success: function success(_ref)
@@ -305,9 +298,6 @@ var _default =
           _this2.notices = notices;
           _this2.autoplayNotice();
           _this2.trainItem = train;
-          console.log("TCL: mounted -> newsItems", _this2.newsItems);
-          console.log("TCL: mounted -> bannerItems", _this2.bannerItems);
-          console.log("TCL: mounted -> trainItem", _this2.trainItem);
         }
       } });
 

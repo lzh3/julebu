@@ -4,31 +4,31 @@
 			{{title}}
 		</view>
 		<view class="content">
-			<view class="item" v-for="(v,index) of list" :key="index">
-				<view class="test-option-name">{{index+1}}. {{v.title}} （{{v.type}}）</view>
-				<view class="test-options" v-if="v.type === '单选'">
+			<view class="item" v-for="(v,index) of list" :key="v.id">
+				<view class="test-option-name">{{index+1}}. {{v.title}}</view>
+				<view class="test-options" v-if="v.multiple === 0">
 					<radio-group @change="radioChange">
-						<label class="uni-list-cell" v-for="(u, m) in v.options" :key="u.value">
+						<label class="uni-list-cell" v-for="(u, m) in v.answer" :key="u.code">
 							<view class="radio">
-								<radio :value="`${index}-${m}-${u.value}-${u.content}`" />
+								<radio :value="`${v.id}-${index}-${m}-${u.code}-${u.title}`" />
 							</view>
-							<view class="radio-content">{{u.content}}</view>
+							<view class="radio-content">{{u.title}}</view>
 						</label>
 					</radio-group>
 				</view>
 				<!-- 多选 -->
 				<view v-else class="test-options">
 					<evan-checkbox-group v-model="v.checked" @change="checkboxChange">
-						<evan-checkbox class="checkout-content" primary-color="#F36523" v-for="(u, m) in v.options" :key="u.value"
-							:label="`${index}-${m}-${u.value}-${u.content}`">
-							{{u.content}}
+						<evan-checkbox class="checkout-content" primary-color="#F36523" v-for="(u, m) in v.answer" :key="u.code"
+							:label="`${v.id}-${index}-${m}-${u.code}-${u.title}`">
+							{{u.title}}
 						</evan-checkbox>
 					</evan-checkbox-group>
 				</view>
 			</view>
 		</view>
 		<button type="primary" @click="submit" class="btn">提交答案</button>
-		<Modal ref="modal" status="success" title="提交成功" desc="请在“我的培训”查看得分" btn btnText="立即查看" :cb="cb" />
+		<Modal ref="modal" :status="status" title="提交成功" :desc="msg" btn btnText="立即查看" :cb="cb" />
 
 	</view>
 </template>
@@ -42,98 +42,74 @@
 		},
 		data() {
 			return {
-				title: "AMD最新五代处理器全渠道销售考试",
-				list: [{
-					title: 'AMD Ryzen 9 3900X核心和线程数',
-					type: '单选',
-					options: [{
-						value: 'A',
-						content: '12核心24线程',
-					}, {
-						value: 'B',
-						content: '2核心2线程',
-					}, {
-						value: 'C',
-						content: '2核心2线程',
-					}, {
-						value: 'D',
-						content: '4核心8线程',
-					}]
-				}, {
-					title: 'AMD Ryzen 9 3900X的CPU主频',
-					type: '单选',
-					options: [{
-						value: 'A',
-						content: '3.8G',
-					}, {
-						value: 'B',
-						content: '3.6G',
-					}, {
-						value: 'C',
-						content: '3.4G',
-					}, {
-						value: 'D',
-						content: '3.2G',
-					}]
-				}, {
-					title: '选择出AMD Ryzen 5 系列的CPU',
-					type: '多选',
-					options: [{
-						value: 'A',
-						content: 'AMD Ryzen 5 3600',
-					}, {
-						value: 'B',
-						content: 'AMD Ryzen 7 3700X',
-					}, {
-						value: 'C',
-						content: 'AMD Ryzen 5 2600',
-					}, {
-						value: 'D',
-						content: 'AMD Ryzen 5 2600X',
-					}]
-				}, {
-					title: '选择出AMD Ryzen 5 系列的CPU',
-					type: '多选',
-					options: [{
-						value: 'A',
-						content: 'AMD Ryzen 5 3600',
-					}, {
-						value: 'B',
-						content: 'AMD Ryzen 7 3700X',
-					}, {
-						value: 'C',
-						content: 'AMD Ryzen 5 2600',
-					}, {
-						value: 'D',
-						content: 'AMD Ryzen 5 2600X',
-					}]
-				}, {
-					title: '选择出AMD Ryzen 5 系列的CPU',
-					type: '多选',
-					options: [{
-						value: 'A',
-						content: 'AMD Ryzen 5 3600',
-					}, {
-						value: 'B',
-						content: 'AMD Ryzen 7 3700X',
-					}, {
-						value: 'C',
-						content: 'AMD Ryzen 5 2600',
-					}, {
-						value: 'D',
-						content: 'AMD Ryzen 5 2600X',
-					}]
-				}]
+				token: null,
+				title: null,
+				list: [],
+				startTime: 0,
+				answers: [],
+				msg: `请在“我的培训”查看得分`,
+				status: 'success',
 			}
 		},
 		onLoad(opt) {
-			console.log("考试详情页: onLoad -> opt", opt)
-
+			let token = uni.getStorageSync('token')
+			if (token) {
+				this.token = token
+				let that = this;
+				uni.request({
+					url: '/examination/index',
+					// url: 'https://amd.mcooks.cn/api/examination/index',
+					method: 'post',
+					header: {
+						'authtoken': 'token ' + token,
+					},
+					data: {
+						"bid": opt.id // 培训列表的id
+					},
+					success({
+						data: {
+							data
+						}
+					}) {
+						that.title = data.title
+						that.list = data.examination
+						that.startTime = Date.now()
+					}
+				})
+			}
 		},
 		methods: {
 			// 提交答案
 			submit() {
-				this.$refs.modal.open()
+				let that = this
+				if (this.answers.length) {
+					uni.request({
+						url: '/examination/submit',
+						// url: 'https://amd.mcooks.cn/api/examination/submit',
+						method: 'post',
+						header: {
+							'authtoken': 'token ' + this.token,
+						},
+						data: {
+							"bid": 1, // 培训id
+							"confirm": 1, // 是否确认提交 1、提交之后不允许修改 0、提交之后仅保存草稿
+							"second": (Date.now() - this.startTime) / 1000, // 答题用的时间 单位(秒) 从获取考题接口成功开始计算
+							"answers": this.answers
+						},
+						success(res) {
+							console.log("TCL: success -> res", res)
+							if (res.data.code == 402) {
+								that.status = 'error';
+							} else {
+								that.status = 'success';
+							}
+							that.msg = res.data.msg
+							that.$refs.modal.open()
+						}
+					})
+				} else {
+					// 提示
+				}
 			},
 			// 请在“我-我的培训”查看得分
 			cb() {
@@ -141,15 +117,30 @@
 			},
 			radioChange(EventHander) {
 				let arr = EventHander.detail.value.split('-')
-				this.list[arr[0]].checked = this.list[arr[0]].options[arr[1]]
-				console.log("TCL: radioChange -> this.list", this.list)
+				let id = arr[0]
+				let curIndex = this.answers.findIndex(v => v.id == id)
+				if (curIndex != -1) {
+					this.answers[curIndex].answer = arr[3]
+				} else {
+					this.answers.push({
+						id,
+						answer: arr[3]
+					})
+				}
 			},
-			// value "2-1-B-AMD Ryzen 7 3700X" 第三题第二个选项B内容是AMD Ryzen 7 3700X
 			checkboxChange: function (value) {
-				console.log("TCL: this.list", this.list)
-				console.log("TCL: value", value)
-			}
-		}
+				let id = value[0].split('-')[0]
+				let curIndex = this.answers.findIndex(v => v.id == id)
+				if (curIndex != -1) {
+					this.answers[curIndex].answer = value.map(v => v.split('-')[3])
+				} else {
+					this.answers.push({
+						id,
+						answer: value.map(v => v.split('-')[3])
+					})
+				}
+			},
+		},
 	}
 </script>
 

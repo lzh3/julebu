@@ -269,7 +269,7 @@ var _default =
     getUserInfo: function getUserInfo() {
       var _this = this;
       uni.request({
-        url: '/userinfo',
+        url: 'https://amd.mcooks.cn/api/userinfo',
         method: 'get',
         header: {
           'authtoken': 'token ' + this.token },

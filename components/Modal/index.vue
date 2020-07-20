@@ -18,7 +18,7 @@
 				<slot name="desc"></slot>
 			</text>
 			<text class="desc" v-else>{{desc}}</text>
-			<button type="primary" @click="fn" class="btn" v-if="$attrs.btn">{{btnText}}</button>
+			<button type="primary" @click="fn" class="btn" v-if="$attrs.btn && status === 'success'">{{btnText}}</button>
 			<image src="../../static/image/close.png" class="close" @click="close" />
 		</view>
 		<view class="login-wrap modal-wrap success" v-show="status === 'login'">
@@ -44,7 +44,7 @@
 			msg: {
 				default: () => '请输入正确信息'
 			},
-			showlogin:{
+			showlogin: {
 				default: () => false
 			},
 			isSuccess: {
@@ -75,7 +75,7 @@
 			console.log("TCL: onLoad -> this", this)
 		},
 		methods: {
-			loginFn(){
+			loginFn() {
 				uni.navigateTo({
 					url: '../../pages/login/login'
 				})
@@ -105,12 +105,13 @@
 </script>
 
 <style scoped lang='scss'>
-	.reg_err{
-		margin:30rpx 0;
+	.reg_err {
+		margin: 30rpx 0;
 	}
+
 	.reg-btn {
-		color:#fff;
-	} 
+		color: #fff;
+	}
 
 	.login-wrap {
 		width: 438rpx;

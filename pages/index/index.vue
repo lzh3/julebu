@@ -12,7 +12,7 @@
           enter-active-class="animated fadeInUp"
           leave-active-class="animated fadeOutUp"
         > -->
-				<view v-show="index == isCurrent" class="header-desc animated fadeInUp" v-for="(item,index) in notices"
+				<view v-if="index == isCurrent" class="header-desc animated fadeInUp" v-for="(item,index) in notices"
 					:key="item.title">
 					<view class="info">{{item.title}}</view>
 					<view class="date">{{item.date}}</view>
@@ -53,7 +53,7 @@
 			</view>
 			<block v-for="item in trainItem">
 				<view class="train-content">
-					<image :src="item.topPic" mode="aspectFit" />
+					<image :src="item.image" mode="aspectFit" />
 					<view class="main">
 						<view class="header">
 							<text>{{item.title}}</text>
@@ -104,30 +104,24 @@
 			};
 		},
 		methods: {
-			indexNotice() {
-				console.log("indexNotice");
-			},
+			indexNotice() {},
 			test() {
-				console.log("考试");
 				uni.navigateTo({
 					url: `/pages/test-detail/test-detail?id=${this.trainItem.id}`
 				});
 			},
 			train() {
-				console.log("培训");
 				uni.navigateTo({
 					url: `/pages/course-detail/course-detail?id=${this.trainItem.id}&type=${this.trainItem.type}`
 				});
 			},
 			bannerJump(url) {
-				console.log("TCL: bannerJump -> url", url);
 				uni.navigateTo({
 					url
 				});
 			},
 			//点击资讯跳转
 			newsItemClick(item) {
-				console.log("TCL: newsItemClick -> item", item);
 				uni.navigateTo({
 					url: "/pages/activity-detail/activity-detail?id=1"
 				});
@@ -146,7 +140,6 @@
 			}
 		},
 		mounted() {
-			console.log("TCL: mounted -> 1", 1)
 			uni.request({
 				url: "https://amd.mcooks.cn/api/index", //仅为示例，并非真实接口地址。
 				success: ({
@@ -164,9 +157,6 @@
 						this.notices = notices;
 						this.autoplayNotice();
 						this.trainItem = train;
-						console.log("TCL: mounted -> newsItems", this.newsItems);
-						console.log("TCL: mounted -> bannerItems", this.bannerItems);
-						console.log("TCL: mounted -> trainItem", this.trainItem);
 					}
 				}
 			});

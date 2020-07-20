@@ -71,6 +71,7 @@
   margin: 10rpx 10rpx;
   box-sizing: border-box;
   text-align: center;
+  color: #f39d23;
 }
 .list .list-card .item .img.data-v-3df0de86 {
   width: 40rpx;

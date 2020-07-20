@@ -105,7 +105,7 @@
 			getJfHistory(page, token) {
 				let _this = this;
 				uni.request({
-					url: 'user/integral-log',
+					url: 'https://amd.mcooks.cn/api/user/integral-log',
 					method: 'post',
 					header: {
 						'authtoken': 'token ' + token,

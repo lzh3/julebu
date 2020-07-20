@@ -26,7 +26,7 @@
 				class="btn" 
 				v-if="joined"
 				:class="{over:end}"
-				:disabled="item.is_sign==0">
+				:disabled="item.is_sign==1">
 				我要参与
 			</button>
 		</view>
@@ -45,6 +45,8 @@
 		},
 		data() {
 			return {
+				token:'',
+				id:-1,
 				joined:true,
 				end:true,
 				item: {
@@ -65,20 +67,39 @@
 		//路由参数就收
 		onLoad(opt) {
 			let token = uni.getStorageSync('token')
+			this.token=token;
 			console.log(opt)
+			this.id=opt.id;
 			if(opt.joined){
 				this.joined = false;
 			}
 			this.getDetail(opt.id,token)
 		},
 		methods: {
+			showJoin(status){
+				console.log(status)
+			},
 			joinActivity() {
-				this.$refs.modal.open()
+				// this.$refs.modal.open()
+				let _this=this;
+				uni.request({
+					url:'https://amd.mcooks.cn/api/event/sign',
+					method:'POST',
+					header:{
+						'authtoken':'token '+_this.token,
+					},
+					data:{
+						id:_this.id
+					},
+					success(res){
+						console.log(res.data)
+					}
+				})
 			},
 			getDetail(id,token){
 				let _this=this;
 				uni.request({
-					url:'/events/show',
+					url:'https://amd.mcooks.cn/api/events/show',
 					method:'POST',
 					header:{
 						'authtoken':'token '+token,
@@ -88,6 +109,9 @@
 					},
 					success(res){
 						console.log(res.data)
+						if(res.data.data.is_sign==0){
+							_this.end= false;
+						}
 						_this.item=res.data.data;
 					}
 				})

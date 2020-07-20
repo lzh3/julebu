@@ -130,7 +130,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var NotLogin = function NotLogin() {__webpack_require__.e(/*! require.ensure | components/NotLogin/index */ "components/NotLogin/index").then((function () {return resolve(__webpack_require__(/*! @/components/NotLogin */ 250));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var NotLogin = function NotLogin() {__webpack_require__.e(/*! require.ensure | components/NotLogin/index */ "components/NotLogin/index").then((function () {return resolve(__webpack_require__(/*! @/components/NotLogin */ 238));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
 
 
 
@@ -174,21 +175,28 @@ __webpack_require__.r(__webpack_exports__);
 
   data: function data() {
     return {
-      showLogin: false,
+      showCard: '',
+      showLogin: '',
       list: [] };
 
   },
-  onLoad: function onLoad() {
+  onShow: function onShow() {
     var token = uni.getStorageSync('token');
-    this.showLogin = token === '' ? true : false;
-    this.getActivityList(1, token);
+    if (token == '') {
+      this.showLogin = "block";
+      this.showCard = 'none';
+    } else {
+      this.getActivityList(1, token);
+      this.showLogin = "none";
+      this.showCard = 'block';
+    }
   },
   methods: {
     // 获取活动列表
     getActivityList: function getActivityList(page, token) {
       var _this = this;
       uni.request({
-        url: '/events/list',
+        url: 'https://amd.mcooks.cn/api/events/list',
         method: 'POST',
         header: {
           'authtoken': 'token ' + token },
@@ -198,12 +206,9 @@ __webpack_require__.r(__webpack_exports__);
           limit: 10 },
 
         success: function success(res) {
-          console.log(res.data);
           _this.list = res.data.data;
         },
-        fail: function fail(e) {
-          console.log(e);
-        } });
+        fail: function fail(e) {} });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

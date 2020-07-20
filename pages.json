@@ -171,6 +171,8 @@
 		"selectedColor": "#f36523",
 		"backgroundColor": "#ffffff",
 		"fontSize": "16px",
+		// "height":"60px",
+		"iconWidth":"16px",
 		"list": [{
 				"pagePath": "pages/index/index",
 				"iconPath": "static/image/icon/footer/home.png",

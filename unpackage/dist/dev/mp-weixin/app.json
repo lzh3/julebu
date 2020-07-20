@@ -42,6 +42,7 @@
     "selectedColor": "#f36523",
     "backgroundColor": "#ffffff",
     "fontSize": "16px",
+    "iconWidth": "16px",
     "list": [
       {
         "pagePath": "pages/index/index",
@@ -75,5 +76,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap30.json"
 }

@@ -228,6 +228,7 @@
 				margin: 10rpx 10rpx;
 				box-sizing: border-box;
 				text-align: center;
+				color:#f39d23;
 
 				.img {
 					width: 40rpx;

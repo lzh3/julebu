@@ -48,7 +48,7 @@
 		},
 		onLoad() {
 			let token = uni.getStorageSync('token')
-			this.showLogin = token === '' ? true : false;
+			this.showLogin = token == '' ? true : false;
 			this.getActivityList(1, token);
 		},
 		methods: {

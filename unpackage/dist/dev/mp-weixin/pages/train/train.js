@@ -94,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   wucTab: function() {
-    return __webpack_require__.e(/*! import() | components/wuc-tab/wuc-tab */ "components/wuc-tab/wuc-tab").then(__webpack_require__.bind(null, /*! @/components/wuc-tab/wuc-tab.vue */ 221))
+    return __webpack_require__.e(/*! import() | components/wuc-tab/wuc-tab */ "components/wuc-tab/wuc-tab").then(__webpack_require__.bind(null, /*! @/components/wuc-tab/wuc-tab.vue */ 257))
   }
 }
 var render = function() {
@@ -157,7 +157,12 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var WucTab = function WucTab() {__webpack_require__.e(/*! require.ensure | components/wuc-tab/wuc-tab */ "components/wuc-tab/wuc-tab").then((function () {return resolve(__webpack_require__(/*! @/components/wuc-tab/wuc-tab.vue */ 221));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var swiper = function swiper() {__webpack_require__.e(/*! require.ensure | components/wuc-tab/wuc-tab */ "components/wuc-tab/wuc-tab").then((function () {return resolve(__webpack_require__(/*! @/components/wuc-tab/wuc-tab.vue */ 221));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Kefu = function Kefu() {__webpack_require__.e(/*! require.ensure | components/Kefu/index */ "components/Kefu/index").then((function () {return resolve(__webpack_require__(/*! @/components/Kefu */ 228));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var WucTab = function WucTab() {__webpack_require__.e(/*! require.ensure | components/wuc-tab/wuc-tab */ "components/wuc-tab/wuc-tab").then((function () {return resolve(__webpack_require__(/*! @/components/wuc-tab/wuc-tab.vue */ 257));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var swiper = function swiper() {__webpack_require__.e(/*! require.ensure | components/wuc-tab/wuc-tab */ "components/wuc-tab/wuc-tab").then((function () {return resolve(__webpack_require__(/*! @/components/wuc-tab/wuc-tab.vue */ 257));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Kefu = function Kefu() {__webpack_require__.e(/*! require.ensure | components/Kefu/index */ "components/Kefu/index").then((function () {return resolve(__webpack_require__(/*! @/components/Kefu */ 264));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
 
 
 
@@ -205,6 +210,8 @@ __webpack_require__.r(__webpack_exports__);
 {
   data: function data() {
     return {
+      token: '',
+      showLogin: false,
       TabCur: 0,
       tabList: [{
         name: '季度培训',
@@ -319,14 +326,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
   },
   components: {
     WucTab: WucTab,
     Kefu: Kefu },
 
-  onLoad: function onLoad() {
-    this.getTrainList();
+  onShow: function onShow() {
+    var token = uni.getStorageSync('token');
+    if (token) {
+      this.token = token;
+      this.getTrainList();
+    } else {
+      this.showLogin = true;
+    }
   },
   methods: {
     tabChange: function tabChange(index) {
@@ -360,16 +372,17 @@ __webpack_require__.r(__webpack_exports__);
       status];
     },
     getTrainList: function getTrainList() {
-      var _this = this;
+      console.log("TCL: getTrainList -> this.token", this.token);
+      var that = this;
       uni.request({
         url: '/trained/list',
-        method: 'get',
+        method: 'post',
         header: {
           'authtoken': 'token ' + this.token },
 
         success: function success(res) {
-          console.log(res.data);
-
+          console.log('train-----------', res.data);
+          that.tabList[0].list = res.data.data; // 季度培训
         } });
 
     } } };exports.default = _default;

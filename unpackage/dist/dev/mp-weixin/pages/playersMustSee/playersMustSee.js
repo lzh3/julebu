@@ -51,7 +51,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -67,20 +67,29 @@ var _default =
       list: [{
         title: '锐龙情报站',
         icon: '../../static/image//playersMustSee/borad.png',
-        url: '' },
+        url: '',
+        type: 1 },
       {
         title: '锐龙影院',
         icon: '../../static/image//playersMustSee/movie.png',
-        url: '' },
+        url: '',
+        type: 2 },
       {
         title: '锐龙画廊',
         icon: '../../static/image//playersMustSee/pic.png',
-        url: '' }] };
+        url: '',
+        type: 3 }] };
 
 
   },
 
-  methods: {} };exports.default = _default;
+  methods: {
+    jump: function jump(type) {
+      uni.navigateTo({
+        url: 'lists/lists?type=' + type });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

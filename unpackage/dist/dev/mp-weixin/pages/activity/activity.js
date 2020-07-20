@@ -130,13 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var NotLogin = function NotLogin() {__webpack_require__.e(/*! require.ensure | components/NotLogin/index */ "components/NotLogin/index").then((function () {return resolve(__webpack_require__(/*! @/components/NotLogin */ 214));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
-
-
-
-
-
-
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var NotLogin = function NotLogin() {__webpack_require__.e(/*! require.ensure | components/NotLogin/index */ "components/NotLogin/index").then((function () {return resolve(__webpack_require__(/*! @/components/NotLogin */ 250));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -180,15 +174,13 @@ __webpack_require__.r(__webpack_exports__);
 
   data: function data() {
     return {
-      showLogin: true,
+      showLogin: false,
       list: [] };
 
   },
   onLoad: function onLoad() {
-    console.log(123);
     var token = uni.getStorageSync('token');
-    console.log(token);
-    this.showLogin = token ? true : false;
+    this.showLogin = token === '' ? true : false;
     this.getActivityList(1, token);
   },
   methods: {
@@ -196,11 +188,10 @@ __webpack_require__.r(__webpack_exports__);
     getActivityList: function getActivityList(page, token) {
       var _this = this;
       uni.request({
-        url: 'https://amd.mcooks.cn/api/events/list',
+        url: '/events/list',
         method: 'POST',
         header: {
-          'authtoken': 'token ' + token,
-          'content-type': 'application/x-www-form-urlencoded' },
+          'authtoken': 'token ' + token },
 
         data: {
           page: page,

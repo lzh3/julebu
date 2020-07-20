@@ -101,7 +101,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   Swiper: function() {
-    return __webpack_require__.e(/*! import() | components/Swiper/Swiper */ "components/Swiper/Swiper").then(__webpack_require__.bind(null, /*! @/components/Swiper/Swiper.vue */ 207))
+    return __webpack_require__.e(/*! import() | components/Swiper/Swiper */ "components/Swiper/Swiper").then(__webpack_require__.bind(null, /*! @/components/Swiper/Swiper.vue */ 243))
   }
 }
 var render = function() {
@@ -287,8 +287,9 @@ var _default =
     } },
 
   mounted: function mounted() {var _this2 = this;
+    console.log("TCL: mounted -> 1", 1);
     uni.request({
-      url: "/index", //仅为示例，并非真实接口地址。
+      url: "https://amd.mcooks.cn/api/index", //仅为示例，并非真实接口地址。
       success: function success(_ref)
 
       {var data = _ref.data;

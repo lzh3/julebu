@@ -103,12 +103,11 @@
   display: -webkit-flex;
   display: flex;
   margin: 28rpx 0;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-          justify-content: space-between;
+  -webkit-justify-content: space-around;
+          justify-content: space-around;
 }
 .card .card-info .jf view.data-v-8874564e {
-  width: 230rpx;
+  width: 250rpx;
   text-align: center;
 }
 

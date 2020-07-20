@@ -44,6 +44,9 @@
   border-radius: 4rpx;
 }
 .designer-in .items .items-content.data-v-abd4ad74 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
   margin-left: 40rpx;
   display: -webkit-box;
   display: -webkit-flex;

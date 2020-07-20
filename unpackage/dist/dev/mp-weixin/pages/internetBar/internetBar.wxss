@@ -45,6 +45,9 @@
   height: 130rpx;
 }
 .internet-bar .items .items-content.data-v-4f3e0aac {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
   margin-left: 20rpx;
 }
 .internet-bar .items .items-content .title.data-v-4f3e0aac {

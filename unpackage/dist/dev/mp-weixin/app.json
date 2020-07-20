@@ -12,8 +12,12 @@
     "pages/personal/mycollect/mycollect",
     "pages/personal/mycollect/collectdetail/collectdetail",
     "pages/playersMustSee/playersMustSee",
+    "pages/playersMustSee/lists/lists",
+    "pages/playersMustSee/detail/detail",
     "pages/designerIn/designerIn",
+    "pages/designerIn/detail/detail",
     "pages/internetBar/internetBar",
+    "pages/internetBar/detail/detail",
     "pages/personal/mypost/mypost",
     "pages/activity-detail/activity-detail",
     "pages/personal/mypost/postdetail/postdetail",
@@ -71,5 +75,7 @@
       }
     ]
   },
-  "usingComponents": {}
+  "permission": {},
+  "usingComponents": {},
+  "sitemapLocation": "sitemap16.json"
 }

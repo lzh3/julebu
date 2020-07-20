@@ -186,50 +186,49 @@ var _default =
       avatar: '',
       type: '',
       user_info: {},
-      list: [
-      {
-        icon: '../../static/image/icon/personal/1.png',
+      list: [{
+        image: '../../static/image/icon/personal/1.png',
         title: '店铺详情' },
 
       {
-        icon: '../../static/image/icon/personal/2.png',
+        image: '../../static/image/icon/personal/2.png',
         title: '店面形象' },
 
       {
-        icon: '../../static/image/icon/personal/3.png',
+        image: '../../static/image/icon/personal/3.png',
         title: '店员管理' },
 
       {
-        icon: '../../static/image/icon/personal/4.png',
+        image: '../../static/image/icon/personal/4.png',
         title: '我的活动',
         url: './myactivity/myactivity' },
 
       {
-        icon: '../../static/image/icon/personal/5.png',
+        image: '../../static/image/icon/personal/5.png',
         title: '我的培训',
         url: './mytrain/mytrain' },
 
       {
-        icon: '../../static/image/icon/personal/6.png',
+        image: '../../static/image/icon/personal/6.png',
         title: '我的帖子',
         url: './mypost/mypost' },
 
       {
-        icon: '../../static/image/icon/personal/7.png',
+        image: '../../static/image/icon/personal/7.png',
         title: '我的积分',
         url: './myjf/myjf' },
 
       {
-        icon: '../../static/image/icon/personal/8.png',
+        image: '../../static/image/icon/personal/8.png',
         title: '积分奖励' },
 
       {
-        icon: '../../static/image/icon/personal/9.png',
+        image: '../../static/image/icon/personal/9.png',
         title: '我的收藏',
         url: './mycollect/mycollect' },
 
       {
-        icon: '../../static/image/icon/personal/10.png',
+        image: '../../static/image/icon/personal/10.png',
         title: '我的客服' }] };
 
 
@@ -243,6 +242,7 @@ var _default =
   onLoad: function onLoad() {
     this.token = uni.getStorageSync('token');
     this.getUserInfo();
+    this.getPageInfo();
 
   },
   methods: {
@@ -261,7 +261,7 @@ var _default =
           'authtoken': 'token ' + token },
 
         success: function success(res) {
-          console.log(res);
+          console.log("TCL: success -> res user/modules", res);
         } });
 
     },
@@ -275,10 +275,19 @@ var _default =
           'authtoken': 'token ' + this.token },
 
         success: function success(res) {
-          console.log(res.data);
+          console.log(res.data.data.nickname);
+          var nickname = res.data.data.nickname;
+          uni.setStorageSync('username', nickname);
           if (res.data.code == 200) {var _res$data$data =
-            res.data.data,nickname = _res$data$data.nickname,id_type = _res$data$data.id_type,id = _res$data$data.id,reg_ip = _res$data$data.reg_ip,realname = _res$data$data.realname,avatar = _res$data$data.avatar;
-            _this.user_name = realname;
+
+
+
+
+
+
+
+            res.data.data,_nickname = _res$data$data.nickname,id_type = _res$data$data.id_type,id = _res$data$data.id,reg_ip = _res$data$data.reg_ip,realname = _res$data$data.realname,avatar = _res$data$data.avatar;
+            _this.username = realname;
             _this.id = id;
             _this.jf = reg_ip;
             _this.avatar = avatar;

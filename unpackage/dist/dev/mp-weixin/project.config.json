@@ -6,21 +6,6 @@
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
-<<<<<<< HEAD
-		"enhance": true,
-		"postcss": true,
-		"preloadBackgroundData": true,
-		"minified": false,
-		"newFeature": true,
-		"coverView": true,
-		"nodeModules": true,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": true,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-=======
 		"enhance": false,
 		"postcss": true,
 		"preloadBackgroundData": false,
@@ -36,26 +21,18 @@
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
 		"compileHotReLoad": false,
->>>>>>> df718f948c3e8834d7de8b31a288115f2a9eb2b8
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-<<<<<<< HEAD
-=======
 		"useIsolateContext": true,
->>>>>>> df718f948c3e8834d7de8b31a288115f2a9eb2b8
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
-<<<<<<< HEAD
-	"libVersion": "2.9.2",
-=======
 	"libVersion": "",
->>>>>>> df718f948c3e8834d7de8b31a288115f2a9eb2b8
-	"appid": "touristappid",
+	"appid": "wxb62ed0293e035c01",
 	"projectname": "julebu",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},

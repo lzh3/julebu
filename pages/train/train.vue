@@ -132,8 +132,8 @@
 			getTrainList() {
 				let that = this
 				uni.request({
-					url: 'https://amd.mcooks.cn/api/trained/list',
-					// url: '/trained/list',
+					// url: 'https://amd.mcooks.cn/api/trained/list',
+					url: '/trained/list',
 					method: 'post',
 					header: {
 						'authtoken': 'token ' + this.token,

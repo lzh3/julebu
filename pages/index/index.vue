@@ -12,7 +12,8 @@
           enter-active-class="animated fadeInUp"
           leave-active-class="animated fadeOutUp"
         > -->
-				<view v-if="index == isCurrent" class="header-desc animated fadeInUp" v-for="(item,index) in notices" :key="item.title">
+				<view v-if="index == isCurrent" class="header-desc animated fadeInUp" v-for="(item,index) in notices"
+					:key="item.title">
 					<view class="info">{{item.title}}</view>
 					<view class="date">{{item.date}}</view>
 				</view>
@@ -102,7 +103,7 @@
 				isCurrent: 0
 			};
 		},
-		onLoad(){
+		onLoad() {
 			let token = uni.getStorageSync('token')
 			this.getIdType(token)
 		},
@@ -134,17 +135,18 @@
 					url: "/pages/activity-detail/activity-detail?id=1"
 				});
 			},
-			getIdType(token){
+			getIdType(token) {
 				let _this = this;
-				if(token){
+				if (token) {
 					uni.request({
-						url: 'https://amd.mcooks.cn/api/userinfo',
+						// url: 'https://amd.mcooks.cn/api/userinfo',
+						url: '/userinfo',
 						method: 'get',
 						header: {
 							'authtoken': 'token ' + token,
 						},
 						success(res) {
-							let id_type = 0 || (res.data.data&&res.data.data.id_type);
+							let id_type = 0 || (res.data.data && res.data.data.id_type);
 							uni.setStorageSync('id_type', id_type)
 						}
 					})
@@ -168,9 +170,9 @@
 							this.notices = notices;
 							this.autoplayNotice();
 							this.trainItem = train;
-							setTimeout(()=>{
+							setTimeout(() => {
 								uni.stopPullDownRefresh();
-							},500)
+							}, 500)
 						}
 					}
 				});

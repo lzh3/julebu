@@ -17,7 +17,7 @@
 					<view class="jifen">
 						积分：{{jf}}
 					</view>
-					
+
 					<view class="login" @click="loginFn" v-if="token==''">立即登录</view>
 					<view class="type" v-else>{{type}}</view>
 				</view>
@@ -26,7 +26,7 @@
 		</view>
 		<view class="list">
 			<view class="list-card bg-white">
-				
+
 				<view class="item" v-if="id_type!=1 && id_type!=2">
 					<navigator url=''>
 						<view class="img">
@@ -35,7 +35,7 @@
 						<view class="txt">店铺详情</view>
 					</navigator>
 				</view>
-				<view class="item"  v-if="id_type!=1 && id_type!=2">
+				<view class="item" v-if="id_type!=1 && id_type!=2">
 					<navigator url=''>
 						<view class="img">
 							<image src="../../static/image/icon/personal/2.png" mode=""></image>
@@ -43,7 +43,7 @@
 						<view class="txt">店面形象</view>
 					</navigator>
 				</view>
-				<view class="item"  v-if="id_type!=1  && id_type!=2">
+				<view class="item" v-if="id_type!=1  && id_type!=2">
 					<navigator url=''>
 						<view class="img">
 							<image src="../../static/image/icon/personal/3.png" mode=""></image>
@@ -108,13 +108,13 @@
 					</navigator>
 				</view>
 			</view>
-			
+
 		</view>
-		
-		
-		
-		
-		
+
+
+
+
+
 		<!-- <view><navigator url="../login/login">去登录</navigator></view> -->
 		<!-- <view class="reward">
 			<view class="reward-title">
@@ -189,8 +189,8 @@
 			let token = uni.getStorageSync('token');
 			this.token = token;
 			// console.log('==================',token)
-			let id_type=uni.getStorageSync('id_type')
-			this.id_type=id_type;
+			let id_type = uni.getStorageSync('id_type')
+			this.id_type = id_type;
 			await this.getPageInfo(token);
 			await this.getUserInfo(token);
 		},
@@ -198,10 +198,10 @@
 			
 		}, */
 		methods: {
-			outLogin(){
+			outLogin() {
 				uni.removeStorageSync('token');
 				uni.navigateTo({
-					url:'../login/login'
+					url: '../login/login'
 				})
 			},
 			loginFn() {
@@ -211,9 +211,10 @@
 			},
 			// 获取页面信息
 			getPageInfo(token) {
-				if(token){
+				if (token) {
 					uni.request({
-						url: 'https://amd.mcooks.cn/api/user/modules',
+						url: '/user/modules',
+						// url: 'https://amd.mcooks.cn/api/user/modules',
 						method: 'get',
 						header: {
 							'authtoken': 'token ' + token,
@@ -228,16 +229,17 @@
 			// 获取个人信息
 			getUserInfo(token) {
 				let _this = this;
-				if(token){
+				if (token) {
 					uni.request({
-						url: 'https://amd.mcooks.cn/api/userinfo',
+						// url: 'https://amd.mcooks.cn/api/userinfo',
+						url: '/userinfo',
 						method: 'get',
 						header: {
 							'authtoken': 'token ' + token,
 						},
 						success(res) {
 							console.log(res.data.data)
-							let nickname ='' || (res.data.data&&res.data.data.nickname) ;
+							let nickname = '' || (res.data.data && res.data.data.nickname);
 							uni.setStorageSync('username', nickname)
 							if (res.data.code == 200) {
 								const {
@@ -266,13 +268,13 @@
 										_this.type = 'CSR'
 										break;
 								}
-					
+
 							}
-					
+
 						}
 					})
 				}
-				
+
 			}
 		}
 	}
@@ -403,7 +405,8 @@
 			border-radius: 10rpx;
 			background-color: #f39d23;
 		}
-		.out{
+
+		.out {
 			position: absolute;
 			width: 145rpx;
 			height: 48rpx;

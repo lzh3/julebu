@@ -6,9 +6,9 @@
 		<view class="content">
 			<view class="item" v-for="(v,index) of list" :key="index">
 				<view class="test-option-name">
-					{{index+1}}. {{v.title}} （{{v.type}}）
-					<image class="pd" src="../../../static/image/icon/personal/right.png" mode=""></image>
-					<image class="pd" src="../../../static/image/error.png" mode=""></image>
+					{{index+1}}. {{v.title}}
+					<image class="pd" src="../../../static/image/icon/personal/right.png"></image>
+					<image class="pd" src="../../../static/image/error.png"></image>
 				</view>
 				<view class="test-options" v-if="v.type === '单选'">
 					<radio-group @change="radioChange">
@@ -44,93 +44,36 @@
 		},
 		data() {
 			return {
-				title: "AMD最新五代处理器全渠道销售考试",
-				list: [{
-					title: 'AMD Ryzen 9 3900X核心和线程数',
-					type: '单选',
-					options: [{
-						value: 'A',
-						content: '12核心24线程',
-					}, {
-						value: 'B',
-						content: '2核心2线程',
-					}, {
-						value: 'C',
-						content: '2核心2线程',
-					}, {
-						value: 'D',
-						content: '4核心8线程',
-					}]
-				}, {
-					title: 'AMD Ryzen 9 3900X的CPU主频',
-					type: '单选',
-					options: [{
-						value: 'A',
-						content: '3.8G',
-					}, {
-						value: 'B',
-						content: '3.6G',
-					}, {
-						value: 'C',
-						content: '3.4G',
-					}, {
-						value: 'D',
-						content: '3.2G',
-					}]
-				}, {
-					title: '选择出AMD Ryzen 5 系列的CPU',
-					type: '多选',
-					options: [{
-						value: 'A',
-						content: 'AMD Ryzen 5 3600',
-					}, {
-						value: 'B',
-						content: 'AMD Ryzen 7 3700X',
-					}, {
-						value: 'C',
-						content: 'AMD Ryzen 5 2600',
-					}, {
-						value: 'D',
-						content: 'AMD Ryzen 5 2600X',
-					}]
-				}, {
-					title: '选择出AMD Ryzen 5 系列的CPU',
-					type: '多选',
-					options: [{
-						value: 'A',
-						content: 'AMD Ryzen 5 3600',
-					}, {
-						value: 'B',
-						content: 'AMD Ryzen 7 3700X',
-					}, {
-						value: 'C',
-						content: 'AMD Ryzen 5 2600',
-					}, {
-						value: 'D',
-						content: 'AMD Ryzen 5 2600X',
-					}]
-				}, {
-					title: '选择出AMD Ryzen 5 系列的CPU',
-					type: '多选',
-					options: [{
-						value: 'A',
-						content: 'AMD Ryzen 5 3600',
-					}, {
-						value: 'B',
-						content: 'AMD Ryzen 7 3700X',
-					}, {
-						value: 'C',
-						content: 'AMD Ryzen 5 2600',
-					}, {
-						value: 'D',
-						content: 'AMD Ryzen 5 2600X',
-					}]
-				}]
+				token: null,
+				title: null,
+				list: []
 			}
 		},
-		onLoad(opt) {
-			console.log("考试详情页: onLoad -> opt", opt)
-
+		onLoad(opts) {
+			console.log("考试详情页: onLoad -> opt", opts)
+			let token = uni.getStorageSync('token')
+			if (token) {
+				this.token = token
+				let that = this
+				uni.request({
+					// url: 'https://amd.mcooks.cn/api/examination/index', //仅为示例，并非真实接口地址。
+					url: '/examination/index', //仅为示例，并非真实接口地址。
+					data: {
+						"bid": opts.id // 培训列表的id
+					},
+					method: 'post',
+					header: {
+						'authtoken': 'token ' + this.token,
+					},
+					success: ({
+						data
+					}) => {
+						console.log("TCL: onLoad -> data", data)
+						that.title = data.data.title
+						that.list = data.data.examination
+					}
+				});
+			}
 		},
 		methods: {
 			// 提交答案
@@ -151,7 +94,7 @@
 				console.log("TCL: this.list", this.list)
 				console.log("TCL: value", value)
 			}
-		}
+		},
 	}
 </script>
 
@@ -187,9 +130,10 @@
 					color: rgba(51, 51, 51, 1);
 					margin: 46rpx 0 28rpx 0;
 					line-height: 1;
-					.pd{
-						width:36rpx;
-						height:36rpx;
+
+					.pd {
+						width: 36rpx;
+						height: 36rpx;
 						vertical-align: middle;
 					}
 				}

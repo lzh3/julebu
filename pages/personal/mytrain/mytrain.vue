@@ -7,15 +7,15 @@
 				<view class="item" v-for="(v,index) in item.list" :key="index">
 					<view class="content">
 						<view class="top-pic">
-							<image :src="v.topPic" mode="" class="main-pic" />
+							<image :src="v.image" mode="" class="main-pic" />
 							<!-- <view :class="['jiao-biao',v.trainStatus]">{{trainStatus(v.trainStatus)}}</view> -->
 						</view>
 						<view class="text-area">
 							<text class="title">{{v.title}}</text>
-							<view class="train-time">培训时间：<text>{{v.date}}</text></view>
+							<view class="train-time">培训时间：<text>{{v.start_time}}-{{v.end_time}}</text></view>
 							<view class="train-info">
-								<view>培训名额：<text>{{v.limit}}</text></view>
-								<view class="type">培训方式：<text>{{v.type}}</text></view>
+								<view>培训名额：<text>{{v.quota_count}}</text></view>
+								<view class="type">培训方式：<text>{{v.mode == 1 ? "视频" : "课件"}}</text></view>
 							</view>
 						</view>
 					</view>
@@ -41,99 +41,25 @@
 	export default {
 		data() {
 			return {
+				token: null,
 				TabCur: 0,
-				tabList: [
-					{
+				page: 1,
+				limit: 6,
+				type: 1, //培训方式 1、季度培训 2、产品知识 3、ACCSP
+				tabList: [{
 						name: '季度培训',
-						list: [{
-								id: Date.now(),
-								topPic: '../../../static/image/train-pic.png',
-								title: 'AMD最新三代处理器全渠道销售培训',
-								date: '06.04 8:00-06.06 12:00',
-								limit: 100,
-								type: '视频',
-								result: 90,
-								done: true //已经开始
-							},
-							{
-								id: Date.now(),
-								topPic: '../../../static/image/train-pic.png',
-								title: 'AMD最新三代处理器全渠道销售培训',
-								date: '06.04 8:00-06.06 12:00',
-								limit: 100,
-								type: '视频',
-								result: 90,
-								done: true //已经开始
-							},
-						]
+						list: [],
+						type: 1,
 					},
 					{
 						name: '产品知识',
-						list: [{
-								id: Date.now(),
-								topPic: '../../../static/image/train-pic.png',
-								title: '产品知识',
-								date: '06.04 8:00-06.06 12:00',
-								limit: 100,
-								type: '视频',
-								result: 90,
-								done: true, //未培训
-							},
-							{
-								id: Date.now(),
-								topPic: '../../../static/image/train-pic.png',
-								title: '产品知识',
-								date: '06.04 8:00-06.06 12:00',
-								limit: 50,
-								type: '课件',
-								result: 90,
-								done: true, //未开始
-							},
-							{
-								id: Date.now(),
-								topPic: '../../../static/image/train-pic.png',
-								title: '产品知识',
-								date: '06.04 8:00-06.06 12:00',
-								limit: 10,
-								type: '课件',
-								result: 99,
-								done: true, //过期
-							},
-						]
+						list: [],
+						type: 2,
 					},
 					{
 						name: 'ACCSP认证',
-						list: [{
-								id: Date.now(),
-								topPic: '../../../static/image/train-pic.png',
-								title: 'ACCSP认证',
-								date: '06.04 8:00-06.06 12:00',
-								limit: 100,
-								type: '视频',
-								result: 90,
-								done: true, //已经开始
-							},
-							{
-								id: Date.now(),
-								topPic: '../../../static/image/train-pic.png',
-								title: 'ACCSP认证',
-								date: '06.04 8:00-06.06 12:00',
-								limit: 50,
-								type: '课件',
-								result: 90,
-								done: true, //未开始
-							},
-							{
-								id: Date.now(),
-								topPic: '../../../static/image/train-pic.png',
-								title: 'ACCSP认证',
-								date: '06.04 8:00-06.06 12:00',
-								limit: 10,
-								type: '课件',
-								result: 99,
-								done: true, //过期
-							},
-						]
+						list: [],
+						type: 3,
 					}
 				],
 
@@ -143,10 +69,45 @@
 			WucTab,
 			Kefu
 		},
+		onShow() {
+			console.log('onshow')
+			let token = uni.getStorageSync('token')
+			if (token) {
+				this.token = token
+				this.getTrainList()
+			} else {
+				this.showLogin = true
+			}
+		},
+		watch: {
+			TabCur(n) {
+				// 没数据再请求
+				if (this.tabList[n].list.length == 0) {
+					this.type = n + 1
+					this.getTrainList()
+				}
+			}
+		},
 		methods: {
-			// 季度培训数据
-			getTranList(){
-				
+			getTrainList() {
+				let that = this
+				uni.request({
+					// url: 'https://amd.mcooks.cn/api/sign-trained',
+					url: '/sign-trained',
+					method: 'post',
+					header: {
+						'authtoken': 'token ' + this.token,
+					},
+					data: {
+						page: that.page,
+						limit: that.limit,
+						type: that.type,
+					},
+					success(res) {
+						console.log(res.data)
+						that.tabList[that.TabCur].list = res.data.data // 季度培训
+					}
+				})
 			},
 			tabChange(index) {
 				this.TabCur = index;

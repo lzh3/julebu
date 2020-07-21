@@ -1,36 +1,42 @@
 <template>
+	
 	<view class="container" :class="['activity-detail',activityStatus]">
-		<image :src="item.image" class="pic" />
-		<view class="content">
-			<view class="item">
-				活动主题：
-				<text class="theme">{{item.title}}</text>
-				<text class="status">
-					{{item.status==='in_start'?'进行中':(item.status==='end'?'已结束':'未开始')}}
-				</text>
-			</view>
-			<view class="item">活动时间：
-				<text class="date" :class="{end:end}">
-					{{item.start_time}}-{{item.end_time}}
-				</text>
-			</view>
-			<view class="item">活动形式：<text class="type" :class="{end:end}">{{item.type}}</text></view>
-			<!-- <view class="item">参与名额：<text class="limit"  :class="{end:end}">{{item.limit}}</text>
-				 <text class="isReported" :class="{end:end}">已有{{item.isReported}}人报名参加</text> 
-			</view> -->
-			<view class="item">活动介绍：
-				<view class="desc">{{item.description}}</view>
-			</view>
-			<button type="primary" 
-				@click="joinActivity" 
-				class="btn" 
-				v-if="joined"
-				:class="{over:item.status!=='in_start'}"
-				:disabled="item.status!=='in_start'">
-				我要参与
-			</button>
+		<view class="activity-wrap container" v-if="isLogin">
+			<NotLogin pageName="活动"></NotLogin>
 		</view>
-		<Kefu />
+		<view v-else>
+			<image :src="item.image" class="pic" />
+			<view class="content">
+				<view class="item">
+					活动主题：
+					<text class="theme">{{item.title}}</text>
+					<text class="status">
+						{{item.status==='in_start'?'进行中':(item.status==='end'?'已结束':'未开始')}}
+					</text>
+				</view>
+				<view class="item">活动时间：
+					<text class="date" :class="{end:end}">
+						{{item.start_time}}-{{item.end_time}}
+					</text>
+				</view>
+				<view class="item">活动形式：<text class="type" :class="{end:end}">{{item.type}}</text></view>
+				<!-- <view class="item">参与名额：<text class="limit"  :class="{end:end}">{{item.limit}}</text>
+					 <text class="isReported" :class="{end:end}">已有{{item.isReported}}人报名参加</text> 
+				</view> -->
+				<view class="item">活动介绍：
+					<view class="desc">{{item.description}}</view>
+				</view>
+				<button type="primary" 
+					@click="joinActivity" 
+					class="btn" 
+					v-if="joined"
+					:class="{over:item.status!=='in_start'}"
+					:disabled="item.status!=='in_start'">
+					我要参与
+				</button>
+			</view>
+			<Kefu />
+		</view>
 		<Modal ref="modal" :status="modalStatus" title="参与成功" desc="" />
 	</view>
 </template>
@@ -45,6 +51,7 @@
 		},
 		data() {
 			return {
+				isLogin:true,
 				token:'',
 				id:-1,
 				joined:true,
@@ -67,6 +74,9 @@
 		//路由参数就收
 		onLoad(opt) {
 			let token = uni.getStorageSync('token')
+			if(token){
+				this.isLogin=false;
+			}
 			this.token=token;
 			console.log(opt)
 			this.id=opt.id;

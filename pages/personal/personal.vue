@@ -17,10 +17,12 @@
 					<view class="jifen">
 						积分：{{jf}}
 					</view>
+					
+					<view class="login" @click="loginFn" v-if="token==''">立即登录</view>
+					<view class="type" v-else>{{type}}</view>
 				</view>
 			</view>
-			<view class="login" @click="loginFn" v-if="token==''">立即登录</view>
-			<view class="type" v-else>{{type}}</view>
+			<view class="out" @click='outLogin'>退出登录</view>
 		</view>
 		<view class="list">
 			<view class="list-card bg-white">
@@ -183,31 +185,30 @@
 				] */
 			}
 		},
-		beforeCreate() {
+		async onShow() {
 			let token = uni.getStorageSync('token');
-			this.token = uni.getStorageSync('token');
-			
-			// console.log(this.id_type)
-		},
-		async onLoad() {
-			this.token = uni.getStorageSync('token');
+			this.token = token;
+			// console.log('==================',token)
 			let id_type=uni.getStorageSync('id_type')
 			this.id_type=id_type;
-			await this.getPageInfo();
-			await this.getUserInfo();
+			await this.getPageInfo(token);
+			await this.getUserInfo(token);
 		},
 		/* onShow() {
 			
 		}, */
 		methods: {
+			outLogin(){
+				uni.removeStorageSync('token');
+				this.getUserInfo();
+			},
 			loginFn() {
 				uni.navigateTo({
 					url: '../login/login'
 				})
 			},
 			// 获取页面信息
-			getPageInfo() {
-				let token = this.token;
+			getPageInfo(token) {
 				uni.request({
 					url: 'https://amd.mcooks.cn/api/user/modules',
 					method: 'get',
@@ -221,17 +222,17 @@
 				})
 			},
 			// 获取个人信息
-			getUserInfo() {
+			getUserInfo(token) {
 				let _this = this;
 				uni.request({
 					url: 'https://amd.mcooks.cn/api/userinfo',
 					method: 'get',
 					header: {
-						'authtoken': 'token ' + this.token,
+						'authtoken': 'token ' + token,
 					},
 					success(res) {
-						// console.log(res.data.data)
-						let nickname = res.data.data.nickname || '';
+						console.log(res.data.data)
+						let nickname ='' || (res.data.data&&res.data.data.nickname) ;
 						uni.setStorageSync('username', nickname)
 						if (res.data.code == 200) {
 							const {
@@ -390,6 +391,19 @@
 			text-align: center;
 			right: 30rpx;
 			top: 15rpx;
+			color: #fff;
+			font-size: 28rpx;
+			border-radius: 10rpx;
+			background-color: #f39d23;
+		}
+		.out{
+			position: absolute;
+			width: 145rpx;
+			height: 48rpx;
+			line-height: 48rpx;
+			text-align: center;
+			right: 30rpx;
+			top: 80rpx;
 			color: #fff;
 			font-size: 28rpx;
 			border-radius: 10rpx;

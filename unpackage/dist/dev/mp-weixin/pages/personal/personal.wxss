@@ -139,6 +139,19 @@
   border-radius: 10rpx;
   background-color: #f39d23;
 }
+.info-card .out.data-v-cc0818b2 {
+  position: absolute;
+  width: 145rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  text-align: center;
+  right: 30rpx;
+  top: 80rpx;
+  color: #fff;
+  font-size: 28rpx;
+  border-radius: 10rpx;
+  background-color: #f39d23;
+}
 .info-card .type.data-v-cc0818b2 {
   position: absolute;
   line-height: 48rpx;

@@ -144,7 +144,10 @@
 			Kefu
 		},
 		methods: {
-
+			// 季度培训数据
+			getTranList(){
+				
+			},
 			tabChange(index) {
 				this.TabCur = index;
 			},

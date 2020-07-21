@@ -1,7 +1,7 @@
 <template>
 	<!-- 弹窗 -->
 	<uni-popup ref="popup" type="center">
-		<view class="modal-wrap error" v-show="status === 'error'">
+		<view class="modal-wrap error" v-if="status === 'error'">
 			<image src="../../static/image/error.png" class="error" />
 			<text class="title">{{title}}</text>
 			<text class="desc" v-if="$slots.desc">
@@ -11,7 +11,7 @@
 			<button type="primary" @click="fn" class="btn">{{btnText}}</button>
 			<image src="../../static/image/close.png" class="close" @click="close" />
 		</view>
-		<view class="modal-wrap success" v-show="status === 'success'">
+		<view class="modal-wrap success" v-if="status === 'success'">
 			<image src="../../static/image/success-line.png" class="success" />
 			<text class="title">{{title}}</text>
 			<text class="desc" v-if="$slots.desc">
@@ -22,15 +22,15 @@
 			<image src="../../static/image/close.png" class="close" @click="close" />
 		</view>
 		
-		// 登录页面
-		<view class="login-wrap modal-wrap success" v-show="login_status === 'login'">
+		<!-- // 登录页面 -->
+		<view class="login-wrap modal-wrap success" v-if="login_status === 'login'">
 			<text class="title login text-green" :class="isSuccess?'login_suc':'login_err'">{{msg}}</text>
 			<button type="default" v-show='showlogin' class="btn reg-btn" @tap='toRegister'>去注册</button>
 		</view>
 		
-		
-		<view class="modal-wrap error" v-show="reg_status === 'reg-error'">
-			<text class="title" :class="{reg_err:status==='reg-error'}">{{msg}}</text>
+		<!-- 注册页面 -->
+		<view class="modal-wrap error" v-if="reg_status === 'reg-error'">
+			<text class="title" :class="{reg_err:reg_status==='reg-error'}">{{msg}}</text>
 			<button type="primary" @click="loginFn" class="btn">去登录</button>
 			<image src="../../static/image/close.png" class="close" @click="close" />
 		</view>

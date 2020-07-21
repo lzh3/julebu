@@ -136,17 +136,19 @@
 			},
 			getIdType(token){
 				let _this = this;
-				uni.request({
-					url: 'https://amd.mcooks.cn/api/userinfo',
-					method: 'get',
-					header: {
-						'authtoken': 'token ' + token,
-					},
-					success(res) {
-						let id_type = res.data.data.id_type;
-						uni.setStorageSync('id_type', id_type)
-					}
-				})
+				if(token){
+					uni.request({
+						url: 'https://amd.mcooks.cn/api/userinfo',
+						method: 'get',
+						header: {
+							'authtoken': 'token ' + token,
+						},
+						success(res) {
+							let id_type = 0 || (res.data.data&&res.data.data.id_type);
+							uni.setStorageSync('id_type', id_type)
+						}
+					})
+				}
 			},
 			getData() {
 				uni.request({

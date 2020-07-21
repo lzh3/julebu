@@ -32,7 +32,7 @@
 						<view class="img">
 							<image src="../../static/image/icon/personal/1.png" mode=""></image>
 						</view>
-						<view class="txt">店铺详情{{id_type}}</view>
+						<view class="txt">店铺详情</view>
 					</navigator>
 				</view>
 				<view class="item"  v-if="id_type!=1 && id_type!=2">
@@ -40,7 +40,7 @@
 						<view class="img">
 							<image src="../../static/image/icon/personal/2.png" mode=""></image>
 						</view>
-						<view class="txt">店面形象{{id_type}}</view>
+						<view class="txt">店面形象</view>
 					</navigator>
 				</view>
 				<view class="item"  v-if="id_type!=1  && id_type!=2">
@@ -200,7 +200,9 @@
 		methods: {
 			outLogin(){
 				uni.removeStorageSync('token');
-				this.getUserInfo();
+				uni.navigateTo({
+					url:'../login/login'
+				})
 			},
 			loginFn() {
 				uni.navigateTo({
@@ -209,63 +211,68 @@
 			},
 			// 获取页面信息
 			getPageInfo(token) {
-				uni.request({
-					url: 'https://amd.mcooks.cn/api/user/modules',
-					method: 'get',
-					header: {
-						'authtoken': 'token ' + token,
-					},
-					success(res) {
-						console.log(res.data)
-						// console.log("TCL: success -> res user/modules", res)
-					}
-				})
+				if(token){
+					uni.request({
+						url: 'https://amd.mcooks.cn/api/user/modules',
+						method: 'get',
+						header: {
+							'authtoken': 'token ' + token,
+						},
+						success(res) {
+							console.log(res.data)
+							// console.log("TCL: success -> res user/modules", res)
+						}
+					})
+				}
 			},
 			// 获取个人信息
 			getUserInfo(token) {
 				let _this = this;
-				uni.request({
-					url: 'https://amd.mcooks.cn/api/userinfo',
-					method: 'get',
-					header: {
-						'authtoken': 'token ' + token,
-					},
-					success(res) {
-						console.log(res.data.data)
-						let nickname ='' || (res.data.data&&res.data.data.nickname) ;
-						uni.setStorageSync('username', nickname)
-						if (res.data.code == 200) {
-							const {
-								nickname,
-								id_type,
-								id,
-								reg_ip,
-								realname,
-								avatar,
-							} = res.data.data
-							_this.username = realname
-							_this.id = id
-							_this.jf = reg_ip
-							_this.avatar = avatar
-							switch (id_type) {
-								case 1:
-									_this.type = '注册用户'
-									break;
-								case 2:
-									_this.type = '锐龙店面'
-									break;
-								case 3:
-									_this.type = '渠道用户'
-									break;
-								case 4:
-									_this.type = 'CSR'
-									break;
+				if(token){
+					uni.request({
+						url: 'https://amd.mcooks.cn/api/userinfo',
+						method: 'get',
+						header: {
+							'authtoken': 'token ' + token,
+						},
+						success(res) {
+							console.log(res.data.data)
+							let nickname ='' || (res.data.data&&res.data.data.nickname) ;
+							uni.setStorageSync('username', nickname)
+							if (res.data.code == 200) {
+								const {
+									nickname,
+									id_type,
+									id,
+									reg_ip,
+									realname,
+									avatar,
+								} = res.data.data
+								_this.username = realname
+								_this.id = id
+								_this.jf = reg_ip
+								_this.avatar = avatar
+								switch (id_type) {
+									case 1:
+										_this.type = '注册用户'
+										break;
+									case 2:
+										_this.type = '锐龙店面'
+										break;
+									case 3:
+										_this.type = '渠道用户'
+										break;
+									case 4:
+										_this.type = 'CSR'
+										break;
+								}
+					
 							}
-
+					
 						}
-
-					}
-				})
+					})
+				}
+				
 			}
 		}
 	}

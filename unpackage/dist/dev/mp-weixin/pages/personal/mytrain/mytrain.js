@@ -174,6 +174,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 {
   data: function data() {
     return {
@@ -263,7 +264,7 @@ __webpack_require__.r(__webpack_exports__);
     // 培训
     lookResult: function lookResult(item) {
       uni.navigateTo({
-        url: "/pages/personal/mytrain/result?id=".concat(item.id) });
+        url: "/pages/personal/mytrain/result?item=".concat(JSON.stringify(item)) });
 
     },
     trainStatus: function trainStatus(status) {

@@ -106,21 +106,45 @@
 				let current = e.detail.current
 				this.TabCur = current;
 			},
+			// 报名培训 
+			trainedSign(id, cb) {
+				let that = this
+				uni.request({
+					// url: 'https://amd.mcooks.cn/api/trained/sign',
+					url: '/trained/sign',
+					method: 'post',
+					header: {
+						'authtoken': 'token ' + this.token,
+					},
+					data: {
+						id
+					},
+					success(res) {
+						console.log('trainedSign --------------> ', res.data)
+						cb()
+					}
+				})
+			},
 			// 考试
 			test(item) {
-				if (item.trainStatus !== 'overtime') {
-					uni.navigateTo({
-						url: `/pages/test-detail/test-detail?id=${item.id}`
-					});
-				}
+				this.trainedSign(item.id, () => {
+					if (item.trainStatus !== 'overtime') {
+						uni.navigateTo({
+							url: `/pages/test-detail/test-detail?id=${item.id}`
+						});
+					}
+				})
+
 			},
 			// 培训
 			train(item) {
-				if (item.status !== 'overtime') {
-					uni.navigateTo({
-						url: `/pages/course-detail/course-detail?id=${item.id}&type=${item.type}`
-					});
-				}
+				this.trainedSign(item.id, () => {
+					if (item.status !== 'overtime') {
+						uni.navigateTo({
+							url: `/pages/course-detail/course-detail?id=${item.id}&type=${item.type}`
+						});
+					}
+				})
 			},
 			trainStatus(status) {
 				return {

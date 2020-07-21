@@ -189,16 +189,18 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   onLoad: function onLoad(opts) {
-    console.log("考试详情页: onLoad -> opt", opts);
+    var item = JSON.parse(opts.item);
     var token = uni.getStorageSync('token');
+    this.title = item.title;
     if (token) {
       this.token = token;
+      // 获取试题
       var that = this;
       uni.request({
         // url: 'https://amd.mcooks.cn/api/examination/index', //仅为示例，并非真实接口地址。
         url: '/examination/index', //仅为示例，并非真实接口地址。
         data: {
-          "bid": opts.id // 培训列表的id
+          "bid": item.id // 培训列表的id
         },
         method: 'post',
         header: {
@@ -207,9 +209,22 @@ __webpack_require__.r(__webpack_exports__);
         success: function success(_ref)
 
         {var data = _ref.data;
-          console.log("TCL: onLoad -> data", data);
           that.title = data.data.title;
-          that.list = data.data.examination;
+          var answer = JSON.parse(item.answers.answer);
+          that.list = data.data.examination.map(function (v) {
+            var index = answer.findIndex(function (u) {return u.id == v.id;});
+            if (index > -1) {
+              var _an = answer[index].answer;
+              if (typeof _an == "string") {
+                v.userAnswerRights = v.right.join(',') === _an;
+              } else {
+                v.userAnswerRights = v.right.join(',') === _an.join(",");
+              }
+              v.userAnswer = answer[index].answer;
+            }
+            return v;
+          });
+          console.log("TCL: onLoad -> that.list", that.list);
         } });
 
     }

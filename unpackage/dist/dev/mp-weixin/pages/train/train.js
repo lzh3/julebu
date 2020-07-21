@@ -265,21 +265,45 @@ __webpack_require__.r(__webpack_exports__);
       var current = e.detail.current;
       this.TabCur = current;
     },
+    // 报名培训 
+    trainedSign: function trainedSign(id, cb) {
+      var that = this;
+      uni.request({
+        // url: 'https://amd.mcooks.cn/api/trained/sign',
+        url: '/trained/sign',
+        method: 'post',
+        header: {
+          'authtoken': 'token ' + this.token },
+
+        data: {
+          id: id },
+
+        success: function success(res) {
+          console.log('trainedSign --------------> ', res.data);
+          cb();
+        } });
+
+    },
     // 考试
     test: function test(item) {
-      if (item.trainStatus !== 'overtime') {
-        uni.navigateTo({
-          url: "/pages/test-detail/test-detail?id=".concat(item.id) });
+      this.trainedSign(item.id, function () {
+        if (item.trainStatus !== 'overtime') {
+          uni.navigateTo({
+            url: "/pages/test-detail/test-detail?id=".concat(item.id) });
 
-      }
+        }
+      });
+
     },
     // 培训
     train: function train(item) {
-      if (item.status !== 'overtime') {
-        uni.navigateTo({
-          url: "/pages/course-detail/course-detail?id=".concat(item.id, "&type=").concat(item.type) });
+      this.trainedSign(item.id, function () {
+        if (item.status !== 'overtime') {
+          uni.navigateTo({
+            url: "/pages/course-detail/course-detail?id=".concat(item.id, "&type=").concat(item.type) });
 
-      }
+        }
+      });
     },
     trainStatus: function trainStatus(status) {
       return {

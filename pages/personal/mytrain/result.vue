@@ -7,25 +7,25 @@
 			<view class="item" v-for="(v,index) of list" :key="index">
 				<view class="test-option-name">
 					{{index+1}}. {{v.title}}
-					<image class="pd" src="../../../static/image/icon/personal/right.png"></image>
-					<image class="pd" src="../../../static/image/error.png"></image>
+					<image class="pd" src="../../../static/image/icon/personal/right.png" v-if="v.userAnswerRights"></image>
+					<image class="pd" src="../../../static/image/error.png" v-else></image>
 				</view>
-				<view class="test-options" v-if="v.type === '单选'">
-					<radio-group @change="radioChange">
-						<label class="uni-list-cell" v-for="(u, m) in v.options" :key="u.value">
+				<view class="test-options" v-if="!v.multiple">
+					<radio-group @change="radioChange" readonly>
+						<label class="uni-list-cell" v-for="(u, m) in v.answer" :key="u.title">
 							<view class="radio">
-								<radio :value="`${index}-${m}-${u.value}-${u.content}`" />
+								<radio :value="u.code" :checked="u.code == v.userAnswer" disabled />
 							</view>
-							<view class="radio-content">{{u.content}}</view>
+							<view class="radio-content">{{u.title}}</view>
 						</label>
 					</radio-group>
 				</view>
 				<!-- 多选 -->
 				<view v-else class="test-options">
-					<evan-checkbox-group v-model="v.checked" @change="checkboxChange">
-						<evan-checkbox class="checkout-content" primary-color="#F36523" v-for="(u, m) in v.options" :key="u.value"
-							:label="`${index}-${m}-${u.value}-${u.content}`">
-							{{u.content}}
+					<evan-checkbox-group v-model="v.userAnswer" @change="checkboxChange" disabled>
+						<evan-checkbox class="checkout-content" primary-color="#F36523" v-for="(u, m) in v.answer" :key="u.title"
+							:label="u.code">
+							{{u.title}}
 						</evan-checkbox>
 					</evan-checkbox-group>
 				</view>
@@ -50,16 +50,18 @@
 			}
 		},
 		onLoad(opts) {
-			console.log("考试详情页: onLoad -> opt", opts)
+			let item = JSON.parse(opts.item)
 			let token = uni.getStorageSync('token')
+			this.title = item.title;
 			if (token) {
 				this.token = token
+				// 获取试题
 				let that = this
 				uni.request({
 					// url: 'https://amd.mcooks.cn/api/examination/index', //仅为示例，并非真实接口地址。
 					url: '/examination/index', //仅为示例，并非真实接口地址。
 					data: {
-						"bid": opts.id // 培训列表的id
+						"bid": item.id // 培训列表的id
 					},
 					method: 'post',
 					header: {
@@ -68,9 +70,22 @@
 					success: ({
 						data
 					}) => {
-						console.log("TCL: onLoad -> data", data)
 						that.title = data.data.title
-						that.list = data.data.examination
+						let answer = JSON.parse(item.answers.answer)
+						that.list = data.data.examination.map(v => {
+							let index = answer.findIndex(u => u.id == v.id)
+							if (index > -1) {
+								let _an = answer[index].answer;
+								if (typeof _an == "string") {
+									v.userAnswerRights = v.right.join(',') === _an
+								} else {
+									v.userAnswerRights = v.right.join(',') === _an.join(",")
+								}
+								v.userAnswer = answer[index].answer
+							}
+							return v;
+						})
+						console.log("TCL: onLoad -> that.list", that.list)
 					}
 				});
 			}
@@ -135,6 +150,7 @@
 						width: 36rpx;
 						height: 36rpx;
 						vertical-align: middle;
+						margin-left: 40rpx;
 					}
 				}
 

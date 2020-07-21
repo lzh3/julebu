@@ -25,7 +25,8 @@
 						</view>
 						<view :class="['operate-btn',v.trainStatus]">
 							<view class="test" @click="test(v)"><text>查看培训</text></view>
-							<view class="train-btn" @click="lookResult(v)" v-if='v.done'><text>查看成绩</text></view>
+							<!-- v-if='v.done' -->
+							<view class="train-btn" @click="lookResult(v)"><text>查看成绩</text></view>
 						</view>
 					</view>
 				</view>
@@ -127,7 +128,7 @@
 			// 培训
 			lookResult(item) {
 				uni.navigateTo({
-					url: `/pages/personal/mytrain/result?id=${item.id}`
+					url: `/pages/personal/mytrain/result?item=${JSON.stringify(item)}`
 				});
 			},
 			trainStatus(status) {

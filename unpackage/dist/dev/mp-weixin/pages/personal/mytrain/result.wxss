@@ -56,6 +56,7 @@
   width: 36rpx;
   height: 36rpx;
   vertical-align: middle;
+  margin-left: 40rpx;
 }
 .test-detail .content .item .uni-list-cell.data-v-0c3e6114 {
   display: -webkit-box;

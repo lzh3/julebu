@@ -80,10 +80,11 @@
 			Kefu
 		},
 		onShow() {
+			console.log('onshow')
 			let token = uni.getStorageSync('token')
 			if (token) {
 				this.token = token
-				this.getTrainList();
+				this.getTrainList()
 			} else {
 				this.showLogin = true
 			}
@@ -143,6 +144,7 @@
 						type: that.type,
 					},
 					success(res) {
+						console.log(res.data)
 						that.tabList[that.TabCur].list = res.data.data // 季度培训
 					}
 				})

@@ -28,7 +28,7 @@
 			</view>
 			<view class="btn-area"><button type="primary" v-if="joined" @click="report" class="btn">我要报名</button></view>
 			<Kefu />
-			<Modal ref="modal" :status="modalStatus" title="报名成功">
+			<Modal ref="modal" :status="modalStatus" :title="modal_title">
 				<view slot="desc">恭喜获得<text :style="{color:'rgba(243, 101, 35, 1)'}">10</text>积分</view>
 			</Modal>
 		</view>
@@ -45,6 +45,7 @@
 		},
 		data() {
 			return {
+				modal_title:'',
 				courseType: '视频',
 				joined: false,
 				videoItem: {
@@ -86,6 +87,13 @@
 			},
 			// 我要报名
 			report() {
+				let token=uni.getStorageSync('token');
+				if(token){  // 报名成功
+					this.modal_title='报名成功'
+				}else{ // 没有登录的
+					this.modal_title='无权参与，请先注册'
+				}
+				
 				this.$refs.modal.open()
 			}
 		}

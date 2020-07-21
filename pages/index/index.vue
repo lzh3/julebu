@@ -12,8 +12,7 @@
           enter-active-class="animated fadeInUp"
           leave-active-class="animated fadeOutUp"
         > -->
-				<view v-if="index == isCurrent" class="header-desc animated fadeInUp" v-for="(item,index) in notices"
-					:key="item.title">
+				<view v-if="index == isCurrent" class="header-desc animated fadeInUp" v-for="(item,index) in notices" :key="item.title">
 					<view class="info">{{item.title}}</view>
 					<view class="date">{{item.date}}</view>
 				</view>
@@ -103,6 +102,12 @@
 				isCurrent: 0
 			};
 		},
+
+		// 下拉刷新
+		onPullDownRefresh() {
+			console.log('refresh');
+			this.getData()
+		},
 		methods: {
 			indexNotice() {},
 			test() {
@@ -126,6 +131,32 @@
 					url: "/pages/activity-detail/activity-detail?id=1"
 				});
 			},
+			getData() {
+				uni.request({
+					url: "https://amd.mcooks.cn/api/index", //仅为示例，并非真实接口地址。
+					success: ({
+						data
+					}) => {
+						if (data.code == 200) {
+							console.log('下拉了')
+							let {
+								banners,
+								news,
+								notices,
+								train
+							} = data.data;
+							this.newsItems = news;
+							this.indexBanner = banners;
+							this.notices = notices;
+							this.autoplayNotice();
+							this.trainItem = train;
+							setTimeout(()=>{
+								uni.stopPullDownRefresh();
+							},500)
+						}
+					}
+				});
+			},
 			autoplayNotice() {
 				let length = this.notices.length;
 				if (this.isCurrent >= length) {
@@ -140,26 +171,7 @@
 			}
 		},
 		mounted() {
-			uni.request({
-				url: "https://amd.mcooks.cn/api/index", //仅为示例，并非真实接口地址。
-				success: ({
-					data
-				}) => {
-					if (data.code == 200) {
-						let {
-							banners,
-							news,
-							notices,
-							train
-						} = data.data;
-						this.newsItems = news;
-						this.indexBanner = banners;
-						this.notices = notices;
-						this.autoplayNotice();
-						this.trainItem = train;
-					}
-				}
-			});
+			this.getData();
 		}
 	};
 </script>

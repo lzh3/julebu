@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view class="activity-wrap" v-if='showLogin'>
+		<view class="activity-wrap container" v-if='showLogin'>
 			<NotLogin pageName="培训"></NotLogin>
 		</view>
 		<view class="train">
@@ -11,15 +11,15 @@
 					<view class="item" v-for="(v,index) in item.list" :key="index">
 						<view class="content">
 							<view class="top-pic">
-								<image :src="v.topPic" mode="" class="main-pic" />
+								<image :src="v.image" mode="" class="main-pic" />
 								<view :class="['jiao-biao',v.trainStatus]">{{trainStatus(v.trainStatus)}}</view>
 							</view>
 							<view class="text-area">
 								<text class="title">{{v.title}}</text>
-								<view class="train-time">培训时间：<text>{{v.date}}</text></view>
+								<view class="train-time">培训时间：<text>{{v.start_time}}-{{v.end_time}}</text></view>
 								<view class="train-info">
-									<view>培训名额：<text>{{v.limit}}</text></view>
-									<view class="type">培训方式：<text>{{v.type}}</text></view>
+									<view>培训名额：<text>{{v.quota_count}}</text></view>
+									<view class="type">培训方式：<text>{{v.mode == 1 ? "视频" : "课件"}}</text></view>
 								</view>
 							</view>
 						</view>
@@ -28,7 +28,7 @@
 								<image src="../../static/image/home/time.png" mode="" />
 								<text class="time">{{v.time}}</text>
 								<text
-									:class="['sign-number',v.trainStatus === 'overtime' && 'sign-number-failed']">已有{{v.signNumber}}人报名参加</text>
+									:class="['sign-number',v.trainStatus === 'overtime' && 'sign-number-failed']">已有{{v.sign_count}}人报名参加</text>
 							</view>
 							<view :class="['operate-btn',v.trainStatus === 'overtime' && 'overtime-btn']">
 								<view class="test" @click="test(v)"><text>考试</text></view>
@@ -54,116 +54,23 @@
 				token: '',
 				showLogin: false,
 				TabCur: 0,
+				page: 1,
+				limit: 6,
+				type: 1, //培训方式 1、季度培训 2、产品知识 3、ACCSP
 				tabList: [{
 						name: '季度培训',
-						list: [{
-								id: Date.now(),
-								topPic: '../../static/image/train-pic.png',
-								title: 'AMD最新三代处理器全渠道销售培训',
-								date: '06.04 8:00-06.06 12:00',
-								limit: 100,
-								type: '视频',
-								time: '刚刚',
-								signNumber: 90,
-								trainStatus: 'online', //已经开始
-							},
-							{
-								id: Date.now(),
-								topPic: '../../static/image/train-pic.png',
-								title: 'AMD最新三代处理器全渠道销售培训',
-								date: '06.04 8:00-06.06 12:00',
-								limit: 50,
-								type: '课件',
-								time: '刚刚',
-								signNumber: 90,
-								trainStatus: 'notyet', //未开始
-							},
-							{
-								id: Date.now(),
-								topPic: '../../static/image/train-pic.png',
-								title: 'AMD最新三代处理器全渠道销售培训',
-								date: '06.04 8:00-06.06 12:00',
-								limit: 10,
-								type: '课件',
-								time: '刚刚',
-								signNumber: 99,
-								trainStatus: 'overtime', //过期
-							},
-						]
+						list: [],
+						type: 1,
 					},
 					{
 						name: '产品知识',
-						list: [{
-								id: Date.now(),
-								topPic: '../../static/image/train-pic.png',
-								title: '产品知识',
-								date: '06.04 8:00-06.06 12:00',
-								limit: 100,
-								type: '视频',
-								time: '刚刚',
-								signNumber: 90,
-								trainStatus: 'online', //已经开始
-							},
-							{
-								id: Date.now(),
-								topPic: '../../static/image/train-pic.png',
-								title: '产品知识',
-								date: '06.04 8:00-06.06 12:00',
-								limit: 50,
-								type: '课件',
-								time: '刚刚',
-								signNumber: 90,
-								trainStatus: 'notyet', //未开始
-							},
-							{
-								id: Date.now(),
-								topPic: '../../static/image/train-pic.png',
-								title: '产品知识',
-								date: '06.04 8:00-06.06 12:00',
-								limit: 10,
-								type: '课件',
-								time: '刚刚',
-								signNumber: 99,
-								trainStatus: 'overtime', //过期
-							},
-						]
+						list: [],
+						type: 2,
 					},
 					{
 						name: 'ACCSP认证',
-						list: [{
-								id: Date.now(),
-								topPic: '../../static/image/train-pic.png',
-								title: 'ACCSP认证',
-								date: '06.04 8:00-06.06 12:00',
-								limit: 100,
-								type: '视频',
-								time: '刚刚',
-								signNumber: 90,
-								trainStatus: 'online', //已经开始
-							},
-							{
-								id: Date.now(),
-								topPic: '../../static/image/train-pic.png',
-								title: 'ACCSP认证',
-								date: '06.04 8:00-06.06 12:00',
-								limit: 50,
-								type: '课件',
-								time: '刚刚',
-								signNumber: 90,
-								trainStatus: 'notyet', //未开始
-							},
-							{
-								id: Date.now(),
-								topPic: '../../static/image/train-pic.png',
-								title: 'ACCSP认证',
-								date: '06.04 8:00-06.06 12:00',
-								limit: 10,
-								type: '课件',
-								time: '刚刚',
-								signNumber: 99,
-								trainStatus: 'overtime', //过期
-							},
-						]
+						list: [],
+						type: 3,
 					}
 				],
 			}
@@ -179,6 +86,15 @@
 				this.getTrainList();
 			} else {
 				this.showLogin = true
+			}
+		},
+		watch: {
+			TabCur(n) {
+				// 没数据再请求
+				if (this.tabList[n].list.length == 0) {
+					this.type = n + 1
+					this.getTrainList()
+				}
 			}
 		},
 		methods: {
@@ -199,7 +115,7 @@
 			},
 			// 培训
 			train(item) {
-				if (item.trainStatus !== 'overtime') {
+				if (item.status !== 'overtime') {
 					uni.navigateTo({
 						url: `/pages/course-detail/course-detail?id=${item.id}&type=${item.type}`
 					});
@@ -207,23 +123,27 @@
 			},
 			trainStatus(status) {
 				return {
-					online: '已开始',
+					in_start: '已开始',
 					notyet: '未开始',
 					overtime: '已过期',
 				} [status]
 			},
 			getTrainList() {
-				console.log("TCL: getTrainList -> this.token", this.token)
 				let that = this
 				uni.request({
 					url: 'https://amd.mcooks.cn/api/trained/list',
+					// url: '/trained/list',
 					method: 'post',
 					header: {
 						'authtoken': 'token ' + this.token,
 					},
+					data: {
+						page: that.page,
+						limit: that.limit,
+						type: that.type,
+					},
 					success(res) {
-						console.log('train-----------', res.data)
-						that.tabList[0].list = res.data.data // 季度培训
+						that.tabList[that.TabCur].list = res.data.data // 季度培训
 					}
 				})
 			}
@@ -233,7 +153,7 @@
 
 <style scoped lang="scss">
 	.train {
-		height: calc(100vh - 88rpx);
+		height: calc(100vh);
 		background: $uni-bg-color-grey;
 
 		/deep/.text-blue {

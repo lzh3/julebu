@@ -7,7 +7,7 @@
 			<view class="info">
 				<view class="touxiang">
 					<!-- -->
-					<image v-if="avatar==''" src="../../static/image/icon/personal/avator.png" mode=""></image>
+					<image v-if="avatar==''" src="../../static/image/headimg.png" mode=""></image>
 					<image :src="avatar" v-else mode=""></image>
 				</view>
 				<view class="status">
@@ -34,6 +34,7 @@
 				</view>
 			</view>
 		</view>
+		<view><navigator url="../login/login">去登录</navigator></view>
 		<!-- <view class="reward">
 			<view class="reward-title">
 				<image src="../../static/image/personal/reward.png" mode=""></image>
@@ -113,6 +114,10 @@
 			this.getPageInfo();
 
 		},
+		onShow() {
+			
+			this.getPageInfo();
+		},
 		methods: {
 			loginFn() {
 				uni.navigateTo({
@@ -123,13 +128,14 @@
 			getPageInfo() {
 				let token = this.token;
 				uni.request({
-					url: '/user/modules',
+					url: 'https://amd.mcooks.cn/api/user/modules',
 					method: 'get',
 					header: {
 						'authtoken': 'token ' + token,
 					},
 					success(res) {
-						console.log("TCL: success -> res user/modules", res)
+						console.log(res.data)
+						// console.log("TCL: success -> res user/modules", res)
 					}
 				})
 			},
@@ -144,7 +150,7 @@
 					},
 					success(res) {
 						console.log(res.data.data.nickname)
-						let nickname = res.data.data.nickname;
+						let nickname = res.data.data.nickname || '';
 						uni.setStorageSync('username', nickname)
 						if (res.data.code == 200) {
 							const {
@@ -202,7 +208,7 @@
 
 	.list {
 		width: 100%;
-		height: 342rpx;
+		height: 362rpx;
 		position: relative;
 
 		.list-card {
@@ -213,7 +219,7 @@
 			flex-wrap: wrap;
 			flex-direction: row;
 			width: 690rpx;
-			top: -120rpx;
+			top: -100rpx;
 			left: 50%;
 			margin-left: -345rpx;
 			border-radius: 10px;
@@ -222,17 +228,17 @@
 			overflow: hidden;
 
 			.item {
-				width: 142.5rpx;
-				height: 82rpx;
+				width: 147.5rpx;
+				height: 142rpx;
 				padding: 8rpx 0;
-				margin: 10rpx 10rpx;
+				margin: 2rpx 10rpx;
 				box-sizing: border-box;
 				text-align: center;
 				color:#f39d23;
 
 				.img {
-					width: 40rpx;
-					height: 40rpx;
+					width: 76rpx;
+					height: 76rpx;
 					margin: 0 auto;
 
 					image {
@@ -273,15 +279,15 @@
 		.touxiang {
 			width: 98rpx;
 			height: 98rpx;
-			border-radius: 50%;
 			float: left;
+			border-radius: 50%;
 			background-color: #fff;
 			overflow: hidden;
 			text-align: center;
 
 			image {
-				width: 90%;
-				height: 90%;
+				width: 100%;
+				height: 100%;
 				vertical-align: middle;
 			}
 		}

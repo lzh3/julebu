@@ -25,23 +25,23 @@
 					{
 						detail: '显卡销售',
 						url: './jifenrule/jifenrule',
-						pic:'../../static/image/sell/1.png'
+						pic:'../../static/image/sell/2.png'
 					},
 					{
 						detail: '主板销售',
 						url: './jifenrule/jifenrule',
-						pic:'../../static/image/sell/1.png'
+						pic:'../../static/image/sell/3.png'
 					},
 					{
 						detail: '优选销售',
 						url: './jifenrule/jifenrule',
-						pic:'../../static/image/sell/1.png'
+						pic:'../../static/image/sell/4.png'
 					},
 					{
 						detail: '积分规则',
 						//url: '../register/register',
 						url:'../mustlook/mustlook',
-						pic:'../../static/image/sell/1.png'
+						pic:'../../static/image/sell/5.png'
 					},
 				]
 			}

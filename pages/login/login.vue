@@ -27,7 +27,8 @@
 
 		</view>
 		<ke-fu></ke-fu>
-		<Modal ref="modal" :isSuccess='false' :msg='msg' :showlogin='showlogin' status="login" :title="modal_title" />
+		
+		<Modal ref="modal" :msg='msg' :showlogin='showlogin' login_status='login'/>
 	</view>
 </template>
 

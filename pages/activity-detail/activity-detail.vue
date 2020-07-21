@@ -1,5 +1,5 @@
 <template>
-	<view :class="['activity-detail',activityStatus]">
+	<view class="container" :class="['activity-detail',activityStatus]">
 		<image :src="item.image" class="pic" />
 		<view class="content">
 			<view class="item">
@@ -26,7 +26,7 @@
 				class="btn" 
 				v-if="joined"
 				:class="{over:end}"
-				:disabled="item.is_sign==1">
+				:disabled="item.status=='in_start'">
 				我要参与
 			</button>
 		</view>
@@ -124,7 +124,7 @@
 		background-color: #5E5C5C;
 	}
 	.activity-detail {
-		height: calc(100vh - 88rpx);
+		height: calc(100vh);
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;

@@ -28,7 +28,7 @@
   background-color: #5E5C5C;
 }
 .activity-detail.data-v-e0545bf2 {
-  height: calc(100vh - 88rpx);
+  height: calc(100vh);
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;

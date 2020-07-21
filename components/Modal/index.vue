@@ -18,22 +18,27 @@
 				<slot name="desc"></slot>
 			</text>
 			<text class="desc" v-else>{{desc}}</text>
-			<button type="primary" @click="fn" class="btn" v-if="$attrs.btn">{{btnText}}</button>
+			<button type="primary" @click="fn" class="btn" v-if="$attrs.btn && status === 'success'">{{btnText}}</button>
 			<image src="../../static/image/close.png" class="close" @click="close" />
 		</view>
-		<view class="login-wrap modal-wrap success" v-show="status === 'login'">
+		
+		// 登录页面
+		<view class="login-wrap modal-wrap success" v-show="login_status === 'login'">
 			<text class="title login text-green" :class="isSuccess?'login_suc':'login_err'">{{msg}}</text>
 			<button type="default" v-show='showlogin' class="btn reg-btn" @tap='toRegister'>去注册</button>
 		</view>
-		<view class="modal-wrap error" v-show="status === 'reg-error'">
+		
+		
+		<view class="modal-wrap error" v-show="reg_status === 'reg-error'">
 			<text class="title" :class="{reg_err:status==='reg-error'}">{{msg}}</text>
 			<button type="primary" @click="loginFn" class="btn">去登录</button>
 			<image src="../../static/image/close.png" class="close" @click="close" />
 		</view>
+		
 	</uni-popup>
 	</view>
 </template>
-
+ 
 <script>
 	export default {
 		/* success:{
@@ -41,17 +46,25 @@
 		  type:String
 	  }, */
 		props: {
+			// 注册提示
+			reg_status:{
+				default: () => ''
+			},
+			// 登录提示
+			login_status:{
+				default: () => ''
+			},
 			msg: {
 				default: () => '请输入正确信息'
 			},
-			showlogin:{
+			showlogin: {
 				default: () => false
 			},
 			isSuccess: {
 				default: () => 'login_suc'
 			},
 			status: {
-				default: () => 'error'
+				default: () => ''
 			},
 			btnText: {
 				default: () => '立即登录'
@@ -71,11 +84,11 @@
 
 			};
 		},
-		mounted() {
-			console.log("TCL: onLoad -> this", this)
+		onLoad() {
+			console.log(this)
 		},
 		methods: {
-			loginFn(){
+			loginFn() {
 				uni.navigateTo({
 					url: '../../pages/login/login'
 				})
@@ -105,12 +118,13 @@
 </script>
 
 <style scoped lang='scss'>
-	.reg_err{
-		margin:30rpx 0;
+	.reg_err {
+		margin: 30rpx 0;
 	}
+
 	.reg-btn {
-		color:#fff;
-	} 
+		color: #fff;
+	}
 
 	.login-wrap {
 		width: 438rpx;

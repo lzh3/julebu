@@ -1,7 +1,7 @@
 <template>
   <view class="swiper-wrap">
-    <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval"
-      :duration="duration">
+    <swiper v-if="swiperItems.length" class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay"
+      :interval="interval" :duration="duration">
       <swiper-item v-for="(item,index) in swiperItems" :key="index" class="item">
         <image mode="aspectFill" :src="item.image" @click="jump(item.url)"></image>
       </swiper-item>

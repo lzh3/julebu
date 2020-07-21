@@ -66,7 +66,7 @@
 					</view>
 					<input v-model='login_form.check_num' placeholder="请输入6位验证码" name="check_num"></input>
 				</view> -->
-				<Modal ref="pp" status='reg-error' :msg='msg' />
+				<Modal ref="pp" reg_status='reg-error' :msg='msg' />
 			</view>
 		</view>
 	</view>

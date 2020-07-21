@@ -24,17 +24,96 @@
 		</view>
 		<view class="list">
 			<view class="list-card bg-white">
-				<view class="item" v-for="item in list">
-					<navigator :url='item.url'>
+				
+				<view class="item" v-if="id_type!=1 && id_type!=2">
+					<navigator url=''>
 						<view class="img">
-							<image :src="item.image" mode=""></image>
+							<image src="../../static/image/icon/personal/1.png" mode=""></image>
 						</view>
-						<view class="txt">{{item.title}}</view>
+						<view class="txt">店铺详情{{id_type}}</view>
+					</navigator>
+				</view>
+				<view class="item"  v-if="id_type!=1 && id_type!=2">
+					<navigator url=''>
+						<view class="img">
+							<image src="../../static/image/icon/personal/2.png" mode=""></image>
+						</view>
+						<view class="txt">店面形象{{id_type}}</view>
+					</navigator>
+				</view>
+				<view class="item"  v-if="id_type!=1  && id_type!=2">
+					<navigator url=''>
+						<view class="img">
+							<image src="../../static/image/icon/personal/3.png" mode=""></image>
+						</view>
+						<view class="txt">店员管理</view>
+					</navigator>
+				</view>
+				<view class="item" v-if="id_type!=4">
+					<navigator url='./myactivity/myactivity'>
+						<view class="img">
+							<image src="../../static/image/icon/personal/4.png" mode=""></image>
+						</view>
+						<view class="txt">我的活动</view>
+					</navigator>
+				</view>
+				<view class="item">
+					<navigator url='./mytrain/mytrain'>
+						<view class="img">
+							<image src="../../static/image/icon/personal/5.png" mode=""></image>
+						</view>
+						<view class="txt">我的培训</view>
+					</navigator>
+				</view>
+				<view class="item">
+					<navigator url=''>
+						<view class="img">
+							<image src="../../static/image/icon/personal/6.png" mode=""></image>
+						</view>
+						<view class="txt">我的帖子</view>
+					</navigator>
+				</view>
+				<view class="item">
+					<navigator url='./myjf/myjf'>
+						<view class="img">
+							<image src="../../static/image/icon/personal/7.png" mode=""></image>
+						</view>
+						<view class="txt">我的积分</view>
+					</navigator>
+				</view>
+				<view class="item">
+					<navigator url=''>
+						<view class="img">
+							<image src="../../static/image/icon/personal/8.png" mode=""></image>
+						</view>
+						<view class="txt">积分奖励</view>
+					</navigator>
+				</view>
+				<view class="item">
+					<navigator url=''>
+						<view class="img">
+							<image src="../../static/image/icon/personal/9.png" mode=""></image>
+						</view>
+						<view class="txt">我的收藏</view>
+					</navigator>
+				</view>
+				<view class="item">
+					<navigator url=''>
+						<view class="img">
+							<image src="../../static/image/icon/personal/10.png" mode=""></image>
+						</view>
+						<view class="txt">我的客服</view>
 					</navigator>
 				</view>
 			</view>
+			
 		</view>
-		<view><navigator url="../login/login">去登录</navigator></view>
+		
+		
+		
+		
+		
+		<!-- <view><navigator url="../login/login">去登录</navigator></view> -->
 		<!-- <view class="reward">
 			<view class="reward-title">
 				<image src="../../static/image/personal/reward.png" mode=""></image>
@@ -51,11 +130,12 @@
 				token: '',
 				username: '',
 				id: '',
+				id_type: 0, //  类型 1、注册用户 2、锐龙店面 3、渠道用户 4、CSR
 				jf: '',
 				avatar: '',
 				type: '',
 				user_info: {},
-				list: [{
+				/* list: [{
 						image: '../../static/image/icon/personal/1.png',
 						title: '店铺详情'
 					},
@@ -100,24 +180,25 @@
 						image: '../../static/image/icon/personal/10.png',
 						title: '我的客服'
 					},
-				]
+				] */
 			}
 		},
 		beforeCreate() {
 			let token = uni.getStorageSync('token');
 			this.token = uni.getStorageSync('token');
-			// console.log(token)
-		},
-		onLoad() {
-			this.token = uni.getStorageSync('token');
-			this.getUserInfo();
-			this.getPageInfo();
-
-		},
-		onShow() {
 			
-			this.getPageInfo();
+			// console.log(this.id_type)
 		},
+		async onLoad() {
+			this.token = uni.getStorageSync('token');
+			let id_type=uni.getStorageSync('id_type')
+			this.id_type=id_type;
+			await this.getPageInfo();
+			await this.getUserInfo();
+		},
+		/* onShow() {
+			
+		}, */
 		methods: {
 			loginFn() {
 				uni.navigateTo({
@@ -149,7 +230,7 @@
 						'authtoken': 'token ' + this.token,
 					},
 					success(res) {
-						console.log(res.data.data.nickname)
+						// console.log(res.data.data)
 						let nickname = res.data.data.nickname || '';
 						uni.setStorageSync('username', nickname)
 						if (res.data.code == 200) {
@@ -159,7 +240,7 @@
 								id,
 								reg_ip,
 								realname,
-								avatar
+								avatar,
 							} = res.data.data
 							_this.username = realname
 							_this.id = id
@@ -234,7 +315,7 @@
 				margin: 2rpx 10rpx;
 				box-sizing: border-box;
 				text-align: center;
-				color:#f39d23;
+				color: #f39d23;
 
 				.img {
 					width: 76rpx;

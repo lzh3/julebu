@@ -25,8 +25,8 @@
 				@click="joinActivity" 
 				class="btn" 
 				v-if="joined"
-				:class="{over:end}"
-				:disabled="item.status=='in_start'">
+				:class="{over:item.status!=='in_start'}"
+				:disabled="item.status!=='in_start'">
 				我要参与
 			</button>
 		</view>

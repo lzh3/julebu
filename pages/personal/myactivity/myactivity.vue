@@ -17,10 +17,10 @@
 						<view class="desc">
 							<view class="text-content">主题:{{item.title}}</view>
 							<view class="text-content">时间:{{item.start_time}}-{{item.end_time}}</view>
-							<view class="text-content">
-								<!-- 活动名额: <text>{{item.num}}人</text> -->
-								<text class="f-right">{{item.p_time}}</text>
-							</view>
+							<!-- <view class="text-content">
+								活动名额: <text>{{item.num}}人</text> 
+								<text class="f-right">{{item.start_time}}-{{item.end_time}}</text>
+							</view> -->
 						</view>
 					</view>
 				</navigator>
@@ -74,7 +74,7 @@
 					},
 					success(res){
 						console.log(res.data)
-						// _this.list=res.data.data;
+						_this.list=res.data.data;
 					},
 					fail(e){
 						console.log(e)

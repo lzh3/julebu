@@ -102,7 +102,10 @@
 				isCurrent: 0
 			};
 		},
-
+		onLoad(){
+			let token = uni.getStorageSync('token')
+			this.getIdType(token)
+		},
 		// 下拉刷新
 		onPullDownRefresh() {
 			console.log('refresh');
@@ -131,6 +134,20 @@
 					url: "/pages/activity-detail/activity-detail?id=1"
 				});
 			},
+			getIdType(token){
+				let _this = this;
+				uni.request({
+					url: 'https://amd.mcooks.cn/api/userinfo',
+					method: 'get',
+					header: {
+						'authtoken': 'token ' + token,
+					},
+					success(res) {
+						let id_type = res.data.data.id_type;
+						uni.setStorageSync('id_type', id_type)
+					}
+				})
+			},
 			getData() {
 				uni.request({
 					url: "https://amd.mcooks.cn/api/index", //仅为示例，并非真实接口地址。
@@ -138,7 +155,6 @@
 						data
 					}) => {
 						if (data.code == 200) {
-							console.log('下拉了')
 							let {
 								banners,
 								news,

@@ -80,7 +80,6 @@
 				console.log(status)
 			},
 			joinActivity() {
-				// this.$refs.modal.open()
 				let _this=this;
 				uni.request({
 					url:'https://amd.mcooks.cn/api/event/sign',

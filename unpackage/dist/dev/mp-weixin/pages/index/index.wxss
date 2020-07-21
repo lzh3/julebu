@@ -3603,8 +3603,8 @@ to {
   line-height: 24px;
 }
 .index-container .icon.data-v-0731c0cd {
-  width: 28rpx;
-  height: 23rpx;
+  width: 30rpx;
+  height: 30rpx;
   margin-right: 9rpx;
 }
 .index-container .index-notice.data-v-0731c0cd {

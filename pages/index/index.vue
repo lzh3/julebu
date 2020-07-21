@@ -182,8 +182,8 @@
 		line-height: 24px;
 
 		.icon {
-			width: 28upx;
-			height: 23upx;
+			width: 30upx;
+			height: 30upx;
 			margin-right: 9upx;
 		}
 

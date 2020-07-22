@@ -24,13 +24,13 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-image.data-v-43617544 {
+image.data-v-68b90443 {
   width: 100%;
   height: 350rpx;
 }
-.swiper-wrap.data-v-43617544,
-.swiper.data-v-43617544,
-.item.data-v-43617544 {
+.swiper-wrap.data-v-68b90443,
+.swiper.data-v-68b90443,
+.item.data-v-68b90443 {
   height: 350rpx;
 }
 

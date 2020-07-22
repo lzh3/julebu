@@ -213,8 +213,8 @@
 			getPageInfo(token) {
 				if (token) {
 					uni.request({
-						url: '/user/modules',
-						// url: 'https://amd.mcooks.cn/api/user/modules',
+						//url: '/user/modules',
+						url: 'https://amd.mcooks.cn/api/user/modules',
 						method: 'get',
 						header: {
 							'authtoken': 'token ' + token,
@@ -231,8 +231,8 @@
 				let _this = this;
 				if (token) {
 					uni.request({
-						// url: 'https://amd.mcooks.cn/api/userinfo',
-						url: '/userinfo',
+						url: 'https://amd.mcooks.cn/api/userinfo',
+						//url: '/userinfo',
 						method: 'get',
 						header: {
 							'authtoken': 'token ' + token,

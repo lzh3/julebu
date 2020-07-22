@@ -1,1 +1,1 @@
-<view class="container data-v-2639ee52"><news-list vue-id="a102d9e2-1" dataList="{{dataList}}" class="data-v-2639ee52" bind:__l="__l"></news-list></view>
+<view class="container data-v-8721b5d4"><news-list vue-id="a102d9e2-1" dataList="{{dataList}}" class="data-v-8721b5d4" bind:__l="__l"></news-list></view>

@@ -58,8 +58,8 @@
 				this.token = token;
 				let that = this;
 				uni.request({
-					url: "/examination/index",
-					// url: 'https://amd.mcooks.cn/api/examination/index',
+					//url: "/examination/index",
+					url: 'https://amd.mcooks.cn/api/examination/index',
 					method: "post",
 					header: {
 						authtoken: "token " + token
@@ -85,8 +85,8 @@
 				let that = this;
 				if (this.answers.length) {
 					uni.request({
-						url: '/examination/submit',
-						// url: "https://amd.mcooks.cn/api/examination/submit",
+						//url: '/examination/submit',
+						url: "https://amd.mcooks.cn/api/examination/submit",
 						method: "post",
 						header: {
 							authtoken: "token " + this.token

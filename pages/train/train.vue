@@ -110,8 +110,8 @@
 			trainedSign(id, cb) {
 				let that = this
 				uni.request({
-					// url: 'https://amd.mcooks.cn/api/trained/sign',
-					url: '/trained/sign',
+					url: 'https://amd.mcooks.cn/api/trained/sign',
+					//url: '/trained/sign',
 					method: 'post',
 					header: {
 						'authtoken': 'token ' + this.token,
@@ -157,7 +157,7 @@
 				let that = this
 				uni.request({
 					// url: 'https://amd.mcooks.cn/api/trained/list',
-					url: '/trained/list',
+					url: 'https://amd.mcooks.cn/api/trained/list',
 					method: 'post',
 					header: {
 						'authtoken': 'token ' + this.token,
@@ -192,7 +192,7 @@
 
 		.item {
 			padding: 30rpx 30rpx 0 30rpx;
-			height: 263rpx;
+			height: 260rpx;
 			box-sizing: border-box;
 			margin-bottom: 20rpx;
 			background: #fff;
@@ -243,7 +243,9 @@
 
 				.text-area {
 					flex: 1;
-
+					>view{
+						margin:15rpx 0;
+					}
 					.title {
 						font-size: 26rpx;
 						font-weight: bold;
@@ -297,7 +299,7 @@
 					.sign-number {
 						font-size: 22rpx;
 						font-weight: 500;
-						color: rgba(255, 76, 76, 1);
+						color: #ff4c4c;
 						margin-left: 20rpx;
 					}
 

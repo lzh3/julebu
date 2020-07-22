@@ -18,7 +18,9 @@
 
 						</view>
 						<view class="desc">
-							<view class="text-content">主题:{{item.title}}</view>
+							<view class="text-content">
+								主题: <text class="title">{{item.title}}</text>
+							</view>
 							<view class="text-content">
 								时间:<text class="main-color">
 									{{item.start_time}}-{{item.end_time}}</text>
@@ -100,11 +102,13 @@
 			position: relative;
 			width: 150rpx;
 			height: 150rpx;
+			border-radius: 6px;
 			background-color: lightblue;
 
 			.img {
 				width: 100%;
 				height: 100%;
+				border-radius: 6px;
 			}
 
 			.on {
@@ -124,6 +128,9 @@
 				view.text-content {
 					height: 40rpx;
 					line-height: 40rpx;
+					text{
+						color:#333333;
+					}
 
 					.f-right {
 						float: right;

@@ -1,10 +1,10 @@
 <template>
-	
+
 	<view class="container" :class="['activity-detail',activityStatus]">
 		<view class="activity-wrap container" v-if="isLogin">
 			<NotLogin pageName="活动"></NotLogin>
 		</view>
-		<view v-else>
+		<view v-else class="detail">
 			<image :src="item.image" class="pic" />
 			<view class="content">
 				<view class="item">
@@ -26,18 +26,14 @@
 				<view class="item">活动介绍：
 					<view class="desc">{{item.description}}</view>
 				</view>
-				<button type="primary" 
-					@click="joinActivity" 
-					class="btn" 
-					v-if="joined"
-					:class="{over:item.status!=='in_start'}"
-					:disabled="item.status!=='in_start'">
+				<button type="primary" @click="joinActivity" class="btn" v-if="joined" :class="{over:item.status!=='in_start'}"
+				 :disabled="item.status!=='in_start'">
 					我要参与
 				</button>
 			</view>
 			<Kefu />
 		</view>
-		<Modal ref="modal" :status="modalStatus" title="参与成功" desc="" />
+		<Modal ref="modal"  title="参与成功" />
 	</view>
 </template>
 
@@ -51,11 +47,11 @@
 		},
 		data() {
 			return {
-				isLogin:true,
-				token:'',
-				id:-1,
-				joined:true,
-				end:true,
+				isLogin: true,
+				token: '',
+				id: -1,
+				joined: true,
+				end: true,
 				item: {
 					/* pic: '../../static/image/activity-pic.png',
 					status: '已开始',
@@ -74,54 +70,55 @@
 		//路由参数就收
 		onLoad(opt) {
 			let token = uni.getStorageSync('token')
-			if(token){
-				this.isLogin=false;
+			if (token) {
+				this.isLogin = false;
 			}
-			this.token=token;
+			this.token = token;
 			console.log(opt)
-			this.id=opt.id;
-			if(opt.joined){
+			this.id = opt.id;
+			if (opt.joined) {
 				this.joined = false;
 			}
-			this.getDetail(opt.id,token)
+			this.getDetail(opt.id, token)
 		},
 		methods: {
-			showJoin(status){
+			showJoin(status) {
 				console.log(status)
 			},
 			joinActivity() {
-				let _this=this;
+				let _this = this;
 				uni.request({
-					url:'https://amd.mcooks.cn/api/event/sign',
-					method:'POST',
-					header:{
-						'authtoken':'token '+_this.token,
+					url: 'https://amd.mcooks.cn/api/event/sign',
+					method: 'POST',
+					header: {
+						'authtoken': 'token ' + _this.token,
 					},
-					data:{
-						id:_this.id
+					data: {
+						id: _this.id
 					},
-					success(res){
+					success(res) {
 						console.log(res.data)
+						_this.$refs.modal.open();
 					}
 				})
 			},
-			getDetail(id,token){
-				let _this=this;
+			getDetail(id, token) {
+				let _this = this;
 				uni.request({
-					url:'https://amd.mcooks.cn/api/events/show',
-					method:'POST',
-					header:{
-						'authtoken':'token '+token,
+					url: 'https://amd.mcooks.cn/api/events/show',
+					method: 'POST',
+					header: {
+						'authtoken': 'token ' + token,
 					},
-					data:{
+					data: {
 						id
 					},
-					success(res){
+					success(res) {
 						console.log(res.data)
-						if(res.data.data.is_sign==0){
-							_this.end= false;
+						if (res.data.data.is_sign == 0) {
+							_this.end = false;
 						}
-						_this.item=res.data.data;
+						_this.item = res.data.data;
 					}
 				})
 			}
@@ -130,11 +127,16 @@
 </script>
 
 <style lang="scss" scoped>
-	.over{
+	.detail {
+		width: 100%;
+		height: 100%;
+	}
+
+	.over {
 		background-color: #5E5C5C;
 	}
-	.activity-detail {
-		height: calc(100vh);
+
+	.detail {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
@@ -149,6 +151,7 @@
 			padding: 30rpx;
 			background: #fff;
 			flex: 1;
+			height: calc(100vh-350rpx);
 
 			.item {
 				font-size: 26rpx;
@@ -197,8 +200,9 @@
 					color: rgba(51, 51, 51, 1);
 					line-height: 48rpx;
 				}
-				.end{
-					color:#333;
+
+				.end {
+					color: #333;
 				}
 			}
 
@@ -208,7 +212,7 @@
 				background-color: rgba(243, 101, 35, 1);
 				border-radius: 10rpx;
 				position: absolute;
-				bottom: 20rpx;
+				bottom: 10rpx;
 				width: calc(100% - 60rpx);
 			}
 		}

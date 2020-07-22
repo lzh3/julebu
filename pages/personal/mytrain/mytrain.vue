@@ -93,8 +93,8 @@
 			getTrainList() {
 				let that = this
 				uni.request({
-					// url: 'https://amd.mcooks.cn/api/sign-trained',
-					url: '/sign-trained',
+					url: 'https://amd.mcooks.cn/api/sign-trained',
+					//url: '/sign-trained',
 					method: 'post',
 					header: {
 						'authtoken': 'token ' + this.token,

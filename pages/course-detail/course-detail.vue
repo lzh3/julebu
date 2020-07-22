@@ -26,7 +26,7 @@
 			<view class="courseware-content" v-if="courseType==='课件'">
 				<image :src="item.pic" v-for="(item,index) in coursewareList" :key="index" />
 			</view>
-			<view class="btn-area"><button type="primary" v-if="joined" @click="report" class="btn">我要报名</button></view>
+			<!-- <view class="btn-area"><button type="primary" v-if="joined" @click="report" class="btn">我要报名</button></view> -->
 			<Kefu />
 			<Modal ref="modal" :status="modalStatus" :title="modal_title">
 				<view slot="desc">恭喜获得<text :style="{color:'rgba(243, 101, 35, 1)'}">10</text>积分</view>

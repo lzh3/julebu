@@ -58,8 +58,8 @@
 				// 获取试题
 				let that = this
 				uni.request({
-					// url: 'https://amd.mcooks.cn/api/examination/index', //仅为示例，并非真实接口地址。
-					url: '/examination/index', //仅为示例，并非真实接口地址。
+					url: 'https://amd.mcooks.cn/api/examination/index', //仅为示例，并非真实接口地址。
+					//url: '/examination/index', //仅为示例，并非真实接口地址。
 					data: {
 						"bid": item.id // 培训列表的id
 					},

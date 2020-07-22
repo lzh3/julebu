@@ -21,7 +21,7 @@
 					</view>
 					<view class="operate">
 						<view class="time-wrap">
-							<text class="time" v-if="v.done">得分：{{v.result}}</text>
+							<text class="get">得分：<text class="scopes">{{scores}}</text></text>
 						</view>
 						<view :class="['operate-btn',v.trainStatus]">
 							<view class="test" @click="test(v)"><text>查看培训</text></view>
@@ -42,6 +42,7 @@
 	export default {
 		data() {
 			return {
+				scores:0,
 				token: null,
 				TabCur: 0,
 				page: 1,
@@ -63,8 +64,7 @@
 						type: 3,
 					}
 				],
-				type:'',
-				signTrainedUrl:this.type == 'h5' ? '/sign-trained' : 'https://amd.mcooks.cn/api/sign-trained'
+
 			}
 		},
 		components: {
@@ -94,7 +94,8 @@
 			getTrainList() {
 				let that = this
 				uni.request({
-					url: signTrainedUrl,
+					url: 'https://amd.mcooks.cn/api/sign-trained',
+					//url: '/sign-trained',
 					method: 'post',
 					header: {
 						'authtoken': 'token ' + this.token,
@@ -105,6 +106,11 @@
 						type: that.type,
 					},
 					success(res) {
+						if(res.data){
+							// console.log(res.data.data[0].answers.scores)
+							that.scores=res.data.data[0].answers.scores
+						}
+						
 						console.log(res.data)
 						that.tabList[that.TabCur].list = res.data.data // 季度培训
 					}
@@ -250,9 +256,16 @@
 				justify-content: space-between;
 
 				.time-wrap {
+					margin-top:10rpx;
 					image {
 						width: 20rpx;
 						height: 20rpx;
+					}
+					.get{
+						font-size: 24rpx;
+						.scopes{
+							color:#ff4c4c;
+						}
 					}
 
 					.time {

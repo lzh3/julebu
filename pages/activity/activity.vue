@@ -29,7 +29,7 @@
 							</view>
 							<view class="text-content ">
 								<text class="name">活动名额:</text>
-								<text class="main-color"  :class="{name:item.status=='end'}"> {{item.quota_count}}人</text>
+								<text class="ora"  :class="{name:item.status=='end'}"> {{item.quota_count}}人</text>
 								<text class="f-right">已有{{item.partic_count}}人参与</text>
 							</view>
 						</view>
@@ -79,6 +79,7 @@
 						limit: 10
 					},
 					success(res) {
+						console.log(res.data)
 						_this.list = res.data.data;
 					},
 					fail(e) {}
@@ -136,6 +137,9 @@
 					line-height: 40rpx;
 					.txt{
 						color:#333333;
+					}
+					.ora{
+						color:#f39d23;
 					}
 
 					.f-right {

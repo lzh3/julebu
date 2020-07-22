@@ -54,6 +54,22 @@
 			Modal,
 		},
 		methods: {
+			getIdType(token) {
+				let _this = this;
+				if (token) {
+					uni.request({
+						url: 'https://amd.mcooks.cn/api/userinfo',
+						method: 'get',
+						header: {
+							'authtoken': 'token ' + token,
+						},
+						success(res) {
+							let id_type = 0 || (res.data.data && res.data.data.id_type);
+							uni.setStorageSync('id_type', id_type)
+						}
+					})
+				}
+			},
 			getCode(e) {
 				// this.$refs.modal.open()
 				console.log(1)
@@ -100,6 +116,7 @@
 						console.log(res.data)
 						if (res.data.code === 200) {
 							uni.setStorageSync('token', res.data.data.token);
+							_this.getIdType(res.data.data.token)
 							_this.showlogin = false;
 							setTimeout(() => {
 								uni.switchTab({

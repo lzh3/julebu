@@ -24,14 +24,14 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.detail.data-v-e0545bf2 {
+.detail.data-v-6875d5b3 {
   width: 100%;
   height: 100%;
 }
-.over.data-v-e0545bf2 {
+.over.data-v-6875d5b3 {
   background-color: #5E5C5C;
 }
-.detail.data-v-e0545bf2 {
+.detail.data-v-6875d5b3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -43,11 +43,11 @@
   -webkit-justify-content: flex-start;
           justify-content: flex-start;
 }
-.detail .pic.data-v-e0545bf2 {
+.detail .pic.data-v-6875d5b3 {
   height: 350rpx;
   width: 100%;
 }
-.detail .content.data-v-e0545bf2 {
+.detail .content.data-v-6875d5b3 {
   position: relative;
   padding: 30rpx;
   background: #fff;
@@ -56,52 +56,55 @@
           flex: 1;
   height: calc(100vh-350rpx);
 }
-.detail .content .item.data-v-e0545bf2 {
+.detail .content .item.data-v-6875d5b3 {
   font-size: 26rpx;
   font-weight: 500;
   color: #666666;
   margin-bottom: 30rpx;
   line-height: 1;
 }
-.detail .content .item .theme.data-v-e0545bf2 {
+.detail .content .item .theme.data-v-6875d5b3 {
   font-size: 26rpx;
   font-weight: bold;
-  color: #333333;
+  color: #666;
 }
-.detail .content .item .status.data-v-e0545bf2 {
+.detail .content .item .status.data-v-6875d5b3 {
   font-size: 22rpx;
-  font-weight: 500;
+  font-weight: normal;
   color: #f39d23;
   float: right;
 }
-.detail .content .item .date.data-v-e0545bf2,
-.detail .content .item .type.data-v-e0545bf2 {
-  font-size: 26rpx;
-  font-weight: 500;
-  color: #f36523;
-}
-.detail .content .item .limit.data-v-e0545bf2 {
+.detail .content .item .limit.data-v-6875d5b3 {
   font-size: 26rpx;
   font-weight: 500;
   color: #f39d23;
 }
-.detail .content .item .isReported.data-v-e0545bf2 {
+.detail .content .item .isReported.data-v-6875d5b3 {
   font-size: 22rpx;
   font-weight: 500;
   color: #ff4c4c;
   float: right;
 }
-.detail .content .item .desc.data-v-e0545bf2 {
+.detail .content .item .desc.data-v-6875d5b3 {
   margin-top: 30rpx;
   font-size: 26rpx;
   font-weight: 500;
   color: #333333;
   line-height: 48rpx;
 }
-.detail .content .item .end.data-v-e0545bf2 {
+.detail .content .item .end.data-v-6875d5b3 {
   color: #333;
 }
-.detail .content .btn.data-v-e0545bf2 {
+.detail .content .item .date.data-v-6875d5b3,
+.detail .content .item .type.data-v-6875d5b3 {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #f36523;
+}
+.detail .content .item .ora.data-v-6875d5b3 {
+  color: #f39d23;
+}
+.detail .content .btn.data-v-6875d5b3 {
   height: 64rpx;
   line-height: 64rpx;
   background-color: #f36523;
@@ -110,8 +113,8 @@
   bottom: 10rpx;
   width: calc(100% - 60rpx);
 }
-.not-yet.data-v-e0545bf2,
-.over.data-v-e0545bf2 {
+.not-yet.data-v-6875d5b3,
+.over.data-v-6875d5b3 {
   -webkit-filter: grayscale(100%);
           filter: grayscale(100%);
 }

@@ -1,1 +1,1 @@
-<view data-event-opts="{{[['tap',[['kefu',['$event']]]]]}}" class="kefu data-v-213a6de8" bindtap="__e"><image src="../../static/image/kefu.png" class="data-v-213a6de8"></image><text class="data-v-213a6de8">客服</text></view>
+<view data-event-opts="{{[['tap',[['kefu',['$event']]]]]}}" class="kefu data-v-1ecf4994" bindtap="__e"><image src="../../static/image/kefu.png" class="data-v-1ecf4994"></image><text class="data-v-1ecf4994">客服</text></view>

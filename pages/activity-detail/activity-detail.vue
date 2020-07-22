@@ -11,15 +11,15 @@
 					活动主题：
 					<text class="theme">{{item.title}}</text>
 					<text class="status">
-						{{item.status==='in_start'?'进行中':(item.status==='end'?'已结束':'未开始')}}
+						{{item.status==='in_start'?'进行中':(item.status=='end'?'已结束':'未开始')}}
 					</text>
 				</view>
 				<view class="item">活动时间：
-					<text class="date" :class="{end:end}">
+					<text class="date" :class="{end:item.status=='end'}">
 						{{item.start_time}}-{{item.end_time}}
 					</text>
 				</view>
-				<view class="item">活动形式：<text class="type" :class="{end:end}">{{item.type}}</text></view>
+				<view class="item">活动形式：<text class="type ora" :class="{end:end}">{{item.type}}</text></view>
 				<!-- <view class="item">参与名额：<text class="limit"  :class="{end:end}">{{item.limit}}</text>
 					 <text class="isReported" :class="{end:end}">已有{{item.isReported}}人报名参加</text> 
 				</view> -->
@@ -33,7 +33,7 @@
 			</view>
 			<Kefu />
 		</view>
-		<Modal ref="modal"  title="参与成功" />
+		<Modal ref="modal" title="参与成功" />
 	</view>
 </template>
 
@@ -163,22 +163,16 @@
 				.theme {
 					font-size: 26rpx;
 					font-weight: bold;
-					color: rgba(51, 51, 51, 1);
+					color: #666;
 				}
 
 				.status {
 					font-size: 22rpx;
-					font-weight: 500;
+					font-weight: normal;
 					color: rgba(243, 157, 35, 1);
 					float: right;
 				}
 
-				.date,
-				.type {
-					font-size: 26rpx;
-					font-weight: 500;
-					color: rgba(243, 101, 35, 1);
-				}
 
 				.limit {
 					font-size: 26rpx;
@@ -203,6 +197,17 @@
 
 				.end {
 					color: #333;
+				}
+
+				.date,
+				.type {
+					font-size: 26rpx;
+					font-weight: 500;
+					color: rgba(243, 101, 35, 1);
+				}
+
+				.ora {
+					color: rgba(243, 157, 35, 1);
 				}
 			}
 

@@ -24,13 +24,13 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.data-v-050d7def .uni-video-cover-duration {
+.data-v-c98b90ca .uni-video-cover-duration {
   display: none;
 }
-.data-v-050d7def .uni-video-cover {
+.data-v-c98b90ca .uni-video-cover {
   background-color: transparent;
 }
-.data-v-050d7def .uni-video-cover .uni-video-cover-play-button {
+.data-v-c98b90ca .uni-video-cover .uni-video-cover-play-button {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -40,7 +40,7 @@
           align-items: center;
   justify-self: center;
 }
-.data-v-050d7def .uni-video-cover .uni-video-cover-play-button::before {
+.data-v-c98b90ca .uni-video-cover .uni-video-cover-play-button::before {
   display: block;
   content: '';
   width: 88rpx;
@@ -54,7 +54,7 @@
   position: relative;
   left: -12%;
 }
-.course-detail.data-v-050d7def {
+.course-detail.data-v-c98b90ca {
   height: calc(100vh - 88rpx);
   display: -webkit-box;
   display: -webkit-flex;
@@ -67,29 +67,29 @@
   -webkit-justify-content: flex-start;
           justify-content: flex-start;
 }
-.course-detail #myVideo.data-v-050d7def {
+.course-detail #myVideo.data-v-c98b90ca {
   height: 419rpx;
   width: 100%;
 }
-.course-detail .content.data-v-050d7def {
+.course-detail .content.data-v-c98b90ca {
   position: relative;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
           flex: 1;
 }
-.course-detail .content .course-content.data-v-050d7def {
+.course-detail .content .course-content.data-v-c98b90ca {
   padding: 0 30rpx 30rpx 30rpx;
   background: #fff;
 }
-.course-detail .content .header.data-v-050d7def {
+.course-detail .content .header.data-v-c98b90ca {
   padding: 30rpx;
   background: #fff;
 }
-.course-detail .content .header image.data-v-050d7def {
+.course-detail .content .header image.data-v-c98b90ca {
   width: 25rpx;
   height: 25rpx;
 }
-.course-detail .content .header text.data-v-050d7def {
+.course-detail .content .header text.data-v-c98b90ca {
   font-size: 28rpx;
   font-weight: bold;
   color: #f36523;
@@ -97,62 +97,62 @@
   margin-left: 10rpx;
   line-height: 1;
 }
-.course-detail .content .item.data-v-050d7def {
+.course-detail .content .item.data-v-c98b90ca {
   font-size: 26rpx;
   font-weight: 500;
   color: #666666;
   margin-bottom: 30rpx;
   line-height: 1;
 }
-.course-detail .content .item .theme.data-v-050d7def {
+.course-detail .content .item .theme.data-v-c98b90ca {
   font-size: 26rpx;
   font-weight: bold;
   color: #333333;
 }
-.course-detail .content .item .status.data-v-050d7def {
+.course-detail .content .item .status.data-v-c98b90ca {
   font-size: 22rpx;
   font-weight: 500;
   color: #f39d23;
   float: right;
 }
-.course-detail .content .item .date.data-v-050d7def,
-.course-detail .content .item .type.data-v-050d7def {
+.course-detail .content .item .date.data-v-c98b90ca,
+.course-detail .content .item .type.data-v-c98b90ca {
   font-size: 26rpx;
   font-weight: 500;
   color: #f36523;
 }
-.course-detail .content .item .limit.data-v-050d7def {
+.course-detail .content .item .limit.data-v-c98b90ca {
   font-size: 26rpx;
   font-weight: 500;
   color: #f39d23;
 }
-.course-detail .content .item .isReported.data-v-050d7def {
+.course-detail .content .item .isReported.data-v-c98b90ca {
   font-size: 22rpx;
   font-weight: 500;
   color: #ff4c4c;
   float: right;
 }
-.course-detail .content .item .desc.data-v-050d7def {
+.course-detail .content .item .desc.data-v-c98b90ca {
   margin-top: 30rpx;
   font-size: 26rpx;
   font-weight: 500;
   color: #333333;
   line-height: 48rpx;
 }
-.course-detail .content .item-last-child.data-v-050d7def {
+.course-detail .content .item-last-child.data-v-c98b90ca {
   margin-bottom: 0 !important;
 }
-.course-detail .courseware-content.data-v-050d7def {
+.course-detail .courseware-content.data-v-c98b90ca {
   margin-top: 6rpx;
   padding: 30rpx;
   background: #fff;
   padding-bottom: 100rpx;
 }
-.course-detail .courseware-content image.data-v-050d7def {
+.course-detail .courseware-content image.data-v-c98b90ca {
   width: 100%;
   margin-bottom: 30rpx;
 }
-.course-detail .btn-area.data-v-050d7def {
+.course-detail .btn-area.data-v-c98b90ca {
   background: #fff;
   position: fixed;
   bottom: 0;
@@ -165,7 +165,7 @@
   -webkit-align-items: center;
           align-items: center;
 }
-.course-detail .btn-area .btn.data-v-050d7def {
+.course-detail .btn-area .btn.data-v-c98b90ca {
   height: 64rpx;
   line-height: 64rpx;
   background-color: #f36523;

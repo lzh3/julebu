@@ -24,11 +24,11 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.comment-footer.data-v-0f2e237f {
+.comment-footer.data-v-2628d253 {
   width: 100%;
   height: 80rpx;
 }
-.comment-footer .to-comment.data-v-0f2e237f {
+.comment-footer .to-comment.data-v-2628d253 {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -38,24 +38,24 @@
   background-color: #fff;
   box-sizing: content-box;
 }
-.comment-footer .to-comment view.data-v-0f2e237f {
+.comment-footer .to-comment view.data-v-2628d253 {
   float: left;
 }
-.comment-footer .to-comment view + view.data-v-0f2e237f {
+.comment-footer .to-comment view + view.data-v-2628d253 {
   width: 50rpx;
   height: 45rpx;
   margin-left: 70rpx;
   margin-top: 7.5rpx;
 }
-.comment-footer .to-comment view + view image.data-v-0f2e237f {
+.comment-footer .to-comment view + view image.data-v-2628d253 {
   width: 100%;
   height: 100%;
 }
-.comment-footer .to-comment .uni-inp.data-v-0f2e237f {
+.comment-footer .to-comment .uni-inp.data-v-2628d253 {
   position: relative;
   margin-left: 20rpx;
 }
-.comment-footer .to-comment .uni-inp .uni-input.data-v-0f2e237f {
+.comment-footer .to-comment .uni-inp .uni-input.data-v-2628d253 {
   width: 335rpx;
   height: 60rpx;
   text-align: center;
@@ -63,7 +63,7 @@
   background-color: #f2f2f2;
   border-radius: 30rpx;
 }
-.comment-footer .to-comment .uni-inp .touxiang.data-v-0f2e237f {
+.comment-footer .to-comment .uni-inp .touxiang.data-v-2628d253 {
   position: absolute;
   left: 2px;
   top: 10rpx;
@@ -72,27 +72,27 @@
   border-radius: 50%;
   background-color: red;
 }
-.cu-item .icon + .icon.data-v-0f2e237f {
+.cu-item .icon + .icon.data-v-2628d253 {
   margin-left: 10px;
 }
-.content.data-v-0f2e237f {
+.content.data-v-2628d253 {
   postion: relative;
 }
-.content .comment-dz.data-v-0f2e237f {
+.content .comment-dz.data-v-2628d253 {
   position: absolute;
   right: 0;
   top: 0;
 }
-.action.data-v-0f2e237f {
+.action.data-v-2628d253 {
   color: #f36523;
 }
-#main-title.data-v-0f2e237f {
+#main-title.data-v-2628d253 {
   margin-top: 15rpx;
   margin-bottom: 0;
   font-size: 14px;
   line-height: 48rpx;
 }
-.f-right.data-v-0f2e237f {
+.f-right.data-v-2628d253 {
   float: right;
 }
 

@@ -63,12 +63,12 @@
 		.item {
 			width: 180rpx;
 			height: 180rpx;
-			margin: 20rpx 30rpx;
+			margin: 20rpx 30rpx 0;
 			text-align: center;
 
 			.img {
-				width: 110rpx;
-				height: 110rpx;
+				width: 80rpx;
+				height: 80rpx;
 				margin: 0 auto;
 				image{
 					width:100%;

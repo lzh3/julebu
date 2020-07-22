@@ -254,21 +254,7 @@
 								_this.id = id
 								_this.jf = reg_ip
 								_this.avatar = avatar
-								switch (id_type) {
-									case 1:
-										_this.type = '注册用户'
-										break;
-									case 2:
-										_this.type = '锐龙店面'
-										break;
-									case 3:
-										_this.type = '渠道用户'
-										break;
-									case 4:
-										_this.type = 'CSR'
-										break;
-								}
-
+								_this.type= id_type==1?'注册用户':'非注册用户'
 							}
 
 						}

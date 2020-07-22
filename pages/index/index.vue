@@ -64,8 +64,8 @@
 						</view>
 						<text class="date">培训时间：<text>{{item.start_time}} - {{item.end_time}}</text></text>
 						<view class="train-info">
-							<view>培训名额：<text>{{item.quota_count}}</text></view>
-							<view>培训方式：<text>{{item.mode === 1 ? '视频培训' : '课件培训'}}</text></view>
+							<view>培训名额：<text class="ora">{{item.quota_count}}人</text></view>
+							<view>培训方式：<text class="ora">{{item.mode === 1 ? '视频培训' : '课件培训'}}</text></view>
 							<view class="operate-btn">
 								<view class="test" @click="test" v-if="item.exam"><text>考试</text></view>
 								<view class="divide"></view>
@@ -139,8 +139,8 @@
 				let _this = this;
 				if (token) {
 					uni.request({
-						// url: 'https://amd.mcooks.cn/api/userinfo',
-						url: '/userinfo',
+						url: 'https://amd.mcooks.cn/api/userinfo',
+						// url: '/userinfo',
 						method: 'get',
 						header: {
 							'authtoken': 'token ' + token,
@@ -318,7 +318,7 @@
 							text-align: left;
 
 							text {
-								color: #ff4c4c;
+								color: #f39d23;
 								font-weight: bold;
 							}
 						}
@@ -437,7 +437,9 @@
 						text {
 							color: #f36523;
 						}
-
+						.ora{
+							color:#f39d23;
+						}
 						.operate-btn {
 							width: 222rpx;
 							height: 44rpx;

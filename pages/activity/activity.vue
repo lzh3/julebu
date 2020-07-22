@@ -19,14 +19,17 @@
 						</view>
 						<view class="desc">
 							<view class="text-content">
-								主题: <text class="title">{{item.title}}</text>
+								<text class="name">主题:</text> <text class="txt">{{item.title}}</text>
 							</view>
 							<view class="text-content">
-								时间:<text class="main-color">
-									{{item.start_time}}-{{item.end_time}}</text>
+								<text class='name'>时间:</text>
+								<text class="main-color" :class="{name:item.status=='end'}">
+									{{item.start_time}}-{{item.end_time}}
+								</text>
 							</view>
 							<view class="text-content ">
-								活动名额:<text class="main-color"> {{item.quota_count}}人</text>
+								<text class="name">活动名额:</text>
+								<text class="main-color"  :class="{name:item.status=='end'}"> {{item.quota_count}}人</text>
 								<text class="f-right">已有{{item.partic_count}}人参与</text>
 							</view>
 						</view>
@@ -121,6 +124,9 @@
 		}
 
 		.content {
+			.name{
+				color:#666;
+			}
 			.desc {
 				padding: 0;
 				margin-left: 10rpx;
@@ -128,7 +134,7 @@
 				view.text-content {
 					height: 40rpx;
 					line-height: 40rpx;
-					text{
+					.txt{
 						color:#333333;
 					}
 

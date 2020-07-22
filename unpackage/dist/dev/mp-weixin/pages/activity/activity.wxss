@@ -53,6 +53,9 @@
   left: 0;
   top: 0;
 }
+.cu-item .content .name.data-v-5c3c7c87 {
+  color: #666;
+}
 .cu-item .content .desc.data-v-5c3c7c87 {
   padding: 0;
   margin-left: 10rpx;
@@ -61,7 +64,7 @@
   height: 40rpx;
   line-height: 40rpx;
 }
-.cu-item .content .desc view.text-content text.data-v-5c3c7c87 {
+.cu-item .content .desc view.text-content .txt.data-v-5c3c7c87 {
   color: #333333;
 }
 .cu-item .content .desc view.text-content .f-right.data-v-5c3c7c87 {

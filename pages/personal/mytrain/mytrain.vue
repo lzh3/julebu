@@ -63,7 +63,8 @@
 						type: 3,
 					}
 				],
-
+				type:'',
+				signTrainedUrl:this.type == 'h5' ? '/sign-trained' : 'https://amd.mcooks.cn/api/sign-trained'
 			}
 		},
 		components: {
@@ -93,8 +94,7 @@
 			getTrainList() {
 				let that = this
 				uni.request({
-					url: 'https://amd.mcooks.cn/api/sign-trained',
-					//url: '/sign-trained',
+					url: signTrainedUrl,
 					method: 'post',
 					header: {
 						'authtoken': 'token ' + this.token,

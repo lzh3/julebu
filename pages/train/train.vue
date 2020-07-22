@@ -48,6 +48,7 @@
 	import WucTab from '@/components/wuc-tab/wuc-tab.vue';
 	import swiper from '@/components/wuc-tab/wuc-tab.vue';
 	import Kefu from '@/components/Kefu'
+	import NotLogin from "@/components/NotLogin";
 	export default {
 		data() {
 			return {
@@ -73,11 +74,15 @@
 						type: 3,
 					}
 				],
+				type: 'wxapp',
+				trainedSignUrl: this.type =='h5' ?  '/trained/sign':'https://amd.mcooks.cn/api/trained/sign',
+				trainedListUrl: this.type =='h5' ?  '/trained/list':'https://amd.mcooks.cn/api/trained/list',
 			}
 		},
 		components: {
 			WucTab,
-			Kefu
+			Kefu,
+			NotLogin
 		},
 		onShow() {
 			console.log('onshow')
@@ -110,8 +115,7 @@
 			trainedSign(id, cb) {
 				let that = this
 				uni.request({
-					url: 'https://amd.mcooks.cn/api/trained/sign',
-					//url: '/trained/sign',
+					url: trainedSignUrl,
 					method: 'post',
 					header: {
 						'authtoken': 'token ' + this.token,
@@ -156,8 +160,7 @@
 			getTrainList() {
 				let that = this
 				uni.request({
-					// url: 'https://amd.mcooks.cn/api/trained/list',
-					url: 'https://amd.mcooks.cn/api/trained/list',
+					url: trainedListUrl,
 					method: 'post',
 					header: {
 						'authtoken': 'token ' + this.token,

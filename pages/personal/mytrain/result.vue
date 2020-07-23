@@ -23,7 +23,7 @@
 				<!-- 多选 -->
 				<view v-else class="test-options">
 					<evan-checkbox-group v-model="v.userAnswer" @change="checkboxChange" disabled>
-						<evan-checkbox class="checkout-content" primary-color="#F36523" v-for="(u, m) in v.answer" :key="u.title"
+						<evan-checkbox :class="['checkout-content',v.userAnswer.includes(u.code) && 'checkout-disabled']" primary-color="#F36523" v-for="(u, m) in v.answer" :key="u.title"
 							:label="u.code">
 							{{u.title}}
 						</evan-checkbox>
@@ -46,7 +46,9 @@
 			return {
 				token: null,
 				title: null,
-				list: []
+				list: [],
+				type:'',
+				examinationIndexUrl:this.type === 'h5' ? '/examination/index' : 'https://amd.mcooks.cn/api/examination/index'
 			}
 		},
 		onLoad(opts) {
@@ -58,8 +60,7 @@
 				// 获取试题
 				let that = this
 				uni.request({
-					url: 'https://amd.mcooks.cn/api/examination/index', //仅为示例，并非真实接口地址。
-					//url: '/examination/index', //仅为示例，并非真实接口地址。
+					url: examinationIndexUrl, //仅为示例，并非真实接口地址。
 					data: {
 						"bid": item.id // 培训列表的id
 					},
@@ -197,6 +198,22 @@
 			bottom: 20rpx;
 			transform: translateX(-50%);
 			left: 50%;
+		}
+	} 
+		/deep/.evan-checkbox__inner{
+			background-color: #fff !important;
+    	border-color: #d1d1d1 !important;
+		}
+	.checkout-disabled{
+		/deep/.evan-checkbox__inner{
+			background-color: #F36523 !important;
+			border-color: #F36523 !important;
+		}
+		/deep/.uni-icons{
+			border-radius:50%;
+			span{
+				color:#fff;
+			}
 		}
 	}
 </style>

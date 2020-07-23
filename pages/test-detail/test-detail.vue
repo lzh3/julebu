@@ -49,7 +49,10 @@
 				startTime: 0,
 				answers: [],
 				msg: `请在“我的培训”查看得分`,
-				status: "success"
+				status: "success",
+				type:'h5',
+				examinationIndexUrl:this.type == 'h5' ? '/examination/index' : 'https://amd.mcooks.cn/api/examination/index'
+				,examinationSubmitUrl:this.type == 'h5' ? '/examination/submit' : 'https://amd.mcooks.cn/api/examination/submit'
 			};
 		},
 		onLoad(opt) {
@@ -58,8 +61,7 @@
 				this.token = token;
 				let that = this;
 				uni.request({
-					//url: "/examination/index",
-					url: 'https://amd.mcooks.cn/api/examination/index',
+					url: examinationIndexUrl,
 					method: "post",
 					header: {
 						authtoken: "token " + token
@@ -85,8 +87,7 @@
 				let that = this;
 				if (this.answers.length) {
 					uni.request({
-						//url: '/examination/submit',
-						url: "https://amd.mcooks.cn/api/examination/submit",
+						url: examinationSubmitUrl,
 						method: "post",
 						header: {
 							authtoken: "token " + this.token

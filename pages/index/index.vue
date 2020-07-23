@@ -170,6 +170,7 @@
 							this.notices = notices;
 							this.autoplayNotice();
 							this.trainItem = train;
+							console.log(train)
 							setTimeout(() => {
 								uni.stopPullDownRefresh();
 							}, 500)

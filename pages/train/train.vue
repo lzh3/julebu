@@ -8,7 +8,7 @@
 			</wuc-tab>
 			<swiper class="swiper" :current="TabCur" duration="300" @change="swiperChange">
 				<swiper-item class="s-item" v-for="(item,index) in tabList" :key="index">
-					<view class="item" v-for="(v,index) in item.list" :key="index" @click="train(v)">
+					<view class="item" v-for="(v,index) in item.list" :key="index" @click="train(item.list)">
 							<view class="content">
 								<view class="top-pic">
 									<image :src="v.image" mode="" class="main-pic" />
@@ -107,8 +107,10 @@
 				this.TabCur = index;
 			},
 			swiperChange(e) {
+				// console.log(e.detail)
 				let current = e.detail.current
 				this.TabCur = current;
+				this.getTrainList(1,e.detail.current+1);
 			},
 			// 报名培训 
 			trainedSign(id, cb) {
@@ -123,7 +125,7 @@
 						id
 					},
 					success(res) {
-						console.log('trainedSign --------------> ', res.data)
+						// console.log('trainedSign --------------> ', res.data)
 						cb()
 					}
 				})
@@ -142,11 +144,12 @@
 			},
 			// 培训
 			train(item) {
-				if (item.status != 'overtime') {
+				console.log(item)
+				/* if (item.status != 'overtime') {
 					uni.navigateTo({
 						url: `/pages/course-detail/course-detail?id=${item.id}`
 					});
-				}
+				} */
 			},
 			trainStatus(status) {
 				return {
@@ -155,7 +158,7 @@
 					overtime: '已过期',
 				} [status]
 			},
-			getTrainList() {
+			getTrainList(page,type) {
 				let that = this
 				uni.request({
 					url: that.trainedListUrl,
@@ -164,12 +167,12 @@
 						'authtoken': 'token ' + this.token,
 					},
 					data: {
-						page: that.page,
-						limit: that.limit,
-						type: that.type,
+						page:page,
+						limit: 6,
+						type
 					},
 					success(res) {
-						console.log(res.data)
+						// console.log(res.data)
 						that.tabList[that.TabCur].list = res.data.data // 季度培训
 					}
 				})

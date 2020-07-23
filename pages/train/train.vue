@@ -23,15 +23,15 @@
 								</view>
 							</view>
 						</view>
+
 						<view class="operate">
 							<view class="time-wrap">
 								<image src="../../static/image/home/time.png" mode="" />
 								<text class="time">{{v.time}}</text>
-								<text
-									:class="['sign-number',v.trainStatus === 'overtime' && 'sign-number-failed']">已有{{v.sign_count}}人报名参加</text>
+								<text :class="['sign-number',v.trainStatus === 'overtime' && 'sign-number-failed']">已有{{v.sign_count}}人报名参加</text>
 							</view>
 							<view :class="['operate-btn',v.trainStatus === 'overtime' && 'overtime-btn']">
-								<view class="test" @click="test(v)" ><text>考试</text></view>
+								<view class="test" @click="test(v)"><text>考试</text></view>
 								<view class="divide"></view>
 								<view class="train-btn" @click="train(v)" v-if="v.mode!=3"><text>培训</text></view>
 							</view>
@@ -75,8 +75,8 @@
 					}
 				],
 				type: 'wxapp',
-				trainedSignUrl: this.type =='h5' ?  '/trained/sign':'https://amd.mcooks.cn/api/trained/sign',
-				trainedListUrl: this.type =='h5' ?  '/trained/list':'https://amd.mcooks.cn/api/trained/list',
+				trainedSignUrl: this.type == 'h5' ? '/trained/sign' : 'https://amd.mcooks.cn/api/trained/sign',
+				trainedListUrl: this.type == 'h5' ? '/trained/list' : 'https://amd.mcooks.cn/api/trained/list',
 			}
 		},
 		components: {
@@ -193,13 +193,16 @@
 		/deep/.uni-swiper-wrapper {
 			height: calc(100vh - 90rpx);
 		}
-		.swiper{
-			height:100vh;
+
+		.swiper {
+			height: 100vh;
 			overflow-y: scroll;
 		}
-		.s-item{
-			height:150rpx;
+
+		.s-item {
+			height: 150rpx;
 		}
+
 		.item {
 			padding: 30rpx 30rpx 0 30rpx;
 			height: 260rpx;
@@ -252,9 +255,11 @@
 
 				.text-area {
 					flex: 1;
-					>view{
-						margin:15rpx 0;
+
+					>view {
+						margin: 15rpx 0;
 					}
+
 					.title {
 						font-size: 26rpx;
 						font-weight: bold;

@@ -9,17 +9,19 @@
 			<swiper class="swiper" :current="TabCur" duration="300" @change="swiperChange">
 				<swiper-item class="s-item" v-for="(item,index) in tabList" :key="index">
 					<view class="item" v-for="(v,index) in item.list" :key="index">
-						<view class="content">
-							<view class="top-pic">
-								<image :src="v.image" mode="" class="main-pic" />
-								<view :class="['jiao-biao',v.trainStatus]">{{trainStatus(v.trainStatus)}}</view>
-							</view>
-							<view class="text-area">
-								<text class="title">{{v.title}}</text>
-								<view class="train-time">培训时间：<text>{{v.start_time}}-{{v.end_time}}</text></view>
-								<view class="train-info">
-									<view>培训名额：<text>{{v.quota_count}}</text></view>
-									<view class="type">培训方式：<text>{{v.mode == 1 ? "视频" : "课件"}}</text></view>
+						<view  @click="train(v)">
+							<view class="content">
+								<view class="top-pic">
+									<image :src="v.image" mode="" class="main-pic" />
+									<view :class="['jiao-biao',v.trainStatus]">{{trainStatus(v.trainStatus)}}</view>
+								</view>
+								<view class="text-area">
+									<text class="title">{{v.title}}</text>
+									<view class="train-time">培训时间：<text>{{v.start_time}}-{{v.end_time}}</text></view>
+									<view class="train-info">
+										<view>培训名额：<text>{{v.quota_count}}</text></view>
+										<view class="type">培训方式：<text>{{v.mode == 1 ? "视频" : "课件"}}</text></view>
+									</view>
 								</view>
 							</view>
 						</view>
@@ -31,7 +33,7 @@
 								<text :class="['sign-number',v.trainStatus === 'overtime' && 'sign-number-failed']">已有{{v.sign_count}}人报名参加</text>
 							</view>
 							<view :class="['operate-btn',v.trainStatus === 'overtime' && 'overtime-btn']">
-								<view class="test" @click="test(v)"><text>考试</text></view>
+								<view class="test" @click.stop="test(v)" ><text>考试</text></view>
 								<view class="divide"></view>
 								<view class="train-btn" @click="train(v)" v-if="v.mode!=3"><text>培训</text></view>
 							</view>
@@ -74,9 +76,8 @@
 						type: 3,
 					}
 				],
-				type: 'wxapp',
-				trainedSignUrl: this.type == 'h5' ? '/trained/sign' : 'https://amd.mcooks.cn/api/trained/sign',
-				trainedListUrl: this.type == 'h5' ? '/trained/list' : 'https://amd.mcooks.cn/api/trained/list',
+				trainedSignUrl: 'https://amd.mcooks.cn/api/trained/sign',
+				trainedListUrl: 'https://amd.mcooks.cn/api/trained/list',
 			}
 		},
 		components: {
@@ -132,6 +133,7 @@
 			},
 			// 考试
 			test(item) {
+        console.log("test -> item", item)
 				this.trainedSign(item.id, () => {
 					if (item.trainStatus !== 'overtime') {
 						uni.navigateTo({
@@ -143,6 +145,7 @@
 			},
 			// 培训
 			train(item) {
+        console.log("train -> item", item)
 				this.trainedSign(item.id, () => {
 					if (item.status !== 'overtime') {
 						uni.navigateTo({

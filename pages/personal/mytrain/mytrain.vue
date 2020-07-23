@@ -4,7 +4,7 @@
 		</wuc-tab>
 		<swiper :current="TabCur" duration="300" @change="swiperChange" class="my-train-swiper">
 			<swiper-item v-for="(item,index) in tabList" :key="index" class="my-train-swiper-item">
-				<view class="item" v-for="(v,index) in item.list" :key="index">
+				<view class="item" v-for="(v,index) in item.list" :key="index" @click="test(v)">
 					<view class="content">
 						<view class="top-pic">
 							<image :src="v.image" mode="" class="main-pic" />
@@ -24,9 +24,9 @@
 							<text class="time" v-if="v.done">得分：{{v.result}}</text>
 						</view>
 						<view :class="['operate-btn',v.trainStatus]">
-							<view class="test" @click="test(v)"><text>查看培训</text></view>
+							<view class="test" ><text>查看培训</text></view>
 							<!-- v-if='v.done' -->
-							<view class="train-btn" @click="lookResult(v)"><text>查看成绩</text></view>
+							<view class="train-btn" @click.stop="lookResult(v)"><text>查看成绩</text></view>
 						</view>
 					</view>
 				</view>

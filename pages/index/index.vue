@@ -51,7 +51,7 @@
 				<image src="../../static/image/home/activity.png" class="icon" />
 				<text>最新培训</text>
 			</view>
-			<block v-for="item in trainItem">
+			<block v-for="(item,index) in trainItem" :key='index'>
 				<view class="train-content">
 					<image :src="item.image" mode="aspectFit" />
 					<view class="main">
@@ -64,12 +64,12 @@
 						</view>
 						<text class="date">培训时间：<text>{{item.start_time}} - {{item.end_time}}</text></text>
 						<view class="train-info">
-							<view>培训名额：<text class="ora">{{item.quota_count}}人</text></view>
+							<!-- <view>培训名额：<text class="ora">{{item.quota_count}}人</text></view> -->
 							<view>培训方式：<text class="ora">{{item.mode === 1 ? '视频培训' : '课件培训'}}</text></view>
 							<view class="operate-btn">
 								<view class="test" @click="test" v-if="item.exam"><text>考试</text></view>
 								<view class="divide"></view>
-								<view class="train" @click="train"><text>培训</text></view>
+								<view class="train" @click="train(item)"><text>培训</text></view>
 							</view>
 						</view>
 					</view>
@@ -119,9 +119,9 @@
 					url: `/pages/test-detail/test-detail?id=${this.trainItem.id}`
 				});
 			},
-			train() {
+			train(item) {
 				uni.navigateTo({
-					url: `/pages/course-detail/course-detail?id=${this.trainItem.id}&type=${this.trainItem.type}`
+					url: `/pages/course-detail/course-detail?id=${item.id}`
 				});
 			},
 			bannerJump(url) {
@@ -163,7 +163,7 @@
 								banners,
 								news,
 								notices,
-								train
+								train,
 							} = data.data;
 							this.newsItems = news;
 							this.indexBanner = banners;

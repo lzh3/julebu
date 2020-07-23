@@ -130,7 +130,7 @@
 			},
 			// 考试
 			test(item) {
-        console.log("test -> item", item)
+				console.log("test -> item", item)
 				this.trainedSign(item.id, () => {
 					if (item.trainStatus !== 'overtime') {
 						uni.navigateTo({
@@ -142,14 +142,11 @@
 			},
 			// 培训
 			train(item) {
-        console.log("train -> item", item)
-				this.trainedSign(item.id, () => {
-					if (item.status !== 'overtime') {
-						uni.navigateTo({
-							url: `/pages/course-detail/course-detail?id=${item.id}&type=${item.type}`
-						});
-					}
-				})
+				if (item.status != 'overtime') {
+					uni.navigateTo({
+						url: `/pages/course-detail/course-detail?id=${item.id}`
+					});
+				}
 			},
 			trainStatus(status) {
 				return {

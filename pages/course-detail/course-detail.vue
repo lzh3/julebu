@@ -1,7 +1,7 @@
 <template>
 	<view class="course-detail">
 		<!-- 视频培训 -->
-		<video v-if="courseType==='视频'" id="myVideo" :src="videoItem.src" @error="videoErrorCallback"
+		<video v-if="item.mode==1" id="myVideo" :src="item.file" @error="videoErrorCallback"
 			:show-center-play-btn="true" enable-danmu controls :poster="videoItem.poster" @play="play"></video>
 		<view class="content">
 			<view class="header">
@@ -11,19 +11,21 @@
 			<view class="course-content">
 				<view class="item">
 					课程主题：
-					<text class="theme">{{item.theme}}</text>
-					<text class="status">{{item.status}}</text>
+					<text class="theme">{{item.title}}</text>
+					<!-- <text class="status">{{item.status}}</text> -->
 				</view>
-				<view class="item">培训时间：<text class="date">{{item.date}}</text></view>
-				<view class="item">培训类型：<text class="type">{{item.type}}</text></view>
-				<view class="item">参与名额：<text class="limit">{{item.limit}}</text>
+				<view class="item">培训时间：<text class="date">{{item.start_time}}-{{item.end_time}}</text></view>
+				<view class="item">培训类型：<text class="type">
+					{{item.type==1?'视频':(item.type==2?'课件':'直播')}}
+				</text></view>
+				<!-- <view class="item">参与名额：<text class="limit">{{item.limit}}</text>
 					<text class="isReported">已有{{item.isReported}}人报名参加</text>
-				</view>
-				<view class="item item-last-child">{{courseType}}介绍：
-					<view class="desc">{{item.desc}}</view>
+				</view> -->
+				<view class="item item-last-child">
+					课程介绍：<view class="desc">{{item.description}}</view>
 				</view>
 			</view>
-			<view class="courseware-content" v-if="courseType==='课件'">
+			<view class="courseware-content" v-if="item.type==='课件'">
 				<image :src="item.pic" v-for="(item,index) in coursewareList" :key="index" />
 			</view>
 			<!-- <view class="btn-area"><button type="primary" v-if="joined" @click="report" class="btn">我要报名</button></view> -->
@@ -52,17 +54,7 @@
 					src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
 					poster: '../../static/image/poster.png'
 				},
-				item: {
-					joined: 'true',
-					pic: '../../static/image/activity-pic.png',
-					status: '已开始',
-					theme: 'AMD最新五代处理器全渠道销售培训',
-					date: '06.01 12:00~06.18 24:00',
-					type: '视频培训',
-					limit: '50人',
-					isReported: '40',
-					desc: '以下是活动介绍以下是活动介绍以下是活动介绍以下是活动 介绍以下是活动介绍以下是活动介绍以下是活动介绍以下是 介绍以下是活动介绍',
-				},
+				item: {},
 				modalStatus: 'success',
 				//课件
 				coursewareList: [{
@@ -74,10 +66,35 @@
 		},
 		onLoad(props) {
 			console.log(props)
+			let id=props.id;
+			let token=uni.getStorageSync('token')
+			this.getDetail(id,token)
+			
 			this.joined = !props.joined;
 			this.courseType = props.type
 		},
 		methods: {
+			getDetail(id,token){
+				id = Number(id)
+				let that=this;
+				uni.request({
+					url: 'https://amd.mcooks.cn/api/trained/show',
+					method: 'post',
+					data:{
+						id,
+					},
+					header: {
+						'authtoken': 'token ' + token,
+					},
+					success(res) {
+						console.log(res.data.data)
+						if(res.data.code==200){
+							that.item=res.data.data;
+						}
+					}
+				})
+				
+			},
 			videoErrorCallback(e) {
 
 			},

@@ -23,8 +23,8 @@
 				<!-- <view class="item">参与名额：<text class="limit"  :class="{end:end}">{{item.limit}}</text>
 					 <text class="isReported" :class="{end:end}">已有{{item.isReported}}人报名参加</text> 
 				</view> -->
-				<view class="item">活动介绍：
-					<view class="desc">{{item.description}}</view>
+				<view class="item">
+					活动介绍：<view class="desc">{{item.description}}</view>
 				</view>
 				<button type="primary" @click="joinActivity" class="btn" v-if="joined" :class="{over:item.status!=='in_start'}"
 				 :disabled="item.status!=='in_start'">

@@ -30,7 +30,7 @@
 								<text :class="['sign-number',v.trainStatus === 'overtime' && 'sign-number-failed']">已有{{v.sign_count}}人报名参加</text>
 							</view>
 							<view :class="['operate-btn',v.trainStatus === 'overtime' && 'overtime-btn']">
-								<view class="test" @click.stop="test(v)" ><text>考试</text></view>
+								<view class="test" @click.stop="test(v)"><text>考试</text></view>
 								<view class="divide"></view>
 								<view class="train-btn"  v-if="v.mode!=3"><text>培训</text></view>
 							</view>

@@ -69,7 +69,7 @@
 			</view>
 		</view>
 		
-		<Modal ref="reg" :reg_status='reg_status' :msg='msg' />
+		<Modal ref="reg" :reg_status='reg_error' :msg='msg' />
 		<Modal ref="pp" :code_status='code_error' :msg='msg' /> 
 	</view>
 </template>
@@ -82,16 +82,17 @@
 				interval:60,
 				msg: '请输入正确信息!',
 				code: '',
-				reg_status:'reg-error',
+				reg_status:'reg_error',
+				code_status:'code_error',
 				reg_form: {
-					connect: '',//联系人
-					"company": "", // 公司名称 asdasd
-					"province": "", // 省 河北省
+					connect: '联系',//人
+					"company": "公司", // 名称 asdasd
+					"province": "湖南省长沙市1区", // 省 河北省
 					"city": "", // 市 邯郸市
 					"address": "", // 详细地址 湖南省长沙市雨花区
-					"business": "", // 公司主营行业 公司主营行业
-					"realname": "", // 联系人 联系人
-					"phone": "", // 联系手机 18270825622
+					"business": "阿发达", // 公司主营行业 公司主营行业
+					"realname": "1士大夫撒旦", // 联系人 联系人
+					"phone": "18270825620", // 联系手机 18270825622
 					"code": "", // 验证码 816726
 					is_join_amd: "0",
 				}
@@ -167,8 +168,8 @@
 							}) */
 						} else {
 							_this.msg=res.data.msg;
-							_this.reg_status = 'code-error';
-							_this.$refs.modal.open()
+							_this.code_status = 'code_error';
+							_this.$refs.pp.open()
 						}
 					},
 				})

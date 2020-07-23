@@ -43,7 +43,7 @@
 				modal_title: '',
 				info: 'yes',
 				login_form: {
-					phone: '',//15030017934
+					phone: '18270825620',//15030017934
 					code: ""
 				},
 				msg: '请输入正确信息!',
@@ -74,66 +74,78 @@
 				// this.$refs.modal.open()
 				console.log(1)
 				let _this = this;
-				uni.request({
-					url: 'https://amd.mcooks.cn/api/send/smscode',
-					method: 'POST',
-					data: {
-						phone: this.login_form.phone
-					},
-					header: {
-						'content-type': 'application/x-www-form-urlencoded'
-					},
-					success(res) {
-						console.log(res.data)
-						if (Number(res.data.code) === 200) {
-							_this.code = res.data.code;
-							/* uni.navigateTo({
-								url: '/pages/personal/personal'
-							}) */
-						} else {
-							_this.fail_code = 0;
-							_this.modal_title = res.data.msg;
-							_this.$refs.modal.open()
+				if(this.login_form.phone){
+					uni.request({
+						url: 'https://amd.mcooks.cn/api/send/smscode',
+						method: 'POST',
+						data: {
+							phone: this.login_form.phone
+						},
+						header: {
+							'content-type': 'application/x-www-form-urlencoded'
+						},
+						success(res) {
+							console.log(res.data)
+							if (Number(res.data.code) === 200) {
+								_this.code = res.data.code;
+								/* uni.navigateTo({
+									url: '/pages/personal/personal'
+								}) */
+							} else {
+								_this.fail_code = 0;
+								_this.showlogin=false;
+								_this.msg = res.data.msg;
+								_this.$refs.modal.open()
+							}
+						},
+						fail(e) {
+							console.log(e)
 						}
-					},
-					fail(e) {
-						console.log(e)
-					}
-				})
+					})
+				}else{
+					this.msg="请填写正确的手机号码";
+					this.showlogin=false;
+					this.$refs.modal.open()
+				}
 			},
 			login() {
-				console.log('login')
 				// console.log(this.code)
 				let _this = this;
-				uni.request({
-					url: 'https://amd.mcooks.cn/api/login',
-					method: 'POST',
-					header: {
-						'content-type': 'application/x-www-form-urlencoded'
-					},
-					data: this.login_form,
-					success(res) {
-						console.log(res.data)
-						if (res.data.code === 200) {
-							uni.setStorageSync('token', res.data.data.token);
-							_this.getIdType(res.data.data.token)
-							_this.showlogin = false;
-							setTimeout(() => {
-								uni.switchTab({
-									url: '../personal/personal'
-								})
-							}, 500)
-						} else {
-							_this.showlogin = true;
+				if(this.login_form.code){
+					uni.request({
+						url: 'https://amd.mcooks.cn/api/login',
+						method: 'POST',
+						header: {
+							'content-type': 'application/x-www-form-urlencoded'
+						},
+						data: this.login_form,
+						success(res) {
+							console.log(res.data)
+							if (res.data.code === 200) {
+								uni.setStorageSync('token', res.data.data.token);
+								_this.getIdType(res.data.data.token)
+								_this.showlogin = false;
+								setTimeout(() => {
+									uni.switchTab({
+										url: '../personal/personal'
+									})
+								}, 500)
+							} else {
+								_this.showlogin = true;
+							}
+							_this.msg = res.data.msg;
+							_this.modal_title = res.data.msg;
+							_this.$refs.modal.open()
+						},
+						fail(e) {
+							console.log(e)
 						}
-						_this.msg = res.data.msg;
-						_this.modal_title = res.data.msg;
-						_this.$refs.modal.open()
-					},
-					fail(e) {
-						console.log(e)
-					}
-				})
+					})
+				}else{
+					this.msg='请输入验证码'
+					this.showlogin=false;
+					this.$refs.modal.open()
+				}
 			}
 
 		}

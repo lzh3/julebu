@@ -60,13 +60,13 @@
 				// 获取试题
 				let that = this
 				uni.request({
-					url: examinationIndexUrl, //仅为示例，并非真实接口地址。
+					url: that.examinationIndexUrl, //仅为示例，并非真实接口地址。
 					data: {
 						"bid": item.id // 培训列表的id
 					},
 					method: 'post',
 					header: {
-						'authtoken': 'token ' + this.token,
+						'authtoken': 'token ' + that.token,
 					},
 					success: ({
 						data

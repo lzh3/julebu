@@ -94,7 +94,7 @@
 			getTrainList() {
 				let that = this
 				uni.request({
-					url: signTrainedUrl,
+					url: that.signTrainedUrl,
 					method: 'post',
 					header: {
 						'authtoken': 'token ' + this.token,

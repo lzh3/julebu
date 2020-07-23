@@ -3,11 +3,11 @@
 		<view class="activity-wrap container" v-if='showLogin'>
 			<NotLogin pageName="培训"></NotLogin>
 		</view>
-		<view class="train">
+		<view class="train container">
 			<wuc-tab :tab-list="tabList" :tabCur.sync="TabCur" @change="tabChange" :textFlex="true">
 			</wuc-tab>
-			<swiper :current="TabCur" duration="300" @change="swiperChange">
-				<swiper-item v-for="(item,index) in tabList" :key="index">
+			<swiper class="swiper" :current="TabCur" duration="300" @change="swiperChange">
+				<swiper-item class="s-item" v-for="(item,index) in tabList" :key="index">
 					<view class="item" v-for="(v,index) in item.list" :key="index">
 						<view class="content">
 							<view class="top-pic">
@@ -31,9 +31,9 @@
 									:class="['sign-number',v.trainStatus === 'overtime' && 'sign-number-failed']">已有{{v.sign_count}}人报名参加</text>
 							</view>
 							<view :class="['operate-btn',v.trainStatus === 'overtime' && 'overtime-btn']">
-								<view class="test" @click="test(v)"><text>考试</text></view>
+								<view class="test" @click="test(v)" ><text>考试</text></view>
 								<view class="divide"></view>
-								<view class="train-btn" @click="train(v)"><text>培训</text></view>
+								<view class="train-btn" @click="train(v)" v-if="v.mode!=3"><text>培训</text></view>
 							</view>
 						</view>
 					</view>
@@ -116,7 +116,7 @@
 			trainedSign(id, cb) {
 				let that = this
 				uni.request({
-					url: trainedSignUrl,
+					url: that.trainedSignUrl,
 					method: 'post',
 					header: {
 						'authtoken': 'token ' + this.token,
@@ -161,7 +161,7 @@
 			getTrainList() {
 				let that = this
 				uni.request({
-					url: 'https://amd.mcooks.cn/api/trained/list',
+					url: that.trainedListUrl,
 					method: 'post',
 					header: {
 						'authtoken': 'token ' + this.token,
@@ -193,7 +193,13 @@
 		/deep/.uni-swiper-wrapper {
 			height: calc(100vh - 90rpx);
 		}
-
+		.swiper{
+			height:100vh;
+			overflow-y: scroll;
+		}
+		.s-item{
+			height:150rpx;
+		}
 		.item {
 			padding: 30rpx 30rpx 0 30rpx;
 			height: 260rpx;
@@ -204,7 +210,6 @@
 			.content {
 				display: flex;
 				justify-content: space-between;
-				overflow: hidden;
 
 				.top-pic {
 					margin-right: 20rpx;

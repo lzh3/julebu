@@ -19,8 +19,7 @@
 				<!-- 多选 -->
 				<view v-else class="test-options">
 					<evan-checkbox-group v-model="v.checked" @change="checkboxChange">
-						<evan-checkbox class="checkout-content" primary-color="#F36523" v-for="(u, m) in v.answer" :key="u.code"
-							:label="`${v.id}-${index}-${m}-${u.code}-${u.title}`">
+						<evan-checkbox class="checkout-content" primary-color="#F36523" v-for="(u, m) in v.answer" :key="u.code" :label="`${v.id}-${index}-${m}-${u.code}-${u.title}`">
 							{{u.title}}
 						</evan-checkbox>
 					</evan-checkbox-group>
@@ -50,9 +49,9 @@
 				answers: [],
 				msg: `请在“我的培训”查看得分`,
 				status: "success",
-				type:'h5',
-				examinationIndexUrl:this.type == 'h5' ? '/examination/index' : 'https://amd.mcooks.cn/api/examination/index'
-				,examinationSubmitUrl:this.type == 'h5' ? '/examination/submit' : 'https://amd.mcooks.cn/api/examination/submit'
+				type: 'h5',
+				examinationIndexUrl: this.type == 'h5' ? '/examination/index' : 'https://amd.mcooks.cn/api/examination/index',
+				examinationSubmitUrl: this.type == 'h5' ? '/examination/submit' : 'https://amd.mcooks.cn/api/examination/submit'
 			};
 		},
 		onLoad(opt) {
@@ -61,7 +60,7 @@
 				this.token = token;
 				let that = this;
 				uni.request({
-					url: examinationIndexUrl,
+					url: that.examinationIndexUrl,
 					method: "post",
 					header: {
 						authtoken: "token " + token
@@ -87,7 +86,7 @@
 				let that = this;
 				if (this.answers.length) {
 					uni.request({
-						url: examinationSubmitUrl,
+						url: that.examinationSubmitUrl,
 						method: "post",
 						header: {
 							authtoken: "token " + this.token
@@ -131,7 +130,7 @@
 					});
 				}
 			},
-			checkboxChange: function (value) {
+			checkboxChange: function(value) {
 				let id = value[0].split("-")[0];
 				let curIndex = this.answers.findIndex(v => v.id == id);
 				if (curIndex != -1) {
@@ -148,78 +147,98 @@
 </script>
 
 <style lang="scss" scoped>
-	.test-detail {
-		background: #fff;
-		min-height: calc(100vh - 88rpx);
-		padding-bottom: 84rpx;
+	/deep/.evan-checkbox__inner {
+		background-color: #fff !important;
+		border-color: #d1d1d1 !important;
+	}
 
-		.test-name {
-			font-size: 32rpx;
-			font-weight: bold;
-			color: rgba(51, 51, 51, 1);
-			text-align: center;
-			padding-top: 50rpx;
-			line-height: 1;
+	.checkout-disabled {
+		/deep/.evan-checkbox__inner {
+			background-color: #F36523 !important;
+			border-color: #F36523 !important;
 		}
 
-		.content {
-			padding: 0 28rpx;
+		/deep/.uni-icons {
+			border-radius: 50%;
 
-			.item {
+			span {
+				color: #fff;
+			}
+		}
+	}
 
-				.checkout-content,
-				.uni-list-cell {
-					margin-bottom: 22rpx;
-				}
+		.test-detail {
+			background: #fff;
+			min-height: calc(100vh - 88rpx);
+			padding-bottom: 84rpx;
 
-				.test-option-name {
-					font-size: 30rpx;
-					font-weight: 500;
-					color: rgba(51, 51, 51, 1);
-					margin: 46rpx 0 28rpx 0;
-					line-height: 1;
-				}
+			.test-name {
+				font-size: 32rpx;
+				font-weight: bold;
+				color: rgba(51, 51, 51, 1);
+				text-align: center;
+				padding-top: 50rpx;
+				line-height: 1;
+			}
 
-				.uni-list-cell {
-					display: flex;
-					justify-content: flex-start;
-					align-items: center;
-					line-height: 1;
+			.content {
+				padding: 0 28rpx;
 
-					.radio {
-						margin-right: 10rpx;
+				.item {
 
-						/deep/.uni-radio-input-checked {
-							background-color: #f36523 !important;
-							border-color: #f36523 !important;
-						}
-
-						radio {
-							// width: 28rpx;
-							// height: 28rpx;
-							transform: scale(0.7);
-						}
+					.checkout-content,
+					.uni-list-cell {
+						margin-bottom: 22rpx;
 					}
 
-					.radio-content {
+					.test-option-name {
 						font-size: 30rpx;
 						font-weight: 500;
 						color: rgba(51, 51, 51, 1);
+						margin: 46rpx 0 28rpx 0;
+						line-height: 1;
+					}
+
+					.uni-list-cell {
+						display: flex;
+						justify-content: flex-start;
+						align-items: center;
+						line-height: 1;
+
+						.radio {
+							margin-right: 10rpx;
+
+							/deep/.uni-radio-input-checked {
+								background-color: #f36523 !important;
+								border-color: #f36523 !important;
+							}
+
+							radio {
+								// width: 28rpx;
+								// height: 28rpx;
+								transform: scale(0.7);
+							}
+						}
+
+						.radio-content {
+							font-size: 30rpx;
+							font-weight: 500;
+							color: rgba(51, 51, 51, 1);
+						}
 					}
 				}
 			}
-		}
 
-		button {
-			width: 690rpx;
-			height: 64rpx;
-			line-height: 64rpx;
-			background: rgba(243, 101, 35, 1);
-			border-radius: 10rpx;
-			position: fixed;
-			bottom: 20rpx;
-			transform: translateX(-50%);
-			left: 50%;
+			button {
+				width: 690rpx;
+				height: 64rpx;
+				line-height: 64rpx;
+				background: rgba(243, 101, 35, 1);
+				border-radius: 10rpx;
+				position: fixed;
+				bottom: 20rpx;
+				transform: translateX(-50%);
+				left: 50%;
+			}
 		}
-	}
 </style>

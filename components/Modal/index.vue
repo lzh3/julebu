@@ -1,17 +1,17 @@
 <template>
 	<!-- 弹窗 -->
 	<uni-popup ref="popup" type="center">
-		<view class="modal-wrap error" v-if="status === 'error'">
-			<image src="../../static/image/error.png" class="error" />
+		<view :class="['modal-wrap',status]">
+			<image :src="`../../static/image/${status}.png`" :class="status" />
 			<text class="title">{{title}}</text>
 			<text class="desc" v-if="$slots.desc">
 				<slot name="desc"></slot>
 			</text>
 			<text class="desc" v-else>{{desc}}</text>
-			<button type="primary" @click="fn" class="btn">{{btnText}}</button>
+			<button type="primary" @click="fn" class="btn" v-if="btn">{{btnText}}</button>
 			<image src="../../static/image/close.png" class="close" @click="close" />
 		</view>
-		<view class="modal-wrap success" v-if="status === 'success'">
+		<!-- <view class="modal-wrap success" v-if="status === 'success'">
 			<image src="../../static/image/success-line.png" class="success" />
 			<text class="title">{{title}}</text>
 			<text class="desc" v-if="$slots.desc">
@@ -20,15 +20,15 @@
 			<text class="desc" v-else>{{desc}}</text>
 			<button type="primary" @click="fn" class="btn" v-if="$attrs.btn && status === 'success'">{{btnText}}</button>
 			<image src="../../static/image/close.png" class="close" @click="close" />
-		</view>
-		
+		</view> -->
+
 		<!-- // 登录页面 -->
 		<view class="login-wrap modal-wrap success" v-if="login_status === 'login'">
 			<text class="title login text-green" :class="isSuccess?'login_suc':'login_err'">{{msg}}</text>
 			<button type="default" v-show='showlogin' class="btn reg-btn" @tap='toRegister'>去注册</button>
 			<image src="../../static/image/close.png" class="close" @click="close" />
 		</view>
-		
+
 		<!-- 注册页面 -->
 		<view class="modal-wrap error" v-if="reg_status === 'reg_error'">
 			<text class="title" :class="{reg_err:reg_status==='reg_error'}">{{msg}}</text>
@@ -43,7 +43,7 @@
 	</uni-popup>
 	</view>
 </template>
- 
+
 <script>
 	export default {
 		/* success:{
@@ -51,19 +51,22 @@
 		  type:String
 	  }, */
 		props: {
-			code_status:{
-				default:() => ''
+			code_status: {
+				default: () => ''
 			},
 			// 注册提示
-			reg_status:{
+			reg_status: {
 				default: () => ''
 			},
 			// 登录提示
-			login_status:{
+			login_status: {
 				default: () => ''
 			},
 			msg: {
 				default: () => '请输入正确信息'
+			},
+			btn: {
+				default: () => true
 			},
 			showlogin: {
 				default: () => false
@@ -87,8 +90,9 @@
 				default: () => () => {}
 			},
 		},
-		onShow() {
-			console.log(this.reg_status,this.code_status)
+		onLoad() {
+			console.log(this.reg_status, this.code_status)
+			console.log("TCL: onShow -> $attrs.nobtn", this.$attrs.nobtn)
 		},
 		methods: {
 			loginFn() {

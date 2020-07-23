@@ -3,7 +3,7 @@
 		<view class="activity-wrap container" v-if='showLogin'>
 			<NotLogin pageName="培训"></NotLogin>
 		</view>
-		<view class="train container">
+		<view class="train container" v-else>
 			<wuc-tab :tab-list="tabList" :tabCur.sync="TabCur" @change="tabChange" :textFlex="true">
 			</wuc-tab>
 			<swiper class="swiper" :current="TabCur" duration="300" @change="swiperChange">

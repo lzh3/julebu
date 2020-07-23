@@ -143,7 +143,11 @@
 			}
 		}
 
-	],
+	    ,{
+            "path" : "pages/webview/webview",
+            "style" : {}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "A+俱乐部",

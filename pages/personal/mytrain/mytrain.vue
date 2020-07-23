@@ -4,7 +4,8 @@
 		</wuc-tab>
 		<swiper :current="TabCur" duration="300" @change="swiperChange" class="my-train-swiper">
 			<swiper-item v-for="(item,index) in tabList" :key="index" class="my-train-swiper-item">
-				<view class="item" v-for="(v,index) in item.list" :key="index" @click="test(v)">
+				<view class="item" v-for="(v,index) in item.list" :key="index" @click="viewTrain"
+					:data-item="JSON.stringify(v)">
 					<view class="content">
 						<view class="top-pic">
 							<image :src="v.image" mode="" class="main-pic" />
@@ -24,7 +25,7 @@
 							<text class="time" v-if="v.done">得分：{{v.result}}</text>
 						</view>
 						<view :class="['operate-btn',v.trainStatus]">
-							<view class="test" ><text>查看培训</text></view>
+							<view class="test"><text>查看培训</text></view>
 							<!-- v-if='v.done' -->
 							<view class="train-btn" @click.stop="lookResult(v)"><text>查看成绩</text></view>
 						</view>
@@ -63,8 +64,8 @@
 						type: 3,
 					}
 				],
-				plateformType:'',
-				signTrainedUrl:this.plateformType == 'h5' ? '/sign-trained' : 'https://amd.mcooks.cn/api/sign-trained'
+				plateformType: '',
+				signTrainedUrl: this.plateformType == 'h5' ? '/sign-trained' : 'https://amd.mcooks.cn/api/sign-trained'
 			}
 		},
 		components: {
@@ -102,7 +103,7 @@
 					data: {
 						page: that.page,
 						limit: that.limit,
-						type: that.type,
+						type: this.TabCur + 1
 					},
 					success(res) {
 						console.log(res.data)
@@ -117,13 +118,17 @@
 				let current = e.detail.current
 				this.TabCur = current;
 			},
-			// 考试
-			test(item) {
-				if (item.trainStatus !== 'overtime') {
-					uni.navigateTo({
-						url: `/pages/course-detail/course-detail?id=${item.id}&joined=${true}`
-					});
-				}
+			// 查看培训
+			viewTrain(event) {
+				let id = JSON.parse(event.currentTarget.dataset.item).id
+				uni.navigateTo({
+					url: `/pages/course-detail/course-detail?id=${id}`
+				});
+				// if (item.trainStatus !== 'overtime') {
+				// 	uni.navigateTo({
+				// 		url: `/pages/course-detail/course-detail?id=${item.id}&joined=${true}`
+				// 	});
+				// }
 			},
 			// 培训
 			lookResult(item) {
@@ -332,7 +337,8 @@
 			}
 		}
 	}
-	.my-train-swiper{
+
+	.my-train-swiper {
 		height: 100%;
 	}
 </style>

@@ -1,8 +1,8 @@
 <template>
 	<view class="course-detail">
 		<!-- 视频培训 -->
-		<video v-if="item.mode==1" id="myVideo" :src="item.file" @error="videoErrorCallback"
-			:show-center-play-btn="true" enable-danmu controls :poster="videoItem.poster" @play="play"></video>
+		<video v-if="item.mode==1" id="myVideo" :src="item.file" @error="videoErrorCallback" :show-center-play-btn="true"
+			enable-danmu controls :poster="videoItem.poster" @play="play"></video>
 		<view class="content">
 			<view class="header">
 				<image src="../../static/image/course-icon.png" mode="" />
@@ -16,8 +16,8 @@
 				</view>
 				<view class="item">培训时间：<text class="date">{{item.start_time}}-{{item.end_time}}</text></view>
 				<view class="item">培训类型：<text class="type">
-					{{item.type==1?'视频':(item.type==2?'课件':'直播')}}
-				</text></view>
+						{{item.type==1?'视频':(item.type==2?'课件':'直播')}}
+					</text></view>
 				<!-- <view class="item">参与名额：<text class="limit">{{item.limit}}</text>
 					<text class="isReported">已有{{item.isReported}}人报名参加</text>
 				</view> -->
@@ -47,7 +47,7 @@
 		},
 		data() {
 			return {
-				modal_title:'',
+				modal_title: '',
 				courseType: '视频',
 				joined: false,
 				videoItem: {
@@ -66,34 +66,34 @@
 		},
 		onLoad(props) {
 			console.log(props)
-			let id=props.id;
-			let token=uni.getStorageSync('token')
-			this.getDetail(id,token)
-			
+			let id = props.id;
+			let token = uni.getStorageSync('token')
+			this.getDetail(id, token)
+
 			this.joined = !props.joined;
 			this.courseType = props.type
 		},
 		methods: {
-			getDetail(id,token){
+			getDetail(id, token) {
 				id = Number(id)
-				let that=this;
+				let that = this;
 				uni.request({
 					url: 'https://amd.mcooks.cn/api/trained/show',
 					method: 'post',
-					data:{
+					data: {
 						id,
 					},
 					header: {
 						'authtoken': 'token ' + token,
 					},
 					success(res) {
-						console.log(res.data.data)
-						if(res.data.code==200){
-							that.item=res.data.data;
+						console.log('course---detail', res.data.data)
+						if (res.data.code == 200) {
+							that.item = res.data.data;
 						}
 					}
 				})
-				
+
 			},
 			videoErrorCallback(e) {
 
@@ -104,13 +104,13 @@
 			},
 			// 我要报名
 			report() {
-				let token=uni.getStorageSync('token');
-				if(token){  // 报名成功
-					this.modal_title='报名成功'
-				}else{ // 没有登录的
-					this.modal_title='无权参与，请先注册'
+				let token = uni.getStorageSync('token');
+				if (token) { // 报名成功
+					this.modal_title = '报名成功'
+				} else { // 没有登录的
+					this.modal_title = '无权参与，请先注册'
 				}
-				
+
 				this.$refs.modal.open()
 			}
 		}

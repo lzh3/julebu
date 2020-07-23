@@ -69,8 +69,8 @@
 			</view>
 		</view>
 		
-		<Modal ref="reg" :reg_status='code-error' :msg='msg' />
-		<Modal ref="pp" :code_status='code-error' :msg='msg' />
+		<Modal ref="reg" :reg_status='reg_status' :msg='msg' />
+		<!-- <Modal ref="pp" code_status='code-error' :msg='msg' /> -->
 	</view>
 </template>
 
@@ -82,6 +82,7 @@
 				interval:60,
 				msg: '请输入正确信息!',
 				code: '',
+				reg_status:'reg-error',
 				reg_form: {
 					connect: '联系人',
 					"company": "asdasd", // 公司名称
@@ -136,6 +137,7 @@
 						success(res) {
 							console.log(res)
 							_this.msg = res.data.msg;
+							_this.reg_status = 'reg-error';
 							_this.$refs.reg.open()
 
 						},
@@ -165,6 +167,7 @@
 							}) */
 						} else {
 							_this.msg=res.data.msg;
+							_this.reg_status = 'code-error';
 							_this.$refs.pp.open()
 						}
 					},

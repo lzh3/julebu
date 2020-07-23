@@ -17,12 +17,11 @@
 					<view class="jifen">
 						积分：{{jf}}
 					</view>
-
 					<view class="login" @click="loginFn" v-if="token==''">立即登录</view>
 					<view class="type" v-else>{{type}}</view>
 				</view>
 			</view>
-			<view class="out" @click='outLogin'>退出登录</view>
+			<view class="out" @click='outLogin' v-if="token">退出登录</view>
 		</view>
 		<view class="list">
 			<view class="list-card bg-white">

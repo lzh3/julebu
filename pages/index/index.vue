@@ -53,16 +53,18 @@
 			</view>
 			<block v-for="(item,index) in trainItem" :key='index'>
 				<view class="train-content">
-					<image :src="item.image" mode="aspectFit" />
 					<view class="main">
-						<view class="header">
-							<text>{{item.title}}</text>
-							<view>
-								<image src="../../static/image/home/time.png" mode="" />
-								<text class="time-status">{{item.time}}</text>
+						<navigator :url="'/pages/course-detail/course-detail?id='+item.id">
+							<image :src="item.image" mode="aspectFit" />
+							<view class="header">
+								<text>{{item.title}}</text>
+								<view>
+									<image src="../../static/image/home/time.png" mode="" />
+									<text class="time-status">{{item.time}}</text>
+								</view>
 							</view>
-						</view>
-						<text class="date">培训时间：<text>{{item.start_time}} - {{item.end_time}}</text></text>
+							<text class="date">培训时间：<text>{{item.start_time}} - {{item.end_time}}</text></text>
+						</navigator>
 						<view class="train-info">
 							<!-- <view>培训名额：<text class="ora">{{item.quota_count}}人</text></view> -->
 							<view>培训方式：<text class="ora">{{item.mode === 1 ? '视频培训' : '课件培训'}}</text></view>
@@ -106,6 +108,7 @@
 		onLoad() {
 			let token = uni.getStorageSync('token')
 			this.getIdType(token)
+			this.getData()
 		},
 		// 下拉刷新
 		onPullDownRefresh() {

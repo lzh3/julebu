@@ -1,9 +1,7 @@
 <template>
   <view class="kefu" @click="kefu">
-   <button type="default" plain id="btn" open-type="contact">
 	   <image src="../../static/image/kefu.png"></image>
 	   <text>客服</text>
-   </button>
   </view>
 </template>
 
@@ -26,7 +24,7 @@
 </script>
 
 <style scoped lang='scss'>
-	#btn{
+	.btn{
 		display: block;
 		border: none;
 		outline: none;

@@ -70,7 +70,7 @@
 		</view>
 		
 		<Modal ref="reg" :reg_status='reg_status' :msg='msg' />
-		<!-- <Modal ref="pp" code_status='code-error' :msg='msg' /> -->
+		<Modal ref="pp" :code_status='code_error' :msg='msg' /> 
 	</view>
 </template>
 
@@ -118,7 +118,7 @@
 
 				let regRes = this.reg_form.address.match(reg) || [];
 
-				if (address && business && code && company && connect && phone) {
+				if (address && business && code && company && connect && phone&&is_join_amd) {
 					uni.request({
 						url: 'https://amd.mcooks.cn/api/register',
 						method: 'POST',
@@ -146,7 +146,7 @@
 						}
 					})
 				} else {
-					_this.$refs.pp.open()
+					_this.$refs.reg.open()
 				}
 			},
 			getCode() {

@@ -35,7 +35,7 @@
 			<image src="../../static/image/close.png" class="close" @click="close" />
 		</view>
 		<!-- 验证码 -->
-		<view class="modal-wrap error" v-if="code_status === 'code-error'">
+		<view class="modal-wrap error" v-if="code_status === 'code_error'">
 			<text class="title">{{msg}}</text>
 			<image src="../../static/image/close.png" class="close" @click="close" />
 		</view>

@@ -8,8 +8,7 @@
 			</wuc-tab>
 			<swiper class="swiper" :current="TabCur" duration="300" @change="swiperChange">
 				<swiper-item class="s-item" v-for="(item,index) in tabList" :key="index">
-					<view class="item" v-for="(v,index) in item.list" :key="index">
-						<view  @click="train(v)">
+					<view class="item" v-for="(v,index) in item.list" :key="index" @click="train(v)">
 							<view class="content">
 								<view class="top-pic">
 									<image :src="v.image" mode="" class="main-pic" />
@@ -23,9 +22,7 @@
 										<view class="type">培训方式：<text>{{v.mode == 1 ? "视频" : "课件"}}</text></view>
 									</view>
 								</view>
-							</view>
 						</view>
-
 						<view class="operate">
 							<view class="time-wrap">
 								<image src="../../static/image/home/time.png" mode="" />
@@ -35,7 +32,7 @@
 							<view :class="['operate-btn',v.trainStatus === 'overtime' && 'overtime-btn']">
 								<view class="test" @click.stop="test(v)" ><text>考试</text></view>
 								<view class="divide"></view>
-								<view class="train-btn" @click="train(v)" v-if="v.mode!=3"><text>培训</text></view>
+								<view class="train-btn"  v-if="v.mode!=3"><text>培训</text></view>
 							</view>
 						</view>
 					</view>

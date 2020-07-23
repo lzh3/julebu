@@ -35,8 +35,8 @@
 			<image src="../../static/image/close.png" class="close" @click="close" />
 		</view>
 		<!-- 验证码 -->
-		<view class="modal-wrap error" v-if="code_status === 'code-error'">
-			<text class="title">{{msg}}</text>
+		<view class="modal-wrap error" v-if="reg_status === 'code-error'">
+			<text class="title" style="line-height: 200rpx;">{{msg}}</text>
 			<image src="../../static/image/close.png" class="close" @click="close" />
 		</view>
 	</uni-popup>

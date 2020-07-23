@@ -22,12 +22,11 @@
 				</view>
 				<!-- 多选 -->
 				<view v-else class="test-options">
-					<evan-checkbox-group v-model="v.userAnswer" @change="checkboxChange" disabled>
-						<evan-checkbox :class="['checkout-content',v.userAnswer.includes(u.code) && 'checkout-disabled']" primary-color="#F36523" v-for="(u, m) in v.answer" :key="u.title"
-							:label="u.code">
-							{{u.title}}
-						</evan-checkbox>
-					</evan-checkbox-group>
+					<checkbox-group @change="checkboxChange" class="checkbox-group">
+						<label v-for="(u, m) in v.answer" :key="u.title">
+								<checkbox :class="['checkout-content',v.userAnswer.includes(u.code) && 'checkout-disabled']" disabled :value="v.userAnswer" :checked="u.right"  color="#F36523" style="transform:scale(0.7)" />{{u.title}}
+						</label>
+					</checkbox-group>
 				</view>
 			</view>
 		</view>
@@ -209,11 +208,17 @@
 			background-color: #F36523 !important;
 			border-color: #F36523 !important;
 		}
+
 		/deep/.uni-icons{
 			border-radius:50%;
 			span{
 				color:#fff;
 			}
 		}
+	}
+
+	.checkbox-group{
+		display: flex;
+		flex-direction:column;
 	}
 </style>

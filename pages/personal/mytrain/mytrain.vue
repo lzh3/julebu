@@ -2,8 +2,8 @@
 	<view class="train">
 		<wuc-tab :tab-list="tabList" :tabCur.sync="TabCur" @change="tabChange" :textFlex="true">
 		</wuc-tab>
-		<swiper :current="TabCur" duration="300" @change="swiperChange">
-			<swiper-item v-for="(item,index) in tabList" :key="index">
+		<swiper :current="TabCur" duration="300" @change="swiperChange" class="my-train-swiper">
+			<swiper-item v-for="(item,index) in tabList" :key="index" class="my-train-swiper-item">
 				<view class="item" v-for="(v,index) in item.list" :key="index">
 					<view class="content">
 						<view class="top-pic">
@@ -63,8 +63,8 @@
 						type: 3,
 					}
 				],
-				type:'',
-				signTrainedUrl:this.type == 'h5' ? '/sign-trained' : 'https://amd.mcooks.cn/api/sign-trained'
+				plateformType:'',
+				signTrainedUrl:this.plateformType == 'h5' ? '/sign-trained' : 'https://amd.mcooks.cn/api/sign-trained'
 			}
 		},
 		components: {
@@ -331,6 +331,8 @@
 				}
 			}
 		}
-
+	}
+	.my-train-swiper{
+		height: 100%;
 	}
 </style>

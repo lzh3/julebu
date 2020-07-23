@@ -72,6 +72,10 @@
 		font-family: uniicons;
 		src: url('/static/uni.ttf');
 	}
-
 	/* #endif */
+/* #ifdef MP-WEIXIN */
+checkbox .wx-checkbox-input{
+	border-radius:50%;
+}
+/* #endif */
 </style>

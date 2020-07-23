@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "课程培训详情页",
-  "usingComponents": {
-    "kefu": "/components/Kefu/index",
-    "modal": "/components/Modal/index"
-  }
-}

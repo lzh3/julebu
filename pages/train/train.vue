@@ -182,6 +182,10 @@
 </script>
 
 <style scoped lang="scss">
+	.activity-wrap{
+		height:100vh;
+		background-color: #fff;
+	}
 	.train {
 		height: calc(100vh);
 		background: $uni-bg-color-grey;

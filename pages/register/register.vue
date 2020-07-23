@@ -84,15 +84,15 @@
 				code: '',
 				reg_status:'reg-error',
 				reg_form: {
-					connect: '联系人',
-					"company": "asdasd", // 公司名称
-					"province": "河北省", // 省
-					"city": "邯郸市", // 市
-					"address": "湖南省长沙市雨花区", // 详细地址
-					"business": "公司主营行业", // 公司主营行业
-					"realname": "联系人", // 联系人
-					"phone": "18270825622", // 联系手机
-					"code": "816726", // 验证码
+					connect: '',//联系人
+					"company": "", // 公司名称 asdasd
+					"province": "", // 省 河北省
+					"city": "", // 市 邯郸市
+					"address": "", // 详细地址 湖南省长沙市雨花区
+					"business": "", // 公司主营行业 公司主营行业
+					"realname": "", // 联系人 联系人
+					"phone": "", // 联系手机 18270825622
+					"code": "", // 验证码 816726
 					is_join_amd: "0",
 				}
 			}
@@ -138,7 +138,7 @@
 							console.log(res)
 							_this.msg = res.data.msg;
 							_this.reg_status = 'reg-error';
-							_this.$refs.reg.open()
+							_this.$refs.modal.open()
 
 						},
 						fail(e) {
@@ -168,7 +168,7 @@
 						} else {
 							_this.msg=res.data.msg;
 							_this.reg_status = 'code-error';
-							_this.$refs.pp.open()
+							_this.$refs.modal.open()
 						}
 					},
 				})

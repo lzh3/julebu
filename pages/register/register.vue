@@ -66,9 +66,11 @@
 					</view>
 					<input v-model='login_form.check_num' placeholder="请输入6位验证码" name="check_num"></input>
 				</view> -->
-				<Modal ref="pp" reg_status='reg-error' :msg='msg' />
 			</view>
 		</view>
+		
+		<Modal ref="reg" :reg_status='code-error' :msg='msg' />
+		<Modal ref="pp" :code_status='code-error' :msg='msg' />
 	</view>
 </template>
 
@@ -133,7 +135,7 @@
 						success(res) {
 							console.log(res)
 							_this.msg = res.data.msg;
-							_this.$refs.pp.open()
+							_this.$refs.reg.open()
 
 						},
 						fail(e) {
@@ -161,6 +163,7 @@
 								url:'/pages/login/login'
 							}) */
 						} else {
+							_this.msg=res.data.msg;
 							_this.$refs.pp.open()
 						}
 					},

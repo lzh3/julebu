@@ -34,7 +34,11 @@
 			<button type="primary" @click="loginFn" class="btn">去登录</button>
 			<image src="../../static/image/close.png" class="close" @click="close" />
 		</view>
-		
+		<!-- 验证码 -->
+		<view class="modal-wrap error" v-if="code_status === 'code-error'">
+			<text class="title">{{msg}}</text>
+			<image src="../../static/image/close.png" class="close" @click="close" />
+		</view>
 	</uni-popup>
 	</view>
 </template>
@@ -46,6 +50,9 @@
 		  type:String
 	  }, */
 		props: {
+			code_status:{
+				default: () => ''
+			},
 			// 注册提示
 			reg_status:{
 				default: () => ''

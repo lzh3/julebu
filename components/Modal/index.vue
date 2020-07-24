@@ -1,7 +1,7 @@
 <template>
 	<!-- 弹窗 -->
 	<uni-popup ref="popup" type="center">
-		<view :class="['modal-wrap',status]">
+		<view :class="['modal-wrap',status]" v-if="status">
 			<image :src="`../../static/image/${status}.png`" :class="status" />
 			<text class="title">{{title}}</text>
 			<text class="desc" v-if="$slots.desc">

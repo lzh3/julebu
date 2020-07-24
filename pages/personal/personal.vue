@@ -62,7 +62,67 @@
 				avatar: "",
 				type: "",
 				user_info: {},
-				moduleList: [],
+				moduleList: [{
+						image: '../../static/image/icon/personal/1.png',
+						title: '店铺详情',
+						url:'',
+						type: 1,
+					},
+					{
+						image: '../../static/image/icon/personal/2.png',
+						title: '店面形象',
+						url:'',
+						type: 1,
+					},
+					{
+						image: '../../static/image/icon/personal/3.png',
+						title: '店员管理',
+						url:'',
+						type: 1,
+					},
+					{
+						image: '../../static/image/icon/personal/4.png',
+						title: '我的活动',
+						url: './myactivity/myactivity',
+						type: 1,
+					},
+					{
+						image: '../../static/image/icon/personal/5.png',
+						title: '我的培训',
+						url: './mytrain/mytrain',
+						type: 1,
+					},
+					{
+						image: '../../static/image/icon/personal/6.png',
+						title: '我的帖子',
+						url: './mypost/mypost',
+						type: 1,
+					},
+					{
+						image: '../../static/image/icon/personal/7.png',
+						title: '我的积分',
+						url: './myjf/myjf',
+						type: 1,
+					},
+					{
+						image: '../../static/image/icon/personal/8.png',
+						title: '积分奖励',
+						url:'',
+						type: 1,
+					},
+					{
+						image: '../../static/image/icon/personal/9.png',
+						title: '我的收藏',
+						url: './mycollect/mycollect',
+						type: 1,
+					},
+					{
+						image: '../../static/image/icon/personal/10.png',
+						title: '我的客服',
+						url:'',
+						type: 1,
+					},
+				],
 			};
 		},
 		async onShow() {

@@ -69,7 +69,7 @@
 							<!-- <view>培训名额：<text class="ora">{{item.quota_count}}人</text></view> -->
 							<view>培训方式：<text class="ora">{{item.mode === 1 ? '视频培训' : '课件培训'}}</text></view>
 							<view class="operate-btn">
-								<view class="test" @click="test" v-if="item.exam"><text>考试</text></view>
+								<view class="test" @click="test(item)" v-if="item.exam"><text>考试</text></view>
 								<view class="divide"></view>
 								<view class="train" @click="train(item)"><text>培训</text></view>
 							</view>
@@ -117,9 +117,10 @@
 		},
 		methods: {
 			indexNotice() {},
-			test() {
+			test(item) {
+				console.log(item)
 				uni.navigateTo({
-					url: `/pages/test-detail/test-detail?id=${this.trainItem.id}`
+					url: `/pages/test-detail/test-detail?id=${item.id}`
 				});
 			},
 			train(item) {

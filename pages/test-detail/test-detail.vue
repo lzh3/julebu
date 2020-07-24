@@ -61,6 +61,8 @@
 		},
 		onLoad(opt) {
 			let token = uni.getStorageSync("token");
+			let bid=Number(opt.id);
+			console.log(bid)
 			if (token) {
 				this.token = token;
 				let that = this;
@@ -71,13 +73,14 @@
 						authtoken: "token " + token
 					},
 					data: {
-						bid: opt.id // 培训列表的id
+						bid // 培训列表的id
 					},
 					success({
 						data: {
 							data
 						}
 					}) {
+						console.log(data)
 						that.title = data.title;
 						that.list = data.examination;
 						that.startTime = Date.now();

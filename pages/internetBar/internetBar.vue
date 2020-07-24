@@ -122,7 +122,7 @@
 				margin-left: 20rpx;
 
 				.title {
-					font-size: 26rpx;
+					font-size: 32rpx;
 					font-weight: bold;
 					color: rgba(51, 51, 51, 1);
 					line-height: 1.5;

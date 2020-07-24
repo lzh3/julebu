@@ -2,7 +2,7 @@
   <view class="players-must-see">
     <view class="items" v-for="(item,index) in list" :key="index" @click="jump(item.type)">
       <image :src="item.icon" mode="" />
-      <text>{{item.title}}</text>
+      <text class="title">{{item.title}}</text>
     </view>
   </view>
 </template>
@@ -67,7 +67,7 @@
       }
 
       text {
-        font-size: 46rpx;
+        font-size: 52rpx;
         font-weight: 800;
         color: rgba(51, 51, 51, 1);
       }

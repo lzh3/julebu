@@ -15,7 +15,7 @@
 							<text class="title">{{v.title}}</text>
 							<view class="train-time">培训时间：<text>{{v.start_time}}-{{v.end_time}}</text></view>
 							<view class="train-info">
-								<view>培训名额：<text>{{v.quota_count}}</text></view>
+								<!-- <view>培训名额：<text>{{v.quota_count}}</text></view> -->
 								<view class="type">培训方式：<text>{{v.mode == 1 ? "视频" : "课件"}}</text></view>
 							</view>
 						</view>

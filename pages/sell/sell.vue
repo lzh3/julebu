@@ -2,12 +2,12 @@
 	<view class="bg-white">
 		<view class="list">
 			<view v-for="item in list" class="item">
-				<navigator :url='item.url'>
+				<!-- <navigator :url='item.url'> -->
 					<view class="img">
 						<image :src="item.pic" mode=""></image>
 					</view>
 					<view class="txt">{{item.detail}}</view>
-				</navigator>
+				<!-- </navigator> -->
 			</view>
 		</view>
 	</view>

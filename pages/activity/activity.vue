@@ -28,8 +28,8 @@
 								</text>
 							</view>
 							<view class="text-content ">
-								<text class="name">活动名额:</text>
-								<text class="ora"  :class="{name:item.status=='end'}"> {{item.quota_count}}人</text>
+								<!-- <text class="name">活动名额:</text>
+								<text class="ora"  :class="{name:item.status=='end'}"> {{item.quota_count}}人</text> -->
 								<text class="f-right">已有{{item.partic_count}}人参与</text>
 							</view>
 						</view>

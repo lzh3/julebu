@@ -12,8 +12,7 @@
           enter-active-class="animated fadeInUp"
           leave-active-class="animated fadeOutUp"
         > -->
-				<view v-if="index == isCurrent" class="header-desc animated fadeInUp" v-for="(item,index) in notices"
-					:key="item.title">
+				<view v-if="index == isCurrent" class="header-desc animated fadeInUp" v-for="(item,index) in notices" :key="item.title">
 					<view class="info">{{item.title}}</view>
 					<view class="date">{{item.date}}</view>
 				</view>
@@ -41,7 +40,7 @@
 		<!-- banner  -->
 		<view class="index-banner">
 			<view class="item" v-for="(item,index) in bannerItems" :key="index">
-				<image :src="item.url" mode="aspectFit" @click="bannerJump(item.jumpUrl)" />
+				<image :src="item.url" mode="" @click="bannerJump(item.jumpUrl)" />
 				<!-- <text>{{item.title}}</text> -->
 			</view>
 		</view>
@@ -55,7 +54,7 @@
 				<view class="train-content">
 					<view class="main">
 						<navigator :url="'/pages/course-detail/course-detail?id='+item.id">
-							<image :src="item.image" mode="aspectFit" />
+							<image :src="item.image" mode="" class="new-train-pic" />
 							<view class="header">
 								<text>{{item.title}}</text>
 								<view>
@@ -345,23 +344,22 @@
 
 		//banner
 		.index-banner {
-			padding: 20rpx 30rpx;
 			display: flex;
-			justify-content: space-between;
-			height: 129rpx;
+			padding:20rpx 30rpx;
+			justify-content: space-around;
 			box-sizing: content-box;
 			background: #fff;
 			margin-top: 10rpx;
 
 			.item {
 				position: relative;
-				width: 216rpx;
-				height: 129rpx;
+				width: 220rpx;
+				height: 136rpx;
 				border-radius: 10px;
 
 				image {
-					width: 216rpx;
-					height: 129rpx;
+					width: 100%;
+					height:100%;
 				}
 
 				// text {
@@ -390,6 +388,10 @@
 				}
 
 				.main {
+					.new-train-pic {
+						width: 100%;
+					}
+
 					.header {
 						display: flex;
 						justify-content: space-between;
@@ -442,9 +444,11 @@
 						text {
 							color: #f36523;
 						}
-						.ora{
-							color:#f39d23;
+
+						.ora {
+							color: #f39d23;
 						}
+
 						.operate-btn {
 							width: 222rpx;
 							height: 44rpx;

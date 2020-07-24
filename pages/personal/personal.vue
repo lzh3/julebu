@@ -35,15 +35,6 @@
 							</view>
 							<view class="txt">{{item.title}}</view>
 						</navigator>
-						<!-- <web-view
-							  v-if="item.type===2"
-							  :src='item.url'
-							>
-						  <view class="img">
-							<image :src="item.image" />
-						  </view>
-						  <view class="txt">{{item.title}}</view>
-						</web-view> -->
 					</view>
 				</template>
 			</view>

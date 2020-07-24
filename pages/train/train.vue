@@ -131,11 +131,15 @@
 			// 考试
 			test(item) {
 				this.trainedSign(item.id, () => {
-					if (item.trainStatus !== 'overtime') {
-						uni.navigateTo({
-							url: `/pages/test-detail/test-detail?id=${item.id}`
-						});
-					}
+				let id = JSON.parse(event.currentTarget.dataset.item).id
+					uni.navigateTo({
+						url: `/pages/test-detail/test-detail?id=${item.id}`
+					});
+					// if (item.trainStatus !== 'overtime') {
+					// 	uni.navigateTo({
+					// 		url: `/pages/test-detail/test-detail?id=${item.id}`
+					// 	});
+					// }
 				})
 
 			},

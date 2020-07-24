@@ -85,6 +85,7 @@
 		},
 		onShow() {
 			let token = uni.getStorageSync('token')
+			console.log(1)
 			if (token) {
 				this.token = token
 				this.getTrainList()

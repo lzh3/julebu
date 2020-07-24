@@ -27,13 +27,13 @@
 					活动介绍：<view class="desc">{{item.description}}</view>
 				</view>
 				<button type="primary" @click="joinActivity" class="btn" v-if="joined" :class="{over:item.status!=='in_start'}"
-				 :disabled="item.status!=='in_start'">
+					:disabled="item.status!=='in_start'">
 					我要参与
 				</button>
 			</view>
 			<Kefu />
 		</view>
-		<Modal ref="modal" title="参与成功" />
+		<Modal ref="modal" :status="modalStatus" :title="modalTitle" :desc="modalDesc" :btn="false" />
 	</view>
 </template>
 
@@ -64,6 +64,8 @@
 					desc: '以下是活动介绍以下是活动介绍以下是活动介绍以下是活动 介绍以下是活动介绍以下是活动介绍以下是活动介绍以下是 介绍以下是活动介绍', */
 				},
 				modalStatus: 'success',
+				modalTitle: '参与成功',
+				modalDesc: '',
 				activityStatus: 'online', //活动状态 online 在线 not-yet还没开始 over过期了
 			};
 		},
@@ -98,6 +100,13 @@
 					},
 					success(res) {
 						console.log(res.data)
+						if (res.data.code == 200) {
+							_this.modalStatus = 'success'
+							_this.modalTitle = res.data.msg
+						} else {
+							_this.modalStatus = 'error'
+							_this.modalTitle = res.data.msg
+						}
 						_this.$refs.modal.open();
 					}
 				})

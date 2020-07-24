@@ -27,8 +27,8 @@
 
 		</view>
 		<ke-fu></ke-fu>
-		
-		<Modal ref="modal" :msg='msg' :showlogin='showlogin' login_status='login'/>
+
+		<Modal ref="modal" :msg='msg' :showlogin='showlogin' login_status='login' />
 	</view>
 </template>
 
@@ -43,7 +43,7 @@
 				modal_title: '',
 				info: 'yes',
 				login_form: {
-					phone: '18270825620',//15030017934
+					phone: '15030017934', //15030017934
 					code: ""
 				},
 				msg: '请输入正确信息!',
@@ -74,7 +74,7 @@
 				// this.$refs.modal.open()
 				console.log(1)
 				let _this = this;
-				if(this.login_form.phone){
+				if (this.login_form.phone) {
 					uni.request({
 						url: 'https://amd.mcooks.cn/api/send/smscode',
 						method: 'POST',
@@ -93,7 +93,7 @@
 								}) */
 							} else {
 								_this.fail_code = 0;
-								_this.showlogin=false;
+								_this.showlogin = false;
 								_this.msg = res.data.msg;
 								_this.$refs.modal.open()
 							}
@@ -102,16 +102,16 @@
 							console.log(e)
 						}
 					})
-				}else{
-					this.msg="请填写正确的手机号码";
-					this.showlogin=false;
+				} else {
+					this.msg = "请填写正确的手机号码";
+					this.showlogin = false;
 					this.$refs.modal.open()
 				}
 			},
 			login() {
 				// console.log(this.code)
 				let _this = this;
-				if(this.login_form.code){
+				if (this.login_form.code) {
 					uni.request({
 						url: 'https://amd.mcooks.cn/api/login',
 						method: 'POST',
@@ -141,9 +141,9 @@
 							console.log(e)
 						}
 					})
-				}else{
-					this.msg='请输入验证码'
-					this.showlogin=false;
+				} else {
+					this.msg = '请输入验证码'
+					this.showlogin = false;
 					this.$refs.modal.open()
 				}
 			}

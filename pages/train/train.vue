@@ -8,31 +8,32 @@
 			</wuc-tab>
 			<swiper class="swiper" :current="TabCur" duration="300" @change="swiperChange">
 				<swiper-item class="s-item" v-for="(item,index) in tabList" :key="index">
-					<view class="item" v-for="(v,index) in item.list" :key="index" @click="train(item.list)">
-							<view class="content">
-								<view class="top-pic">
-									<image :src="v.image" mode="" class="main-pic" />
-									<view :class="['jiao-biao',v.trainStatus]">{{trainStatus(v.trainStatus)}}</view>
+					<view class="item" v-for="(v,index) in item.list" :key="index" @click="train" :data-item="JSON.stringify(v)">
+						<view class="content">
+							<view class="top-pic">
+								<image :src="v.image" mode="" class="main-pic" />
+								<view :class="['jiao-biao',v.trainStatus]">{{trainStatus(v.trainStatus)}}</view>
+							</view>
+							<view class="text-area">
+								<text class="title">{{v.title}}</text>
+								<view class="train-time">培训时间：<text>{{v.start_time}}-{{v.end_time}}</text></view>
+								<view class="train-info">
+									<view>培训名额：<text>{{v.quota_count}}</text></view>
+									<view class="type">培训方式：<text>{{v.mode == 1 ? "视频" : "课件"}}</text></view>
 								</view>
-								<view class="text-area">
-									<text class="title">{{v.title}}</text>
-									<view class="train-time">培训时间：<text>{{v.start_time}}-{{v.end_time}}</text></view>
-									<view class="train-info">
-										<view>培训名额：<text>{{v.quota_count}}</text></view>
-										<view class="type">培训方式：<text>{{v.mode == 1 ? "视频" : "课件"}}</text></view>
-									</view>
-								</view>
+							</view>
 						</view>
 						<view class="operate">
 							<view class="time-wrap">
 								<image src="../../static/image/home/time.png" mode="" />
 								<text class="time">{{v.time}}</text>
-								<text :class="['sign-number',v.trainStatus === 'overtime' && 'sign-number-failed']">已有{{v.sign_count}}人报名参加</text>
+								<text
+									:class="['sign-number',v.trainStatus === 'overtime' && 'sign-number-failed']">已有{{v.sign_count}}人报名参加</text>
 							</view>
 							<view :class="['operate-btn',v.trainStatus === 'overtime' && 'overtime-btn']">
 								<view class="test" @click.stop="test(v)"><text>考试</text></view>
 								<view class="divide"></view>
-								<view class="train-btn"  v-if="v.mode!=3"><text>培训</text></view>
+								<view class="train-btn" v-if="v.mode!=3"><text>培训</text></view>
 							</view>
 						</view>
 					</view>
@@ -83,7 +84,6 @@
 			NotLogin
 		},
 		onShow() {
-			console.log('onshow')
 			let token = uni.getStorageSync('token')
 			if (token) {
 				this.token = token
@@ -107,10 +107,9 @@
 				this.TabCur = index;
 			},
 			swiperChange(e) {
-				// console.log(e.detail)
 				let current = e.detail.current
 				this.TabCur = current;
-				this.getTrainList(1,e.detail.current+1);
+				this.getTrainList(1, e.detail.current + 1);
 			},
 			// 报名培训 
 			trainedSign(id, cb) {
@@ -125,14 +124,12 @@
 						id
 					},
 					success(res) {
-						// console.log('trainedSign --------------> ', res.data)
 						cb()
 					}
 				})
 			},
 			// 考试
 			test(item) {
-				console.log("test -> item", item)
 				this.trainedSign(item.id, () => {
 					if (item.trainStatus !== 'overtime') {
 						uni.navigateTo({
@@ -143,13 +140,16 @@
 
 			},
 			// 培训
-			train(item) {
-				console.log(item)
-				/* if (item.status != 'overtime') {
-					uni.navigateTo({
-						url: `/pages/course-detail/course-detail?id=${item.id}`
-					});
-				} */
+			train(event) {
+				let id = JSON.parse(event.currentTarget.dataset.item).id
+				uni.navigateTo({
+					url: `/pages/course-detail/course-detail?id=${id}`
+				});
+				// if (item.status != 'overtime') {
+				// 	uni.navigateTo({
+				// 		url: `/pages/course-detail/course-detail?id=${id}`
+				// 	});
+				// }
 			},
 			trainStatus(status) {
 				return {
@@ -158,7 +158,7 @@
 					overtime: '已过期',
 				} [status]
 			},
-			getTrainList(page,type) {
+			getTrainList(page) {
 				let that = this
 				uni.request({
 					url: that.trainedListUrl,
@@ -167,12 +167,11 @@
 						'authtoken': 'token ' + this.token,
 					},
 					data: {
-						page:page,
+						page: page,
 						limit: 6,
-						type
+						type: this.TabCur + 1
 					},
 					success(res) {
-						// console.log(res.data)
 						that.tabList[that.TabCur].list = res.data.data // 季度培训
 					}
 				})
@@ -182,10 +181,11 @@
 </script>
 
 <style scoped lang="scss">
-	.activity-wrap{
-		height:100vh;
+	.activity-wrap {
+		height: 100vh;
 		background-color: #fff;
 	}
+
 	.train {
 		height: calc(100vh);
 		background: $uni-bg-color-grey;

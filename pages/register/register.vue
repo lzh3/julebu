@@ -69,8 +69,8 @@
 			</view>
 		</view>
 		
-		<Modal ref="reg" :reg_status='reg_error' :msg='msg' />
-		<Modal ref="pp" :code_status='code_error' :msg='msg' /> 
+		<Modal ref="reg" :showLogin='showLogin' :reg_status='reg_status' :msg='msg' />
+		<Modal ref="pp" :code_status='code_status' :msg='msg' /> 
 	</view>
 </template>
 
@@ -82,6 +82,7 @@
 				interval:60,
 				msg: '请输入正确信息!',
 				code: '',
+				showLogin:false,
 				reg_status:'reg_error',
 				code_status:'code_error',
 				reg_form: {
@@ -147,6 +148,7 @@
 						}
 					})
 				} else {
+					_this.showLogin=false;
 					_this.$refs.reg.open()
 				}
 			},

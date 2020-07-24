@@ -32,7 +32,7 @@
 		<!-- 注册页面 -->
 		<view class="modal-wrap error" v-if="reg_status === 'reg_error'">
 			<text class="title" :class="{reg_err:reg_status==='reg_error'}">{{msg}}</text>
-			<button type="primary" @click="loginFn" class="btn">去登录</button>
+			<button type="primary" @click="loginFn" class="btn" v-if="showLogin">去登录</button>
 			<image src="../../static/image/close.png" class="close" @click="close" />
 		</view>
 		<!-- 验证码 -->

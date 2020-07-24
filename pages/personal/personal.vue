@@ -29,21 +29,21 @@
 				<template v-for="item in moduleList">
 					<view class="item" v-if="moduleRight(item)">
 						<!-- 打开类型 1、小程序 2、H5 -->
-						<navigator :url='item.url' v-if="item.type===1">
+						<navigator  :url="item.type===1 ? item.url : `/pages/webview/webview?url=${item.url}`">
 							<view class="img">
 								<image :src="item.image" />
 							</view>
 							<view class="txt">{{item.title}}</view>
 						</navigator>
 						<!-- <web-view
-              v-if="item.type===2"
-              :src='item.url'
-            >
-              <view class="img">
-                <image :src="item.image" />
-              </view>
-              <view class="txt">{{item.title}}</view>
-            </web-view> -->
+							  v-if="item.type===2"
+							  :src='item.url'
+							>
+						  <view class="img">
+							<image :src="item.image" />
+						  </view>
+						  <view class="txt">{{item.title}}</view>
+						</web-view> -->
 					</view>
 				</template>
 			</view>

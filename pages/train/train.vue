@@ -129,11 +129,11 @@
 				})
 			},
 			// 考试
-			test(item) {
-				this.trainedSign(item.id, () => {
+			test(event) {
 				let id = JSON.parse(event.currentTarget.dataset.item).id
+				this.trainedSign(id, () => {
 					uni.navigateTo({
-						url: `/pages/test-detail/test-detail?id=${item.id}`
+						url: `/pages/test-detail/test-detail?id=${id}`
 					});
 					// if (item.trainStatus !== 'overtime') {
 					// 	uni.navigateTo({

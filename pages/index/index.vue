@@ -287,6 +287,8 @@
 				overflow: hidden;
 				white-space: nowrap;
 				text-overflow: ellipsis;
+				font-size: 24rpx;
+				color:#666;
 			}
 
 			.date {

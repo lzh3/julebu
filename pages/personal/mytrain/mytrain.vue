@@ -28,8 +28,8 @@
 							<text class="time" v-if="v.done">得分：{{v.result}}</text>
 						</view>
 						<view :class="['operate-btn',v.trainStatus]">
-							<view class="exam" @click.self="exam(v)">考试</view>
-							<view>
+							<view class="exam" v-if="v.exam==1" @click.stop="exam(v)">考试</view>
+							<view v-else>
 								<view class="test"><text>查看培训</text></view>
 								<!-- v-if='v.done' -->
 								<view class="train-btn" @click.stop="lookResult(v)"><text>查看成绩</text></view>
@@ -153,6 +153,9 @@
 			// 考试按钮
 			exam(item){
 				console.log(item)
+				uni.navigateTo({
+					url:'../../test-detail/test-detail?id='+item.id
+				})
 			}
 		},
 	}
@@ -303,8 +306,8 @@
 						border-radius: 6rpx;
 					}
 					.exam{
-						width:80rpx;
-						padding:0 3px;
+						width:120rpx;
+						padding:0 10rpx;
 						background: #f36523;
 						text-align: center;
 						color: #fff;

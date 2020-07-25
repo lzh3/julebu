@@ -8,11 +8,15 @@
 			<image :src="item.image" class="pic" />
 			<view class="content">
 				<view class="item">
-					活动主题：
-					<text class="theme">{{item.title}}</text>
-					<text class="status">
-						{{item.status==='in_start'?'进行中':(item.status=='end'?'已结束':'未开始')}}
-					</text>
+					<view class="maintitle">
+						活动主题：
+						<text class="theme">{{item.title}}</text>
+					</view>
+					<view class="status">
+						<text>
+							{{item.status==='in_start'?'进行中':(item.status=='end'?'已结束':'未开始')}}
+						</text>
+					</view>
 				</view>
 				<view class="item">活动时间：
 					<text class="date" :class="{end:item.status=='end'}">
@@ -170,11 +174,22 @@
 				color: rgba(102, 102, 102, 1);
 				margin-bottom: 30rpx;
 				line-height: 1;
-
+				&::after{
+					content: '';
+					display: block;
+					height: 0;
+					clear: both;
+				}
+				.maintitle{
+					width:560rpx;
+					float: left;
+				}
 				.theme {
 					font-size: 26rpx;
 					font-weight: bold;
 					color: #333;
+					line-height: 34rpx;
+					width:330rpx;
 				}
 
 				.status {
@@ -182,6 +197,7 @@
 					font-weight: normal;
 					color: rgba(243, 157, 35, 1);
 					float: right;
+					line-height: 34rpx;
 				}
 
 

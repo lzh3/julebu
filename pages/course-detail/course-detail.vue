@@ -29,7 +29,7 @@
         </view>
         <view class="item">培训时间：<text class="date">{{item.start_time}}-{{item.end_time}}</text></view>
         <view class="item">培训类型：<text class="type">
-            {{item.type==1?'视频':(item.type==2?'课件':'直播')}}
+            {{item.mode==1?'视频':(item.mode==2?'课件':'直播')}}
           </text></view>
         <!-- <view class="item">参与名额：<text class="limit">{{item.limit}}</text>
 					<text class="isReported">已有{{item.isReported}}人报名参加</text>

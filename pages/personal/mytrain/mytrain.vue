@@ -134,11 +134,6 @@
 				uni.navigateTo({
 					url: `/pages/course-detail/course-detail?id=${id}`
 				});
-				// if (item.trainStatus !== 'overtime') {
-				// 	uni.navigateTo({
-				// 		url: `/pages/course-detail/course-detail?id=${item.id}&joined=${true}`
-				// 	});
-				// }
 			},
 			// 培训
 			lookResult(item) {

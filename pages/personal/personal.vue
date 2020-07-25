@@ -56,7 +56,7 @@
 				username: "",
 				id: "",
 				id_type: 0, //  类型 1、注册用户 2、锐龙店面 3、渠道用户 4、CSR
-				jf: "",
+				jf: 0,
 				avatar: "",
 				type: "",
 				user_info: {},
@@ -244,6 +244,7 @@
 						success(res) {
 							let nickname = "" || (res.data.data && res.data.data.nickname);
 							uni.setStorageSync("username", nickname);
+							console.log('userinfo',res.data.data)
 							if (res.data.code == 200) {
 								const {
 									nickname,

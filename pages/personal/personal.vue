@@ -28,8 +28,15 @@
 			<view class="list-card bg-white">
 				<template v-for="item in moduleList">
 					<view class="item" v-if="moduleRight(item)">
+						 <view class="kefu" v-if="item.title=='我的客服'">
+							<button open-type="contact" class="btn"></button>
+							<view class="img">
+								<image :src="item.image" />
+							</view>
+							<text>{{item.title}}</text>
+						</view> 
 						<!-- 打开类型 1、小程序 2、H5 -->
-						<navigator  :url="item.type===1 ? item.url : `/pages/webview/webview?url=${item.url}`">
+						<navigator v-else :url="item.type===1 ? item.url : `/pages/webview/webview?url=${item.url}`">
 							<view class="img">
 								<image :src="item.image" />
 							</view>
@@ -261,6 +268,22 @@
 </script>
 
 <style lang="scss" scoped>
+	.kefu {
+		position: relative;
+	
+		.btn {
+			display: block;
+			position: absolute;
+			top:0;
+			left:0;
+			width:146rpx;
+			height:142rpx;
+			z-index: 2;
+			border: none;
+			opacity: 0;
+			outline: none;
+		}
+	}
 	.reward {
 		.reward-title {
 			width: 100%;

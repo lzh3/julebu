@@ -145,6 +145,8 @@
 									if(res&&res.userInfo){
 										that.username=res.userInfo.nickName;
 										that.avatar=res.userInfo.avatarUrl;
+										uni.setStorageSync('weixin_name',res.userInfo.nickName)
+										uni.setStorageSync('weixin_avatar',res.userInfo.avatarUrl)
 									}
 								}
 							})

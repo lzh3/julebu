@@ -119,7 +119,7 @@
 				align-items: center;
 
 				.title {
-					font-size: 38rpx;
+					font-size: 34rpx;
 					font-weight: bold;
 					color: rgba(51, 51, 51, 1);
 					line-height: 1.5;

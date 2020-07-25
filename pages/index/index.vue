@@ -27,7 +27,7 @@
 			</view>
 			<view class="scroll-news">
 				<view class="news-items" v-for="(item,index) in newsItems" :key="item.id" @click="newsItemClick(item)">
-					<image :src="item.url" mode="" />
+					<image :src="item.image" mode="" />
 					<view class="items-desc">
 						<view class="title">
 							<text :style="{color:item.tag_color}">【{{item.tag}}】</text>{{item.title}}
@@ -138,6 +138,7 @@
 					url: "/pages/activity-detail/activity-detail?id=1"
 				});
 			},
+			// 因为用户一进来就是首页，可以判断是什么用户类型
 			getIdType(token) {
 				let _this = this;
 				if (token) {
@@ -161,6 +162,7 @@
 					success: ({
 						data
 					}) => {
+						console.log(data)
 						if (data.code == 200) {
 							let {
 								banners,
@@ -173,7 +175,6 @@
 							this.notices = notices;
 							this.autoplayNotice();
 							this.trainItem = train;
-							console.log(train)
 							setTimeout(() => {
 								uni.stopPullDownRefresh();
 							}, 500)
@@ -194,9 +195,6 @@
 				}
 			}
 		},
-		mounted() {
-			this.getData();
-		}
 	};
 </script>
 

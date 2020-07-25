@@ -94,6 +94,7 @@
 				this.showLogin = true
 			}
 		},
+		// 下拉刷新
 		watch: {
 			TabCur(n) {
 				// 没数据再请求
@@ -147,9 +148,14 @@
 			// 培训
 			train(event) {
 				let id = JSON.parse(event.currentTarget.dataset.item).id
-				uni.navigateTo({
+				/* uni.navigateTo({
 					url: `/pages/course-detail/course-detail?id=${id}`
-				});
+				}); */
+				this.trainedSign(id, () => {
+					uni.navigateTo({
+						url: `/pages/course-detail/course-detail?id=${id}`
+					});
+				})
 				// if (item.status != 'overtime') {
 				// 	uni.navigateTo({
 				// 		url: `/pages/course-detail/course-detail?id=${id}`
@@ -178,6 +184,9 @@
 					},
 					success(res) {
 						that.tabList[that.TabCur].list = res.data.data // 季度培训
+						setTimeout(() => {
+							uni.stopPullDownRefresh();
+						}, 500)
 					}
 				})
 			}

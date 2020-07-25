@@ -19,7 +19,9 @@
 						{{item.start_time}}-{{item.end_time}}
 					</text>
 				</view>
-				<view class="item">活动形式：<text class="type ora" :class="{end:end}">{{item.type}}</text></view>
+				<view class="item">
+					活动形式：<text class="type ora" :class="{end:end}">{{item.type==1?'线上活动':'其它'}}</text>
+				</view>
 				<!-- <view class="item">参与名额：<text class="limit"  :class="{end:end}">{{item.limit}}</text>
 					 <text class="isReported" :class="{end:end}">已有{{item.isReported}}人报名参加</text> 
 				</view> -->
@@ -172,7 +174,7 @@
 				.theme {
 					font-size: 26rpx;
 					font-weight: bold;
-					color: #666;
+					color: #333;
 				}
 
 				.status {

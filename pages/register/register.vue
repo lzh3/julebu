@@ -36,7 +36,10 @@
 					</view>
 					<input v-model='reg_form.phone' placeholder="请输入11位手机号" name="check_num"></input>
 
-					<button class='cu-btn bg-main shadow' @tap='getCode'>获取验证码</text></button>
+						<button class='cu-btn bg-main shadow' @tap='getCode'>
+							获取验证码
+							<text v-if="showTimer">({{timer}}s)</text>
+					</button>
 				</view>
 				<view class="cu-form-group">
 					<view class="title">
@@ -79,7 +82,9 @@
 	export default {
 		data() {
 			return {
-				interval:60,
+				showTimer:false, // 是否显示倒计时
+				timer:60, // 
+				interval:null,
 				msg: '请输入正确信息!',
 				code: '',
 				showLogin:false,
@@ -101,6 +106,14 @@
 		},
 		components: {
 			Modal
+		},
+		watch:{
+			timer:function(val){
+				if(val<=0){
+					clearInterval(this.interval)
+					this.timer=0;
+				}
+			}
 		},
 		methods: {
 			regFn() {
@@ -139,8 +152,8 @@
 						success(res) {
 							console.log(res)
 							_this.msg = res.data.msg;
-							_this.reg_status = 'reg-error';
-							_this.$refs.modal.open()
+							_this.reg_status = 'reg_error';
+							_this.$refs.reg.open()
 
 						},
 						fail(e) {
@@ -153,6 +166,11 @@
 				}
 			},
 			getCode() {
+				this.showTimer=true;
+				this.interval=setInterval(()=>{
+					this.timer--;
+				},1000)
+				
 				// this.$refs.modal.open()
 				let _this = this;
 				uni.request({

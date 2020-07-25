@@ -48,6 +48,7 @@
 		},
 		data() {
 			return {
+				token:'',
 				showCard: '',
 				showLogin: '',
 				list: []
@@ -59,10 +60,15 @@
 				this.showLogin = "block"
 				this.showCard = 'none'
 			} else {
+				this.token=token;
 				this.getActivityList(1, token);
 				this.showLogin = "none";
 				this.showCard = 'block'
 			}
+		},
+		// 下拉刷新
+		onPullDownRefresh() {
+			this.getActivityList(1,this.token)
 		},
 		methods: {
 			// 获取活动列表
@@ -81,6 +87,9 @@
 					success(res) {
 						console.log(res.data)
 						_this.list = res.data.data;
+						setTimeout(() => {
+							uni.stopPullDownRefresh();
+						}, 500)
 					},
 					fail(e) {}
 				})

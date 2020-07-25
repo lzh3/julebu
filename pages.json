@@ -15,12 +15,14 @@
 		}, {
 			"path": "pages/activity/activity",
 			"style": {
-				"navigationBarTitleText": "活动"
+				"navigationBarTitleText": "活动",
+				"enablePullDownRefresh":true
 			}
 		}, {
 			"path": "pages/train/train",
 			"style": {
 				"navigationBarTitleText": "培训"
+				/* "enablePullDownRefresh":true */
 			}
 		}, {
 			"path": "pages/sell/sell",

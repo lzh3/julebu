@@ -12,7 +12,9 @@
 					</view>
 					<input v-model='login_form.phone' placeholder="请输入11位手机号" name="phone"></input>
 
-					<button class='cu-btn bg-main shadow' data-target="Modal" @click="getCode">获取验证码</button>
+					<button class='cu-btn bg-main shadow' data-target="Modal" @click="getCode">
+						获取验证码 <text v-if="showTimer">({{timer}}s)</text>
+					</button>
 				</view>
 				<view class="cu-form-group">
 					<view class="title">
@@ -38,12 +40,15 @@
 	export default {
 		data() {
 			return {
+				showTimer:false, // 是否显示倒计时
+				timer:60, // 
+				interval:null,
 				showlogin: true,
 				code: '',
 				modal_title: '',
 				info: 'yes',
 				login_form: {
-					phone: '15030017934', //15030017934
+					phone: '18270825622', //15030017934
 					code: ""
 				},
 				msg: '请输入正确信息!',
@@ -52,6 +57,14 @@
 		components: {
 			KeFu,
 			Modal,
+		},
+		watch:{
+			timer:function(val){
+				if(val<=0){
+					clearInterval(this.interval)
+					this.timer=0;
+				}
+			}
 		},
 		methods: {
 			getIdType(token) {
@@ -72,7 +85,10 @@
 			},
 			getCode(e) {
 				// this.$refs.modal.open()
-				console.log(1)
+				this.showTimer=true;
+				this.timer=setInterval(()=>{
+					this.timer--;
+				},1000)
 				let _this = this;
 				if (this.login_form.phone) {
 					uni.request({
@@ -88,9 +104,9 @@
 							console.log(res.data)
 							if (Number(res.data.code) === 200) {
 								_this.code = res.data.code;
-								/* uni.navigateTo({
-									url: '/pages/personal/personal'
-								}) */
+								uni.navigateTo({
+									url: '../index/index'
+								})
 							} else {
 								_this.fail_code = 0;
 								_this.showlogin = false;
@@ -127,7 +143,7 @@
 								_this.showlogin = false;
 								setTimeout(() => {
 									uni.switchTab({
-										url: '../personal/personal'
+										url: '../index/index'
 									})
 								}, 500)
 							} else {

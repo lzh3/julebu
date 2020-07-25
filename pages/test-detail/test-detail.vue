@@ -106,7 +106,7 @@
 							answers: this.answers
 						},
 						success(res) {
-							console.log("TCL: success -> res", res);
+							console.log("TCL: success -> res", res.data);
 							if (res.data.code == 402) {
 								that.status = "error";
 								that.modalTitle = res.data.msg;
@@ -114,6 +114,7 @@
 								that.status = "success";
 								that.msg = res.data.msg;
 							}
+							console.log('status',that.status)
 							that.$refs.modal.open();
 						}
 					});

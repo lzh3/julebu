@@ -6,13 +6,18 @@
 					<view class="content">
 						<view class="pic">
 							<image 
-								v-if="item.start==='in_start'"
-								class="on"
-							    :src="item.image" mode=""></image>
-							 <image
+								class="main-pic"
+							    :src="item.image" 
+								mode=""></image>
+							 <!-- <image
 								 v-else
 								 class="on"
-								 :src="item.image" mode=""></image>
+								 :src="item.image" mode=""></image> -->
+								 <image class="on" v-if='item.status==="in_start"' src="../../../static/image/activity/in_start.png" mode="">
+								 </image>
+								 <image class="on" v-else-if="item.status==='not_start'" src="../../../static/image/activity/not_start.png"
+								 	mode=""></image>
+								 <image class="on" v-else-if="item.status==='end'" src="../../../static/image/activity/end.png" mode="">
 						</view>
 						<view class="desc">
 							<view class="text-content">主题:{{item.title}}</view>
@@ -97,7 +102,7 @@
 			width:150rpx;
 			height:150rpx;
 			background-color: lightblue;
-			image{
+			.main-pic{
 				width:100%;
 				height:100%;
 			}

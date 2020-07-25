@@ -1,12 +1,14 @@
 <template>
-	<view class="bg-white">
+	<view class="bg-white container">
 		<view class="list">
 			<view v-for="item in list" class="item">
-				<!-- <navigator :url='item.url'> -->
+				<!-- <navigator :url='item.url'> -->	
+				<view v-if='id_type==2'>
 					<view class="img">
 						<image :src="item.pic" mode=""></image>
 					</view>
 					<view class="txt">{{item.detail}}</view>
+				</view>
 				<!-- </navigator> -->
 			</view>
 		</view>
@@ -17,6 +19,7 @@
 	export default {
 		data() {
 			return {
+				id_type:1,
 				list: [{
 						detail: 'CPU销售',
 						url: './jifenrule/jifenrule',
@@ -46,8 +49,32 @@
 				]
 			}
 		},
+		onLoad(){
+			let token=uni.getStorageSync('token');
+			this.getUserInfo(token)
+		},
 		methods: {
-
+			// 用于判断用户是否有权限查看
+			getUserInfo(token){
+				let _this = this;
+				if (token) {
+					uni.request({
+						url: "https://amd.mcooks.cn/api/userinfo",
+						method: "get",
+						header: {
+							authtoken: "token " + token,
+						},
+						success(res) {
+							if (res.data.code == 200) {
+								const {
+									id_type,
+								} = res.data.data;
+								_this.id_type = id_type;
+							}
+						},
+					});
+				}
+			}
 		}
 	}
 </script>

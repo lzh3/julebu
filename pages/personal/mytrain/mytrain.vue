@@ -4,7 +4,10 @@
 		</wuc-tab>
 		<swiper :current="TabCur" duration="300" @change="swiperChange" class="my-train-swiper">
 			<swiper-item v-for="(item,index) in tabList" :key="index" class="my-train-swiper-item">
-				<view class="item" v-for="(v,index) in item.list" :key="index" @click="viewTrain"
+				<view v-if="item.list.length==0" >
+					<no-data />
+				</view>
+				<view v-else class="item" v-for="(v,index) in item.list" :key="index" @click="viewTrain"
 					:data-item="JSON.stringify(v)">
 					<view class="content">
 						<view class="top-pic">
@@ -25,9 +28,12 @@
 							<text class="time" v-if="v.done">得分：{{v.result}}</text>
 						</view>
 						<view :class="['operate-btn',v.trainStatus]">
-							<view class="test"><text>查看培训</text></view>
-							<!-- v-if='v.done' -->
-							<view class="train-btn" @click.stop="lookResult(v)"><text>查看成绩</text></view>
+							<view class="exam" @click.self="exam(v)">考试</view>
+							<view>
+								<view class="test"><text>查看培训</text></view>
+								<!-- v-if='v.done' -->
+								<view class="train-btn" @click.stop="lookResult(v)"><text>查看成绩</text></view>
+							</view>
 						</view>
 					</view>
 				</view>
@@ -40,6 +46,7 @@
 	import WucTab from '@/components/wuc-tab/wuc-tab.vue';
 	import swiper from '@/components/wuc-tab/wuc-tab.vue';
 	import Kefu from '@/components/Kefu'
+	import Nodata from '../../common/nodata.vue'
 	export default {
 		data() {
 			return {
@@ -142,6 +149,10 @@
 					notyet: '未开始',
 					overtime: '已过期',
 				} [status]
+			},
+			// 考试按钮
+			exam(item){
+				console.log(item)
 			}
 		},
 	}
@@ -291,7 +302,13 @@
 						margin: 0 10rpx;
 						border-radius: 6rpx;
 					}
-
+					.exam{
+						width:80rpx;
+						padding:0 3px;
+						background: #f36523;
+						text-align: center;
+						color: #fff;
+					}
 					.test {
 						flex: 1;
 						background: #f36523;

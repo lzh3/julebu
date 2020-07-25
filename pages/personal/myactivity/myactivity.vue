@@ -1,6 +1,9 @@
 <template>
 	<view>
-		<view class="cu-card article no-card" v-for="item in list">
+		<view v-if="list.length==0">
+			<no-data />
+		</view>
+		<view v-else class="cu-card article no-card" v-for="item in list">
 			<view class="cu-item shadow">
 				<navigator :url="'../../activity-detail/activity-detail?joined='+item.joined+'&id='+item.id">
 					<view class="content">
@@ -36,11 +39,12 @@
 </template>
 
 <script>
+	import Nodata from '../../common/nodata.vue'
 	export default {
 		data() {
 			return {
 				list:[
-					{
+					/* {
 						title:'折磨生出苦难，苦难',
 						time:' 9:00-10:00',
 						num:30,
@@ -48,16 +52,7 @@
 						p_time:' 2020-07',
 						start:false,
 						joined:false, // 已经参与
-					},
-					{
-						title:'折磨生出苦难，苦难',
-						time:' 9:00-10:00',
-						num:30,
-						id:1,
-						p_time:' 2020-07',
-						start:true,
-						joined:false
-					}
+					} */
 				]
 			}
 		},

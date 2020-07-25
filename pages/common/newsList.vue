@@ -20,6 +20,9 @@
 				
 			}
 		},
+		onLoad(opt){
+			console.lop(opt)
+		},
 		methods: {
 
 		}

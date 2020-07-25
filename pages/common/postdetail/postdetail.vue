@@ -18,12 +18,12 @@
 				<text class="cuIcon-time margin-lr-xs"></text> {{article.time}}
 			</view>
 			<!-- 评论 -->
-			<view class="cu-bar bg-white solid-bottom margin-top">
+			<!-- <view class="cu-bar bg-white solid-bottom margin-top">
 				<view class="action">
 					<text class="cuIcon-comment margin-lr-xs"></text> 网友热评
 				</view>
-			</view>
-			<view class="cu-list menu-avatar comment solids-top">
+			</view> -->
+			<!-- <view class="cu-list menu-avatar comment solids-top">
 				<view class="cu-item">
 					<view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png);"></view>
 					<view class="content">
@@ -62,12 +62,14 @@
 								<text>2018年12月4日</text>
 								<text>·</text>
 								<text>回复</text>
-								<!-- <text class="cuIcon-message text-gray margin-left-sm"></text> -->
 							</view>
 						</view>
 					</view>
 				</view>
-			</view>
+			</view> -->
+		
+		
+		
 		</view>
 	</view>
 </template>
@@ -87,8 +89,13 @@
 				}
 			}
 		},
+		onLoad(opt){
+			console.log(opt)
+		},
 		methods: {
-			
+			getPostDetailData(id){
+				
+			},
 		}
 	}
 </script>

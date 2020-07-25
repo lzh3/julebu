@@ -134,9 +134,19 @@
 			},
 			//点击资讯跳转
 			newsItemClick(item) {
-				uni.navigateTo({
+				const {event_id,id}=item
+				/* uni.navigateTo({
 					url: "/pages/activity-detail/activity-detail?id=1"
-				});
+				}); */
+				if(!event_id){ // 新闻详情页 传id 
+					uni.navigateTo({
+						url:'/pages/common/postdetail/postdetail?id='+id
+					});
+				}else{  // 活动详情页 传event_id
+					uni.navigateTo({
+						url: "/pages/activity-detail/activity-detail?id="+event_id
+					});
+				}
 			},
 			// 因为用户一进来就是首页，可以判断是什么用户类型
 			getIdType(token) {

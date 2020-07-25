@@ -45,7 +45,7 @@
 						look: 22,
 						comment: 20,
 						dz: 20,
-						url:'./postdetail/postdetail'
+						url:'/pages/common/postdetail/postdetail'
 					},
 					{
 						title: '',
@@ -54,10 +54,13 @@
 						look: 22,
 						comment: 20,
 						dz: 20,
-						url:'./postdetail/postdetail'
+						url:'/pages/common/postdetail/postdetail'
 					}
 				]
 			}
+		},
+		onLoad(opt){
+			console.log(opt)
 		},
 		methods: {
 

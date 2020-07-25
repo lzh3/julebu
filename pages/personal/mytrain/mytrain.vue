@@ -4,11 +4,10 @@
 		</wuc-tab>
 		<swiper :current="TabCur" duration="300" @change="swiperChange" class="my-train-swiper">
 			<swiper-item v-for="(item,index) in tabList" :key="index" class="my-train-swiper-item">
-				<view v-if="item.list.length==0" >
+				<view v-if="item.list.length==0">
 					<no-data />
 				</view>
-				<view v-else class="item" v-for="(v,index) in item.list" :key="index" @click="viewTrain"
-					:data-item="JSON.stringify(v)">
+				<view v-else class="item" v-for="(v,index) in item.list" :key="index" @click="viewTrain" :data-item="JSON.stringify(v)">
 					<view class="content">
 						<view class="top-pic">
 							<image :src="v.image" mode="" class="main-pic" />
@@ -28,8 +27,12 @@
 							<text class="time">得分：{{v.answers.scores}}</text>
 						</view>
 						<view :class="['operate-btn',v.trainStatus]">
-							<view class="exam" v-if="v.exam==1" @click.stop="exam(v)">考试</view>
-							<view v-else>
+							<view class="exam" v-if="v.exam==1">
+								<view @click.stop="exam(v)" v-show="v.exam_btn==1">
+									考试
+								</view>
+							</view>
+							<view class="traninandscore" v-else>
 								<view class="test"><text>查看培训</text></view>
 								<!-- v-if='v.done' -->
 								<view class="train-btn" @click.stop="lookResult(v)"><text>查看成绩</text></view>
@@ -151,10 +154,10 @@
 				} [status]
 			},
 			// 考试按钮
-			exam(item){
+			exam(item) {
 				console.log(item)
 				uni.navigateTo({
-					url:'../../test-detail/test-detail?id='+item.id
+					url: '../../test-detail/test-detail?id=' + item.id
 				})
 			}
 		},
@@ -273,12 +276,14 @@
 						width: 20rpx;
 						height: 20rpx;
 					}
-					.score{
+
+					.score {
 						line-height: 34rpx;
 						background: #f36523;
 						text-align: center;
 						color: #fff;
 					}
+
 					.time {
 						font-size: 22rpx;
 						font-family: PingFang;
@@ -310,13 +315,28 @@
 						margin: 0 10rpx;
 						border-radius: 6rpx;
 					}
-					.exam{
-						width:120rpx;
-						padding:0 10rpx;
-						background: #f36523;
+
+					.traninandscore {
+						width: 300rpx;
+
+						view {
+							display: inline-block;
+						}
+					}
+
+					.exam {
+						width: 120rpx;
 						text-align: center;
 						color: #fff;
+
+						view {
+							width: 100%;
+							height: 100%;
+							padding: 0 10rpx;
+							background: #f36523;
+						}
 					}
+
 					.test {
 						flex: 1;
 						background: #f36523;

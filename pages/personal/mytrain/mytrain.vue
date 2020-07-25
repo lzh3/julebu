@@ -28,7 +28,7 @@
 						</view>
 						<view :class="['operate-btn',v.trainStatus]">
 							<view class="exam" v-if="v.exam==1">
-								<view @click.stop="exam(v)" v-show="v.exam_btn==1">
+								<view @click.stop="exam" :data-item="JSON.stringify(v)" v-show="v.exam_btn==1">
 									考试
 								</view>
 							</view>
@@ -149,10 +149,10 @@
 				} [status]
 			},
 			// 考试按钮
-			exam(item) {
-				console.log(item)
+			exam(event) {
+				let id = JSON.parse(event.currentTarget.dataset.item).id
 				uni.navigateTo({
-					url: '../../test-detail/test-detail?id=' + item.id
+					url: '../../test-detail/test-detail?id=' + id
 				})
 			}
 		},

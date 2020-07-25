@@ -2,21 +2,26 @@
 	<view class="cu-card dynamic no-card">
 		<view class="cu-item shadow">
 			<view class="text-content text-lg" id='main-title'>
-				标题：折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！12
+				{{article.title}}
 			</view>
-			<view class="grid flex-sub padding-lr col-1">
-				<view class="bg-img only-img" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);"
-				 v-for="(item,index) in 1" :key="index">
-				</view>
+			
+			<view id="desc">
+				{{article.desc}}
 			</view>
 			<view class="text-gray text-sm text-left padding">
 				<text class="f-right">
-					<text class="cuIcon-attention margin-lr-xs icon"></text> {{article.look}}
-					<text class="cuIcon-appreciate margin-lr-xs icon"></text> {{article.dz}}
-					<text class="cuIcon-comment margin-lr-xs icon"></text> {{article.collect}}
+					<text class="cuIcon-attention margin-lr-xs icon"></text> {{article.browse_count}}
+					<!-- <text class="cuIcon-appreciate margin-lr-xs icon"></text> {{article.dz}}
+					<text class="cuIcon-comment margin-lr-xs icon"></text> {{article.collect}} -->
 				</text>
 				<text class="cuIcon-time margin-lr-xs"></text> {{article.time}}
 			</view>
+			<view class="grid flex-sub padding-lr col-1">
+				<view class="bg-img only-img">
+					<image class="main-pic" :src="article.image" mode=""></image>
+				</view>
+			</view>
+			
 			<!-- 评论 -->
 			<!-- <view class="cu-bar bg-white solid-bottom margin-top">
 				<view class="action">
@@ -67,9 +72,9 @@
 					</view>
 				</view>
 			</view> -->
-		
-		
-		
+
+
+
 		</view>
 	</view>
 </template>
@@ -78,53 +83,92 @@
 	export default {
 		data() {
 			return {
-				comment:'',
-				article:{
-					title:'AMD再出大招狙击英特尔?有三款Ryzen“XT强化版本',
-					look:10,
-					dz:20,
-					collect:20,
-					time:'刚刚',
-					content:'目前，法国AMD零售商透露了一系列AMD处理器新品的消息，包括三代Ryzen的加强版本Ryzen 9 3900XT、Ryzen 7 3800XT、Ryzen 5 3600XT三款Zen 2架构处理器。这三款处理器中规格最强的是Ryzen 9 3900X',
-				}
+				comment: '',
+				/* article: {
+					title: 'AMD再出大招狙击英特尔?有三款Ryzen“XT强化版本',
+					look: 10,
+					dz: 20,
+					collect: 20,
+					time: '刚刚',
+					content: '目前，法国AMD零售商透露了一系列AMD处理器新品的消息，包括三代Ryzen的加强版本Ryzen 9 3900XT、Ryzen 7 3800XT、Ryzen 5 3600XT三款Zen 2架构处理器。这三款处理器中规格最强的是Ryzen 9 3900X',
+				} */
+				article:{},
 			}
 		},
-		onLoad(opt){
-			console.log(opt)
+		onLoad(opt) {
+			let token=uni.getStorageSync('token')
+			if (opt.id) {
+				let id = Number(opt.id)
+				this.getPostDetailData(id,token)
+			}
 		},
 		methods: {
-			getPostDetailData(id){
-				
+			getPostDetailData(id,token) {
+				let _this = this;
+				uni.request({
+					url: "https://amd.mcooks.cn/api/news/show",
+					method: "post",
+					data:{
+						id
+					},
+					header: {
+						authtoken: "token " + token,
+					},
+					success(res){
+						console.log(res.data.data)
+						if(res.data.code==200){
+							_this.article=res.data.data;
+						}
+					}
+				});
+
 			},
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-   .cu-item{
-		.icon+.icon{
-			margin-left:10px;
+	.grid{
+		.main-pic{
+			width:100%;
+			height:100%;
 		}
-   }
-   .content{
-		postion:relative;
-		.comment-dz{
+	}
+	.cu-item {
+		.icon+.icon {
+			margin-left: 10px;
+		}
+	}
+
+	.content {
+		postion: relative;
+
+		.comment-dz {
 			position: absolute;
-			right:0;
-			top:0;
+			right: 0;
+			top: 0;
 		}
-   } 
-   .action{
-   	color:#f36523;
-   }
-   #main-title{
-		margin-top:15rpx;
-		padding-bottom:15rpx;
-		margin-bottom:0;
-		font-size: 14px;
+	}
+
+	.action {
+		color: #f36523;
+	}
+
+	#main-title {
+		margin-top: 15rpx;
+		padding-bottom: 15rpx;
+		margin-bottom: 0;
+		font-size: 28rpx;
 		line-height: 48rpx;
-   }
-   .f-right{
-		float:right;
-   }
+		color:#333;
+	}
+	#desc{
+		padding:0 30rpx;
+		font-size: 24rpx;
+		color:#666;
+	}
+
+	.f-right {
+		float: right;
+	}
 </style>

@@ -132,6 +132,10 @@
 			await this.getPageInfo(token);
 			await this.getUserInfo(token);
 		},
+		onLoad(){
+			this.username=uni.getStorageSync('weixin_name')||'';
+			this.avatar=uni.getStorageSync('weixin_avatar')||'';
+		},
 		methods: {
 			getPermision() {
 				let that=this;
@@ -274,7 +278,6 @@
 				if (token) {
 					uni.request({
 						url: "https://amd.mcooks.cn/api/userinfo",
-						//url: '/userinfo',
 						method: "get",
 						header: {
 							authtoken: "token " + token,
@@ -292,10 +295,12 @@
 									realname,
 									avatar,
 								} = res.data.data;
-								_this.username = realname;
+								//_this.username = realname;
 								_this.id = id;
 								_this.jf = reg_ip;
-								_this.avatar = avatar;
+								if(avatar){
+									_this.avatar = avatar;
+								}
 								_this.type = id_type == 1 ? "注册用户" : "非注册用户";
 							}
 						},

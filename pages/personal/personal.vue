@@ -7,6 +7,7 @@
 			<view class="info">
 				<view class="touxiang" @click="getPermision">
 					<!-- -->
+					<button class="auto-btn" open-type="getUserInfo" @getuserinfo='getPermision'></button>
 					<image v-if="avatar==''" src="../../static/image/headimg.png" mode=""></image>
 					<image :src="avatar" v-else mode=""></image>
 				</view>
@@ -133,25 +134,39 @@
 		},
 		methods: {
 			getPermision() {
-				uni.login({
-					provider: 'weixin',
-					success: function(loginRes) {
-						console.log('loginRes',loginRes);
-						// 获取用户信息
-						uni.getUserInfo({
-							provider: 'weixin',
-							success: function(res) {
-								console.log('用户信息',res)
-							},
-							fail(e) {
-								console.log('授权失败', e)
-							}
-						});
+				let that=this;
+				uni.getSetting({
+					success(res) {
+						if (res.authSetting['scope.userInfo']) {
+							// 如果已授权,直接获取对应参数
+							uni.getUserInfo({
+								success(res) {
+									console.log('getuserinfo',res)
+									if(res&&res.userInfo){
+										that.username=res.userInfo.nickName;
+										that.avatar=res.userInfo.avatarUrl;
+									}
+								}
+							})
+						} else if (!res.authSetting['scope.userInfo']) {
+							// 说明此时要获取的位置功能尚未授权,
+							// 则设置进入页面时主动弹出，直接授权
+							uni.authorize({
+								scope: 'scope.userInfo',
+								success(res) {
+									// 授权成功
+									console.log(res)
+								},
+								fail() {
+									console.log("授权失败")
+								}
+							})
+						}
 					},
-					fail(err) {
-						console.log('错误',err)
+					fail() {
+						console.log("获取授权信息授权失败")
 					}
-				});
+				})
 			},
 			moduleRight(item) {
 				let title = item.title; //模块名
@@ -394,6 +409,7 @@
 		}
 
 		.touxiang {
+			position: relative;
 			width: 98rpx;
 			height: 98rpx;
 			float: left;
@@ -401,7 +417,17 @@
 			background-color: #fff;
 			overflow: hidden;
 			text-align: center;
-
+			.auto-btn{
+				position: absolute;
+				width:98rpx;
+				height:98rpx;
+				left:0;
+				top:0;
+				z-index: 2;
+				border:none;
+				outline: none;
+				opacity: 0;
+			}
 			image {
 				width: 100%;
 				height: 100%;

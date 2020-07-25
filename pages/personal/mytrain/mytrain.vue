@@ -28,7 +28,7 @@
 						</view>
 						<view :class="['operate-btn',v.trainStatus]">
 							<view class="exam" v-if="v.exam==1">
-								<view @click.stop="exam" :data-item="JSON.stringify(v)">
+								<view @click.stop="exam" :data-item="JSON.stringify(v)" v-show="v.exam_btn==1">
 									考试
 								</view>
 							</view>

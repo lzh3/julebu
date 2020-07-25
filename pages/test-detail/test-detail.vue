@@ -46,6 +46,7 @@
 		},
 		data() {
 			return {
+				bid:0,
 				token: null,
 				title: null,
 				modalTitle: '提交成功',
@@ -61,8 +62,9 @@
 		},
 		onLoad(opt) {
 			let token = uni.getStorageSync("token");
-			let bid=Number(opt.id);
-			console.log(bid)
+			console.log(opt)
+			let bid=opt.id;
+			this.bid=Number(opt.id);
 			if (token) {
 				this.token = token;
 				let that = this;
@@ -92,6 +94,7 @@
 			// 提交答案
 			submit() {
 				let that = this;
+				console.log(this.answers)
 				if (this.answers.length) {
 					uni.request({
 						url: that.examinationSubmitUrl,
@@ -100,10 +103,10 @@
 							authtoken: "token " + this.token
 						},
 						data: {
-							bid: 1, // 培训id
+							bid: that.bid, // 培训id
 							confirm: 1, // 是否确认提交 1、提交之后不允许修改 0、提交之后仅保存草稿
 							second: (Date.now() - this.startTime) / 1000, // 答题用的时间 单位(秒) 从获取考题接口成功开始计算
-							answers: this.answers
+							answers: that.answers
 						},
 						success(res) {
 							console.log("TCL: success -> res", res.data);
@@ -114,7 +117,6 @@
 								that.status = "success";
 								that.msg = res.data.msg;
 							}
-							console.log('status',that.status)
 							that.$refs.modal.open();
 						}
 					});
@@ -140,9 +142,9 @@
 				}
 			},
 			checkboxChange: function({detail:{value}}) {
-				console.log("value", value)
+				console.log("value--", value)
 				if(!value.length)return;
-				let id = value[0].split("-")[0];
+				let id = Number(value[0].split("-")[0]);
 				let curIndex = this.answers.findIndex(v => v.id == id);
 				if (curIndex != -1) {
 					this.answers[curIndex].answer = value.map(v => v.split("-")[3]);

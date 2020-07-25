@@ -4,8 +4,10 @@
 		</wuc-tab>
 		<swiper :current="TabCur" duration="300" @change="swiperChange" class="my-train-swiper">
 			<swiper-item v-for="(item,index) in tabList" :key="index" class="my-train-swiper-item">
-				<view class="item" v-for="(v,index) in item.list" :key="index" @click="viewTrain"
-					:data-item="JSON.stringify(v)">
+				<view v-if="item.list.length==0">
+					<no-data />
+				</view>
+				<view v-else class="item" v-for="(v,index) in item.list" :key="index" @click="viewTrain" :data-item="JSON.stringify(v)">
 					<view class="content">
 						<view class="top-pic">
 							<image :src="v.image" mode="" class="main-pic" />
@@ -21,13 +23,20 @@
 						</view>
 					</view>
 					<view class="operate">
-						<view class="time-wrap">
-							<text class="time" v-if="v.done">得分：{{v.result}}</text>
+						<view class="time-wrap scope">
+							<text class="time" v-if="v.exam==0">得分：{{v.answers.scores}}</text>
 						</view>
 						<view :class="['operate-btn',v.trainStatus]">
-							<view class="test"><text>查看培训</text></view>
-							<!-- v-if='v.done' -->
-							<view class="train-btn" @click.stop="lookResult(v)"><text>查看成绩</text></view>
+							<view class="exam" v-if="v.exam==1">
+								<view @click.stop="exam(v)" v-show="v.exam_btn==1">
+									考试
+								</view>
+							</view>
+							<view class="traninandscore" v-else>
+								<view class="test"><text>查看培训</text></view>
+								<!-- v-if='v.done' -->
+								<view class="train-btn" @click.stop="lookResult(v)"><text>查看成绩</text></view>
+							</view>
 						</view>
 					</view>
 				</view>
@@ -40,6 +49,7 @@
 	import WucTab from '@/components/wuc-tab/wuc-tab.vue';
 	import swiper from '@/components/wuc-tab/wuc-tab.vue';
 	import Kefu from '@/components/Kefu'
+	import Nodata from '../../common/nodata.vue'
 	export default {
 		data() {
 			return {
@@ -124,11 +134,6 @@
 				uni.navigateTo({
 					url: `/pages/course-detail/course-detail?id=${id}`
 				});
-				// if (item.trainStatus !== 'overtime') {
-				// 	uni.navigateTo({
-				// 		url: `/pages/course-detail/course-detail?id=${item.id}&joined=${true}`
-				// 	});
-				// }
 			},
 			// 培训
 			lookResult(item) {
@@ -142,6 +147,13 @@
 					notyet: '未开始',
 					overtime: '已过期',
 				} [status]
+			},
+			// 考试按钮
+			exam(item) {
+				console.log(item)
+				uni.navigateTo({
+					url: '../../test-detail/test-detail?id=' + item.id
+				})
 			}
 		},
 	}
@@ -260,6 +272,13 @@
 						height: 20rpx;
 					}
 
+					.score {
+						line-height: 34rpx;
+						background: #f36523;
+						text-align: center;
+						color: #fff;
+					}
+
 					.time {
 						font-size: 22rpx;
 						font-family: PingFang;
@@ -290,6 +309,27 @@
 						width: 130rpx;
 						margin: 0 10rpx;
 						border-radius: 6rpx;
+					}
+
+					.traninandscore {
+						width: 300rpx;
+
+						view {
+							display: inline-block;
+						}
+					}
+
+					.exam {
+						width: 120rpx;
+						text-align: center;
+						color: #fff;
+
+						view {
+							width: 100%;
+							height: 100%;
+							padding: 0 10rpx;
+							background: #f36523;
+						}
 					}
 
 					.test {

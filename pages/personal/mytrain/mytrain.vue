@@ -24,8 +24,8 @@
 						</view>
 					</view>
 					<view class="operate">
-						<view class="time-wrap">
-							<text class="time" v-if="v.done">得分：{{v.result}}</text>
+						<view class="time-wrap scope">
+							<text class="time">得分：{{v.answers.scores}}</text>
 						</view>
 						<view :class="['operate-btn',v.trainStatus]">
 							<view class="exam" v-if="v.exam==1" @click.stop="exam(v)">考试</view>
@@ -273,7 +273,12 @@
 						width: 20rpx;
 						height: 20rpx;
 					}
-
+					.score{
+						line-height: 34rpx;
+						background: #f36523;
+						text-align: center;
+						color: #fff;
+					}
 					.time {
 						font-size: 22rpx;
 						font-family: PingFang;

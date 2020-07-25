@@ -141,9 +141,9 @@
 				}
 			},
 			checkboxChange: function({detail:{value}}) {
-				console.log("value", value)
+				console.log("value--", value)
 				if(!value.length)return;
-				let id = value[0].split("-")[0];
+				let id = Number(value[0].split("-")[0]);
 				let curIndex = this.answers.findIndex(v => v.id == id);
 				if (curIndex != -1) {
 					this.answers[curIndex].answer = value.map(v => v.split("-")[3]);

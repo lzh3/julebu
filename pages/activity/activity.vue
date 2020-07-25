@@ -1,9 +1,9 @@
 <template>
 	<view>
-		<view class="activity-wrap container" :style='{display:showLogin}'>
-			<NotLogin pageName="活动"></NotLogin>
+		<view v-if="list.length==0">
+			<no-data />
 		</view>
-		<view class="cu-card article no-card" :style='{display:showCard}' v-for="(item,key) in list" :key='key'>
+		<view v-else class="cu-card article no-card" :style='{display:showCard}' v-for="(item,key) in list" :key='key'>
 			<view class="cu-item shadow">
 				<navigator :url="'../activity-detail/activity-detail?id='+item.id">
 					<view class="content">
@@ -11,8 +11,7 @@
 							<image class="img" :src="item.image" mode=""></image>
 							<image class="on" v-if='item.status==="in_start"' src="../../static/image/activity/in_start.png" mode="">
 							</image>
-							<image class="on" v-else-if="item.status==='not_start'" src="../../static/image/activity/not_start.png"
-								mode=""></image>
+							<image class="on" v-else-if="item.status==='not_start'" src="../../static/image/activity/not_start.png" mode=""></image>
 							<image class="on" v-else-if="item.status==='end'" src="../../static/image/activity/end.png" mode="">
 							</image>
 
@@ -37,18 +36,24 @@
 				</navigator>
 			</view>
 		</view>
+
+		<view class="activity-wrap container" :style='{display:showLogin}'>
+			<NotLogin pageName="活动"></NotLogin>
+		</view>
 	</view>
 </template>
 
 <script>
 	import NotLogin from "@/components/NotLogin";
+	import NoData from '../common/nodata.vue'
 	export default {
 		components: {
-			NotLogin
+			NotLogin,
+			NoData
 		},
 		data() {
 			return {
-				token:'',
+				token: '',
 				showCard: '',
 				showLogin: '',
 				list: []
@@ -60,7 +65,7 @@
 				this.showLogin = "block"
 				this.showCard = 'none'
 			} else {
-				this.token=token;
+				this.token = token;
 				this.getActivityList(1, token);
 				this.showLogin = "none";
 				this.showCard = 'block'
@@ -68,7 +73,7 @@
 		},
 		// 下拉刷新
 		onPullDownRefresh() {
-			this.getActivityList(1,this.token)
+			this.getActivityList(1, this.token)
 		},
 		methods: {
 			// 获取活动列表
@@ -99,12 +104,13 @@
 </script>
 
 <style lang="scss" scoped>
-	.main-title{
-		width:460rpx;
+	.main-title {
+		width: 460rpx;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
+
 	.activity-wrap {
 		height: 100vh;
 		background-color: #fff;
@@ -140,9 +146,10 @@
 		}
 
 		.content {
-			.name{
-				color:#666;
+			.name {
+				color: #666;
 			}
+
 			.desc {
 				padding: 0;
 				margin-left: 10rpx;
@@ -150,11 +157,13 @@
 				view.text-content {
 					height: 40rpx;
 					line-height: 40rpx;
-					.txt{
-						color:#333333;
+
+					.txt {
+						color: #333333;
 					}
-					.ora{
-						color:#f39d23;
+
+					.ora {
+						color: #f39d23;
 					}
 
 					.f-right {

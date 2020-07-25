@@ -9,31 +9,33 @@
 			<swiper class="swiper" :current="TabCur" duration="300" @change="swiperChange">
 				<swiper-item class="s-item" v-for="(item,index) in tabList" :key="index">
 					<view class="item" v-for="(v,index) in item.list" :key="index" @click="train" :data-item="JSON.stringify(v)">
-						<view class="content">
-							<view class="top-pic">
-								<image :src="v.image" mode="" class="main-pic" />
-								<view :class="['jiao-biao',v.trainStatus]">{{trainStatus(v.trainStatus)}}</view>
-							</view>
-							<view class="text-area">
-								<text class="title">{{v.title}}</text>
-								<view class="train-time">培训时间：<text>{{v.start_time}}-{{v.end_time}}</text></view>
-								<view class="train-info">
-									<view>培训名额：<text>{{v.quota_count}}</text></view>
-									<view class="type">培训方式：<text>{{v.mode == 1 ? "视频" : "课件"}}</text></view>
+
+						<view>
+							<view class="content">
+								<view class="top-pic">
+									<image :src="v.image" mode="" class="main-pic" />
+									<view :class="['jiao-biao',v.trainStatus]">{{trainStatus(v.trainStatus)}}</view>
+								</view>
+								<view class="text-area">
+									<text class="title">{{v.title}}</text>
+									<view class="train-time">培训时间：<text>{{v.start_time}}-{{v.end_time}}</text></view>
+									<view class="train-info">
+										<view>培训名额：<text>{{v.quota_count}}</text></view>
+										<view class="type">培训方式：<text>{{v.mode == 1 ? "视频" : "课件"}}</text></view>
+									</view>
 								</view>
 							</view>
-						</view>
-						<view class="operate">
-							<view class="time-wrap">
-								<image src="../../static/image/home/time.png" mode="" />
-								<text class="time">{{v.time}}</text>
-								<text
-									:class="['sign-number',v.trainStatus === 'overtime' && 'sign-number-failed']">已有{{v.sign_count}}人报名参加</text>
-							</view>
-							<view :class="['operate-btn',v.trainStatus === 'overtime' && 'overtime-btn']">
-								<view class="test" @click.stop="test" :data-item="JSON.stringify(v)"><text>考试</text></view>
-								<view class="divide"></view>
-								<view class="train-btn" v-if="v.mode!=3"><text>培训</text></view>
+							<view class="operate">
+								<view class="time-wrap">
+									<image src="../../static/image/home/time.png" mode="" />
+									<text class="time">{{v.time}}</text>
+									<text :class="['sign-number',v.trainStatus === 'overtime' && 'sign-number-failed']">已有{{v.sign_count}}人报名参加</text>
+								</view>
+								<view :class="['operate-btn',v.trainStatus === 'overtime' && 'overtime-btn']">
+									<view class="test" @click.stop="test" :data-item="JSON.stringify(v)"><text>考试</text></view>
+									<view class="divide"></view>
+									<view class="train-btn" v-if="v.mode!=3"><text>培训</text></view>
+								</view>
 							</view>
 						</view>
 					</view>
@@ -49,6 +51,7 @@
 	import swiper from '@/components/wuc-tab/wuc-tab.vue';
 	import Kefu from '@/components/Kefu'
 	import NotLogin from "@/components/NotLogin";
+	import NoData from '../common/nodata.vue'
 	export default {
 		data() {
 			return {
@@ -88,7 +91,7 @@
 			console.log(1)
 			if (token) {
 				this.token = token
-				this.getTrainList()
+				this.getTrainList(1)
 				this.showLogin = false;
 			} else {
 				this.showLogin = true
@@ -100,7 +103,7 @@
 				// 没数据再请求
 				if (this.tabList[n].list.length == 0) {
 					this.type = n + 1
-					this.getTrainList()
+					this.getTrainList(1)
 				}
 			}
 		},
@@ -183,7 +186,9 @@
 						type: this.TabCur + 1
 					},
 					success(res) {
-						that.tabList[that.TabCur].list = res.data.data // 季度培训
+						console.log('trainlist', res.data.data)
+						//that.tabList[that.TabCur].list = res.data.data // 季度培训
+						that.$set(that.tabList[that.TabCur], 'list', res.data.data)
 						setTimeout(() => {
 							uni.stopPullDownRefresh();
 						}, 500)

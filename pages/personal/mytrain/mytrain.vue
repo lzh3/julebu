@@ -24,7 +24,7 @@
 					</view>
 					<view class="operate">
 						<view class="time-wrap scope">
-							<text class="time">得分：{{v.answers.scores}}</text>
+							<text class="time" v-if="v.exam==0">得分：{{v.answers.scores}}</text>
 						</view>
 						<view :class="['operate-btn',v.trainStatus]">
 							<view class="exam" v-if="v.exam==1">

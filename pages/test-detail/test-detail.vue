@@ -62,6 +62,7 @@
 		},
 		onLoad(opt) {
 			let token = uni.getStorageSync("token");
+			console.log(opt)
 			let bid=opt.id;
 			this.bid=Number(opt.id);
 			if (token) {

@@ -5,7 +5,7 @@
 				<image src="../../static/image/personal/bg.png" mode=""></image>
 			</view>
 			<view class="info">
-				<view class="touxiang">
+				<view class="touxiang" @click="getPermision">
 					<!-- -->
 					<image v-if="avatar==''" src="../../static/image/headimg.png" mode=""></image>
 					<image :src="avatar" v-else mode=""></image>
@@ -28,13 +28,13 @@
 			<view class="list-card bg-white">
 				<template v-for="item in moduleList">
 					<view class="item" v-if="moduleRight(item)">
-						 <view class="kefu" v-if="item.title=='我的客服'">
+						<view class="kefu" v-if="item.title=='我的客服'">
 							<button open-type="contact" class="btn"></button>
 							<view class="img">
 								<image :src="item.image" />
 							</view>
 							<text>{{item.title}}</text>
-						</view> 
+						</view>
 						<!-- 打开类型 1、小程序 2、H5 -->
 						<navigator v-else :url="item.type===1 ? item.url : `/pages/webview/webview?url=${item.url}`">
 							<view class="img">
@@ -63,19 +63,19 @@
 				moduleList: [{
 						image: '../../static/image/icon/personal/1.png',
 						title: '店铺详情',
-						url:'',
+						url: '',
 						type: 1,
 					},
 					{
 						image: '../../static/image/icon/personal/2.png',
 						title: '店面形象',
-						url:'',
+						url: '',
 						type: 1,
 					},
 					{
 						image: '../../static/image/icon/personal/3.png',
 						title: '店员管理',
-						url:'',
+						url: '',
 						type: 1,
 					},
 					{
@@ -105,7 +105,7 @@
 					{
 						image: '../../static/image/icon/personal/8.png',
 						title: '积分奖励',
-						url:'',
+						url: '',
 						type: 1,
 					},
 					{
@@ -117,7 +117,7 @@
 					{
 						image: '../../static/image/icon/personal/10.png',
 						title: '我的客服',
-						url:'',
+						url: '',
 						type: 1,
 					},
 				],
@@ -132,6 +132,27 @@
 			await this.getUserInfo(token);
 		},
 		methods: {
+			getPermision() {
+				uni.login({
+					provider: 'weixin',
+					success: function(loginRes) {
+						console.log('loginRes',loginRes);
+						// 获取用户信息
+						uni.getUserInfo({
+							provider: 'weixin',
+							success: function(res) {
+								console.log('用户信息',res)
+							},
+							fail(e) {
+								console.log('授权失败', e)
+							}
+						});
+					},
+					fail(err) {
+						console.log('错误',err)
+					}
+				});
+			},
 			moduleRight(item) {
 				let title = item.title; //模块名
 				let right = [
@@ -244,7 +265,7 @@
 						success(res) {
 							let nickname = "" || (res.data.data && res.data.data.nickname);
 							uni.setStorageSync("username", nickname);
-							console.log('userinfo',res.data.data)
+							console.log('userinfo', res.data.data)
 							if (res.data.code == 200) {
 								const {
 									nickname,
@@ -271,20 +292,21 @@
 <style lang="scss" scoped>
 	.kefu {
 		position: relative;
-	
+
 		.btn {
 			display: block;
 			position: absolute;
-			top:0;
-			left:0;
-			width:146rpx;
-			height:142rpx;
+			top: 0;
+			left: 0;
+			width: 146rpx;
+			height: 142rpx;
 			z-index: 2;
 			border: none;
 			opacity: 0;
 			outline: none;
 		}
 	}
+
 	.reward {
 		.reward-title {
 			width: 100%;

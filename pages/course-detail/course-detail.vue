@@ -38,9 +38,11 @@
           课程介绍：<view class="desc">{{item.description}}</view>
         </view>
       </view>
+
+      <!-- 显示课件PPT  -->
       <view
         class="courseware-content"
-        v-if="item.type==='课件'"
+        v-if="item.mode===2"
       >
         <image
           :src="item.pic"
@@ -123,6 +125,19 @@ export default {
           console.log("course---detail", res.data.data);
           if (res.data.code == 200) {
             that.item = res.data.data;
+            uni.saveFile({
+              tempFilePath: res.data.data.file,
+              success: function (res) {
+                console.log("TCL: success -> res", res);
+              },
+              fail: function (res) {
+                console.log("TCL: fail -> res", res);
+              },
+              complete: function (res) {
+                console.log("TCL: complete -> res", res);
+              },
+            });
+            //
           }
         },
       });

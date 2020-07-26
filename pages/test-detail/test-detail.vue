@@ -4,8 +4,11 @@
 			{{title}}
 		</view>
 		<view class="content">
-			<view class="item" v-for="(v,index) of list" :key="v.id">
-				<view class="test-option-name">{{index+1}}. {{v.title}}</view>
+			<view v-if="list.length==0">
+				<no-data></no-data>
+			</view>
+			<view v-else class="item" v-for="(v,index) of list" :key="v.id">
+				<view class="test-option-name">{{index+1}}. {{v.title}} ({{v.multiple==0?'单选':'多选'}})</view>
 				<view class="test-options" v-if="v.multiple === 0">
 					<radio-group @change="radioChange">
 						<label class="uni-list-cell" v-for="(u, m) in v.answer" :key="u.code">
@@ -39,10 +42,11 @@
 
 <script>
 	import Modal from "@/components/Modal";
-
+	import NoData from '../common/nodata.vue'
 	export default {
 		components: {
-			Modal
+			Modal,
+			NoData
 		},
 		data() {
 			return {

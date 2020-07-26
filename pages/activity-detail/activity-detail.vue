@@ -30,7 +30,7 @@
 					 <text class="isReported" :class="{end:end}">已有{{item.isReported}}人报名参加</text> 
 				</view> -->
 				<view class="item">
-					活动介绍：<view class="desc">{{item.description}}</view>
+					活动介绍：<view class="desc" v-html='item.description'></view>
 				</view>
 				<button type="primary" @click="joinActivity" class="btn" v-if="joined" :class="{over:item.status!=='in_start'}"
 					:disabled="item.status!=='in_start'">
@@ -243,9 +243,10 @@
 				line-height: 64rpx;
 				background-color: rgba(243, 101, 35, 1);
 				border-radius: 10rpx;
-				position: absolute;
+				position: fixed;
+				width:92%;
 				bottom: 10rpx;
-				width: calc(100% - 60rpx);
+				left:4%;
 			}
 		}
 	}

@@ -243,6 +243,8 @@
 			},
 			outLogin() {
 				uni.removeStorageSync("token");
+				uni.removeStorageSync('weixin_name')
+				uni.removeStorageSync('weixin_avatar')
 				uni.navigateTo({
 					url: "../login/login",
 				});

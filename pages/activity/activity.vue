@@ -17,7 +17,7 @@
 
 						</view>
 						<view class="desc">
-							<view class="text-content main-title">
+							<view class="main-title">
 								<text class="name">主题:</text> <text class="txt">{{item.title}}</text>
 							</view>
 							<view class="text-content">
@@ -106,9 +106,11 @@
 <style lang="scss" scoped>
 	.main-title {
 		width: 460rpx;
-		white-space: nowrap;
+		word-wrap: wrap;
+		line-height:40rpx;
+		/* white-space: nowrap;
 		overflow: hidden;
-		text-overflow: ellipsis;
+		text-overflow: ellipsis; */
 	}
 
 	.activity-wrap {

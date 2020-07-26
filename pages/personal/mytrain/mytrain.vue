@@ -24,11 +24,11 @@
 					</view>
 					<view class="operate">
 						<view class="time-wrap scope">
-							<text class="time" v-if="v.exam==0">得分：{{v.answers.scores}}</text>
+							<text class="time" v-if="v.exam_btn==0">得分：{{v.answers.scores}}</text>
 						</view>
 						<view :class="['operate-btn',v.trainStatus]">
-							<view class="exam" v-if="v.exam==1">
-								<view @click.stop="exam" :data-item="JSON.stringify(v)" v-show="v.exam_btn==1">
+							<view class="exam" v-if="v.exam_btn==1">
+								<view @click.stop="exam" :data-item="JSON.stringify(v)" v-show="v.exam==1">
 									考试
 								</view>
 							</view>
@@ -49,7 +49,7 @@
 	import WucTab from '@/components/wuc-tab/wuc-tab.vue';
 	import swiper from '@/components/wuc-tab/wuc-tab.vue';
 	import Kefu from '@/components/Kefu'
-	import Nodata from '../../common/nodata.vue'
+	import NoData from '../../common/nodata.vue'
 	export default {
 		data() {
 			return {
@@ -80,7 +80,8 @@
 		},
 		components: {
 			WucTab,
-			Kefu
+			Kefu,
+			NoData
 		},
 		onShow() {
 			console.log('onshow')

@@ -360,6 +360,7 @@
 			flex-wrap: wrap;
 			flex-direction: row;
 			width: 690rpx;
+			min-height: 60rpx;
 			top: -100rpx;
 			left: 50%;
 			margin-left: -345rpx;

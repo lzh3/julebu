@@ -90,7 +90,7 @@
 	export default {
 		data() {
 			return {
-				txt: '选择地区',
+				txt: '请选择地区',
 				showTimer: false, // 是否显示倒计时
 				timer: 60, // 
 				interval: null,
@@ -100,14 +100,14 @@
 				reg_status: 'reg_error',
 				code_status: 'code_error',
 				reg_form: {
-					connect: '联系', //人
-					"company": "公司", // 名称 asdasd
-					"province": "湖南省长沙市1区", // 省 河北省
+					connect: '', //人
+					"company": "", // 名称 asdasd
+					"province": "", // 省 河北省
 					"city": "", // 市 邯郸市
 					"address": "", // 详细地址 湖南省长沙市雨花区
-					"business": "阿发达", // 公司主营行业 公司主营行业
-					"realname": "1士大夫撒旦", // 联系人 联系人
-					"phone": "18270825620", // 联系手机 18270825622
+					"business": "", // 公司主营行业 公司主营行业
+					"realname": "", // 联系人 联系人
+					"phone": "", // 联系手机 18270825622
 					"code": "", // 验证码 816726
 					is_join_amd: "0",
 				}

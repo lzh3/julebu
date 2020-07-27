@@ -163,7 +163,7 @@
 
 		.content {
 			position: relative;
-			padding: 30rpx;
+			padding: 30rpx 30rpx 60rpx;
 			background: #fff;
 			flex: 1;
 			height: calc(100vh-350rpx);

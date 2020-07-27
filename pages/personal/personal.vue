@@ -364,7 +364,6 @@
 			left: 50%;
 			margin-left: -345rpx;
 			border-radius: 10px;
-			padding: 10rpx;
 			box-sizing: border-box;
 			overflow: hidden;
 

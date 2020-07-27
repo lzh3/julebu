@@ -21,16 +21,14 @@
 				</view>
 				<!-- 多选 -->
 				<view v-else class="test-options">
-					<!-- <evan-checkbox-group v-model="v.checked" @change="checkboxChange">
-						<evan-checkbox class="checkout-content" primary-color="#F36523" v-for="(u, m) in v.answer" :key="u.code" :label="`${v.id}-${index}-${m}-${u.code}-${u.title}`">
-							{{u.title}}
-						</evan-checkbox>
-					</evan-checkbox-group> -->
 						<checkbox-group @change="checkboxChange" class="checkbox-group">
 						<label v-for="(u, m) in v.answer" :key="u.title">
 								<checkbox class="checkout-content"  :value="`${v.id}-${index}-${m}-${u.code}-${u.title}`" color="#F36523" style="transform:scale(0.7)" />{{u.title}}
 						</label>
 					</checkbox-group>
+				</view>
+				<view class="right">
+					
 				</view>
 			</view>
 		</view>

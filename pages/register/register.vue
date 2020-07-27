@@ -2,8 +2,8 @@
 	<view class="reg">
 		<view class="content">
 			<view class="main-title">
-				<view class="cn">A+俱乐部</view>
-				<view class="en">A+Club</view>
+				<view class="cn">AMD科技汇</view>
+				<!-- <view class="en">A+Club</view> -->
 			</view>
 			<view class="info">
 				<view class="cu-form-group">
@@ -12,12 +12,19 @@
 					</view>
 					<input v-model='reg_form.company' placeholder="请输入公司名称" name="check_num"></input>
 				</view>
+
+
 				<view class="cu-form-group">
 					<view class="title">
 						<image class="icon" src="../../static/image/icon/login_register/address.png" mode=""></image>
 					</view>
-					<input v-model='reg_form.address' placeholder="请输入公司地址,例:省-市-区/县-详细地址" name="check_num"></input>
+					<!-- <input v-model='reg_form.address' placeholder="请输入公司地址,例:省-市-区/县-详细地址" name="check_num"></input> -->
+					<view id="pickpick">
+						 <picker-address @change="bindPickerChange">{{txt}}</picker-address>
+					</view>
 				</view>
+
+
 				<view class="cu-form-group">
 					<view class="title">
 						<image class="icon" src="../../static/image/icon/login_register/range.png" mode=""></image>
@@ -36,9 +43,9 @@
 					</view>
 					<input v-model='reg_form.phone' placeholder="请输入11位手机号" name="check_num"></input>
 
-						<button class='cu-btn bg-main shadow' @tap='getCode'>
-							获取验证码
-							<text v-if="showTimer">({{timer}}s)</text>
+					<button class='cu-btn bg-main shadow' @tap='getCode'>
+						获取验证码
+						<text v-if="showTimer">({{timer}}s)</text>
 					</button>
 				</view>
 				<view class="cu-form-group">
@@ -52,10 +59,10 @@
 					<view class="uni-padding-wrap">
 						<radio-group>
 							<label class="radio">
-								<radio value="0" v-model="reg_form.is_join_amd"/>是
+								<radio value="0" v-model="reg_form.is_join_amd" />是
 							</label>
 							<label class="radio">
-								<radio value="1" v-model="reg_form.is_join_amd"/>否
+								<radio value="1" v-model="reg_form.is_join_amd" />否
 							</label>
 						</radio-group>
 					</view>
@@ -71,27 +78,29 @@
 				</view> -->
 			</view>
 		</view>
-		
+
 		<Modal ref="reg" :showLogin='showLogin' :reg_status='reg_status' :msg='msg' />
-		<Modal ref="pp" :code_status='code_status' :msg='msg' /> 
+		<Modal ref="pp" :code_status='code_status' :msg='msg' />
 	</view>
 </template>
 
 <script>
 	import Modal from '../../components/Modal/index.vue'
+	import PickerAddress from '../../components/pickerAddress/pickerAddress.vue'
 	export default {
 		data() {
 			return {
-				showTimer:false, // 是否显示倒计时
-				timer:60, // 
-				interval:null,
+				txt:'',
+				showTimer: false, // 是否显示倒计时
+				timer: 60, // 
+				interval: null,
 				msg: '请输入正确信息!',
 				code: '',
-				showLogin:false,
-				reg_status:'reg_error',
-				code_status:'code_error',
+				showLogin: false,
+				reg_status: 'reg_error',
+				code_status: 'code_error',
 				reg_form: {
-					connect: '联系',//人
+					connect: '联系', //人
 					"company": "公司", // 名称 asdasd
 					"province": "湖南省长沙市1区", // 省 河北省
 					"city": "", // 市 邯郸市
@@ -105,17 +114,22 @@
 			}
 		},
 		components: {
-			Modal
+			Modal,
+			PickerAddress
 		},
-		watch:{
-			timer:function(val){
-				if(val<=0){
+		watch: {
+			timer: function(val) {
+				if (val <= 0) {
 					clearInterval(this.interval)
-					this.timer=0;
+					this.timer = 0;
 				}
 			}
 		},
 		methods: {
+			bindPickerChange(e){
+				console.log(e)
+				 this.index = e.target.value
+			},
 			regFn() {
 				// console.log(this.reg_form)
 				let _this = this;
@@ -133,7 +147,7 @@
 
 				let regRes = this.reg_form.address.match(reg) || [];
 
-				if (address && business && code && company && connect && phone&&is_join_amd) {
+				if (address && business && code && company && connect && phone && is_join_amd) {
 					uni.request({
 						url: 'https://amd.mcooks.cn/api/register',
 						method: 'POST',
@@ -147,7 +161,7 @@
 							"realname": connect, // 联系人
 							phone, // 联系手机
 							code, // 验证码
-							is_join_amd:Number(is_join_amd)
+							is_join_amd: Number(is_join_amd)
 						},
 						success(res) {
 							console.log(res)
@@ -161,16 +175,16 @@
 						}
 					})
 				} else {
-					_this.showLogin=false;
+					_this.showLogin = false;
 					_this.$refs.reg.open()
 				}
 			},
 			getCode() {
-				this.showTimer=true;
-				this.interval=setInterval(()=>{
+				this.showTimer = true;
+				this.interval = setInterval(() => {
 					this.timer--;
-				},1000)
-				
+				}, 1000)
+
 				// this.$refs.modal.open()
 				let _this = this;
 				uni.request({
@@ -187,7 +201,7 @@
 								url:'/pages/login/login'
 							}) */
 						} else {
-							_this.msg=res.data.msg;
+							_this.msg = res.data.msg;
 							_this.code_status = 'code_error';
 							_this.$refs.pp.open()
 						}
@@ -199,6 +213,11 @@
 </script>
 
 <style lang="scss" scoped>
+	#pickpick{
+		width:100px ;
+		height:15px; 
+		background-color: skyblue;
+	}
 	.reg-btn {
 		width: 100%;
 		height: 40px;

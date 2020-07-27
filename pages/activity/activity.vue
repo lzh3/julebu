@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view v-if="list.length==0">
+		<view v-if="list.length==0&&!showLogin">
 			<no-data />
 		</view>
 		<view v-else class="cu-card article no-card" :style='{display:showCard}' v-for="(item,key) in list" :key='key'>

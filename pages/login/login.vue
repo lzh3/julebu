@@ -2,8 +2,8 @@
 	<view class="wrap">
 		<view class="content">
 			<view class="main-title">
-				<view class="cn">A+俱乐部</view>
-				<view class="en">A+Club</view>
+				<view class="cn">AMD科技汇</view>
+				<!-- <view class="en">A+Club</view> -->
 			</view>
 			<view class="info">
 				<view class="cu-form-group">
@@ -48,7 +48,7 @@
 				modal_title: '',
 				info: 'yes',
 				login_form: {
-					phone: '18270825622', //15030017934
+					phone: '18270825620', //15030017934
 					code: ""
 				},
 				msg: '请输入正确信息!',

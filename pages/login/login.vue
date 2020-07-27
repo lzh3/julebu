@@ -48,7 +48,7 @@
 				modal_title: '',
 				info: 'yes',
 				login_form: {
-					phone: '18270825620', //15030017934
+					phone: '', //15030017934
 					code: ""
 				},
 				msg: '请输入正确信息!',

@@ -79,6 +79,16 @@
 						success(res) {
 							let id_type = 0 || (res.data.data && res.data.data.id_type);
 							uni.setStorageSync('id_type', id_type)
+							if(id_type!=2){
+								uni.setTabBarItem({
+									index:4,
+									text:'',
+									iconPath:'',
+									success(res){
+										console.log(res)
+									}
+								})
+							}
 						}
 					})
 				}

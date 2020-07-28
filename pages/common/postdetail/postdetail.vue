@@ -6,7 +6,7 @@
 			</view>
 			
 			<view id="desc">
-				{{article.desc}}
+				<view class="txt-content" v-html="article.content"></view>
 			</view>
 			<view class="text-gray text-sm text-left padding">
 				<text class="f-right">
